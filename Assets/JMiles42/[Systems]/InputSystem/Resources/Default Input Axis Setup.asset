@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4daaf7c3eeb0a824aaf26c1701fdb716, type: 3}
+  m_Name: Default Input Axis Setup
+  m_EditorClassIdentifier: 
+  inputsToUse:
+  - Axis: Horizontal
+    UnityAxis: Horizontal
+    m_Value: 0
+    ValueInverted: 0
+  - Axis: Vertical
+    UnityAxis: Vertical
+    m_Value: 0
+    ValueInverted: 0
+  - Axis: MouseScroll
+    UnityAxis: MouseScroll
+    m_Value: 0
+    ValueInverted: 0
+  - Axis: Jump
+    UnityAxis: Jump
+    m_Value: 0
+    ValueInverted: 0
+  - Axis: Fire1
+    UnityAxis: Fire1
+    m_Value: 0
+    ValueInverted: 0
