@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 219816430}
   - component: {fileID: 219816429}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
