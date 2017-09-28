@@ -8,6 +8,17 @@ public class Map {
 	public int Height;
 	public Row[] Tiles;
 
+	public Map() {}
+
+	public Map(int width, int height) {
+		Width = width;
+		Height = height;
+		Tiles = new Row[width];
+		foreach (var row in Tiles) {
+			row.Collems = new Tile[height];
+		}
+	}
+
 	public Row this[int x] {
 		get {
 			if (Tiles.InRange(x))
