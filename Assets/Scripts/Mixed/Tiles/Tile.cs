@@ -4,5 +4,5 @@
 public class Tile
 {
 	public TileType TyleType;
-	public Vector2I Position;
+	//public Vector2I Position;
 }

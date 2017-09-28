@@ -1,7 +1,6 @@
 ﻿using JMiles42.Attributes;
-using JMiles42.Components;
 
-namespace JMiles42.ScriptableObjects
+namespace JMiles42.Components
 {
 	public class GenericComponent<T>: JMilesBehavior
 	{
