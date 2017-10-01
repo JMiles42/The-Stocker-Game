@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using JMiles42.Attributes;
 using JMiles42.Extensions;
 using JMiles42.Generics;
 using JMiles42.Systems.InputManager;
 using JMiles42.UnityInterfaces;
 using UnityEngine;
 
-public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening
+public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
 {
     public InputAxis PrimaryClick = "Fire1";
     public InputAxis SecondaryClick = "Fire2";
 
     public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
+    public List<int> TouchIndexesToRemove = new List<int>(0);
     public float TimeForAlternateTouch = 0.2f;
+    [DisableEditing] public int touchCount;
 
-    public event Action<Vector2> OnPrimaryClick = (a) => {};
-    public event Action<Vector2> OnSecondaryClick = (a) => {};
+    public event Action<Vector2> OnPrimaryClick = (a) =>
+                                                  {
+                                                      //Debug.Log("Primary" + a);
+                                                  };
+
+    public event Action<Vector2> OnSecondaryClick = (a) =>
+                                                    {
+                                                        //Debug.Log("Secondary" + a);
+                                                    };
 
     public void OnEnable()
     {
@@ -26,17 +36,29 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
         SecondaryClick.onKeyDown += OnSecondaryKeyDown;
     }
 
-    void Update()
+    public void Update()
     {
-        if (Input.touchCount == 0)
+        if ((touchCount = Input.touchCount) == 0)
             return;
 
         for (var i = 0; i < Input.touchCount; i++)
         {
             var touch = Input.GetTouch(i);
-            AddToTouchList(touch);
+            CheckTouches(touch);
         }
-        CalculateTouchList();
+        RemoveTouches();
+    }
+
+    private void RemoveTouches()
+    {
+        for (int i = TouchList.Count - 1; i >= 0; i--)
+        {
+            if (TouchIndexesToRemove.Contains(i))
+            {
+                TouchList.RemoveAt(i);
+                TouchIndexesToRemove.Remove(i);
+            }
+        }
     }
 
     private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition); }
@@ -49,7 +71,7 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
         SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
     }
 
-    private void AddToTouchList(Touch touch)
+    private void CheckTouches(Touch touch)
     {
         switch (touch.phase)
         {
@@ -61,47 +83,76 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
             case TouchPhase.Stationary:
                 break;
             case TouchPhase.Ended:
+                for (var i = 0; i < TouchList.Count; i++)
+                {
+                    if (TouchList[i].FingerID == touch.fingerId)
+                    {
+                        CalculateTouch(TouchList[i]);
+                        TouchIndexesToRemove.Add(i);
+                    }
+                }
                 break;
             case TouchPhase.Canceled:
                 break;
         }
     }
 
-    private void CalculateTouchList()
+    private void CalculateTouch(SavedTouchData data)
     {
-        for (int i = TouchList.Count - 1; i >= 0; i--)
+        var resualts = data.GetTouchEndData();
+
+        var touchLength = CalculateTouchLength(resualts.HeldTime);
+
+        //Debug.Log("Held Time: " + resualts.HeldTime + ":" + touchLength);
+        switch (touchLength)
         {
-            var resualts = TouchList[i].DoTouch();
-            if (resualts.Over)
-            {}
+            case TouchLength.Short:
+                OnPrimaryClick.Trigger(resualts.Data.StartPos);
+                break;
+            case TouchLength.Long:
+                OnSecondaryClick.Trigger(resualts.Data.StartPos);
+                break;
         }
     }
 
-    public bool WasAltTouch(float time)
+    public TouchLength CalculateTouchLength(float time)
     {
         if (time >= TimeForAlternateTouch)
-            return true;
-        return false;
+            return TouchLength.Long;
+        return TouchLength.Short;
     }
 
+    [Serializable]
     public class SavedTouchData
     {
-        public Touch Touch;
+        public int FingerID;
         public float StartTime;
         public Vector2 StartPos;
 
         public SavedTouchData(Touch touch)
         {
-            Touch = touch;
+            FingerID = touch.fingerId;
             StartPos = touch.position;
             StartTime = Time.time;
         }
 
-        public TouchEndData DoTouch()
+        public TouchEndData GetTouchEndData()
         {
-            var touch = new TouchEndData {Over = Touch.phase == TouchPhase.Ended, Data = this, HeldTime = Time.time - StartTime};
+            var touch = new TouchEndData {Data = this, HeldTime = Time.time - StartTime};
             return touch;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+                return false;
+            if (obj is Touch)
+                return Equals((Touch) obj);
+            return obj is SavedTouchData && Equals((SavedTouchData) obj);
+        }
+
+        public bool Equals(SavedTouchData other) { return other.FingerID == FingerID; }
+        public bool Equals(Touch other) { return other.fingerId == FingerID; }
 
         public struct TouchEndData
         {
@@ -109,5 +160,12 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
             public SavedTouchData Data;
             public float HeldTime;
         }
+    }
+
+    [Serializable]
+    public enum TouchLength
+    {
+        Short,
+        Long
     }
 }
