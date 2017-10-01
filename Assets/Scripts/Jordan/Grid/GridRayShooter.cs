@@ -8,8 +8,17 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 {
     public Camera Camera;
 
-    public void OnEnable() { PlayerInputManager.Fire1.onKeyDown += OnKeyDown; }
-    public void OnDisable() { PlayerInputManager.Fire1.onKeyDown -= OnKeyDown; }
+    public void OnEnable()
+    {
+        GameplayInputManager.Instance.OnPrimaryClick += OnPrimaryClick;
+        GameplayInputManager.Instance.OnSecondaryClick += OnSecondaryClick;
+    }
+
+    public void OnDisable()
+    {
+        GameplayInputManager.Instance.OnPrimaryClick -= OnPrimaryClick;
+        GameplayInputManager.Instance.OnSecondaryClick -= OnSecondaryClick;
+    }
 
     public void Start()
     {
@@ -19,16 +28,62 @@ public class GridRayShooter: JMilesBehavior, IEventListening
         }
     }
 
-    private void OnKeyDown() { RayShoot(); }
+    private void OnPrimaryClick(Vector2 screenPos)
+    {
+        var gB = GetGridBlock(screenPos);
+        if (gB)
+        {
+            gB.GetComponent<Renderer>().material.color = Color.cyan;
+        }
+    }
 
-    private void RayShoot()
+    private void OnSecondaryClick(Vector2 screenPos)
+    {
+        var gB = GetGridBlock(screenPos);
+        if (gB)
+        {
+            gB.GetComponent<Renderer>().material.color = Color.red;
+        }
+    }
+
+    private void OnKeyDown() { RayShoot(Input.mousePosition); }
+
+    public GridBlock GetGridBlock(Vector2 pos)
     {
         if (Camera == null)
         {
             Camera = Camera.main;
         }
 
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        var ray = Camera.ScreenPointToRay(pos);
+        var rayhit = new RaycastHit();
+        if (Physics.Raycast(ray, out rayhit, 500f))
+        {
+            if (!rayhit.transform)
+                return null;
+
+            Player.Instance.transform.position = rayhit.point;
+
+            if (rayhit.transform.GetComponent<GridRayHit>())
+            {
+                var hitPosistion = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
+                if (GridBlock.Blocks.ContainsKey(hitPosistion))
+                {
+                    return GridBlock.Blocks[hitPosistion];
+                }
+            }
+        }
+        return null;
+    }
+
+    private void RayShoot(Vector2 pos)
+    {
+        if (Camera == null)
+        {
+            Camera = Camera.main;
+        }
+
+        Ray ray = Camera.ScreenPointToRay(pos);
         RaycastHit rayhit = new RaycastHit();
         if (Physics.Raycast(ray, out rayhit, 500f))
         {
@@ -39,10 +94,10 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 
             if (rayhit.transform.GetComponent<GridRayHit>())
             {
-                var pos = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
-                if (GridBlock.Blocks.ContainsKey(pos))
+                var hitPosistion = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
+                if (GridBlock.Blocks.ContainsKey(hitPosistion))
                 {
-                    GridBlock.Blocks[pos].GetComponent<MeshRenderer>().material.color = Color.red;
+                    GridBlock.Blocks[hitPosistion].GetComponent<MeshRenderer>().material.color = Color.red;
                 }
             }
         }
