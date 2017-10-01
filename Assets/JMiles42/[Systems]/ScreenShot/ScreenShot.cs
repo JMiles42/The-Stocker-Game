@@ -51,7 +51,6 @@ namespace JMiles42.Systems.Screenshot
 #if UNITY_EDITOR
         public string Path = Application.streamingAssetsPath + @"/../../../Screenshots";
 #else
-            path
 		public string Path = Application.persistentDataPath + @"/Screenshots";
 #endif
 
