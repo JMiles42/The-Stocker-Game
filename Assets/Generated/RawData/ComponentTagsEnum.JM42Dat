@@ -1,8 +1,9 @@
 MainCamera
 Player
-LootChest
+Chest
 Trap
 Decoration
 FloorLoot
-Spawner
+SmallSpawner
+LargeSpawner
 DontUseThis_AddAnyTagsBeforeThis
