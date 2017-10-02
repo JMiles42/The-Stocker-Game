@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using JMiles42.Attributes;
 using JMiles42.Extensions;
 using JMiles42.Generics;
@@ -7,165 +8,164 @@ using JMiles42.Systems.InputManager;
 using JMiles42.UnityInterfaces;
 using UnityEngine;
 
-public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
-{
-    public InputAxis PrimaryClick = "Fire1";
-    public InputAxis SecondaryClick = "Fire2";
+public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate {
+	public InputAxis PrimaryClick = "MouseL";
+	public InputAxis SecondaryClick = "MouseR";
 
-    public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
-    public List<int> TouchIndexesToRemove = new List<int>(0);
-    public float TimeForAlternateTouch = 0.2f;
-    [DisableEditing] public int touchCount;
+	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
+	public List<int> TouchIndexesToRemove = new List<int>(0);
+	public float TimeForAlternateTouch = 0.2f;
+	public float MovementForCancelTouch = 0.1f;
 
-    public event Action<Vector2> OnPrimaryClick = (a) =>
-                                                  {
-                                                      //Debug.Log("Primary" + a);
-                                                  };
+	[DisableEditing] public int touchCount;
 
-    public event Action<Vector2> OnSecondaryClick = (a) =>
-                                                    {
-                                                        //Debug.Log("Secondary" + a);
-                                                    };
+	public event Action<Vector2> OnPrimaryClick = (a) => {
+													  //Debug.Log("Primary" + a);
+												  };
 
-    public void OnEnable()
-    {
-        Input.simulateMouseWithTouches = false;
-        Input.backButtonLeavesApp = false;
+	public event Action<Vector2> OnSecondaryClick = (a) => {
+														//Debug.Log("Secondary" + a);
+													};
 
-        PrimaryClick.onKeyDown += OnPrimaryKeyDown;
-        SecondaryClick.onKeyDown += OnSecondaryKeyDown;
-    }
+	public void OnEnable() {
+		Input.simulateMouseWithTouches = false;
+		Input.backButtonLeavesApp = false;
+		MovementForCancelTouch = Screen.dpi * MovementForCancelTouch;
 
-    public void Update()
-    {
-        if ((touchCount = Input.touchCount) == 0)
-            return;
+		PrimaryClick.onKeyDown += OnPrimaryKeyDown;
+		SecondaryClick.onKeyDown += OnSecondaryKeyDown;
+	}
 
-        for (var i = 0; i < Input.touchCount; i++)
-        {
-            var touch = Input.GetTouch(i);
-            CheckTouches(touch);
-        }
-        RemoveTouches();
-    }
+	public void Update() {
+		PrimaryClick.DoInput();
+		SecondaryClick.DoInput();
+		if ((touchCount = Input.touchCount) == 0) {
+			TouchList.Clear();
+			TouchIndexesToRemove.Clear();
+			return;
+		}
 
-    private void RemoveTouches()
-    {
-        for (int i = TouchList.Count - 1; i >= 0; i--)
-        {
-            if (TouchIndexesToRemove.Contains(i))
-            {
-                TouchList.RemoveAt(i);
-                TouchIndexesToRemove.Remove(i);
-            }
-        }
-    }
+		for (var i = 0; i < Input.touchCount; i++) {
+			var touch = Input.GetTouch(i);
+			CheckTouches(touch);
+		}
+		RemoveTouches();
+	}
 
-    private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition); }
+	private void RemoveTouches() {
+		var fingerIds = new List<int>(Input.touches.Select(t => t.fingerId));
+		for (int t = Input.touchCount - 1; t >= 0; t--) {
+			if (!fingerIds.Contains(TouchList[t].FingerID) || TouchIndexesToRemove.Contains(TouchList[t].FingerID))
+				TouchList.RemoveAt(t);
+		}
+		TouchIndexesToRemove.Clear();
+	}
 
-    private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition); }
+	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition); }
 
-    public void OnDisable()
-    {
-        PrimaryClick.onKeyDown -= OnPrimaryKeyDown;
-        SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
-    }
+	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition); }
 
-    private void CheckTouches(Touch touch)
-    {
-        switch (touch.phase)
-        {
-            case TouchPhase.Began:
-                TouchList.Add(new SavedTouchData(touch));
-                break;
-            case TouchPhase.Moved:
-                break;
-            case TouchPhase.Stationary:
-                break;
-            case TouchPhase.Ended:
-                for (var i = 0; i < TouchList.Count; i++)
-                {
-                    if (TouchList[i].FingerID == touch.fingerId)
-                    {
-                        CalculateTouch(TouchList[i]);
-                        TouchIndexesToRemove.Add(i);
-                    }
-                }
-                break;
-            case TouchPhase.Canceled:
-                break;
-        }
-    }
+	public void OnDisable() {
+		PrimaryClick.onKeyDown -= OnPrimaryKeyDown;
+		SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
+	}
 
-    private void CalculateTouch(SavedTouchData data)
-    {
-        var resualts = data.GetTouchEndData();
+	private void CheckTouches(Touch touch) {
+		switch (touch.phase) {
+			case TouchPhase.Began:
+				TouchList.Add(new SavedTouchData(touch));
+				break;
+			case TouchPhase.Moved:
+				break;
+			case TouchPhase.Stationary:
+				break;
+			case TouchPhase.Ended:
+				for (var i = 0; i < TouchList.Count; i++) {
+					if (TouchList[i].FingerID == touch.fingerId) {
+						CalculateTouch(TouchList[i], touch);
+						TouchIndexesToRemove.Add(i);
+					}
+				}
+				break;
+			case TouchPhase.Canceled:
+				break;
+		}
+	}
 
-        var touchLength = CalculateTouchLength(resualts.HeldTime);
+	private void CalculateTouch(SavedTouchData data, Touch newTouch) {
+		var resualts = data.GetTouchEndData();
 
-        //Debug.Log("Held Time: " + resualts.HeldTime + ":" + touchLength);
-        switch (touchLength)
-        {
-            case TouchLength.Short:
-                OnPrimaryClick.Trigger(resualts.Data.StartPos);
-                break;
-            case TouchLength.Long:
-                OnSecondaryClick.Trigger(resualts.Data.StartPos);
-                break;
-        }
-    }
+		var touchLength = CalculateTouchLength(resualts.HeldTime);
 
-    public TouchLength CalculateTouchLength(float time)
-    {
-        if (time >= TimeForAlternateTouch)
-            return TouchLength.Long;
-        return TouchLength.Short;
-    }
+		//Debug.Log("Held Time: " + resualts.HeldTime + ":" + touchLength);
+		switch (touchLength) {
+			case TouchLength.Short:
+				if (TouchHasNotMoved(data, newTouch, MovementForCancelTouch))
+					OnPrimaryClick.Trigger(resualts.Data.StartPos);
+				break;
+			case TouchLength.Long:
+				if (TouchHasNotMoved(data, newTouch, MovementForCancelTouch))
+					OnSecondaryClick.Trigger(resualts.Data.StartPos);
 
-    [Serializable]
-    public class SavedTouchData
-    {
-        public int FingerID;
-        public float StartTime;
-        public Vector2 StartPos;
+				break;
+		}
+	}
 
-        public SavedTouchData(Touch touch)
-        {
-            FingerID = touch.fingerId;
-            StartPos = touch.position;
-            StartTime = Time.time;
-        }
+	private static bool TouchHasNotMoved(SavedTouchData data, Touch newTouch, float movementForCancelTouch) {
+		var dist = Vector3.Distance(data.StartPos, newTouch.position);
+		if (dist >= movementForCancelTouch) {
+			Debug.Log("Cancel Distance: " + dist);
+			return false;
+		}
+		return true;
+	}
 
-        public TouchEndData GetTouchEndData()
-        {
-            var touch = new TouchEndData {Data = this, HeldTime = Time.time - StartTime};
-            return touch;
-        }
+	public TouchLength CalculateTouchLength(float time) {
+		if (time >= TimeForAlternateTouch)
+			return TouchLength.Long;
+		return TouchLength.Short;
+	}
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-                return false;
-            if (obj is Touch)
-                return Equals((Touch) obj);
-            return obj is SavedTouchData && Equals((SavedTouchData) obj);
-        }
+	[Serializable]
+	public class SavedTouchData {
+		public int FingerID;
+		public float StartTime;
+		public Vector2 StartPos;
 
-        public bool Equals(SavedTouchData other) { return other.FingerID == FingerID; }
-        public bool Equals(Touch other) { return other.fingerId == FingerID; }
+		public SavedTouchData(Touch touch) {
+			FingerID = touch.fingerId;
+			StartPos = touch.position;
+			StartTime = Time.time;
+		}
 
-        public struct TouchEndData
-        {
-            public bool Over;
-            public SavedTouchData Data;
-            public float HeldTime;
-        }
-    }
+		public TouchEndData GetTouchEndData() {
+			var touch = new TouchEndData {Data = this, HeldTime = Time.time - StartTime};
+			return touch;
+		}
 
-    [Serializable]
-    public enum TouchLength
-    {
-        Short,
-        Long
-    }
+		public override bool Equals(object obj) {
+			if (ReferenceEquals(null, obj))
+				return false;
+			if (obj is Touch)
+				return Equals((Touch) obj);
+			return obj is SavedTouchData && Equals((SavedTouchData) obj);
+		}
+
+		public bool Equals(SavedTouchData other) { return other.FingerID == FingerID; }
+		public bool Equals(Touch other) { return other.fingerId == FingerID; }
+
+		public override int GetHashCode() { return -2035406951 + FingerID.GetHashCode(); }
+
+		public struct TouchEndData {
+			public bool Over;
+			public SavedTouchData Data;
+			public float HeldTime;
+		}
+	}
+
+	[Serializable]
+	public enum TouchLength {
+		Short,
+		Long
+	}
 }

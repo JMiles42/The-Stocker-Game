@@ -1,6 +1,4 @@
-﻿using System;
-using JMiles42.Components;
-using JMiles42.Systems.InputManager;
+﻿using JMiles42.Components;
 using JMiles42.UnityInterfaces;
 using UnityEngine;
 
