@@ -20,8 +20,8 @@ namespace JMiles42.Editor.PropertyDrawers
             }
 
             var ValueInverted = new EditorEntry("Invert Result", property.FindPropertyRelative("ValueInverted"));
-            var Axis = new EditorEntry(string.Format("{0} Axis", property.FindPropertyRelative("Axis").stringValue), property.FindPropertyRelative("Axis"));
-            var UAxis = new EditorEntry(string.Format("{0} Unity Axis", property.FindPropertyRelative("UnityAxis").stringValue),
+            var Axis = new EditorEntry(string.Format("Axis: {0}", property.FindPropertyRelative("Axis").stringValue), property.FindPropertyRelative("Axis"));
+            var UAxis = new EditorEntry(string.Format("Unity Axis: {0}", property.FindPropertyRelative("UnityAxis").stringValue),
                                         property.FindPropertyRelative("UnityAxis"));
             var m_Value = new EditorEntry(string.Format("{0}Value", (ValueInverted.Property.boolValue? "Non Inverted " : "")),
                                           property.FindPropertyRelative("m_Value"));
@@ -46,8 +46,15 @@ namespace JMiles42.Editor.PropertyDrawers
                     }
                     AxisRect.y += singleLine;
                     {
+                        var progRect = EditorDrawersUtilities.GetRectWidthIndexed(AxisRect, 2, 1, false, false);
+                        progRect = progRect.ChangeX(6);
+                        progRect = progRect.ChangeY(2);
+
+
+                        EditorDrawersUtilities.DrawSplitProgressBar(progRect, m_Value.Property.floatValue);
                         m_Value.Draw(EditorDrawersUtilities.GetRectWidthIndexed(AxisRect, 2, 0), SPLIT_TYPE);
-                        ValueInverted.Draw(EditorDrawersUtilities.GetRectWidthIndexed(AxisRect, 2, 1, false, false), SPLIT_TYPE);
+
+                        ValueInverted.Draw(EditorDrawersUtilities.GetRectWidthIndexed(position, 2, 1), SPLIT_TYPE);
                     }
                 }
             }
