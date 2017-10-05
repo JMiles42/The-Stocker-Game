@@ -1,74 +1,57 @@
 ﻿using System;
 using JMiles42;
 using JMiles42.Extensions;
+using JMiles42.Generics;
 
 [Serializable]
 public class Map {
 	public int Width;
 	public int Height;
-	public Row[] Tiles;
+	public Tile[] Tiles;
 
 	public Map() {}
+
+	public Map(Map map): this() { Tiles = map.Tiles; }
+	public Map(Vector2I size): this(size.x, size.y) {}
 
 	public Map(int width, int height) {
 		Width = width;
 		Height = height;
-		Tiles = new Row[width];
-		foreach (var row in Tiles) {
-			row.Collems = new Tile[height];
+		DefaultTileFill();
+	}
+
+	public void DefaultTileFill() { FillMap(TileType.Nothing); }
+
+	public void FillMap(TileType tT) {
+		Tiles = new Tile[Width * Height];
+		for (var index = 0; index < Tiles.Length; index++) {
+			Tiles[index] = new Tile(tT);
 		}
 	}
 
-	public Row this[int x] {
-		get {
-			if (Tiles.InRange(x))
-				return Tiles[x];
-			return null;
-		}
-		set {
-			if (Tiles.InRange(x))
-				Tiles[x] = value;
-		}
-	}
 	public Tile this[int x, int y] {
 		get {
-			if (Tiles.InRange(x))
-				if (Tiles[x].Collems.InRange(y))
-					return Tiles[x].Collems[y];
+			if (Tiles.InRange(x * y))
+				return Tiles.GetElementAt2DCoords(Width, x, y);
 			return null;
 		}
 		set {
-			if (Tiles.InRange(x))
-				if (Tiles[x].Collems.InRange(y))
-					Tiles[x].Collems[y] = value;
+			if (Tiles.InRange(x * y)) {
+				var elementAt2DCoords = Tiles.GetElementAt2DCoords(Width, x, y);
+				elementAt2DCoords = new Tile(value);
+			}
 		}
 	}
 	public Tile this[Vector2I index] {
 		get {
-			if (Tiles.InRange(index.x))
-				if (Tiles[index.x].Collems.InRange(index.y))
-					return Tiles[index.x].Collems[index.y];
+			if (Tiles.InRange(index.x * index.y))
+				return Tiles.GetElementAt2DCoords(Width, index.x, index.y);
 			return null;
 		}
 		set {
-			if (Tiles.InRange(index.x))
-				if (Tiles[index.x].Collems.InRange(index.y))
-					Tiles[index.x].Collems[index.y] = value;
-		}
-	}
-
-	[Serializable]
-	public class Row {
-		public Tile[] Collems;
-		public Tile this[int y] {
-			get {
-				if (Collems.InRange(y))
-					return Collems[y];
-				return null;
-			}
-			set {
-				if (Collems.InRange(y))
-					Collems[y] = value;
+			if (Tiles.InRange(index.x * index.y)) {
+				var elementAt2DCoords = Tiles.GetElementAt2DCoords(Width, index.x, index.y);
+				elementAt2DCoords = new Tile(value);
 			}
 		}
 	}

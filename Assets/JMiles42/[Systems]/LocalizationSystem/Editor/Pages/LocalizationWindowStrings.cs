@@ -544,7 +544,7 @@ namespace JMiles42.Systems.Localization
 		private static ButtonResualt DrawItemButton(bool toggle, string label, GenericMenu genericMenu, bool hideClose)
 		{
 			GUI.SetNextControlName(label + "f");
-			var b = JMilesGUILayoutEvents.Toggle(toggle, label, EditorStyles.toolbarButton);
+			var b = JMilesEventsGUILayout.Toggle(toggle, label, EditorStyles.toolbarButton);
 			if (b.EventIsMouse1InRect)
 			{
 				GUI.FocusControl(label + "f");

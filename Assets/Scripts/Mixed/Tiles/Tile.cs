@@ -1,8 +1,7 @@
-﻿using JMiles42;
-
-[System.Serializable]
-public class Tile
-{
+﻿[System.Serializable]
+public class Tile {
+	public Tile(): this(TileType.Nothing) {}
+	public Tile(TileType tyleType) { TyleType = tyleType; }
 	public TileType TyleType;
-	//public Vector2I Position;
+	public static implicit operator TileType(Tile input) { return input.TyleType; }
 }
