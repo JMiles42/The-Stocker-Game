@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JMiles42.Attributes;
@@ -10,6 +11,7 @@ using UnityEngine;
 
 public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate {
 	public InputAxis PrimaryClick = "MouseL";
+	public InputAxis MiddleClick = "MouseM";
 	public InputAxis SecondaryClick = "MouseR";
 
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
@@ -27,6 +29,10 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 														//Debug.Log("Secondary" + a);
 													};
 
+	public event Action<Vector2> OnScreenMoved = a => {
+													 //Debug.Log("Screen Moved" + a);
+												 };
+
 	public void OnEnable() {
 		Input.simulateMouseWithTouches = false;
 		Input.backButtonLeavesApp = false;
@@ -34,6 +40,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 		PrimaryClick.onKeyDown += OnPrimaryKeyDown;
 		SecondaryClick.onKeyDown += OnSecondaryKeyDown;
+		MiddleClick.onKeyDown += OnKeyMiddleDown;
+		MiddleClick.onKeyUp += OnKeyMiddleUp;
+		MiddleClick.onKey += OnKeyMiddle;
 	}
 
 	public void Update() {
@@ -65,9 +74,18 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition); }
 
+	private void OnKeyMiddleDown() {}
+
+	private void OnKeyMiddleUp() {}
+
+	private void OnKeyMiddle() {}
+
+	private void DoTouchPanCamera(SavedTouchData touch) {}
+
 	public void OnDisable() {
 		PrimaryClick.onKeyDown -= OnPrimaryKeyDown;
 		SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
+		MiddleClick.onKeyDown -= OnKeyMiddleDown;
 	}
 
 	private void CheckTouches(Touch touch) {
@@ -76,6 +94,8 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 				TouchList.Add(new SavedTouchData(touch));
 				break;
 			case TouchPhase.Moved:
+				//TouchList.Contains()
+				//DoTouchPanCamera(touch);
 				break;
 			case TouchPhase.Stationary:
 				break;
@@ -106,7 +126,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 			case TouchLength.Long:
 				if (TouchHasNotMoved(data, newTouch, MovementForCancelTouch))
 					OnSecondaryClick.Trigger(resualts.Data.StartPos);
-
 				break;
 		}
 	}
@@ -127,7 +146,7 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	}
 
 	[Serializable]
-	public class SavedTouchData {
+	public class SavedTouchData: IEqualityComparer<SavedTouchData> {
 		public int FingerID;
 		public float StartTime;
 		public Vector2 StartPos;
@@ -161,11 +180,18 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 			public SavedTouchData Data;
 			public float HeldTime;
 		}
+
+		public bool Equals(SavedTouchData x, SavedTouchData y) { return (x != null) && x.Equals(y); }
+		public int GetHashCode(SavedTouchData obj) { return obj.GetHashCode(); }
 	}
 
 	[Serializable]
 	public enum TouchLength {
 		Short,
 		Long
+	}
+
+	public class ScreenMoving {
+		public Vector2 StartPos;
 	}
 }

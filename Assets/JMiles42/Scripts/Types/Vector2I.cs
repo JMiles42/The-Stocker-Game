@@ -44,6 +44,10 @@ namespace JMiles42 {
 		public static Vector2I operator -(Vector2I left, Vector2I right) { return new Vector2I(left.x - right.x, left.y - right.y); }
 		public static Vector2I operator +(Vector2I left, Vector2I right) { return new Vector2I(left.x + right.x, left.y + right.y); }
 		public static Vector2I operator *(Vector2I left, Vector2I right) { return new Vector2I(left.x * right.x, left.y * right.y); }
+		public static Vector2I operator *(Vector2I left, int right) { return new Vector2I(left.x * right, left.y * right); }
+		public static Vector2I operator *(Vector2I left, float right) { return new Vector2I(left.x * right, left.y * right); }
+
+
 
 		public static bool operator ==(Vector2I left, int right) { return left.Equals(right); }
 		public static bool operator !=(Vector2I left, int right) { return !left.Equals(right); }

@@ -11,7 +11,12 @@ public class Map {
 
 	public Map() {}
 
-	public Map(Map map): this() { Tiles = map.Tiles; }
+	public Map(Map map): this() {
+		Width = map.Width;
+		Height = map.Height;
+		Tiles = map.Tiles;
+	}
+
 	public Map(Vector2I size): this(size.x, size.y) {}
 
 	public Map(int width, int height) {
@@ -38,7 +43,7 @@ public class Map {
 		set {
 			if (Tiles.InRange(x * y)) {
 				var elementAt2DCoords = Tiles.GetElementAt2DCoords(Width, x, y);
-				elementAt2DCoords = new Tile(value);
+				elementAt2DCoords.SetTile(value);
 			}
 		}
 	}
