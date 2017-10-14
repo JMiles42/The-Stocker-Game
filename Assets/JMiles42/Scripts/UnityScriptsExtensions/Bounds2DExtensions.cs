@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace JMiles42.Physics
+namespace JMiles42.Extensions
 {
 	public static class Bounds2DExtensions
 	{

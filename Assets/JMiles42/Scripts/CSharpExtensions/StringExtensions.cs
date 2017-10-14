@@ -1,7 +1,4 @@
-﻿using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.Globalization;
-using System.IO;
+﻿using System.Globalization;
 
 namespace JMiles42.Extensions
 {

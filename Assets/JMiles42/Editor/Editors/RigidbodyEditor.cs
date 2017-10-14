@@ -15,5 +15,7 @@ namespace JMiles42.Editor.Editors
 			body.velocity = EditorHelpers.DrawVector3("Velocity", body.velocity, Vector3.zero, this);
 			body.angularVelocity = EditorHelpers.DrawVector3("Angular", body.angularVelocity, Vector3.zero, this);
 		}
+
+		public override bool UseDefaultMargins() { return CustomEditorBase.USE_DEFAULT_MARGINS; }
 	}
 }

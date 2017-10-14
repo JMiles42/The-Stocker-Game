@@ -4,7 +4,7 @@ using UnityEditor;
 namespace JMiles42.Editor.Editors
 {
 	//[CustomEditor(typeof (Camera)), CanEditMultipleObjects]
-	public class CameraEditor : UnityEditor.Editor
+	public class CameraEditor: UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{
@@ -13,5 +13,7 @@ namespace JMiles42.Editor.Editors
 
 			DrawDefaultInspector();
 		}
+
+		public override bool UseDefaultMargins() { return CustomEditorBase.USE_DEFAULT_MARGINS; }
 	}
 }

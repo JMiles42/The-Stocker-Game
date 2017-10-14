@@ -16,13 +16,18 @@ namespace JMiles42.Generics
 			get { return instance == null; }
 		}
 
+		public static bool InstanceCheckNull
+		{
+			get { return Instance == null; }
+		}
+
 		public static S Instance
 		{
 			get
 			{
 				if (instance)
 					return instance;
-				instance = (S) FindObjectOfType(typeof (S));
+				instance = FindObjectOfType<S>();
 				if (!instance)
 					Debug.LogError(typeof (S) + " is needed in the scene."); //Print error
 				return instance;
@@ -59,9 +64,7 @@ namespace JMiles42.Generics
 			if (allComponents.Length > 2)
 				return;
 			gameObject.name = typeof (S).ToString();
-			transform.ResetPosRotScale();
 		}
-
 #endif
 	}
 
@@ -70,13 +73,23 @@ namespace JMiles42.Generics
 	{
 		protected static S instance;
 
+		public static bool InstanceNull
+		{
+			get { return instance == null; }
+		}
+
+		public static bool InstanceCheckNull
+		{
+			get { return Instance == null; }
+		}
+
 		public static S Instance
 		{
 			get
 			{
 				if (instance)
 					return instance;
-				instance = (S) FindObjectOfType(typeof (S));
+				instance = FindObjectOfType<S>();
 				if (!instance)
 					Debug.LogError(typeof (S) + " is needed in the scene."); //Print error
 				return instance;
@@ -113,7 +126,6 @@ namespace JMiles42.Generics
 			if (allComponents.Length > 3)
 				return;
 			gameObject.name = typeof (S).ToString();
-			transform.ResetPosRotScale();
 		}
 
 #endif
@@ -121,6 +133,8 @@ namespace JMiles42.Generics
 
 	public class SingletonScriptableObject<S>: ScriptableObject where S: ScriptableObject
 	{
+		protected static S instance;
+
 		public static bool InstanceNull
 		{
 			get { return instance == null; }
@@ -130,7 +144,6 @@ namespace JMiles42.Generics
 		{
 			get { return Instance == null; }
 		}
-		protected static S instance;
 
 		public static S Instance
 		{
@@ -148,11 +161,17 @@ namespace JMiles42.Generics
 
 	public class SingletonBaseScriptableObject<S>: JMilesScriptableObject where S: JMilesScriptableObject
 	{
+		protected static S instance;
+
 		public static bool InstanceNull
 		{
 			get { return instance == null; }
 		}
-		protected static S instance;
+
+		public static bool InstanceCheckNull
+		{
+			get { return Instance == null; }
+		}
 
 		public static S Instance
 		{
@@ -167,7 +186,4 @@ namespace JMiles42.Generics
 			}
 		}
 	}
-
-	public class Singleclass: Singleton<Singleclass>
-	{}
 }
