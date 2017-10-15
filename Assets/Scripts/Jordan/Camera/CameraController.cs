@@ -67,7 +67,10 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
-		CameraHolder.position = startPos + (Camera.transform.TransformDirection(mouseDelta).FromX_Y2Z() * Speed).SetY(0);
+		var pos = startPos + (Camera.transform.TransformDirection(mouseDelta).FromX_Y2Z() * Speed).SetY(0);
+		CameraHolder.transform.position = new Vector3(pos.x.Clamp(CameraRangeLimiter.MinPos.x, CameraRangeLimiter.MaxPos.x),
+													  pos.y,
+													  pos.z.Clamp(CameraRangeLimiter.MinPos.z, CameraRangeLimiter.MaxPos.z));
 	}
 
 	private void OnScreenEndMove(Vector2 mousePos) { startPos = Vector3.zero; }

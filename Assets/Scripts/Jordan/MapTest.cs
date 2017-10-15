@@ -3,13 +3,17 @@ using JMiles42;
 using JMiles42.Components;
 using UnityEngine;
 
-public class MapTest: JMilesBehavior {
+public class MapTest: JMilesBehavior
+{
 	public Map map;
 
-	void Start() {
+	void Start()
+	{
 		GridBlock.Blocks = new Dictionary<Vector2I, GridBlock>(map.Width * map.Height);
-		for (int x = 0; x < map.Width; x++) {
-			for (int y = 0; y < map.Height; y++) {
+		for (int x = 0; x < map.Width; x++)
+		{
+			for (int y = 0; y < map.Height; y++)
+			{
 				var gO = GameObject.CreatePrimitive(PrimitiveType.Cube);
 				const float num = 0.5f;
 				gO.transform.position = new Vector3(x, 0 - num, y);
@@ -21,5 +25,6 @@ public class MapTest: JMilesBehavior {
 				GridBlock.Blocks.Add(com.GridPosition, com);
 			}
 		}
+		CameraRangeLimiter.RecalculateRange();
 	}
 }
