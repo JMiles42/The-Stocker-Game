@@ -1,4 +1,5 @@
 ﻿using JMiles42.Components;
+using JMiles42.Extensions;
 using JMiles42.UnityInterfaces;
 using UnityEngine;
 
@@ -29,29 +30,21 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 	private void OnPrimaryClick(Vector2 screenPos)
 	{
 		var gB = GetGridBlock(screenPos);
-		if (gB)
-		{
-			gB.GetComponent<Renderer>().material.color = Color.cyan;
-		}
+		if (gB.IsNotNull())
+			GameplayInputManager.Instance.GridBlockPressed(gB, true);
 	}
 
 	private void OnSecondaryClick(Vector2 screenPos)
 	{
 		var gB = GetGridBlock(screenPos);
-		if (gB)
-		{
-			gB.GetComponent<Renderer>().material.color = Color.red;
-		}
+		if (gB.IsNotNull())
+			GameplayInputManager.Instance.GridBlockPressed(gB, false);
 	}
-
-	private void OnKeyDown() { RayShoot(Input.mousePosition); }
 
 	public GridBlock GetGridBlock(Vector2 pos)
 	{
 		if (Camera == null)
-		{
 			Camera = Camera.main;
-		}
 
 		var ray = Camera.ScreenPointToRay(pos);
 		var rayhit = new RaycastHit();
@@ -64,40 +57,9 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 			{
 				var hitPosistion = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
 				if (GridBlock.Blocks.ContainsKey(hitPosistion))
-				{
-					if (!Player.InstanceCheckNull)
-						Player.Instance.transform.position = rayhit.point;
 					return GridBlock.Blocks[hitPosistion];
-				}
 			}
 		}
 		return null;
-	}
-
-	private void RayShoot(Vector2 pos)
-	{
-		if (Camera == null)
-		{
-			Camera = Camera.main;
-		}
-
-		Ray ray = Camera.ScreenPointToRay(pos);
-		RaycastHit rayhit = new RaycastHit();
-		if (Physics.Raycast(ray, out rayhit, 500f))
-		{
-			if (!rayhit.transform)
-				return;
-
-			if (rayhit.transform.GetComponent<GridRayHit>())
-			{
-				var hitPosistion = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
-				if (GridBlock.Blocks.ContainsKey(hitPosistion))
-				{
-					if (!Player.InstanceCheckNull)
-						Player.Instance.transform.position = rayhit.point;
-					GridBlock.Blocks[hitPosistion].GetComponent<MeshRenderer>().material.color = Color.red;
-				}
-			}
-		}
 	}
 }

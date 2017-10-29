@@ -39,7 +39,7 @@ namespace JMiles42.Systems.Localization
 			{
 				using (new GUILayout.HorizontalScope(EditorStyles.toolbarButton, GUILayout.Width(Owner.position.width * 0.5f)))
 				{
-					var e1 = JMilesEventsGUILayout.Button("Generate Pages, From Active Language Pages (non-destructive)", EditorStyles.toolbarButton);
+					var e1 = JMilesGUILayoutEvents.Button("Generate Pages, From Active Language Pages (non-destructive)", EditorStyles.toolbarButton);
 					if (e1.EventIsMouse0InRect)
 					{
 						LocalizationEditor.GenerateAllPagesFromActive(true);
@@ -52,7 +52,7 @@ namespace JMiles42.Systems.Localization
 
 				using (new GUILayout.HorizontalScope(EditorStyles.toolbarButton, GUILayout.Width(Owner.position.width * 0.5f)))
 				{
-					var e2 = JMilesEventsGUILayout.Button("Generate Pages, From Active Language Pages and copy the data (non-destructive)", EditorStyles.toolbarButton);
+					var e2 = JMilesGUILayoutEvents.Button("Generate Pages, From Active Language Pages and copy the data (non-destructive)", EditorStyles.toolbarButton);
 					if (e2.EventIsMouse0InRect)
 					{
 						LocalizationEditor.GenerateAllPagesFromActive();

@@ -16,22 +16,8 @@ namespace JMiles42.Editor.Editors
 
 			//Horizontal Scope
 			////An Indented way of using Unitys Scopes
-			using (new GUILayout.HorizontalScope())
-			{
-				var ResetContent = new GUIContent("Reset Transform", "Reset Transforms in global space");
-				var ResetLocalContent = new GUIContent("Reset Local Transform", "Reset Transforms in local space");
-				if (GUILayout.Button(ResetContent, EditorStyles.toolbarButton))
-				{
-					Undo.RecordObject(transform, "ResetPosRotScale");
-					transform.ResetPosRotScale();
-				}
-				if (GUILayout.Button(ResetLocalContent, EditorStyles.toolbarButton))
-				{
-					Undo.RecordObject(transform, "ResetLocalPosRotScale");
-					transform.ResetLocalPosRotScale();
-				}
-				EditorHelpers.CopyPastObjectButtons(serializedObject.targetObject);
-			}
+
+			EditorHelpers.CopyPastObjectButtons(serializedObject.targetObject, new[] {new EditorHelpers.HeaderButton {OnDisplay = DisplayExtraHeaderButtons}});
 
 			//Vertical Scope
 			////An Indented way of using Unitys Scopes
@@ -66,7 +52,22 @@ namespace JMiles42.Editor.Editors
 			serializedObject.ApplyModifiedProperties();
 		}
 
-		public override bool UseDefaultMargins() { return CustomEditorBase.USE_DEFAULT_MARGINS; }
+		private void DisplayExtraHeaderButtons()
+		{
+			var transform = target as Transform;
+			var ResetContent = new GUIContent("Reset Transform", "Reset Transforms in global space");
+			var ResetLocalContent = new GUIContent("Reset Local Transform", "Reset Transforms in local space");
+			if (GUILayout.Button(ResetContent, EditorStyles.toolbarButton))
+			{
+				Undo.RecordObject(transform, "ResetPosRotScale");
+				transform.ResetPosRotScale();
+			}
+			if (GUILayout.Button(ResetLocalContent, EditorStyles.toolbarButton))
+			{
+				Undo.RecordObject(transform, "ResetLocalPosRotScale");
+				transform.ResetLocalPosRotScale();
+			}
+		}
 
 		private void ScaleBtnsEnabled()
 		{

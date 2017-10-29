@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4395609663176266}
-  - component: {fileID: 114205485593470838}
+  - component: {fileID: 114657362860049002}
   m_Layer: 0
   m_Name: JMiles42.Systems.MenuManager.MenuManager
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114205485593470838
+--- !u!114 &114657362860049002
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,9 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf0efbc9d5b148979111e50bec1893f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainMenu: {fileID: 114959927062333764, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
-  ExitMenu: {fileID: 114759705695293932, guid: cab8724f87cf5ab4a9d294d7d3b4bc49, type: 2}
-  PauseMenu: {fileID: 114259374821791304, guid: a99ab36dbedfb1c4b9f3a7548cbf36e2,
+  ExitGameMenu: {fileID: 114759705695293932, guid: cab8724f87cf5ab4a9d294d7d3b4bc49,
     type: 2}
-  OptionsMenu: {fileID: 114744329610566840, guid: d5def28e7a97eb74d9db0b0caacf96ba,
+  InventoryMenu: {fileID: 114416259146304624, guid: 99ac89fa274668f4080b5c9960cf5bc4,
+    type: 2}
+  PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
+    type: 2}
+  SpawnMenu: {fileID: 114786718510316184, guid: 7e8e3524af84934449f62a4b0b59d519,
     type: 2}

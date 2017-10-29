@@ -1,13 +1,28 @@
 ﻿using JMiles42.Components;
+using JMiles42.Extensions;
 using UnityEngine;
 
 namespace JMiles42.Systems.MenuManager
 {
 	public abstract class Menu<T>: Menu where T: Menu<T>
 	{
-		public static T Instance{ get; private set; }
+		protected static Menu<T> instance;
 
-		protected virtual void Awake() { Instance = (T) this; }
+		public static Menu<T> Instance
+		{
+			get
+			{
+				if (!instance.IsNull())
+					return instance;
+				instance = (T) FindObjectOfType(typeof (T));
+				//if (!instance)
+				//	Debug.LogError(typeof (T) + " is needed in the scene."); //Print error
+				return instance;
+			}
+			private set { instance = value; }
+		}
+
+		protected virtual void Awake() { instance = this; }
 
 		protected virtual void OnDestroy() { Instance = null; }
 
@@ -15,11 +30,13 @@ namespace JMiles42.Systems.MenuManager
 		{
 			if (Instance == null)
 				MenuManager.Instance.CreateInstance<T>();
-			else
-				Instance.gameObject.SetActive(true);
 
 			MenuManager.Instance.OpenMenu(Instance);
 		}
+
+		public virtual void OnEnable() { Open(); }
+
+		public virtual void OnDisable() {}
 
 		protected static void Close()
 		{
@@ -37,10 +54,15 @@ namespace JMiles42.Systems.MenuManager
 
 	public abstract class Menu: JMilesBehavior
 	{
-		[Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public bool DestroyWhenClosed = true;
+		[Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public bool DestroyWhenClosed = false;
 
 		[Tooltip("Disable menus that are under this one in the stack")] public bool DisableMenusUnderneath = true;
 
 		public abstract void OnBackPressed();
+
+		public static void MenuManagerGoBack() { MenuManager.OnBackPressed(); }
+		public void GoBack() { MenuManager.OnBackPressed(); }
+
+		public static bool HasInstance{ get; protected set; }
 	}
 }

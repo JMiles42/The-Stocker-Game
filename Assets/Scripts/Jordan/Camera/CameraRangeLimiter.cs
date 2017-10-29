@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using JMiles42.Extensions;
 using JMiles42.Generics;
+using JMiles42.Utilities;
 using UnityEngine;
 
 public class CameraRangeLimiter: Singleton<CameraRangeLimiter>
@@ -44,7 +45,19 @@ public class CameraRangeLimiter: Singleton<CameraRangeLimiter>
 		//MinPos = f.Value.Position - (Vector3.one.SetY(0) * MinOverhang);
 		//MaxPos = l.Value.Position + (Vector3.one.SetY(0) * MaxOverhang);
 
-		MinPos = f.Value.Position - pos.SetX(pos.x * -MinOverhang).SetZ(pos.z * MinOverhang);
-		MaxPos = l.Value.Position + pos.SetX(pos.x * MaxOverhang);//.SetZ(pos.z * -MaxOverhang);
+		//MinPos = f.Value.Position - pos.SetX(pos.x * -MinOverhang).SetZ(pos.z * MinOverhang);
+		//MaxPos = l.Value.Position + pos.SetX(pos.x * MaxOverhang); //.SetZ(pos.z * -MaxOverhang);
+
+		MinPos = f.Value.Position;
+		MaxPos = l.Value.Position;
 	}
+#if UNITY_EDITOR
+	public void OnDrawGizmos()
+	{
+		Gizmos.color = Color.red;
+		Gizmos.DrawCube(minPos, Vector3.one);
+		Gizmos.color = Color.green;
+		Gizmos.DrawCube(maxPos, Vector3.one);
+	}
+#endif
 }

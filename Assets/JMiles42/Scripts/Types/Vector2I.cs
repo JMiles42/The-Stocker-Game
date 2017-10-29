@@ -63,6 +63,9 @@ namespace JMiles42 {
 		public static implicit operator Vector2I(Vector3 input) { return new Vector2I(input.x, input.y); }
 		public static implicit operator Vector2I(Vector4 input) { return new Vector2I(input.x, input.y); }
 
+		public static implicit operator Vector3(Vector2I input) { return new Vector3(input.x, input.y); }
+
+
 		public static implicit operator int[](Vector2I num) { return new[] {num.x, num.y}; }
 
 		public static implicit operator Vector2I(int[] num) {

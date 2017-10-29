@@ -18,9 +18,13 @@ namespace JMiles42.Editor.PropertyDrawers {
 		}
 	}
 
+	[CustomPropertyDrawer(typeof (BoolEventVariable))]
+	public class BoolEventVariablePropertyDrawerer : GenericEventVariablePropertyDrawerer<BoolEventVariable>
+	{}
+
 	[CustomPropertyDrawer(typeof (FloatEventVariable))]
-	public class FloatEventVariablePropertyDrawerer: GenericEventVariablePropertyDrawerer<FloatEventVariable> {
-	}
+	public class FloatEventVariablePropertyDrawerer: GenericEventVariablePropertyDrawerer<FloatEventVariable>
+	{}
 
 	[CustomPropertyDrawer(typeof (IntEventVariable))]
 	public class IntEventVariablePropertyDrawerer: GenericEventVariablePropertyDrawerer<IntEventVariable> {

@@ -3,14 +3,18 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
 
-//Based off of the code located at the link below
+//THIS IS MOSTLY NOT MY CODE
+//obtained from
 //https://gist.github.com/t0chas/34afd1e4c9bc28649311
+//Though I have made a few changes
+//Currently only adding the Copy paste buttons at the top of OnInspectorGUI()
+//Removed animation on lists enabled/disabled
+//and a few other things
 namespace JMiles42.Editor
 {
 	[CustomEditor(typeof (object), true, isFallback = true), CanEditMultipleObjects]
 	public class CustomEditorBase: UnityEditor.Editor
 	{
-		public const bool USE_DEFAULT_MARGINS = true;
 		private Dictionary<string, ReorderableListProperty> reorderableLists = new Dictionary<string, ReorderableListProperty>(1);
 
 		protected virtual void OnEnable() { reorderableLists = new Dictionary<string, ReorderableListProperty>(1); }
@@ -23,7 +27,7 @@ namespace JMiles42.Editor
 
 		public override void OnInspectorGUI()
 		{
-			EditorHelpers.CopyPastObjectButtons(serializedObject);
+			EditorHelpers.CopyPastObjectButtons(serializedObject, GetHeaderButtons(), GetHeaderButtonsAfter());
 
 			var cachedGuiColor = GUI.color;
 			serializedObject.Update();
@@ -41,6 +45,9 @@ namespace JMiles42.Editor
 			serializedObject.ApplyModifiedProperties();
 			DrawGUI();
 		}
+
+		protected virtual EditorHelpers.HeaderButton[] GetHeaderButtons() { return null; }
+		protected virtual bool GetHeaderButtonsAfter() { return false; }
 
 		public virtual void DrawGUI() {}
 
@@ -62,9 +69,7 @@ namespace JMiles42.Editor
 				HandleArray(property);
 			}
 			else
-			{
 				EditorGUILayout.PropertyField(property, property.isExpanded);
-			}
 			if (isdefaultScriptProperty)
 			{
 				GUI.enabled = cachedGUIEnabled;
@@ -78,8 +83,6 @@ namespace JMiles42.Editor
 			var listData = GetReorderableList(property);
 			listData.HandleDrawing();
 		}
-
-		public override bool UseDefaultMargins() { return USE_DEFAULT_MARGINS; }
 
 		protected object[] GetPropertyAttributes(SerializedProperty property) { return GetPropertyAttributes<PropertyAttribute>(property); }
 
@@ -100,14 +103,15 @@ namespace JMiles42.Editor
 
 		private ReorderableListProperty GetReorderableList(SerializedProperty property)
 		{
+			var id = property.propertyPath + "-" + property.name;
 			ReorderableListProperty ret;
-			if (reorderableLists.TryGetValue(property.name, out ret))
+			if (reorderableLists.TryGetValue(id, out ret))
 			{
 				ret.Property = property;
 				return ret;
 			}
 			ret = new ReorderableListProperty(property);
-			reorderableLists.Add(property.name, ret);
+			reorderableLists.Add(id, ret);
 			return ret;
 		}
 	}

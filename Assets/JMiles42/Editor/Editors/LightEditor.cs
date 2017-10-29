@@ -4,7 +4,7 @@ using UnityEditor;
 namespace JMiles42.Editor.Editors
 {
 	//[CustomEditor(typeof (Light)), CanEditMultipleObjects]
-	public class LightEditor: UnityEditor.Editor
+	public class LightEditor : UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{
@@ -12,7 +12,5 @@ namespace JMiles42.Editor.Editors
 			EditorHelpers.CopyPastObjectButtons(serializedObject);
 			DrawDefaultInspector();
 		}
-
-		public override bool UseDefaultMargins() { return CustomEditorBase.USE_DEFAULT_MARGINS; }
 	}
 }

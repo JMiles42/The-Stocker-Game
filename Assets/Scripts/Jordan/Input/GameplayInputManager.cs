@@ -54,6 +54,14 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 												  //Debug.Log("Screen Moved" + a);
 											  };
 
+	/// <summary>
+	/// Bool is true if it was a left click, false for right click
+	/// </summary>
+	public event Action<GridBlock, bool> OnBlockPressed = (a, b) =>
+														  {
+															  //Debug.Log("Screen Moved" + a);
+														  };
+
 	public void OnEnable()
 	{
 		Input.simulateMouseWithTouches = false;
@@ -106,9 +114,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		TouchIndexesToRemove.Clear();
 	}
 
-	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition); }
+	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition.GetVector2()); }
 
-	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition); }
+	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition.GetVector2()); }
 
 	private Vector2 MouseStartPos;
 
@@ -133,11 +141,17 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private void DoTouchPanCamera(SavedTouchData touch) {}
 
+	public void GridBlockPressed(GridBlock block, bool leftClick) { OnBlockPressed.Trigger(block, leftClick); }
+
 	public void OnDisable()
 	{
 		PrimaryClick.onKeyDown -= OnPrimaryKeyDown;
 		SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
 		MiddleClick.onKeyDown -= OnKeyMiddleDown;
+		MiddleClick.onKeyUp -= OnKeyMiddleUp;
+		MiddleClick.onKey -= OnKeyMiddle;
+
+		ScrollWheel.onKey -= OnScroll;
 	}
 
 	private void CheckTouches(Touch touch)
@@ -148,8 +162,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 				TouchList.Add(new SavedTouchData(touch));
 				break;
 			case TouchPhase.Moved:
-				//TouchList.Contains()
-				//DoTouchPanCamera(touch);
 				break;
 			case TouchPhase.Stationary:
 				break;

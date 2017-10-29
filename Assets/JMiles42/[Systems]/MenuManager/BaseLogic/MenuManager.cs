@@ -1,19 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using JMiles42.Generics;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace JMiles42.Systems.MenuManager
 {
-	public class MenuManager: Singleton<MenuManager>
+	public partial class MenuManager: Singleton<MenuManager>
 	{
-		public MainMenu MainMenu;
-		public ExitGameMenu ExitMenu;
-		public PauseMenu PauseMenu;
-		public OptionsMenu OptionsMenu;
-
-		private Stack<Menu> menuStack = new Stack<Menu>();
-		private void Awake() { MainMenu.Show(); }
+		public Stack<Menu> menuStack = new Stack<Menu>();
 
 		public void CreateInstance<T>() where T: Menu
 		{
@@ -31,7 +27,8 @@ namespace JMiles42.Systems.MenuManager
 				{
 					foreach (var menu in menuStack)
 					{
-						menu.gameObject.SetActive(false);
+						if (menu != menuInstance)
+							menu.gameObject.SetActive(false);
 
 						if (menu.DisableMenusUnderneath)
 							break;
@@ -42,8 +39,10 @@ namespace JMiles42.Systems.MenuManager
 				var previousCanvas = menuStack.Peek().GetComponent<Canvas>();
 				topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
 			}
+			menuInstance.gameObject.SetActive(true);
 
-			menuStack.Push(menuInstance);
+			if (menuStack.Count == 0 || menuStack.Peek() != menuInstance)
+				menuStack.Push(menuInstance);
 		}
 
 		private T GetPrefab<T>() where T: Menu
@@ -93,19 +92,28 @@ namespace JMiles42.Systems.MenuManager
 			// If a re-activated menu is an overlay we need to activate the menu under it
 			foreach (var menu in menuStack)
 			{
-				menu.gameObject.SetActive(true);
+				if (menu != menuInstance)
+					menu.gameObject.SetActive(true);
 
-				if (menu.DisableMenusUnderneath)
-					break;
+				//if (menu.DisableMenusUnderneath)
+				//	break;
 			}
 		}
 
 		private void Update()
 		{
 			// On Android the back button is sent as Esc
-			if (Input.GetKeyDown(KeyCode.Escape) && menuStack.Count > 0)
+			if (Input.GetKeyDown(KeyCode.Escape))
 			{
-				menuStack.Peek().OnBackPressed();
+				OnBackPressed();
+			}
+		}
+
+		public static void OnBackPressed()
+		{
+			if (Instance.menuStack.Count > 0)
+			{
+				Instance.menuStack.Peek().OnBackPressed();
 			}
 		}
 	}

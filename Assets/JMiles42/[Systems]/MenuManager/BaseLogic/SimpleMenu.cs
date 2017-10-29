@@ -7,6 +7,7 @@
 	{
 		public static void Show() { Open(); }
 
+
 		public static void Hide() { Close(); }
 	}
 }

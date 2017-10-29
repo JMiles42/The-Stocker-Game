@@ -13,7 +13,7 @@ namespace JMiles42.Systems.Localization
 		public override void DrawTab(Window<LocalizationWindow> owner)
 		{
 			EditorGUILayout.LabelField("Help");
-			var e = JMilesEventsGUILayout.Button("Reload files (Warning, does not save data!)", EditorStyles.toolbarButton);
+			var e = JMilesGUILayoutEvents.Button("Reload files (Warning, does not save data!)", EditorStyles.toolbarButton);
 			if (e.EventIsMouse0InRect)
 			{
 				var yes = EditorUtility.DisplayDialog("Reload all files",
