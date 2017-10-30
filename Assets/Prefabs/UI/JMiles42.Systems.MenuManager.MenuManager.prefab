@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4395609663176266}
   - component: {fileID: 114657362860049002}
   m_Layer: 0
-  m_Name: JMiles42.Systems.MenuManager.MenuManager
+  m_Name: THIS IS A DUPLICATE OF JMiles42.Systems.MenuManager.MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
