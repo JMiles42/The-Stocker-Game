@@ -57,5 +57,6 @@ MonoBehaviour:
     type: 2}
   PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
     type: 2}
+  ShopMenu: {fileID: 114931524131379626, guid: ca8d1ec2f155b6249a259277ee46b938, type: 2}
   SpawnMenu: {fileID: 114786718510316184, guid: 7e8e3524af84934449f62a4b0b59d519,
     type: 2}

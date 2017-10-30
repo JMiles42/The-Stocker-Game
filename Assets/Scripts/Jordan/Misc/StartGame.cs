@@ -4,6 +4,7 @@ public class StartGame: JMilesBehavior
 {
 	void Start()
 	{
-		ExitGameMenu.Show();
+		//ExitGameMenu.Show();
+		PlayGameMenu.Show();
 	}
 }

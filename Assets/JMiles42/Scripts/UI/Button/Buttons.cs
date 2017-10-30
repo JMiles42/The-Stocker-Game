@@ -5,29 +5,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JMiles42.UI
-{
+namespace JMiles42.UI {
 	/// <summary>
 	/// This struct contains the refferance for the button and its text.
 	/// </summary>
 	[System.Serializable]
-	public struct ButtonText
-	{
-		[Half10Line] public Button Btn; //Button
-		[Half01Line] public Text Text; //Buttons text
+	public struct ButtonText {
+		[Half10Line] public Button Btn;//Button
+		[Half01Line] public Text Text;//Buttons text
 
 		/// <summary>
 		/// Get text in children.
 		/// </summary>
-		public void GetTextObj()
-		{
+		public void GetTextObj() {
 			if (Text)
 				return;
 			Text = Btn.GetComponentInChildren<Text>();
 		}
 
-		public void OnEnable(GameObject gO)
-		{
+		public void OnEnable(GameObject gO) {
 			if (Btn == null)
 				Btn = gO.GetComponent<Button>();
 			GetTextObj();
@@ -37,8 +33,7 @@ namespace JMiles42.UI
 		/// Set Text in Text.
 		/// </summary>
 		/// <param name="t">Value to set text</param>
-		public void SetText(string t = "")
-		{
+		public void SetText(string t = "") {
 			Text.text = t;
 		}
 
@@ -46,8 +41,7 @@ namespace JMiles42.UI
 		/// Returns Text from Text.
 		/// </summary>
 		/// <returns>The current text in Text</returns>
-		public string GetText()
-		{
+		public string GetText() {
 			return (Text.text.ToString());
 		}
 
@@ -55,25 +49,23 @@ namespace JMiles42.UI
 
 		public static implicit operator Text(ButtonText bt) { return bt.Text; }
 	}
-#if TextMeshPro_DEFINE
+
 	[System.Serializable]
-	public struct ButtonText_TMP
-	{
-		[Half10Line] public Button Btn; //Button
-		[Half01Line] public TextMeshProUGUI Text; //Buttons text
+	public struct ButtonText_TMP {
+//#if TextMeshPro_DEFINE
+		[Half10Line] public Button Btn;//Button
+		[Half01Line] public TextMeshProUGUI Text;//Buttons text
 
 		/// <summary>
 		/// Get text in children.
 		/// </summary>
-		public void GetTextObj()
-		{
+		public void GetTextObj() {
 			if (Text)
 				return;
 			Text = Btn.GetComponentInChildren<TextMeshProUGUI>();
 		}
 
-		public void OnEnable(GameObject gO)
-		{
+		public void OnEnable(GameObject gO) {
 			if (Btn == null)
 				Btn = gO.GetComponent<Button>();
 			GetTextObj();
@@ -83,8 +75,7 @@ namespace JMiles42.UI
 		/// Set Text in Text.
 		/// </summary>
 		/// <param name="t">Value to set text</param>
-		public void SetText(string t = "")
-		{
+		public void SetText(string t = "") {
 			Text.text = t;
 		}
 
@@ -92,14 +83,13 @@ namespace JMiles42.UI
 		/// Returns Text from Text.
 		/// </summary>
 		/// <returns>The current text in Text</returns>
-		public string GetText()
-		{
+		public string GetText() {
 			return (Text.text.ToString());
 		}
 
 		public static implicit operator Button(ButtonText_TMP bt) { return bt.Btn; }
 
 		public static implicit operator TextMeshProUGUI(ButtonText_TMP bt) { return bt.Text; }
+//#endif
 	}
-#endif
 }
