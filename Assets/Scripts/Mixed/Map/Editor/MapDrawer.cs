@@ -1,4 +1,6 @@
-﻿using JMiles42;
+﻿using System.Collections.Generic;
+using JMiles24.Editor;
+using JMiles42;
 using JMiles42.Editor;
 using JMiles42.Editor.PropertyDrawers;
 using JMiles42.Extensions;
@@ -7,132 +9,170 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomPropertyDrawer(typeof (Map))]
-public class MapDrawer: JMilesPropertyDrawer {
+public class MapDrawer: JMilesPropertyDrawer
+{
 	private const float MapUISize = 24f;
 
-	private Vector2I size = Vector2.zero;
-	private bool toggeled = true;
+	public Vector2I Size = Vector2I.Zero;
 
-	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-		var rect = position;
-		rect.height = singleLine;
-		var Width = property.FindPropertyRelative("Width");
-		var Height = property.FindPropertyRelative("Height");
-		using (var changeCheckScope = new EditorGUI.ChangeCheckScope()) {
-			EditorGUI.LabelField(rect, "Warning, Changing the dimensions after creating the map can cause issues");
-			rect.y += singleLine + 2;
-			EditorGUI.PropertyField(rect, Width);
-			rect.y += singleLine + 2;
-			EditorGUI.PropertyField(rect, Height);
-			rect.y += singleLine + 2;
+	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+	{
+		var propRect = position;
+		propRect.height = singleLine;
+		var widthInt = property.FindPropertyRelative("Width");
+		var heightInt = property.FindPropertyRelative("Height");
 
-			size = new Vector2I(Width.intValue, Height.intValue);
+		var size = new Vector2I(widthInt.intValue, heightInt.intValue);
 
-			var b = JMilesEventsGUI.Button(rect, "Regenerate Map On Dimension Change (Will Reset Map to Nothing Tiles)", GUI.skin.button);
-			var drawer = property.GetTargetObjectOfProperty<Map>();
+		if (Size == Vector2I.Zero)
+		{
+			Size = new Vector2I(size);
+		}
 
-			if (changeCheckScope.changed || size.IsZeroOrNegative()) {
-				//btnPos.Clear();
-				if (Width.intValue.IsZeroOrNegative())
-					Width.intValue = 1;
-				if (Height.intValue.IsZeroOrNegative())
-					Height.intValue = 1;
+		var tilesFloat = property.FindPropertyRelative("Tiles");
 
-				size = new Vector2I(Width.intValue, Height.intValue);
+		EditorGUI.PropertyField(propRect, widthInt);
+		propRect = propRect.MoveY(singleLinePlusPadding);
+		EditorGUI.PropertyField(propRect, heightInt);
 
-				if (b.EventIsMouse0InRect) {
-					drawer.DefaultTileFill();
+		propRect = propRect.MoveY(singleLinePlusPadding);
+		//EditorGUI.PropertyField(propRect, tilesFloat);
+
+		var resizeButton = JMilesEventsGUI.Button(propRect.DevideWidth(2), "Resize Map Data Array");
+		var setMepEmpty = JMilesEventsGUI.Button(propRect.DevideWidth(2).MoveX(propRect.DevideWidth(2).width), "Set Map To Nothing");
+
+		if (resizeButton.AsButtonLeftClick)
+		{
+			tilesFloat.arraySize = size.x * size.y;
+			Size = size;
+		}
+		if (setMepEmpty.AsButtonLeftClick)
+		{
+			tilesFloat.arraySize = size.x * size.y;
+			Size = size;
+			for (int i = 0; i < tilesFloat.arraySize; i++)
+			{
+				var tileType = tilesFloat.GetArrayElementAtIndex(i);
+				tileType.Next(true);
+				SetTileToIndex(tileType, 0);
+			}
+		}
+
+		propRect = propRect.MoveY(singleLinePlusPadding);
+
+		TilePropertyDrawer.MapEditing = true;
+
+		var startPos = propRect;
+
+		var totalArea = new Rect(startPos) {height = MapUISize * Size.y, width = MapUISize * Size.x};
+		//Totalarea checking code
+		//using (new EditorColorChanger(Color.red))
+		//{
+		//	using (var groupScope = new GUI.GroupScope(totalArea, GUI.skin.box))
+		//	{}
+		//}
+
+		using (new EditorColorChanger(tilesFloat.arraySize == (Size.x * Size.y)? GUI.backgroundColor : Color.red))
+		{
+			for (int i = 0; i < tilesFloat.arraySize; i++)
+			{
+				var tile = tilesFloat.GetArrayElementAtIndex(i);
+				var pos = Array2DHelpers.GetIndexOf2DArray(Size.x, i);
+				var myPos = new Rect(propRect.x + (pos.x * MapUISize), propRect.y + (pos.y * MapUISize), MapUISize, MapUISize);
+				EditorGUI.PropertyField(myPos, tile);
+			}
+		}
+
+		var @event = Event.current;
+		if (totalArea.Contains(@event.mousePosition))
+		{
+			var pos = new Rect(@event.mousePosition.x - (startPos.x), @event.mousePosition.y - (startPos.y), MapUISize, MapUISize);
+			pos.x = ((int) (pos.x / MapUISize)); // + startPos.x;
+			pos.y = ((int) (pos.y / MapUISize)); // + startPos.y;
+
+			var index = Array2DHelpers.Get1DIndexOf2DCoords(Size.x, (int) pos.x, (int) pos.y);
+			if (index >= tilesFloat.arraySize)
+				return;
+			var tile = tilesFloat.GetArrayElementAtIndex(index);
+			var tileType = tile.Copy();
+			tileType.Next(true);
+
+			if (@event.LeftDown())
+			{
+				if (selectionInformation.IsNull())
+				{
+					selectionInformation = new SelectionInformation {LeftMouse = true, StartPos = pos, StartIndex = tileType.enumValueIndex};
 				}
 			}
-			rect.y += singleLine + 2;
-
-			DrawMap(drawer, rect);
-
-			//var e = new Event(Event.current);
-			//if (e.type == EventType.MouseDrag) {
-			//	foreach (var btn in btnPos) {
-			//		if (btn.Event.Rect.Contains(e.mousePosition)) {
-			//			drawer.Tiles[btn.index].TyleType = tileType;
-			//		}
-			//	}
-			//}
+			else if (@event.LeftUp())
+			{
+				if (selectionInformation.IsNotNull() && (pos == selectionInformation.StartPos) && selectionInformation.LeftMouse)
+					SetTileToNextIndex(tileType);
+				selectionInformation = null;
+			}
+			else if (@event.LeftDrag())
+			{
+				if (selectionInformation.IsNotNull() && selectionInformation.LeftMouse)
+					SetTileToIndex(tileType, selectionInformation.StartIndex + 1);
+				EditorUtility.SetDirty(tileType.serializedObject.targetObject);
+			}
+			else if (@event.RightDown())
+			{
+				if (selectionInformation.IsNull())
+				{
+					selectionInformation = new SelectionInformation {LeftMouse = false, StartPos = pos, StartIndex = tileType.enumValueIndex};
+				}
+			}
+			else if (@event.RightUp())
+			{
+				if (selectionInformation.IsNotNull() && (pos == selectionInformation.StartPos) && !selectionInformation.LeftMouse)
+					SetTileToNextIndex(tileType);
+				selectionInformation = null;
+			}
+			else if (@event.RightDrag())
+			{
+				if (selectionInformation.IsNotNull() && !selectionInformation.LeftMouse)
+					SetTileToIndex(tileType, selectionInformation.StartIndex - 1);
+				EditorUtility.SetDirty(tileType.serializedObject.targetObject);
+			}
 		}
+
+		TilePropertyDrawer.MapEditing = false;
 	}
 
-	public override float GetPropertyHeight(SerializedProperty property, GUIContent label) { return ((singleLine + 2) * 4) + (MapUISize * size.y); }
-	private TileType tileType = TileType.Nothing;
+	private static void SetTileToNextIndex(SerializedProperty tile)
+	{
+		tile.enumValueIndex = (tile.enumValueIndex + 1) % tile.enumDisplayNames.Length;
 
-	//public List<BtnPos> btnPos = new List<BtnPos>();
-	//
-	//public struct BtnPos {
-	//	public GUIEventData Event;
-	//	public int index;
-	//}
-
-	private void DrawMap(Map property, Rect rect) {
-		int num = 0;
-		var drawRect = new Rect(rect) {height = MapUISize, width = MapUISize};
-
-		for (var i = 0; i < property.Tiles.Length; i++) {
-			var pos = ArraysExtensions.GetIndexOf2DArray(property.Width, num);
-			var myRect = new Rect(drawRect);
-			myRect.x += pos.x * MapUISize;
-			myRect.y += pos.y * MapUISize;
-
-			var b = DrawTileGUI(property.Tiles[i].TyleType, myRect);
-			if (b.EventIsMouse0InRect) {
-				switch (property.Tiles[i].TyleType) {
-					case TileType.Nothing:
-						property.Tiles[i].TyleType = tileType = TileType.Floor;
-						break;
-					case TileType.Floor:
-						property.Tiles[i].TyleType = tileType = TileType.Wall;
-						break;
-					case TileType.Wall:
-						property.Tiles[i].TyleType = tileType = TileType.Nothing;
-						break;
-				}
-			}
-			else if (b.EventIsMouse1InRect) {
-				switch (property.Tiles[i].TyleType) {
-					case TileType.Nothing:
-						property.Tiles[i].TyleType = tileType = TileType.Wall;
-						break;
-					case TileType.Floor:
-						property.Tiles[i].TyleType = tileType = TileType.Nothing;
-						break;
-					case TileType.Wall:
-						property.Tiles[i].TyleType = tileType = TileType.Floor;
-						break;
-				}
-			}
-			else if (b.EventOccurredInRect && b.Event.type == EventType.MouseDrag) {
-				property.Tiles[i].TyleType = tileType;
-			}
-			//btnPos.Add(new BtnPos {Event = b, index = num});
-			num++;
-		}
+		tile.serializedObject.ApplyModifiedProperties();
+		tile.serializedObject.Update();
 	}
 
-	private static GUIEventData DrawTileGUI(TileType tT, Rect myRect) {
-		var text = "";
-		using (new EditorColorChanger(GUI.backgroundColor)) {
-			switch (tT) {
-				case TileType.Nothing:
-					text = "N";
-					break;
-				case TileType.Floor:
-					GUI.backgroundColor = Color.green;
-					text = "F";
-					break;
-				case TileType.Wall:
-					GUI.backgroundColor = Color.red;
-					text = "W";
+	private static void SetTileToIndex(SerializedProperty tile, int index)
+	{
+		if (index >= 0)
+			tile.enumValueIndex = index % tile.enumDisplayNames.Length;
+		else
+			tile.enumValueIndex = tile.enumDisplayNames.Length - 1;
 
-					break;
-			}
+		tile.serializedObject.ApplyModifiedProperties();
+		tile.serializedObject.Update();
+	}
 
-			return JMilesEventsGUI.Button(myRect, text);
-		}
+	public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+	{
+		return (singleLinePlusPadding * 4 + CalculateFinalHeight(MapUISize * property.FindPropertyRelative("Height").intValue));
+	}
+
+	public float CalculateFinalWidth(float width) { return width >= MapUISize * 40? MapUISize * 40 : width; }
+	public float CalculateFinalHeight(float height) { return height >= MapUISize * 40? MapUISize * 40 : height; }
+
+	private SelectionInformation selectionInformation;
+
+	class SelectionInformation
+	{
+		public bool LeftMouse;
+		public Rect StartPos;
+		public int StartIndex;
 	}
 }

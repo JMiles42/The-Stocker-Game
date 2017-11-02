@@ -28,11 +28,19 @@ namespace JMiles42 {
 			y = _y;
 		}
 
-		public Vector2I(float _x, float _y) {
+		public Vector2I(float _x, float _y)
+		{
 			x = (int) _x;
 			y = (int) _y;
 		}
 
+		public Vector2I(Vector2I other)
+		{
+			x = other.x;
+			y = other.y;
+		}
+
+		public int Total() { return x + y; }
 		public bool IsZero() { return x == 0 && y == 0; }
 		public bool IsZeroOrNegative() { return x <= 0 && y <= 0; }
 		public bool IsNegative() { return x < 0 && y < 0; }

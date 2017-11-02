@@ -10,12 +10,6 @@ namespace JMiles42.Extensions
 			return pos;
 		}
 
-		public static Vector2 GetRandomPosInRect(this Rect rect)
-		{
-			var pos = new Vector2(Random.Range(rect.min.x, rect.max.x), Random.Range(rect.min.y, rect.max.y));
-			return pos;
-		}
-
 		public static float GetRandomNumBetweenXAndY(this Vector2 vec) { return Random.Range(vec.x, vec.x); }
 	}
 }

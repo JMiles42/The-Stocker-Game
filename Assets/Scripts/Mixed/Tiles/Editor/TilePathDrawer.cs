@@ -7,7 +7,6 @@ public class TilePathDrawer: JMilesPropertyDrawer {
 	private ReorderableListProperty list;
 
 	public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-		//var tilePath = property.GetTargetObjectOfProperty<TilePath>();
 		property.Next(true);
 
 		if (list == null) {
