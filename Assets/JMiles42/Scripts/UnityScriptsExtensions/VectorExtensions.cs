@@ -29,5 +29,8 @@ namespace JMiles42.Extensions
 		public static Vector3 SetX(this Vector3 vec, float amount) { return new Vector3(amount, vec.y, vec.z); }
 		public static Vector3 SetY(this Vector3 vec, float amount) { return new Vector3(vec.x, amount, vec.z); }
 		public static Vector3 SetZ(this Vector3 vec, float amount) { return new Vector3(vec.x, vec.y, amount); }
+		public static Vector3 SetX(this Vector3 vec, Vector3 amount) { return new Vector3(amount.x, vec.y, vec.z); }
+		public static Vector3 SetY(this Vector3 vec, Vector3 amount) { return new Vector3(vec.x, amount.y, vec.z); }
+		public static Vector3 SetZ(this Vector3 vec, Vector3 amount) { return new Vector3(vec.x, vec.y, amount.z); }
 	}
 }
