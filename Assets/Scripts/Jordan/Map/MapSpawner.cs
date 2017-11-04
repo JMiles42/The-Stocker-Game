@@ -28,10 +28,6 @@ public class MapSpawner: JMilesBehavior
 				com.GridPosition = new Vector2I(x, y);
 				switch (map[x, y].TyleType)
 				{
-					case TileType.Nothing:
-						gO.GetComponent<Renderer>().material.color = Color.black;
-						gO.transform.localScale = Vector3.one.SetY(0.5f);
-						break;
 					case TileType.Floor:
 						gO.GetComponent<Renderer>().material.color = Color.green;
 						break;

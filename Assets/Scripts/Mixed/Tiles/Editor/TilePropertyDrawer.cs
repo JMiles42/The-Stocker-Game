@@ -20,11 +20,8 @@ public class TilePropertyDrawer: PropertyDrawer
 			case TileType.Floor:
 				col = Color.green;
 				break;
-			case TileType.Nothing:
-				col = Color.blue;
-				break;
 			case TileType.Wall:
-				col = Color.red;
+				col = Color.blue;
 				break;
 		}
 

@@ -28,7 +28,7 @@ public class Map
 		DefaultTileFill();
 	}
 
-	public void DefaultTileFill() { FillMap(TileType.Nothing); }
+	public void DefaultTileFill() { FillMap(TileType.Wall); }
 
 	public void FillMap(TileType tT)
 	{

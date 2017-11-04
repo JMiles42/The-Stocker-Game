@@ -74,7 +74,9 @@ namespace JMiles42.Editor
 					var isType = CopyPasteUtility.IsTypeInBuffer(obj);
 					using (new EditorColorChanger(isType? GUI.color : Color.red))
 					{
-						var PasteContent = new GUIContent("Paste Data", "Pastes the data.\n" + CopyPasteUtility.CopyBuffer);
+						var PasteContent = new GUIContent("Paste Data",
+														  "Pastes the data.\n" +
+														  CopyPasteUtility.CopyBuffer.Substring(0, CopyPasteUtility.CopyBuffer.Length >= 2048? 2048 : CopyPasteUtility.CopyBuffer.Length));
 
 						if (!isType)
 						{
@@ -96,7 +98,9 @@ namespace JMiles42.Editor
 
 					if (GUILayout.Button(CopyContent, EditorStyles.toolbarButton))
 						CopyPasteUtility.EditorCopy(obj);
-					var PasteContent = new GUIContent("(Editor) Paste Data", "Pastes the data.\n" + CopyPasteUtility.CopyBuffer);
+					var PasteContent = new GUIContent("(Editor) Paste Data",
+													  "Pastes the data.\n" +
+													  CopyPasteUtility.CopyBuffer.Substring(0, CopyPasteUtility.CopyBuffer.Length >= 2048? 2048 : CopyPasteUtility.CopyBuffer.Length));
 
 					var isType = CopyPasteUtility.IsTypeInBuffer(obj);
 					using (new EditorColorChanger(isType? GUI.color : Color.red))
@@ -117,7 +121,7 @@ namespace JMiles42.Editor
 				}
 				if (after)
 				{
-					if (!headerButtons.IsNull())
+					if (headerButtons.IsNotNull())
 					{
 						foreach (var headerButton in headerButtons)
 						{

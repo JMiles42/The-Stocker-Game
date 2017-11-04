@@ -692,7 +692,9 @@ MonoBehaviour:
     Width: 20
     Height: 20
     Tiles:
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -711,19 +713,74 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -731,12 +788,19 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -744,27 +808,54 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -772,17 +863,40 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -791,29 +905,45 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 2
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -821,11 +951,19 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -833,9 +971,19 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -843,13 +991,70 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 2
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
@@ -862,236 +1067,31 @@ MonoBehaviour:
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
     - TyleType: 0
     - TyleType: 0
     - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
-    - TyleType: 0
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
+    - TyleType: 1
 --- !u!1001 &1874603775
 Prefab:
   m_ObjectHideFlags: 0
