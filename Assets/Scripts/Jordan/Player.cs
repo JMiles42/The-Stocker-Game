@@ -27,7 +27,7 @@ public class Player: Singleton<Player>
 
 	private async void PlayerStartMoveAsync(GridBlock gridBlock)
 	{
-		var path = await PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition);
+		var path = await PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition, null);
 
 		Debug.Log("Found Path");
 		if (movingCoroutine.IsNotNull())

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using JMiles24.Editor;
+﻿using JMiles24.Editor;
 using JMiles42;
 using JMiles42.Editor;
 using JMiles42.Editor.PropertyDrawers;
