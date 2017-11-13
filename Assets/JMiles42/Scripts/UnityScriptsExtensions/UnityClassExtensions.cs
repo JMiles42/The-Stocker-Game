@@ -1,7 +1,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace JMiles42
+namespace JMiles42.Extensions
 {
 	public static class UnityClassExtensions
 	{

@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 
-namespace JMiles42.Generics {
-	public static class ArraysExtensions {
-		public static T[] ShuffleArray<T>(T[] array, int seed) {
+namespace JMiles42.Generics
+{
+	public static class ArraysExtensions
+	{
+		public static T[] ShuffleArray<T>(T[] array, int seed)
+		{
 			var prng = new System.Random(seed);
-			for (var i = 0; i < array.Length; i++) {
+			for (var i = 0; i < array.Length; i++)
+			{
 				int randomIndex = prng.Next(i, array.Length);
 				var tempItem = array[randomIndex];
 				array[randomIndex] = array[i];
@@ -13,9 +17,11 @@ namespace JMiles42.Generics {
 			return array;
 		}
 
-		public static List<T> ShuffleArray<T>(List<T> array, int seed) {
+		public static List<T> ShuffleArray<T>(List<T> array, int seed)
+		{
 			var prng = new System.Random(seed);
-			for (var i = 0; i < array.Count; i++) {
+			for (var i = 0; i < array.Count; i++)
+			{
 				int randomIndex = prng.Next(i, array.Count);
 				var tempItem = array[randomIndex];
 				array[randomIndex] = array[i];
@@ -23,7 +29,10 @@ namespace JMiles42.Generics {
 			}
 			return array;
 		}
+	}
 
+	public static class Array2DHelpers
+	{
 		public static T GetElementAt2DCoords<T>(this T[] array, int width, Vector2I pos) { return array[pos.y * width + pos.x]; }
 		public static int Get1DIndexOf2DCoords<T>(this T[] array, int width, Vector2I pos) { return pos.y * width + pos.x; }
 
@@ -34,6 +43,7 @@ namespace JMiles42.Generics {
 
 		public static int Get1DIndexOf2DCoords(int width, Vector2I pos) { return (pos.y * width) + pos.x; }
 		public static int Get1DIndexOf2DCoords(int width, int x, int y) { return (y * width) + x; }
+		public static int Get1DIndexOf2DCoords(this Vector2I pos, int width) { return (pos.y * width) + pos.x; }
 
 		public static int GetXOfIndexOf2DArray(int width, int index) { return index % width; }
 		public static int GetYOfIndexOf2DArray(int width, int index) { return index / width; }

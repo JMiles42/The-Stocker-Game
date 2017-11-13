@@ -6,6 +6,7 @@ namespace JMiles42.Editor.PropertyDrawers
 	public class JMilesPropertyDrawer: PropertyDrawer
 	{
 		public static float singleLine = EditorGUIUtility.singleLineHeight;
+		public static float singleLinePlusPadding = singleLine + EditorGUIUtility.standardVerticalSpacing;
 		public static float indentSize = EditorGUIUtility.singleLineHeight;
 
 		public static float PropertyHeight(SerializedProperty property, GUIContent label) { return EditorGUI.GetPropertyHeight(property, label); }

@@ -13,4 +13,6 @@ public class GridBlock: JMilesBehavior
         get { return _gridPosition; }
         set { _gridPosition = value; }
     }
+
+    public TileType TileType;
 }

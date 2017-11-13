@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace JMiles42.Editor.Editors
 {
-	[CustomEditor(typeof (Rigidbody)), CanEditMultipleObjects]
+	//[CustomEditor(typeof (Rigidbody)), CanEditMultipleObjects]
 	public class RigidbodyEditor: UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()

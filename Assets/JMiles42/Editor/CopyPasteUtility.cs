@@ -16,19 +16,9 @@ namespace JMiles42.Editor.Utilities
 
 		public static string CopyBufferNoTypeName
 		{
-			get
-			{
-				var copyBufferSplit = CopyBuffer.Split(new[] {COPY_SPLIT}, StringSplitOptions.None);
-				if (copyBufferSplit.Length > 1)
-				{
-					var list = copyBufferSplit.ToList();
-					list.RemoveAt(0);
-					return String.Join(String.Empty, list.ToArray());
-				}
-
-				return CopyBuffer;
-			}
+			get { return RemoveTypeFromCopyBuffer(); }
 		}
+
 #pragma warning disable 168
 
 		public static bool CanCopy<T>(T value)
@@ -118,11 +108,24 @@ namespace JMiles42.Editor.Utilities
 			return t.ToString() == GetJSONStoredType(CopyBuffer);
 		}
 
+		private static string RemoveTypeFromCopyBuffer()
+		{
+			var copyBufferSplit = CopyBuffer.Split(new[] {COPY_SPLIT_S}, StringSplitOptions.None);
+			if (copyBufferSplit.Length > 1)
+			{
+				var list = copyBufferSplit.ToList();
+				list.RemoveAt(0);
+				return String.Join(String.Empty, list.ToArray());
+			}
+
+			return CopyBuffer;
+		}
+
 		public static string GetJSONStoredType(string json)
 		{
 			if (json.Contains('|'))
 			{
-				var copyBufferSplit = json.Split(new string[] {COPY_SPLIT}, StringSplitOptions.None);
+				var copyBufferSplit = json.Split(new[] {COPY_SPLIT}, StringSplitOptions.None);
 				return copyBufferSplit[0];
 			}
 			return "";
@@ -132,13 +135,24 @@ namespace JMiles42.Editor.Utilities
 
 		public static bool IsEditorCopyNoEntries(string str)
 		{
-			string[] types = new[] {"UnityEngine.MonoBehaviour", "UnityEngine.AudioListener", "UnityEngine.GUILayer", "UnityEngine.FlareLayer"};
+			string[] types = {"UnityEngine.MonoBehaviour", "UnityEngine.AudioListener", "UnityEngine.GUILayer", "UnityEngine.FlareLayer"};
 			foreach (var s in types)
 			{
 				if (str == s)
 					return true;
 			}
-
+			var removeTypeFromCopyBuffer = RemoveTypeFromCopyBuffer();
+			switch (removeTypeFromCopyBuffer)
+			{
+				case "":
+					return true;
+				case @"{}":
+					return true;
+				case
+				"{\n    \"MonoBehaviour\": {\n        \"m_Enabled\": true,\n        \"m_EditorHideFlags\": 0,\n        \"m_Name\": \"\",\n        \"m_EditorClassIdentifier\": \"\"\n    }\n}"
+				:
+					return true;
+			}
 			return false;
 		}
 	}

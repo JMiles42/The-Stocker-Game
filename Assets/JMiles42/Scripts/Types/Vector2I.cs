@@ -28,11 +28,19 @@ namespace JMiles42 {
 			y = _y;
 		}
 
-		public Vector2I(float _x, float _y) {
+		public Vector2I(float _x, float _y)
+		{
 			x = (int) _x;
 			y = (int) _y;
 		}
 
+		public Vector2I(Vector2I other)
+		{
+			x = other.x;
+			y = other.y;
+		}
+
+		public int Total() { return x + y; }
 		public bool IsZero() { return x == 0 && y == 0; }
 		public bool IsZeroOrNegative() { return x <= 0 && y <= 0; }
 		public bool IsNegative() { return x < 0 && y < 0; }
@@ -44,6 +52,10 @@ namespace JMiles42 {
 		public static Vector2I operator -(Vector2I left, Vector2I right) { return new Vector2I(left.x - right.x, left.y - right.y); }
 		public static Vector2I operator +(Vector2I left, Vector2I right) { return new Vector2I(left.x + right.x, left.y + right.y); }
 		public static Vector2I operator *(Vector2I left, Vector2I right) { return new Vector2I(left.x * right.x, left.y * right.y); }
+		public static Vector2I operator *(Vector2I left, int right) { return new Vector2I(left.x * right, left.y * right); }
+		public static Vector2I operator *(Vector2I left, float right) { return new Vector2I(left.x * right, left.y * right); }
+
+
 
 		public static bool operator ==(Vector2I left, int right) { return left.Equals(right); }
 		public static bool operator !=(Vector2I left, int right) { return !left.Equals(right); }
@@ -58,6 +70,9 @@ namespace JMiles42 {
 		public static implicit operator Vector2I(Vector2 input) { return new Vector2I(input.x, input.y); }
 		public static implicit operator Vector2I(Vector3 input) { return new Vector2I(input.x, input.y); }
 		public static implicit operator Vector2I(Vector4 input) { return new Vector2I(input.x, input.y); }
+
+		public static implicit operator Vector3(Vector2I input) { return new Vector3(input.x, input.y); }
+
 
 		public static implicit operator int[](Vector2I num) { return new[] {num.x, num.y}; }
 

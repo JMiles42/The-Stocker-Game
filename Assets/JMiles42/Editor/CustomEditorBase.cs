@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEditorInternal;
 
 //THIS IS MOSTLY NOT MY CODE
 //obtained from
@@ -11,27 +10,33 @@ using UnityEditorInternal;
 //Currently only adding the Copy paste buttons at the top of OnInspectorGUI()
 //Removed animation on lists enabled/disabled
 //and a few other things
-namespace JMiles42.Editor {
+namespace JMiles42.Editor
+{
 	[CustomEditor(typeof (object), true, isFallback = true), CanEditMultipleObjects]
-	public class CustomEditorBase: UnityEditor.Editor {
+	public class CustomEditorBase: UnityEditor.Editor
+	{
 		private Dictionary<string, ReorderableListProperty> reorderableLists = new Dictionary<string, ReorderableListProperty>(1);
 
 		protected virtual void OnEnable() { reorderableLists = new Dictionary<string, ReorderableListProperty>(1); }
 
-		~CustomEditorBase() {
+		~CustomEditorBase()
+		{
 			reorderableLists.Clear();
 			reorderableLists = null;
 		}
 
-		public override void OnInspectorGUI() {
-			EditorHelpers.CopyPastObjectButtons(serializedObject);
+		public override void OnInspectorGUI()
+		{
+			EditorHelpers.CopyPastObjectButtons(serializedObject, GetHeaderButtons(), GetHeaderButtonsAfter());
 
 			var cachedGuiColor = GUI.color;
 			serializedObject.Update();
 			var property = serializedObject.GetIterator();
 			bool next = property.NextVisible(true);
-			if (next) {
-				do {
+			if (next)
+			{
+				do
+				{
 					GUI.color = cachedGuiColor;
 					HandleProperty(property);
 				}
@@ -41,39 +46,48 @@ namespace JMiles42.Editor {
 			DrawGUI();
 		}
 
+		protected virtual EditorHelpers.HeaderButton[] GetHeaderButtons() { return null; }
+		protected virtual bool GetHeaderButtonsAfter() { return false; }
+
 		public virtual void DrawGUI() {}
 
-		protected void HandleProperty(SerializedProperty property) {
+		protected void HandleProperty(SerializedProperty property)
+		{
 			//Debug.LogFormat("name: {0}, displayName: {1}, type: {2}, propertyType: {3}, path: {4}", property.name, property.displayName, property.type, property.propertyType, property.propertyPath);
 			bool isdefaultScriptProperty = property.name.Equals("m_Script") &&
 										   property.type.Equals("PPtr<MonoScript>") &&
 										   property.propertyType == SerializedPropertyType.ObjectReference &&
 										   property.propertyPath.Equals("m_Script");
 			bool cachedGUIEnabled = GUI.enabled;
-			if (isdefaultScriptProperty) {
+			if (isdefaultScriptProperty)
+			{
 				GUI.enabled = false;
 			}
 			//var attr = this.GetPropertyAttributes(property);
-			if (PropertyIsArrayAndNotString(property)) {
+			if (PropertyIsArrayAndNotString(property))
+			{
 				HandleArray(property);
 			}
 			else
 				EditorGUILayout.PropertyField(property, property.isExpanded);
-			if (isdefaultScriptProperty) {
+			if (isdefaultScriptProperty)
+			{
 				GUI.enabled = cachedGUIEnabled;
 			}
 		}
 
 		protected bool PropertyIsArrayAndNotString(SerializedProperty property) { return property.isArray && property.propertyType != SerializedPropertyType.String; }
 
-		public void HandleArray(SerializedProperty property) {
+		public void HandleArray(SerializedProperty property)
+		{
 			var listData = GetReorderableList(property);
 			listData.HandleDrawing();
 		}
 
 		protected object[] GetPropertyAttributes(SerializedProperty property) { return GetPropertyAttributes<PropertyAttribute>(property); }
 
-		protected object[] GetPropertyAttributes<T>(SerializedProperty property) where T: System.Attribute {
+		protected object[] GetPropertyAttributes<T>(SerializedProperty property) where T: System.Attribute
+		{
 			const BindingFlags bindingFlags = BindingFlags.GetField |
 											  BindingFlags.GetProperty |
 											  BindingFlags.IgnoreCase |
@@ -87,14 +101,17 @@ namespace JMiles42.Editor {
 			return field != null? field.GetCustomAttributes(typeof (T), true) : null;
 		}
 
-		private ReorderableListProperty GetReorderableList(SerializedProperty property) {
+		private ReorderableListProperty GetReorderableList(SerializedProperty property)
+		{
+			var id = property.propertyPath + "-" + property.name;
 			ReorderableListProperty ret;
-			if (reorderableLists.TryGetValue(property.name, out ret)) {
+			if (reorderableLists.TryGetValue(id, out ret))
+			{
 				ret.Property = property;
 				return ret;
 			}
 			ret = new ReorderableListProperty(property);
-			reorderableLists.Add(property.name, ret);
+			reorderableLists.Add(id, ret);
 			return ret;
 		}
 	}
