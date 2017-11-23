@@ -69,7 +69,7 @@ namespace JMiles42.Systems.Screenshot
 
             public override string GetFullFileName()
             {
-                if (string.IsNullOrEmpty(fileName))
+                if (string.IsNullOrEmpty(FileName))
                 {
                     var strPath = "";
 
@@ -82,7 +82,7 @@ namespace JMiles42.Systems.Screenshot
 
                     return strPath;
                 }
-                return string.Format(fileName, LoopCount);
+                return string.Format(FileName, LoopCount);
             }
         }
     }
