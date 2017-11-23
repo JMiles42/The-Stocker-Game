@@ -17,6 +17,7 @@ public class Map
 		Width = map.Width;
 		Height = map.Height;
 		Tiles = map.Tiles;
+	//	Tiles[0].TyleType == TileType.Wall
 	}
 
 	public Map(Vector2I size): this(size.x, size.y) {}
