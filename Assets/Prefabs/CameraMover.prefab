@@ -112,7 +112,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171569275915168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.445144, y: 0, z: -43.432693}
+  m_LocalPosition: {x: 0, y: 0, z: -43.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4296622423121730}
@@ -160,7 +160,7 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -201,6 +201,9 @@ MonoBehaviour:
   zoomMovement: 60
   zoomMin: {fileID: 4464064051759846}
   zoomMax: {fileID: 4915055726165142}
+  MapReferance: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
+  minPos: {x: 0, y: 0, z: 0}
+  maxPos: {x: 0, y: 0, z: 0}
 --- !u!124 &124471756398523684
 Behaviour:
   m_ObjectHideFlags: 1

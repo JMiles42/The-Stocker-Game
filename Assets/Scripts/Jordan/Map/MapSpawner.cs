@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using JMiles42;
 using JMiles42.Components;
 using JMiles42.Extensions;
+using JMiles42.UnityInterfaces;
 using UnityEngine;
 
-public class MapSpawner: JMilesBehavior
+public class MapSpawner: JMilesBehavior, IEventListening
 {
-	public MapGeneratorBase Map;
+	public MapReferance Map;
 
-	void Start()
+	void BuildMapArt()
 	{
-		var map = Map.GenerateMap();
+		var map = Map.BuiltMap;
 		GridBlock.Blocks = new Dictionary<Vector2I, GridBlock>(map.Width * map.Height);
-		for (int x = 0; x < map.Width; x++)
+
+		//Transform.DestroyChildren();
+
+		for(int x = 0; x < map.Width; x++)
 		{
-			for (int y = 0; y < map.Height; y++)
+			for(int y = 0; y < map.Height; y++)
 			{
 				var gO = GameObject.CreatePrimitive(PrimitiveType.Cube);
 				const float num = 0.5f;
@@ -26,7 +30,7 @@ public class MapSpawner: JMilesBehavior
 				var com = gO.AddComponent<GridBlock>();
 				com.TileType = map[x, y].TileType;
 				com.GridPosition = new Vector2I(x, y);
-				switch (map[x, y].TileType)
+				switch(map[x, y].TileType)
 				{
 					case TileType.Floor:
 						gO.GetComponent<Renderer>().material.color = Color.green;
@@ -41,6 +45,15 @@ public class MapSpawner: JMilesBehavior
 				GridBlock.Blocks.Add(com.GridPosition, com);
 			}
 		}
-		CameraRangeLimiter.RecalculateRange();
+	}
+
+	public void OnEnable()
+	{
+		Map.OnMapUpdate += BuildMapArt;
+	}
+
+	public void OnDisable()
+	{
+		Map.OnMapUpdate -= BuildMapArt;
 	}
 }

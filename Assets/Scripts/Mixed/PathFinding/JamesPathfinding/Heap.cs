@@ -100,7 +100,6 @@ public class Heap <T> where T: IHeapItems<T>
 				return;
 			}
 		}
-		
 	}
 
 	public void Swap(T ItemA, T ItemB)

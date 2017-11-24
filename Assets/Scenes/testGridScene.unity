@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &174677420
 MonoBehaviour:
@@ -268,7 +268,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &572285436
 Prefab:
@@ -307,23 +307,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806969294937116, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806969294937116, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -43.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4806969294937116, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 20699820686423496, guid: 34611ac4ad5fc8241b81619184e751b0,
-        type: 2}
-      propertyPath: m_HDR
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -412,7 +395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4011685226902032, guid: ad83b246bf3e49046b3203cfa8cdfd73, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad83b246bf3e49046b3203cfa8cdfd73, type: 2}
@@ -454,7 +437,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4490972383297450, guid: e2d00b2e3a0a809409d795e4e4453617, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2d00b2e3a0a809409d795e4e4453617, type: 2}
@@ -647,48 +630,6 @@ Camera:
   m_PrefabParentObject: {fileID: 20699820686423496, guid: 34611ac4ad5fc8241b81619184e751b0,
     type: 2}
   m_PrefabInternal: {fileID: 572285436}
---- !u!1001 &1721549589
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968652061052986, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ab0431402a316a44ca69622fc5f08ba8, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1807024586
 Prefab:
   m_ObjectHideFlags: 0
@@ -746,7 +687,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1843708945}
   - component: {fileID: 1843708944}
-  - component: {fileID: 1843708946}
   m_Layer: 0
   m_Name: Map Test
   m_TagString: Untagged
@@ -765,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295b95e155ffb5844807ca412e025ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: {fileID: 11400000, guid: 91a753fd0724f2f4caa9da13f98f2f9a, type: 2}
+  Map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
 --- !u!4 &1843708945
 Transform:
   m_ObjectHideFlags: 0
@@ -779,421 +719,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1843708946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1843708943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48c7190d66980b4b81cc33e1028f8a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  map:
-    Width: 20
-    Height: 20
-    Tiles:
-    - TileType: 0
-    - TileType: 1
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
-    - TileType: 0
 --- !u!1001 &1874603775
 Prefab:
   m_ObjectHideFlags: 0

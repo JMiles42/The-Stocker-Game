@@ -65,7 +65,7 @@ public static class Pathfinding
 				}
 			}
 
-			return Waypoints;
+			//return Waypoints;
 		}
 
 		if(IsPathSuccess)
@@ -108,7 +108,7 @@ public static class Pathfinding
 
 		Vector2IHeapable CurrentNode = EndNode;
 
-		while(CurrentNode != StartNode)
+		while(CurrentNode.Position != StartNode.Position)
 		{
 			Path.Add(CurrentNode);
 			CurrentNode = CurrentNode.NodeParent;

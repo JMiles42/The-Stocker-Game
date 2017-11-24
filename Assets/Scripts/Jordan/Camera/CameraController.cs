@@ -1,4 +1,5 @@
-﻿using JMiles42.Attributes;
+﻿using System.Linq;
+using JMiles42.Attributes;
 using JMiles42.Components;
 using JMiles42.Extensions;
 using JMiles42.UnityInterfaces;
@@ -7,7 +8,9 @@ using UnityEngine;
 public class CameraController: JMilesBehavior, IEventListening
 {
 	public float Speed = 5;
-	[SerializeField] private Camera _camera;
+
+	[SerializeField]
+	private Camera _camera;
 
 	public Camera Camera
 	{
@@ -17,24 +20,36 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public Transform CameraHolder;
 
-	[SerializeField, DisableEditing] private Vector3 startPos = Vector3.zero;
+	[SerializeField]
+	[DisableEditing]
+	private Vector3 startPos = Vector3.zero;
+
 	public float zoomRate = 1;
-	[SerializeField] private float zoomLevel = 0.5f;
+
+	[SerializeField]
+	private float zoomLevel = 0.5f;
+
 	public float zoomMovement = 0.1f;
-	[SerializeField] private Transform zoomMin;
-	[SerializeField] private Transform zoomMax;
+
+	[SerializeField]
+	private Transform zoomMin;
+
+	[SerializeField]
+	private Transform zoomMax;
+
+	public MapReferance MapReferance;
 
 	void Start()
 	{
-		if (Camera.IsNull())
+		if(Camera.IsNull())
 		{
 			Camera = GetComponentInChildren<Camera>();
 		}
-		if (Camera.IsNull())
+		if(Camera.IsNull())
 		{
 			Camera = Camera.main;
 		}
-		if (CameraHolder.IsNull())
+		if(CameraHolder.IsNull())
 		{
 			CameraHolder = Transform;
 		}
@@ -46,6 +61,7 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved += OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove += OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom += OnScreenZoom;
+		MapReferance.OnMapUpdate += CalculateLimets;
 	}
 
 	public void OnDisable()
@@ -54,6 +70,7 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved -= OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove -= OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom -= OnScreenZoom;
+		MapReferance.OnMapUpdate -= CalculateLimets;
 	}
 
 	private void OnScreenZoom(float amount)
@@ -63,15 +80,31 @@ public class CameraController: JMilesBehavior, IEventListening
 		Camera.transform.position = Vector3.Lerp(zoomMin.position, zoomMax.position, zoomLevel);
 	}
 
-	private void OnScreenStartMove(Vector2 mousePos) { startPos = CameraHolder.position; }
+	private void OnScreenStartMove(Vector2 mousePos)
+	{
+		startPos = CameraHolder.position;
+	}
 
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
 		var pos = startPos + (Camera.transform.TransformDirection(mouseDelta).FromX_Y2Z() * Speed).SetY(0);
-		CameraHolder.transform.position = new Vector3(pos.x.Clamp(CameraRangeLimiter.MinPos.x, CameraRangeLimiter.MaxPos.x),
-													  pos.y,
-													  pos.z.Clamp(CameraRangeLimiter.MinPos.z, CameraRangeLimiter.MaxPos.z));
+		CameraHolder.transform.position = new Vector3(pos.x.Clamp(minPos.x, maxPos.x), pos.y, pos.z.Clamp(minPos.z, maxPos.z));
 	}
 
-	private void OnScreenEndMove(Vector2 mousePos) { startPos = Vector3.zero; }
+	private void OnScreenEndMove(Vector2 mousePos)
+	{
+		startPos = Vector3.zero;
+	}
+
+	public Vector3 minPos;
+	public Vector3 maxPos;
+
+	public void CalculateLimets()
+	{
+		var f = GridBlock.Blocks.First();
+		var l = GridBlock.Blocks.Last();
+
+		minPos = f.Value.Position;
+		maxPos = l.Value.Position;
+	}
 }
