@@ -9,13 +9,15 @@ using UnityEngine;
 public class MapSpawner: JMilesBehavior, IEventListening
 {
 	public MapReferance Map;
+	public GridBlockListVariable GridBlock;
 
 	void BuildMapArt()
 	{
 		var map = Map.BuiltMap;
-		GridBlock.Blocks = new Dictionary<Vector2I, GridBlock>(map.Width * map.Height);
 
-		//Transform.DestroyChildren();
+		GridBlock.Value = new List<GridBlock>(map.Length);
+
+		Transform.DestroyChildren();
 
 		for(int x = 0; x < map.Width; x++)
 		{
@@ -42,9 +44,10 @@ public class MapSpawner: JMilesBehavior, IEventListening
 					default:
 						throw new ArgumentOutOfRangeException();
 				}
-				GridBlock.Blocks.Add(com.GridPosition, com);
+				GridBlock.Add(gO.GetComponent<GridBlock>());
 			}
 		}
+		GridBlock.OnMapFinishSpawning.Trigger();
 	}
 
 	public void OnEnable()

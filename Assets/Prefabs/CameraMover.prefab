@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 92666465784563614}
   - component: {fileID: 124471756398523684}
   - component: {fileID: 81991757475394098}
+  - component: {fileID: 114798734805986320}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -202,8 +203,21 @@ MonoBehaviour:
   zoomMin: {fileID: 4464064051759846}
   zoomMax: {fileID: 4915055726165142}
   MapReferance: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
+  GridBlockReferance: {fileID: 11400000, guid: b51e8a7f1e7035a4da30c7df60272397, type: 2}
   minPos: {x: 0, y: 0, z: 0}
   maxPos: {x: 0, y: 0, z: 0}
+--- !u!114 &114798734805986320
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171569275915168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac5d167b87b07a41ba38bd2c734982b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 00000000
 --- !u!124 &124471756398523684
 Behaviour:
   m_ObjectHideFlags: 1

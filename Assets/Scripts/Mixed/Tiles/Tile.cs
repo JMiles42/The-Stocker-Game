@@ -1,7 +1,10 @@
-﻿[System.Serializable]
+﻿using JMiles42;
+
+[System.Serializable]
 public class Tile
 {
 	public TileType TileType;
+	public Vector2I Position;
 
 	public Tile(): this(TileType.Wall) {}
 	public Tile(TileType tileType) { TileType = tileType; }

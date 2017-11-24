@@ -25,7 +25,7 @@ public class Vector2IHeapable: IHeapItems<Vector2IHeapable>
 		set { Position.y = value; }
 	}
 
-	public Vector2I NodeParent;
+	public Vector2IHeapable NodeParent;
 	private int heapIndex;
 
 	public int HeapIndex

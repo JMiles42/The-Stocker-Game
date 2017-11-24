@@ -7,6 +7,7 @@ public class MapCreator: MonoBehaviour
 
 	void Start()
 	{
-		MapReferance.BuiltMap = Generator.GenerateMap();
+		if(MapReferance && Generator)
+			MapReferance.BuiltMap = Generator.GenerateMap();
 	}
 }

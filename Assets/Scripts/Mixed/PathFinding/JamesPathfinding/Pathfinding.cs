@@ -17,17 +17,29 @@ public static class Pathfinding
 
 	static Vector2I[] FindPath(Vector2I StartPosition, Vector2I TargetPosition, Map map)
 	{
-		Vector2I[] Waypoints = new Vector2I[0];
-		bool IsPathSuccess = false;
+		var dictionary = new Dictionary<Vector2I, Vector2IHeapable>(map.Length);
+		foreach(var tile in map.Tiles)
+		{
+			dictionary.Add(tile.Position, tile.Position);
+		}
 
-		Vector2IHeapable StartNode = new Vector2IHeapable {IsWalkable = map[StartPosition].IsWalkable(), Position = StartPosition};
-		Vector2IHeapable TargetNode = new Vector2IHeapable {IsWalkable = map[TargetPosition].IsWalkable(), Position = TargetPosition};
+		bool IsPathSuccess = false;
+		dictionary[StartPosition].IsWalkable = map[StartPosition].IsWalkable();
+		dictionary[StartPosition].Position = StartPosition;
+		dictionary[StartPosition].NodeParent = null;
+
+		dictionary[TargetPosition].IsWalkable = map[TargetPosition].IsWalkable();
+		dictionary[TargetPosition].Position = TargetPosition;
+		dictionary[TargetPosition].NodeParent = null;
+
+		var StartNode = dictionary[StartPosition];
+		var TargetNode = dictionary[TargetPosition];
+
+		Heap<Vector2IHeapable> OpenSet = new Heap<Vector2IHeapable>(map.Length);
+		HashSet<Vector2IHeapable> ClosedSet = new HashSet<Vector2IHeapable>();
 
 		if(StartNode.IsWalkable && TargetNode.IsWalkable)
 		{
-			Heap<Vector2IHeapable> OpenSet = new Heap<Vector2IHeapable>(map.Length);
-			HashSet<Vector2IHeapable> ClosedSet = new HashSet<Vector2IHeapable>();
-
 			OpenSet.Add(StartNode);
 
 			while(OpenSet.Count > 0)
@@ -38,28 +50,29 @@ public static class Pathfinding
 				if(CurrentNode.Position == TargetNode.Position)
 				{
 					IsPathSuccess = true;
-
+					ClosedSet.Add(TargetNode);
 					break;
 				}
-
-				foreach(var Neighbor in GetNeighbors(CurrentNode, map))
+				var neighbors = GetNeighbors(CurrentNode, map, dictionary);
+				foreach(var neighbor in neighbors)
 				{
-					if(!map[Neighbor].IsWalkable() || ClosedSet.Contains(Neighbor))
+					if(!map[neighbor].IsWalkable() || ClosedSet.Contains(neighbor))
 					{
 						continue;
 					}
 
-					int NewMovementCostToNeighour = CurrentNode.Gcost + GetDistance(CurrentNode, Neighbor);
-					if(NewMovementCostToNeighour < Neighbor.Gcost || !OpenSet.Contains(Neighbor))
-					{
-						Neighbor.Gcost = NewMovementCostToNeighour;
-						Neighbor.Hcost = GetDistance(Neighbor, TargetNode);
-						Neighbor.NodeParent = CurrentNode;
+					int NewMovementCostToNeighour = CurrentNode.Gcost + GetDistance(CurrentNode, neighbor);
 
-						if(!OpenSet.Contains(Neighbor))
+					if(NewMovementCostToNeighour < neighbor.Gcost || !OpenSet.Contains(neighbor))
+					{
+						neighbor.Gcost = NewMovementCostToNeighour;
+						neighbor.Hcost = GetDistance(neighbor, TargetNode);
+						neighbor.NodeParent = CurrentNode;
+
+						if(!OpenSet.Contains(neighbor))
 						{
-							OpenSet.Add(Neighbor);
-							OpenSet.UpdateItem(Neighbor);
+							OpenSet.Add(neighbor);
+							OpenSet.UpdateItem(neighbor);
 						}
 					}
 				}
@@ -67,6 +80,7 @@ public static class Pathfinding
 
 			//return Waypoints;
 		}
+		var Waypoints = new Vector2I[0];
 
 		if(IsPathSuccess)
 		{
@@ -78,7 +92,7 @@ public static class Pathfinding
 		return Waypoints;
 	}
 
-	public static List<Vector2IHeapable> GetNeighbors(Vector2IHeapable TilePoint, Map map)
+	public static List<Vector2IHeapable> GetNeighbors(Vector2IHeapable TilePoint, Map map, Dictionary<Vector2I, Vector2IHeapable> dictionary)
 	{
 		List<Vector2IHeapable> Neighbors = new List<Vector2IHeapable>();
 
@@ -94,7 +108,7 @@ public static class Pathfinding
 
 				if(map.CoordinatesInMap(coord))
 				{
-					Neighbors.Add(coord);
+					Neighbors.Add(dictionary[coord]);
 				}
 			}
 		}
@@ -104,11 +118,11 @@ public static class Pathfinding
 
 	static Vector2IHeapable[] RetracePath(Vector2IHeapable StartNode, Vector2IHeapable EndNode)
 	{
-		List<Vector2IHeapable> Path = new List<Vector2IHeapable>();
+		List<Vector2IHeapable> Path = new List<Vector2IHeapable> {EndNode};
 
 		Vector2IHeapable CurrentNode = EndNode;
 
-		while(CurrentNode.Position != StartNode.Position)
+		while(CurrentNode != StartNode)
 		{
 			Path.Add(CurrentNode);
 			CurrentNode = CurrentNode.NodeParent;

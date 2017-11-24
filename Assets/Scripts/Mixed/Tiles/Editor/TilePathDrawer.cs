@@ -1,4 +1,5 @@
-﻿using JMiles42.Editor.PropertyDrawers;
+﻿using JMiles42.Editor;
+using JMiles42.Editor.PropertyDrawers;
 using UnityEditor;
 using UnityEngine;
 

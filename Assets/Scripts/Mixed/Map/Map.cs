@@ -82,4 +82,12 @@ public class Map
 	{
 		return (pos.x >= 0 && pos.x < Width && pos.y >= 0 && pos.y < Height);
 	}
+
+	public void CalculateTilePositions()
+	{
+		for(var i = 0; i < Tiles.Length; i++)
+		{
+			Tiles[i].Position = Array2DHelpers.GetIndexOf2DArray(Width, i);
+		}
+	}
 }

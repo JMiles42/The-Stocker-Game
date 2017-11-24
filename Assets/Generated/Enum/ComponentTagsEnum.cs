@@ -18,8 +18,8 @@ namespace Generated{
 		Floorloot,
 		Smallspawner,
 		Largespawner,
-		Dontusethis_addanytagsbeforethis,
-		END = Dontusethis_addanytagsbeforethis,
+		Dontusethis_Addanytagsbeforethis,
+		END = Dontusethis_Addanytagsbeforethis,
 		COUNT = END - START + 1,
 	}
 }

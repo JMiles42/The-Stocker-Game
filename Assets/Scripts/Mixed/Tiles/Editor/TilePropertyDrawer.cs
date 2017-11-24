@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEditor;
 
-//namespace JMiles42{
 [CustomPropertyDrawer(typeof (Tile))]
 public class TilePropertyDrawer: PropertyDrawer
 {
@@ -31,7 +30,7 @@ public class TilePropertyDrawer: PropertyDrawer
 				EditorGUI.LabelField(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
 			else
 			{
-				var @event = JMilesEventsGUI.Button(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
+				var @event = JMilesGUIEvents.Button(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
 				if (@event.AsButtonLeftClick)
 				{
 					tileType.enumValueIndex = (tileType.enumValueIndex + 1) % tileType.enumDisplayNames.Length;
@@ -40,6 +39,8 @@ public class TilePropertyDrawer: PropertyDrawer
 		}
 	}
 
-	public override float GetPropertyHeight(SerializedProperty property, GUIContent label) { return EditorGUI.GetPropertyHeight(property, label, true); }
+	public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+	{
+		return EditorGUI.GetPropertyHeight(property, label, true);
+	}
 }
-//}

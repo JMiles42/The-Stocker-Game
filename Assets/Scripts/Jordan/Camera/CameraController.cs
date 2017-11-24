@@ -38,6 +38,7 @@ public class CameraController: JMilesBehavior, IEventListening
 	private Transform zoomMax;
 
 	public MapReferance MapReferance;
+	public GridBlockListVariable GridBlockReferance;
 
 	void Start()
 	{
@@ -61,7 +62,8 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved += OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove += OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom += OnScreenZoom;
-		MapReferance.OnMapUpdate += CalculateLimets;
+		//MapReferance.OnMapUpdate += CalculateLimets;
+		GridBlockReferance.OnMapFinishSpawning += CalculateLimets;
 	}
 
 	public void OnDisable()
@@ -70,7 +72,8 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved -= OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove -= OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom -= OnScreenZoom;
-		MapReferance.OnMapUpdate -= CalculateLimets;
+		//MapReferance.OnMapUpdate -= CalculateLimets;
+		GridBlockReferance.OnMapFinishSpawning -= CalculateLimets;
 	}
 
 	private void OnScreenZoom(float amount)
@@ -101,10 +104,10 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public void CalculateLimets()
 	{
-		var f = GridBlock.Blocks.First();
-		var l = GridBlock.Blocks.Last();
+		var f = GridBlockReferance.Value.First();
+		var l = GridBlockReferance.Value.Last();
 
-		minPos = f.Value.Position;
-		maxPos = l.Value.Position;
+		minPos = f.Position;
+		maxPos = l.Position;
 	}
 }

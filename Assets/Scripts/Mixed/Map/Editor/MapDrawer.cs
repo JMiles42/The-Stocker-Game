@@ -1,5 +1,4 @@
-﻿using JMiles24.Editor;
-using JMiles42;
+﻿using JMiles42;
 using JMiles42.Editor;
 using JMiles42.Editor.PropertyDrawers;
 using JMiles42.Extensions;
@@ -7,7 +6,7 @@ using JMiles42.Generics;
 using UnityEditor;
 using UnityEngine;
 
-[CustomPropertyDrawer(typeof (Map))]
+[CustomPropertyDrawer(typeof(Map))]
 public class MapDrawer: JMilesPropertyDrawer
 {
 	private const float MapUISize = 18f;
@@ -28,27 +27,27 @@ public class MapDrawer: JMilesPropertyDrawer
 
 		var size = new Vector2I(widthInt.intValue, heightInt.intValue);
 
-		if (MapImage.IsNull())
+		if(MapImage.IsNull())
 		{
 			MapImage = CreateDisplayTexture(new Color(0, 0, 0, 1));
 		}
-		if (WallImage.IsNull())
+		if(WallImage.IsNull())
 		{
 			WallImage = CreateDisplayTexture(new Color(0, 0, 0.6f, 1));
 			WallImage.Apply();
 		}
-		if (FloorImage.IsNull())
+		if(FloorImage.IsNull())
 		{
 			FloorImage = CreateDisplayTexture(new Color(0, 0.6f, 0, 1));
 			FloorImage.Apply();
 		}
 
-		if (Size == Vector2I.Zero)
+		if(Size == Vector2I.Zero)
 		{
 			Size = new Vector2I(size);
 		}
 
-		var tilesFloat = property.FindPropertyRelative("Tiles");
+		var tilesArray = property.FindPropertyRelative("Tiles");
 
 		EditorGUI.PropertyField(propRect, widthInt);
 		propRect = propRect.MoveY(singleLinePlusPadding);
@@ -56,39 +55,40 @@ public class MapDrawer: JMilesPropertyDrawer
 
 		propRect = propRect.MoveY(singleLinePlusPadding);
 
-		var resizeButton = JMilesEventsGUI.Button(propRect.DevideWidth(2), "Resize Map Data Array");
-		var setMepEmpty = JMilesEventsGUI.Button(propRect.DevideWidth(2).MoveX(propRect.DevideWidth(2).width), "Set Map To Nothing");
+		var resizeButton = JMilesGUIEvents.Button(propRect.DevideWidth(2), "Resize Map Data Array");
+		var setMepEmpty = JMilesGUIEvents.Button(propRect.DevideWidth(2).MoveX(propRect.DevideWidth(2).width), "Set Map To Nothing");
 
-		if (resizeButton.AsButtonLeftClick)
+		if(resizeButton.AsButtonLeftClick)
 		{
-			tilesFloat.arraySize = size.x * size.y;
+			tilesArray.arraySize = size.x * size.y;
 			Size = size;
 		}
-		if (setMepEmpty.AsButtonLeftClick)
+		if(setMepEmpty.AsButtonLeftClick)
 		{
-			tilesFloat.arraySize = size.x * size.y;
-
-			Size = size;
-			for (int i = 0; i < tilesFloat.arraySize; i++)
-			{
-				var tileType = tilesFloat.GetArrayElementAtIndex(i);
-				tileType.Next(true);
-				SetTileToIndex(tileType, 0);
-			}
+			FillMapEmpty(widthInt, size, tilesArray);
 		}
-
 		propRect = propRect.MoveY(singleLinePlusPadding);
+
+		if(tilesArray.arraySize == 0)
+		{
+			var createButton = JMilesGUIEvents.Button(propRect.MultiplHeight(3f), "Create Map Data");
+			if(createButton.AsButtonLeftClick)
+			{
+				FillMapEmpty(widthInt, size, tilesArray);
+			}
+			return;
+		}
 
 		var startPos = propRect;
 
 		var totalArea = new Rect(startPos) {height = MapUISize * Size.y, width = MapUISize * Size.x};
 
-		using (new EditorColorChanger(tilesFloat.arraySize == (Size.x * Size.y)? GUI.backgroundColor : Color.red))
+		using(new EditorColorChanger(tilesArray.arraySize == (Size.x * Size.y)? GUI.backgroundColor : Color.red))
 		{
 			GUI.DrawTexture(totalArea, MapImage);
-			for (int i = 0; i < tilesFloat.arraySize; i++)
+			for(int i = 0; i < tilesArray.arraySize; i++)
 			{
-				var tile = tilesFloat.GetArrayElementAtIndex(i);
+				var tile = tilesArray.GetArrayElementAtIndex(i);
 				var pos = Array2DHelpers.GetIndexOf2DArray(Size.x, i);
 				var myPos = new Rect(propRect.x + (pos.x * MapUISize), propRect.y + (pos.y * MapUISize), MapUISize, MapUISize);
 				tile.Next(true);
@@ -97,37 +97,66 @@ public class MapDrawer: JMilesPropertyDrawer
 		}
 
 		var @event = Event.current;
-		if (totalArea.Contains(@event.mousePosition))
+		if(totalArea.Contains(@event.mousePosition))
 		{
 			var pos = new Rect(@event.mousePosition.x - (startPos.x), @event.mousePosition.y - (startPos.y), MapUISize, MapUISize);
-			pos.x = ((int) (pos.x / MapUISize));
-			pos.y = ((int) (pos.y / MapUISize));
+			pos.x = ((int)(pos.x / MapUISize));
+			pos.y = ((int)(pos.y / MapUISize));
 
-			var index = Array2DHelpers.Get1DIndexOf2DCoords(Size.x, (int) pos.x, (int) pos.y);
-			if (index >= tilesFloat.arraySize)
+			var index = Array2DHelpers.Get1DIndexOf2DCoords(Size.x, (int)pos.x, (int)pos.y);
+			if(index >= tilesArray.arraySize)
 				return;
-			var tile = tilesFloat.GetArrayElementAtIndex(index);
+			var tile = tilesArray.GetArrayElementAtIndex(index);
 			var tileType = tile.Copy();
 			tileType.Next(true);
 
-			if (@event.LeftDown())
+			if(@event.LeftDown())
 			{
-				if (selectionInformation.IsNull())
+				if(selectionInformation.IsNull())
 				{
 					selectionInformation = new SelectionInformation {LeftMouse = true, StartPos = pos, StartIndex = tileType.enumValueIndex};
 				}
 			}
-			else if (@event.LeftUp())
+			else if(@event.LeftUp())
 			{
-				if (selectionInformation.IsNotNull() && (pos == selectionInformation.StartPos) && selectionInformation.LeftMouse)
+				if(selectionInformation.IsNotNull() && (pos == selectionInformation.StartPos) && selectionInformation.LeftMouse)
 					SetTileToNextIndex(tileType);
 				selectionInformation = null;
 			}
-			else if (@event.LeftDrag())
+			else if(@event.LeftDrag())
 			{
-				if (selectionInformation.IsNotNull() && selectionInformation.LeftMouse)
+				if(selectionInformation.IsNotNull() && selectionInformation.LeftMouse)
 					SetTileToIndex(tileType, selectionInformation.StartIndex + 1, false);
 			}
+		}
+	}
+
+	private void FillMapEmpty(SerializedProperty widthInt, Vector2I size, SerializedProperty tilesArray)
+	{
+		tilesArray.arraySize = size.x * size.y;
+
+		Size = size;
+		for(int i = 0; i < tilesArray.arraySize; i++)
+		{
+			Vector2I v2IPos = Array2DHelpers.GetIndexOf2DArray(widthInt.intValue, i);
+			var tile = tilesArray.GetArrayElementAtIndex(i);
+
+			var tileMove = tile.Copy();
+			tileMove.Next(true);
+			var tilePos = tileMove.Copy();
+			Debug.Log($"{tileMove.type} 1");
+			tileMove.Next(true);
+			tileMove.Next(true);
+			var tileX = tileMove.Copy();
+			tileMove.Next(true);
+			var tileY = tileMove.Copy();
+
+			tileX.intValue = v2IPos.x;
+			tileY.intValue = v2IPos.y;
+
+			var tileType = tile.FindPropertyRelative("TileType");
+			tileType.Next(true);
+			SetTileToIndex(tilePos, 0);
 		}
 	}
 
@@ -135,7 +164,7 @@ public class MapDrawer: JMilesPropertyDrawer
 	{
 		const float size = 2f;
 		var col = Color.green;
-		switch ((TileType) (tile.enumValueIndex))
+		switch((TileType)(tile.enumValueIndex))
 		{
 			case TileType.Floor:
 				GUI.DrawTexture(myPos.ChangeX(size).ChangeY(size), FloorImage);
@@ -150,7 +179,7 @@ public class MapDrawer: JMilesPropertyDrawer
 	{
 		tile.enumValueIndex = (tile.enumValueIndex + 1) % tile.enumDisplayNames.Length;
 
-		if (update)
+		if(update)
 		{
 			tile.serializedObject.ApplyModifiedProperties();
 			tile.serializedObject.Update();
@@ -159,12 +188,12 @@ public class MapDrawer: JMilesPropertyDrawer
 
 	private static void SetTileToIndex(SerializedProperty tile, int index, bool update = true)
 	{
-		if (index >= 0)
+		if(index >= 0)
 			tile.enumValueIndex = index % tile.enumDisplayNames.Length;
 		else
 			tile.enumValueIndex = tile.enumDisplayNames.Length - 1;
 
-		if (update)
+		if(update)
 		{
 			tile.serializedObject.ApplyModifiedProperties();
 			tile.serializedObject.Update();
@@ -176,8 +205,15 @@ public class MapDrawer: JMilesPropertyDrawer
 		return (singleLinePlusPadding * 4 + CalculateFinalHeight(MapUISize * property.FindPropertyRelative("Height").intValue));
 	}
 
-	public float CalculateFinalWidth(float width) { return width >= MapUISize * 40? MapUISize * 40 : width; }
-	public float CalculateFinalHeight(float height) { return height >= MapUISize * 40? MapUISize * 40 : height; }
+	public float CalculateFinalWidth(float width)
+	{
+		return width >= MapUISize * 40? MapUISize * 40 : width;
+	}
+
+	public float CalculateFinalHeight(float height)
+	{
+		return height >= MapUISize * 40? MapUISize * 40 : height;
+	}
 
 	private SelectionInformation selectionInformation;
 
@@ -193,7 +229,7 @@ public class MapDrawer: JMilesPropertyDrawer
 		var tex = new Texture2D(w, h, TextureFormat.RGBAFloat, false);
 		tex.filterMode = FilterMode.Point;
 		var colArray = new Color[w * h];
-		for (int i = 0; i < colArray.Length; i++)
+		for(int i = 0; i < colArray.Length; i++)
 			colArray[i] = Color.blue;
 		tex.SetPixels(colArray);
 		tex.Apply();
@@ -206,7 +242,7 @@ public class MapDrawer: JMilesPropertyDrawer
 		var tex = new Texture2D(size, size);
 
 		var colArray = new Color[size * size];
-		for (int i = 0; i < colArray.Length; i++)
+		for(int i = 0; i < colArray.Length; i++)
 			colArray[i] = color;
 
 		tex.SetPixels(colArray);

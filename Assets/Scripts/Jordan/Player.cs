@@ -8,6 +8,11 @@ using UnityEngine;
 public class Player: Singleton<Player>
 {
 	public Vector2I GridPosition = Vector2I.Zero;
+	public Vector2I TargetPosition = Vector2I.Zero;
+
+	public Vector2I[] path;
+
+
 	public MapReferance map;
 
 	public void OnEnable()
@@ -28,7 +33,7 @@ public class Player: Singleton<Player>
 			Debug.Log("Search For Path");
 			//if(movingCoroutine.IsNull())
 			//	PlayerStartMoveAsync(gridBlock);
-
+			TargetPosition = gridBlock.GridPosition;
 			PathRequestManager.RequestPath(GridPosition, gridBlock.GridPosition, map.BuiltMap, OnPathFound);
 
 			Debug.Log("Searching For Path");
@@ -59,10 +64,11 @@ public class Player: Singleton<Player>
 		movingCoroutine = StartCoroutine(MoveToPoint(path));
 	}
 
-	private IEnumerator MoveToPoint(TilePath path)
+	private IEnumerator MoveToPoint(TilePath tilePath)
 	{
+		path = tilePath.Path.ToArray();
 		Debug.Log("Moving Along Path");
-		foreach(var node in path)
+		foreach(var node in tilePath)
 		{
 			while(true)
 			{
@@ -78,7 +84,6 @@ public class Player: Singleton<Player>
 			}
 		}
 		movingCoroutine = null;
-		yield break;
 	}
 }
 
