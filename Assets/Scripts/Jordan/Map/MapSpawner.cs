@@ -24,9 +24,9 @@ public class MapSpawner: JMilesBehavior
 				gO.transform.parent = transform;
 				Destroy(gO.GetComponent<Collider>());
 				var com = gO.AddComponent<GridBlock>();
-				com.TileType = map[x, y].TyleType;
+				com.TileType = map[x, y].TileType;
 				com.GridPosition = new Vector2I(x, y);
-				switch (map[x, y].TyleType)
+				switch (map[x, y].TileType)
 				{
 					case TileType.Floor:
 						gO.GetComponent<Renderer>().material.color = Color.green;

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using JMiles42;
 using JMiles42.Extensions;
 using JMiles42.Generics;
@@ -8,17 +9,24 @@ public class Player: Singleton<Player>
 {
 	public Vector2I GridPosition = Vector2I.Zero;
 
-	public void OnEnable() { GameplayInputManager.Instance.OnBlockPressed += InstanceOnOnBlockPressed; }
+	public void OnEnable()
+	{
+		GameplayInputManager.Instance.OnBlockPressed += InstanceOnOnBlockPressed;
+	}
 
-	public void OnDisable() { GameplayInputManager.Instance.OnBlockPressed -= InstanceOnOnBlockPressed; }
+	public void OnDisable()
+	{
+		GameplayInputManager.Instance.OnBlockPressed -= InstanceOnOnBlockPressed;
+	}
 
 	private void InstanceOnOnBlockPressed(GridBlock gridBlock, bool leftClick)
 	{
-		if (gridBlock.IsNotNull() && gridBlock.TileType == TileType.Floor)
+		if(gridBlock.IsNotNull() && gridBlock.TileType == TileType.Floor)
 		{
 			//Transform.position = gridBlock.GridPosition.GetWorldPos();
 			Debug.Log("Search For Path");
-			PlayerStartMoveAsync(gridBlock);
+			if(movingCoroutine.IsNull())
+				PlayerStartMoveAsync(gridBlock);
 			Debug.Log("Searching For Path");
 		}
 	}
@@ -27,10 +35,11 @@ public class Player: Singleton<Player>
 
 	private async void PlayerStartMoveAsync(GridBlock gridBlock)
 	{
-		var path = await PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition, null);
+		var path = await Task.Run(() => PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition, null));
+		//PathFindingIntegrator.GetPathAsync(GridPosition, gridBlock.GridPosition, null);
 
 		Debug.Log("Found Path");
-		if (movingCoroutine.IsNotNull())
+		if(movingCoroutine.IsNotNull())
 		{
 			StopCoroutine(movingCoroutine);
 		}
@@ -40,11 +49,11 @@ public class Player: Singleton<Player>
 	private IEnumerator MoveToPoint(TilePath path)
 	{
 		Debug.Log("Moving Along Path");
-		foreach (var node in path)
+		foreach(var node in path)
 		{
-			while (true)
+			while(true)
 			{
-				if (Vector3.Distance(Position.SetY(0), node.GetWorldPos()) <= 0.1f)
+				if(Vector3.Distance(Position.SetY(0), node.GetWorldPos()) <= 0.1f)
 				{
 					Position = node.GetWorldPos().SetY(Position);
 					GridPosition = node;
@@ -55,11 +64,15 @@ public class Player: Singleton<Player>
 				yield return null;
 			}
 		}
+		movingCoroutine = null;
 		yield break;
 	}
 }
 
 internal static class Extensions
 {
-	public static Vector3 GetWorldPos(this Vector2I grid) { return ((Vector3) grid).FromX_Y2Z(); }
+	public static Vector3 GetWorldPos(this Vector2I grid)
+	{
+		return ((Vector3)grid).FromX_Y2Z();
+	}
 }
