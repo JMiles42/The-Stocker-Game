@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using JMiles42;
+﻿using JMiles42;
 using UnityEngine;
 
 public class StarNode: IHeapItems<StarNode>
@@ -18,7 +16,6 @@ public class StarNode: IHeapItems<StarNode>
 
 	public StarNode NodeParent;
 	private int heapIndex;
-	public Tile tile;
 
 	public int HeapIndex
 	{

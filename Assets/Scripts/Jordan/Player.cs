@@ -8,6 +8,7 @@ using UnityEngine;
 public class Player: Singleton<Player>
 {
 	public Vector2I GridPosition = Vector2I.Zero;
+	public MapReferance map;
 
 	public void OnEnable()
 	{
@@ -25,10 +26,22 @@ public class Player: Singleton<Player>
 		{
 			//Transform.position = gridBlock.GridPosition.GetWorldPos();
 			Debug.Log("Search For Path");
-			if(movingCoroutine.IsNull())
-				PlayerStartMoveAsync(gridBlock);
+			//if(movingCoroutine.IsNull())
+			//	PlayerStartMoveAsync(gridBlock);
+
+			PathRequestManager.RequestPath(GridPosition, gridBlock.GridPosition, map.BuiltMap, OnPathFound);
+
 			Debug.Log("Searching For Path");
 		}
+	}
+
+	private void OnPathFound(Vector2I[] path, bool pathNull)
+	{
+		if(movingCoroutine.IsNotNull())
+		{
+			StopCoroutine(movingCoroutine);
+		}
+		movingCoroutine = StartCoroutine(MoveToPoint(path));
 	}
 
 	private Coroutine movingCoroutine;

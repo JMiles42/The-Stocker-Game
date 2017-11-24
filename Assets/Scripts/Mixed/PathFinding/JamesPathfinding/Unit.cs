@@ -1,28 +1,31 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using JMiles42;
 using UnityEngine;
 
-public class Unit : MonoBehaviour
+public class Unit: MonoBehaviour
 {
 	public Transform Target;
 	public float Speed = 5;
-	private Vector3[] Path;
+	private Vector2I[] Path;
 	private int TargetIndex;
+
+	public MapReferance map;
 
 	void Start()
 	{
-		PathRequestManager.RequestPath(transform.position, Target.position, OnPathFound);
+		PathRequestManager.RequestPath(transform.position, Target.position, map.BuiltMap, OnPathFound);
 	}
 
+	private Coroutine coroutine;
 
-	public void OnPathFound(Vector3[] newPath, bool PathSuccessful)
+	public void OnPathFound(Vector2I[] newPath, bool PathSuccessful)
 	{
-		if (PathSuccessful)
+		if(PathSuccessful)
 		{
 			Path = newPath;
-			StopCoroutine("FollowPath");
-			StartCoroutine("FollowPath");
-
+			if(coroutine != null)
+				StopCoroutine("FollowPath");
+			coroutine = StartCoroutine("FollowPath");
 		}
 	}
 
@@ -30,37 +33,34 @@ public class Unit : MonoBehaviour
 	{
 		Vector3 currentWaypoint = Path[0];
 
-		while (true)
+		while(true)
 		{
-			if (transform.position == currentWaypoint)
+			if(transform.position == currentWaypoint)
 			{
 				TargetIndex++;
-				if (TargetIndex >= Path.Length)
+				if(TargetIndex >= Path.Length)
 				{
 					yield break;
 				}
 
 				currentWaypoint = Path[TargetIndex];
-
 			}
 
-			transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, Speed * Time.deltaTime) ;
+			transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, Speed * Time.deltaTime);
 			yield return null;
 		}
 	}
 
-
 	public void OnDrawGizmos()
 	{
-		if (Path != null)
+		if(Path != null)
 		{
-
-			for (int i = TargetIndex; i < Path.Length; i++)
+			for(int i = TargetIndex; i < Path.Length; i++)
 			{
 				Gizmos.color = Color.magenta;
 				Gizmos.DrawCube(Path[i], Vector3.one);
 
-				if (i == TargetIndex)
+				if(i == TargetIndex)
 				{
 					Gizmos.DrawLine(transform.position, Path[i]);
 				}
@@ -69,7 +69,6 @@ public class Unit : MonoBehaviour
 					Gizmos.DrawLine(Path[i - 1], Path[i]);
 				}
 			}
-
 		}
 	}
 }
