@@ -129,3 +129,5 @@ MonoBehaviour:
     y: 0
   path: []
   map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
+  grid: {fileID: 11400000, guid: b51e8a7f1e7035a4da30c7df60272397, type: 2}
+  moveSpeed: 1

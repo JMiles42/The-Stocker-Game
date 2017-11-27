@@ -10,19 +10,29 @@ public class Player: Singleton<Player>
 	public Vector2I GridPosition = Vector2I.Zero;
 	public Vector2I TargetPosition = Vector2I.Zero;
 
-	public Vector2I[] path;
-
-
 	public MapReferance map;
+	public GridBlockListVariable grid;
+	public float moveSpeed;
 
 	public void OnEnable()
 	{
 		GameplayInputManager.Instance.OnBlockPressed += InstanceOnOnBlockPressed;
+		grid.OnMapFinishSpawning += SetPlayerToPos;
+		grid.OnMapFinishSpawning += OnStart;
+
 	}
 
 	public void OnDisable()
 	{
 		GameplayInputManager.Instance.OnBlockPressed -= InstanceOnOnBlockPressed;
+		grid.OnMapFinishSpawning -= SetPlayerToPos;
+		grid.OnMapFinishSpawning -= OnStart;
+	}
+
+
+	private void SetPlayerToPos()
+	{
+		Position = GridPosition.GetWorldPos().SetY(Position);
 	}
 
 	private void InstanceOnOnBlockPressed(GridBlock gridBlock, bool leftClick)
@@ -66,7 +76,6 @@ public class Player: Singleton<Player>
 
 	private IEnumerator MoveToPoint(TilePath tilePath)
 	{
-		path = tilePath.Path.ToArray();
 		Debug.Log("Moving Along Path");
 		foreach(var node in tilePath)
 		{
@@ -78,12 +87,44 @@ public class Player: Singleton<Player>
 					GridPosition = node;
 					break;
 				}
-				Position += ((node - GridPosition).GetWorldPos() * Time.deltaTime).SetY(0f);
+				Position += ((node - GridPosition).GetWorldPos() * Time.deltaTime * moveSpeed).SetY(0f);
 
 				yield return null;
 			}
 		}
 		movingCoroutine = null;
+	}
+
+	private IEnumerator GetPoint()
+	{
+		while(true)
+		{
+			while(movingCoroutine.IsNotNull())
+			{
+				yield return null;
+			}
+			if(movingCoroutine.IsNull())
+			{
+				TargetPosition = new Vector2I(Random.Range(0, map.BuiltMap.Width), Random.Range(0, map.BuiltMap.Height));
+				PathRequestManager.RequestPath(GridPosition, TargetPosition, map.BuiltMap, OnPathFound);
+			}
+			//yield return new WaitForSeconds(5);
+		}
+	}
+
+	void OnStart()
+	{
+		StartCoroutine(GetPoint());
+	}
+
+	public void SetPosInGrid(Vector2I newPos)
+	{
+		if(movingCoroutine.IsNotNull())
+		{
+			StopCoroutine(movingCoroutine);
+		}
+		GridPosition = newPos;
+		Position = newPos.GetWorldPos().SetY(Position);
 	}
 }
 

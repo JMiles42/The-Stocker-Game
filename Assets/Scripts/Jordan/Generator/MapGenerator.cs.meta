@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 88e87b4b0544ff644b739d721642851a
+timeCreated: 1491569658
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - settings: {fileID: 11400000, guid: 30bc30f90923f0a48bd5341c36df9bb0, type: 2}
+  - mapFolder: {instanceID: 0}
+  - tilePrefab: {instanceID: 0}
+  - navMeshSurface: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

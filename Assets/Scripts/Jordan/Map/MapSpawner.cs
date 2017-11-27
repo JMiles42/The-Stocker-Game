@@ -39,7 +39,7 @@ public class MapSpawner: JMilesBehavior, IEventListening
 						break;
 					case TileType.Wall:
 						gO.GetComponent<Renderer>().material.color = Color.blue;
-						gO.transform.localScale = Vector3.one.SetY(1.5f);
+						gO.transform.localScale = Vector3.one.SetY(2f);
 						break;
 					default:
 						throw new ArgumentOutOfRangeException();

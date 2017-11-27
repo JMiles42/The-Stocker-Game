@@ -6,16 +6,24 @@ using JMiles42;
 
 public static class Pathfinding
 {
-	//This will be what Jordans libary calls, it will pass
-	// (vector2 start, vector2 end, Map map), the map is accessable with both[x,y] and index
+	//This will be what Jordan's library calls, it will pass
+	// (vector2 start, vector2 end, Map map), the map is accessible with both[x,y] and index
 
 	//The map[x,y] data will have a Method bool IsWalkable()
 	public static void StartFindPath(Vector2I StartPos, Vector2I TargetPos, Map map)
 	{
-		FindPath(StartPos, TargetPos, map);
+		var path = FindPath(StartPos, TargetPos, map);
+
+		PathRequestManager.FinshedProcessingPath(path.Path, path.IsPathSuccess);
 	}
 
-	static Vector2I[] FindPath(Vector2I StartPosition, Vector2I TargetPosition, Map map)
+	public class PathFindingResult
+	{
+		public Vector2I[] Path;
+		public bool IsPathSuccess;
+	}
+
+	public static PathFindingResult FindPath(Vector2I StartPosition, Vector2I TargetPosition, Map map)
 	{
 		var dictionary = new Dictionary<Vector2I, Vector2IHeapable>(map.Length);
 		foreach(var tile in map.Tiles)
@@ -53,7 +61,7 @@ public static class Pathfinding
 					ClosedSet.Add(TargetNode);
 					break;
 				}
-				var neighbors = GetNeighbors(CurrentNode, map, dictionary);
+				var neighbors = GetNeighbors(CurrentNode, map, dictionary, true);
 				foreach(var neighbor in neighbors)
 				{
 					if(!map[neighbor].IsWalkable() || ClosedSet.Contains(neighbor))
@@ -61,11 +69,11 @@ public static class Pathfinding
 						continue;
 					}
 
-					int NewMovementCostToNeighour = CurrentNode.Gcost + GetDistance(CurrentNode, neighbor);
+					int NewMovementCostToNeighbor = CurrentNode.Gcost + GetDistance(CurrentNode, neighbor);
 
-					if(NewMovementCostToNeighour < neighbor.Gcost || !OpenSet.Contains(neighbor))
+					if(NewMovementCostToNeighbor < neighbor.Gcost || !OpenSet.Contains(neighbor))
 					{
-						neighbor.Gcost = NewMovementCostToNeighour;
+						neighbor.Gcost = NewMovementCostToNeighbor;
 						neighbor.Hcost = GetDistance(neighbor, TargetNode);
 						neighbor.NodeParent = CurrentNode;
 
@@ -77,8 +85,6 @@ public static class Pathfinding
 					}
 				}
 			}
-
-			//return Waypoints;
 		}
 		var Waypoints = new Vector2I[0];
 
@@ -87,12 +93,14 @@ public static class Pathfinding
 			Waypoints = RetracePath(StartNode, TargetNode).Select(a => a.Position).ToArray();
 		}
 
-		PathRequestManager.FinshedProcessingPath(Waypoints, IsPathSuccess);
-
-		return Waypoints;
+		return new PathFindingResult {Path = Waypoints, IsPathSuccess = IsPathSuccess};
 	}
 
-	public static List<Vector2IHeapable> GetNeighbors(Vector2IHeapable TilePoint, Map map, Dictionary<Vector2I, Vector2IHeapable> dictionary)
+	public static List<Vector2IHeapable> GetNeighbors(
+			Vector2IHeapable TilePoint,
+			Map map,
+			Dictionary<Vector2I, Vector2IHeapable> dictionary,
+			bool onlyGetPlus = false)
 	{
 		List<Vector2IHeapable> Neighbors = new List<Vector2IHeapable>();
 
@@ -103,6 +111,14 @@ public static class Pathfinding
 				if(x == 0 && y == 0)
 				{
 					continue;
+				}
+				if(onlyGetPlus)
+				{
+					if( (y ==  1 && x ==  1) || 
+						(y == -1 && x ==  1) || 
+						(y ==  1 && x == -1) || 
+						(y == -1 && x == -1))
+						continue;
 				}
 				var coord = new Vector2I(TilePoint.GridX + x, TilePoint.GridY + y);
 
@@ -116,7 +132,7 @@ public static class Pathfinding
 		return Neighbors;
 	}
 
-	static Vector2IHeapable[] RetracePath(Vector2IHeapable StartNode, Vector2IHeapable EndNode)
+	private static Vector2IHeapable[] RetracePath(Vector2IHeapable StartNode, Vector2IHeapable EndNode)
 	{
 		List<Vector2IHeapable> Path = new List<Vector2IHeapable> {EndNode};
 
@@ -127,6 +143,9 @@ public static class Pathfinding
 			Path.Add(CurrentNode);
 			CurrentNode = CurrentNode.NodeParent;
 		}
+		//Vector2IHeapable[] Waypoints;
+		//Waypoints = Path.ToArray();
+
 		Vector2IHeapable[] Waypoints = SimplifyPath(Path);
 		Array.Reverse(Waypoints);
 
@@ -152,7 +171,7 @@ public static class Pathfinding
 		return waypoints.ToArray();
 	}
 
-	static int GetDistance(Vector2IHeapable NodeA, Vector2IHeapable NodeB)
+	private static int GetDistance(Vector2IHeapable NodeA, Vector2IHeapable NodeB)
 	{
 		int DstX = Mathf.Abs(NodeA.GridX - NodeB.GridX);
 		int DstY = Mathf.Abs(NodeA.GridY - NodeB.GridY);

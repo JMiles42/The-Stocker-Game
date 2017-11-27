@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10be57897ccc3ff45b56fe4354f67988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Generator: {fileID: 11400000, guid: 1731e458b488454458b3720d6cfae753, type: 2}
+  Generator: {fileID: 11400000, guid: 3833e1a8fbfcb194daa809417fad5c66, type: 2}
   MapReferance: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
 --- !u!4 &368890566
 Transform:
@@ -664,6 +664,10 @@ Prefab:
     - target: {fileID: 4811419952356158, guid: f0e84e909929474459f0c095d4dd9780, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850725638233386, guid: f0e84e909929474459f0c095d4dd9780, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0e84e909929474459f0c095d4dd9780, type: 2}
