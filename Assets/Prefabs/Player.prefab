@@ -124,4 +124,8 @@ MonoBehaviour:
   GridPosition:
     x: 0
     y: 0
+  TargetPosition:
+    x: 0
+    y: 0
+  path: []
   map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}

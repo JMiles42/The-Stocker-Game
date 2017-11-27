@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 public class Heap <T> where T: IHeapItems<T>
 {
@@ -14,7 +13,7 @@ public class Heap <T> where T: IHeapItems<T>
 	public void Add(T item)
 	{
 		item.HeapIndex = CurrentItemCount;
-		Debug.Log($"Heap Count = {CurrentItemCount}");
+		//Debug.Log($"Heap Count = {CurrentItemCount}");
 		items[CurrentItemCount] = item;
 		SortUp(item);
 		CurrentItemCount++;

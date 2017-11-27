@@ -264,7 +264,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 368890564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4765625, y: 1.0527344, z: 3.4941406}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -291,19 +291,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.23911709
+      value: -0.22276637
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.3696432
+      value: 0.37972224
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.09904578
+      value: -0.1378774
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.8923995
+      value: -0.88722944
       objectReference: {fileID: 0}
     - target: {fileID: 4296622423121730, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
       propertyPath: m_RootOrder
@@ -351,10 +351,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 1202003399451390, guid: 39da220d0cf84e74f9e48ee58a339a23, type: 2}
-      propertyPath: m_Name
-      value: JMiles42.Systems.MenuManager.MenuManager
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39da220d0cf84e74f9e48ee58a339a23, type: 2}
   m_IsPrefabParent: 0
@@ -396,11 +392,6 @@ Prefab:
     - target: {fileID: 4011685226902032, guid: ad83b246bf3e49046b3203cfa8cdfd73, type: 2}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114955981985325666, guid: ad83b246bf3e49046b3203cfa8cdfd73,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ad83b246bf3e49046b3203cfa8cdfd73, type: 2}
