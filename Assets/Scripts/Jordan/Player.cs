@@ -114,7 +114,7 @@ public class Player: Singleton<Player>
 
 	void OnStart()
 	{
-		StartCoroutine(GetPoint());
+		//StartCoroutine(GetPoint());
 	}
 
 	public void SetPosInGrid(Vector2I newPos)
