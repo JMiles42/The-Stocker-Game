@@ -25,7 +25,7 @@ namespace JMiles42.Systems.MenuManager
 				{
 					foreach (var menu in menuStack)
 					{
-						if (menu != menuInstance)
+						if ((menu != menuInstance) && !menu.StayActiveUnderneath)
 							menu.gameObject.SetActive(false);
 
 						if (menu.DisableMenusUnderneath)
