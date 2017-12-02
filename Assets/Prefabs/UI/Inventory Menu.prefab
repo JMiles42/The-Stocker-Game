@@ -186,8 +186,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05df4e8e4bff3a04c9a6867096c3ef8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed: 0
-  DisableMenusUnderneath: 1
+  DestroyWhenClosed:
+    UseConstent: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  DisableMenusUnderneath:
+    UseConstent: 0
+    ConstantValue: 0
+    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
+      type: 2}
+  StayActiveUnderneath:
+    UseConstent: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
 --- !u!114 &114766175871601014
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -53,8 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ExitGameMenu: {fileID: 114759705695293932, guid: cab8724f87cf5ab4a9d294d7d3b4bc49,
     type: 2}
+  GameTypeMenu: {fileID: 0}
   InventoryMenu: {fileID: 114416259146304624, guid: 99ac89fa274668f4080b5c9960cf5bc4,
     type: 2}
+  MainMenu: {fileID: 114810764866829108, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
   PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
     type: 2}
   ShopMenu: {fileID: 114931524131379626, guid: ca8d1ec2f155b6249a259277ee46b938, type: 2}
