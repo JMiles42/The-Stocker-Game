@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using JMiles42.Events.UI;
 using JMiles42.Systems.MenuManager;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayGameMenu: SimpleMenu<PlayGameMenu>
@@ -31,8 +33,13 @@ public class PlayGameMenu: SimpleMenu<PlayGameMenu>
 
 	private IEnumerator LoadInLevel()
 	{
-		var load = SceneSafely.LoadSceneAsync("GameScene", LoadSceneMode.Additive, true);
+		var load = SceneSafely.LoadSceneAsync(1, LoadSceneMode.Additive, true);
+		load.completed += LoadOnCompleted;
 		yield return load;
+	}
+
+	private void LoadOnCompleted(AsyncOperation asyncOperation)
+	{
 		LoadingMenu.Hide();
 	}
 }
