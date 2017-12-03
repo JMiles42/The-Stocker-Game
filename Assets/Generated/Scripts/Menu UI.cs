@@ -6,6 +6,7 @@ namespace JMiles42.Systems.MenuManager
 		public ExitGameMenu ExitGameMenu;
 		public GameTypeMenu GameTypeMenu;
 		public InventoryMenu InventoryMenu;
+		public LoadingMenu LoadingMenu;
 		public MainMenu MainMenu;
 		public OptionsMenu OptionsMenu;
 		public PlayGameMenu PlayGameMenu;
@@ -17,6 +18,7 @@ namespace JMiles42.Systems.MenuManager
 		ExitGameMenu,
 		GameTypeMenu,
 		InventoryMenu,
+		LoadingMenu,
 		MainMenu,
 		OptionsMenu,
 		PlayGameMenu,

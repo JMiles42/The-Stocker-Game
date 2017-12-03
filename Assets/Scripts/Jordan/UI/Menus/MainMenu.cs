@@ -1,7 +1,7 @@
 ﻿using JMiles42.Events.UI;
 using JMiles42.Systems.MenuManager;
 
-public class MainMenu : SimpleMenu<MainMenu>
+public class MainMenu: SimpleMenu<MainMenu>
 {
 	public ButtonClickEventBase PlayGameBTN;
 	public ButtonClickEventBase OptionsGameBTN;
@@ -13,12 +13,11 @@ public class MainMenu : SimpleMenu<MainMenu>
 		PlayGameBTN.onMouseClick += OnPlayGameClick;
 		OptionsGameBTN.onMouseClick += OnOptionsGameClick;
 		ExitGameBTN.onMouseClick += OnExitGameClick;
-
 	}
 
 	private void OnPlayGameClick()
 	{
-		PlayGameMenu.Show();
+		GameTypeMenu.Show();
 	}
 
 	private void OnExitGameClick()
@@ -37,6 +36,5 @@ public class MainMenu : SimpleMenu<MainMenu>
 		PlayGameBTN.onMouseClick -= OnPlayGameClick;
 		OptionsGameBTN.onMouseClick -= OnOptionsGameClick;
 		ExitGameBTN.onMouseClick -= OnExitGameClick;
-
 	}
 }

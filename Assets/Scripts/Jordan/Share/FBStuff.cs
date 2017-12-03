@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class FBStuff: MonoBehaviour
 {
+#if FB
 	public string auth;
 
 	// Use this for initialization
@@ -64,4 +65,5 @@ public class FBStuff: MonoBehaviour
 					  $"{Result.AccessToken.Permissions}" +
 					  $"{Result.AccessToken.UserId}");
 	}
+#endif
 }
