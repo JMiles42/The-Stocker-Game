@@ -4,8 +4,9 @@
 public class GeneratedMap : MapGeneratorBase
 {
 	public MapData MapData;
-	public override Map GenerateMap()
+	public override Map GenerateMap(string seed)
 	{
+		MapData.Seed = seed;
 		MapGenerator.GenerateStartMapData(ref MapData);
 		return MapData.GetMap();
 	}

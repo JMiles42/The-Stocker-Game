@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using JMiles42;
-using JMiles42.Maths;
+using JMiles42.AdvancedVariables;
+using JMiles42.Extensions;
 using UnityEngine;
 
 public class MapCreator: MonoBehaviour
 {
+	public StringReference Seed;
 	public MapGeneratorBase Generator;
 	public MapReferance MapReferance;
 
 	void Start()
 	{
-		if(MapReferance && Generator)
-			MapReferance.BuiltMap = Generator.GenerateMap();
+		if(MapReferance && Generator && Seed.Value.IsNotNull())
+			MapReferance.BuiltMap = Generator.GenerateMap(Seed.Value);
 		//StartCoroutine(MapYaay());
 	}
 

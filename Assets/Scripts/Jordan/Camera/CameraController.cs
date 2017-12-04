@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using JMiles42.Attributes;
 using JMiles42.Components;
 using JMiles42.Extensions;
 using JMiles42.UnityInterfaces;
@@ -39,8 +38,11 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public MapReferance MapReferance;
 	public GridBlockListVariable GridBlockReferance;
+	public MapReferance MapReference;
+	public GridBlockListVariable GridBlockReference;
 
 	void Start()
+	private void Start()
 	{
 		if(Camera.IsNull())
 		{
@@ -62,8 +64,8 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved += OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove += OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom += OnScreenZoom;
-		//MapReferance.OnMapUpdate += CalculateLimets;
-		GridBlockReferance.OnMapFinishSpawning += CalculateLimets;
+		//MapReference.OnMapUpdate += CalculateLimits;
+		GridBlockReferance.OnMapFinishSpawning += CalculateLimits;
 	}
 
 	public void OnDisable()
@@ -72,8 +74,6 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenMoved -= OnScreenMoved;
 		GameplayInputManager.Instance.OnScreenEndMove -= OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom -= OnScreenZoom;
-		//MapReferance.OnMapUpdate -= CalculateLimets;
-		GridBlockReferance.OnMapFinishSpawning -= CalculateLimets;
 	}
 
 	private void OnScreenZoom(float amount)
@@ -102,7 +102,7 @@ public class CameraController: JMilesBehavior, IEventListening
 	public Vector3 minPos;
 	public Vector3 maxPos;
 
-	public void CalculateLimets()
+	public void CalculateLimits()
 	{
 		var f = GridBlockReferance.Value.First();
 		var l = GridBlockReferance.Value.Last();

@@ -44,12 +44,15 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 			GameplayInputManager.Instance.GridBlockPressed(gB, false);
 	}
 
-	public GridBlock GetGridBlock(Vector2 pos)
+	public GridBlock GetGridBlock(Vector2 screenPos)
 	{
 		if(Camera == null)
 			Camera = Camera.main;
 
-		var ray = Camera.ScreenPointToRay(pos);
+		if(!Camera.rect.Contains(Camera.ScreenToViewportPoint(screenPos)))
+			return null;
+
+		var ray = Camera.ScreenPointToRay(screenPos);
 		var rayhit = new RaycastHit();
 		if(Physics.Raycast(ray, out rayhit, 500f))
 		{
@@ -60,10 +63,7 @@ public class GridRayShooter: JMilesBehavior, IEventListening
 			{
 				var hitPosistion = rayhit.transform.GetComponent<GridRayHit>().GetHitPosistion(rayhit);
 				var gB = blocks.Value.Find(a => a.GridPosition == hitPosistion);
-				if(gB != null)
-				{
-					return gB;
-				}
+				return gB;
 			}
 		}
 		return null;

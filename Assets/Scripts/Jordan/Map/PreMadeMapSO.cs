@@ -4,5 +4,5 @@
 public class PreMadeMapSO: MapGeneratorBase {
 	public Map Map;
 
-	public override Map GenerateMap() { return new Map(Map); }
+	public override Map GenerateMap(string seed) { return new Map(Map); }
 }
