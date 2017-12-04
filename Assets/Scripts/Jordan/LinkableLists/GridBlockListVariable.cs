@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Grid List Variable", menuName = "ADV Variables/Custom/Grid List", order = 2)]
 [Serializable]
-[AdvancedFolderName("Game List", 8)]
+[AdvancedFolderName("The Stocker Lists", 15)]
 public class GridBlockListVariable: AdvancedListVariable<GridBlock>
 {
 	public Action OnMapFinishSpawning;
