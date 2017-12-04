@@ -2,5 +2,5 @@
 
 public abstract class MapGeneratorBase : JMilesScriptableObject
 {
-	public abstract Map GenerateMap();
+	public abstract Map GenerateMap(string seed);
 }
