@@ -6,7 +6,7 @@ using JMiles42.Generics;
 public class MapGenerator
 {
 	public const int MIN_MAP_SIZE = 10;
-	public const int MAX_MAP_SIZE = 100;
+	public const int MAX_MAP_SIZE = 60;
 
 	public static void GenerateStartMapData(ref MapData _mapData)
 	{
