@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using JMiles42.Attributes;
 using JMiles42.Components;
 using JMiles42.Extensions;
 using JMiles42.UnityInterfaces;
@@ -41,7 +42,6 @@ public class CameraController: JMilesBehavior, IEventListening
 	public MapReferance MapReference;
 	public GridBlockListVariable GridBlockReference;
 
-	void Start()
 	private void Start()
 	{
 		if(Camera.IsNull())

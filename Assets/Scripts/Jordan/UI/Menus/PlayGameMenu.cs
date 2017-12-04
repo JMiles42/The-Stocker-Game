@@ -11,10 +11,9 @@ public class PlayGameMenu: SimpleMenu<PlayGameMenu>
 
 	public override void OnEnable()
 	{
-		base.OnEnable();
+		//base.OnEnable();
 		ShopButton.onMouseClick += OnShopButtonClick;
 		StaticGlobalFlags.gameInteractable.Data = true;
-		LoadingMenu.Show();
 
 		StartCoroutine(LoadInLevel());
 	}
@@ -34,12 +33,19 @@ public class PlayGameMenu: SimpleMenu<PlayGameMenu>
 	private IEnumerator LoadInLevel()
 	{
 		var load = SceneSafely.LoadSceneAsync(1, LoadSceneMode.Additive, true);
-		load.completed += LoadOnCompleted;
-		yield return load;
-	}
+		//load.completed += LoadOnCompleted;
+		LoadingMenu.Show();
 
-	private void LoadOnCompleted(AsyncOperation asyncOperation)
-	{
+		while(!load.isDone)
+		{
+			LoadingMenu.InstanceType.LoadingBarFill = load.progress;
+			yield return null;
+		}
 		LoadingMenu.Hide();
 	}
+	//
+	//private void LoadOnCompleted(AsyncOperation asyncOperation)
+	//{
+	//	LoadingMenu.Hide();
+	//}
 }

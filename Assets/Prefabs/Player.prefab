@@ -80,6 +80,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -95,6 +96,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -127,7 +129,6 @@ MonoBehaviour:
   TargetPosition:
     x: 0
     y: 0
-  path: []
   map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
-  grid: {fileID: 11400000, guid: b51e8a7f1e7035a4da30c7df60272397, type: 2}
+  grid: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
   moveSpeed: 1

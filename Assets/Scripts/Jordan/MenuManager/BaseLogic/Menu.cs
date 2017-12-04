@@ -1,6 +1,5 @@
 ﻿using JMiles42.AdvancedVariables;
 using JMiles42.Components;
-using JMiles42.Extensions;
 using UnityEngine;
 
 namespace JMiles42.Systems.MenuManager
@@ -9,18 +8,52 @@ namespace JMiles42.Systems.MenuManager
 	{
 		protected static Menu<T> instance;
 
+		public static bool instanceNull
+		{
+			get { return instance == null; }
+		}
+
 		public static Menu<T> Instance
 		{
 			get
 			{
-				if(!instance.IsNull())
+				if(instance)
 					return instance;
-				instance = (T)FindObjectOfType(typeof(T));
-				//if (!instance)
-				//	Debug.LogError(typeof (T) + " is needed in the scene."); //Print error
+				instance = FindObjectOfType<T>();
+				if(!instance)
+					Debug.LogWarning(typeof(T) + " is needed in the scene."); //Print error
 				return instance;
 			}
-			private set { instance = value; }
+		}
+
+		public static bool InstanceNull
+		{
+			get { return Instance == null; }
+		}
+
+		protected static T instanceType;
+
+		public static bool instanceTypeNull
+		{
+			get { return instanceType == null; }
+		}
+
+		public static T InstanceType
+		{
+			get
+			{
+				if(instanceType)
+					return instanceType;
+				instanceType = FindObjectOfType<T>();
+				if(!instanceType)
+					Debug.LogWarning(typeof(T) + " is needed in the scene."); //Print error
+				return instanceType;
+			}
+		}
+
+		public static bool InstanceTypeNull
+		{
+			get { return InstanceType == null; }
 		}
 
 		protected virtual void Awake()
@@ -30,7 +63,7 @@ namespace JMiles42.Systems.MenuManager
 
 		protected virtual void OnDestroy()
 		{
-			Instance = null;
+			//Instance = null;
 		}
 
 		protected static void Open()

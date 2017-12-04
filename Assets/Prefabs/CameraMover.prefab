@@ -145,9 +145,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
+    y: 0.15
     width: 1
-    height: 1
+    height: 0.8
   near clip plane: 0.3
   far clip plane: 75
   field of view: 20
@@ -167,7 +167,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!81 &81991757475394098
 AudioListener:
   m_ObjectHideFlags: 1
@@ -203,7 +202,8 @@ MonoBehaviour:
   zoomMin: {fileID: 4464064051759846}
   zoomMax: {fileID: 4915055726165142}
   MapReferance: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
-  GridBlockReferance: {fileID: 11400000, guid: b51e8a7f1e7035a4da30c7df60272397, type: 2}
+  GridBlockReferance: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   minPos: {x: 0, y: 0, z: 0}
   maxPos: {x: 0, y: 0, z: 0}
 --- !u!114 &114798734805986320

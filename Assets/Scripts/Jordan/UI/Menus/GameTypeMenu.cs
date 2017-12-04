@@ -48,7 +48,7 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 	private static void PlayGame()
 	{
 		Close();
-		PlayGameMenu.Open();
+		PlayGameMenu.Show();
 	}
 
 	public override void OnDisable()
