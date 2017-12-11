@@ -156,21 +156,25 @@ MonoBehaviour:
     Axis: MouseL
     UnityAxis: MouseL
     m_Value: 0
+    m_DeadZone: 0.05
     ValueInverted: 0
   MiddleClick:
     Axis: MouseM
     UnityAxis: MouseM
     m_Value: 0
+    m_DeadZone: 0.05
     ValueInverted: 0
   SecondaryClick:
     Axis: MouseR
     UnityAxis: MouseR
     m_Value: 0
+    m_DeadZone: 0.05
     ValueInverted: 0
   ScrollWheel:
     Axis: MouseScroll
     UnityAxis: MouseScroll
     m_Value: 0
+    m_DeadZone: 0.05
     ValueInverted: 0
   TouchList: []
   TouchIndexesToRemove: 

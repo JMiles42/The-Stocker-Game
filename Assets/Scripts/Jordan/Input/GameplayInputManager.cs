@@ -68,13 +68,13 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		Input.backButtonLeavesApp = false;
 		MovementForCancelTouch = Screen.dpi * MovementForCancelTouch;
 
-		PrimaryClick.onKeyDown += OnPrimaryKeyDown;
-		SecondaryClick.onKeyDown += OnSecondaryKeyDown;
-		MiddleClick.onKeyDown += OnKeyMiddleDown;
-		MiddleClick.onKeyUp += OnKeyMiddleUp;
-		MiddleClick.onKey += OnKeyMiddle;
+		PrimaryClick.OnKeyDown += OnPrimaryKeyDown;
+		SecondaryClick.OnKeyDown += OnSecondaryKeyDown;
+		MiddleClick.OnKeyDown += OnKeyMiddleDown;
+		MiddleClick.OnKeyUp += OnKeyMiddleUp;
+		MiddleClick.OnKey += OnKeyMiddle;
 
-		ScrollWheel.onKey += OnScroll;
+		ScrollWheel.OnKey += OnScroll;
 	}
 
 	private void OnScroll(float amount) { OnScreenZoom.Trigger(amount); }
@@ -145,13 +145,13 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	public void OnDisable()
 	{
-		PrimaryClick.onKeyDown -= OnPrimaryKeyDown;
-		SecondaryClick.onKeyDown -= OnSecondaryKeyDown;
-		MiddleClick.onKeyDown -= OnKeyMiddleDown;
-		MiddleClick.onKeyUp -= OnKeyMiddleUp;
-		MiddleClick.onKey -= OnKeyMiddle;
+		PrimaryClick.OnKeyDown -= OnPrimaryKeyDown;
+		SecondaryClick.OnKeyDown -= OnSecondaryKeyDown;
+		MiddleClick.OnKeyDown -= OnKeyMiddleDown;
+		MiddleClick.OnKeyUp -= OnKeyMiddleUp;
+		MiddleClick.OnKey -= OnKeyMiddle;
 
-		ScrollWheel.onKey -= OnScroll;
+		ScrollWheel.OnKey -= OnScroll;
 	}
 
 	private void CheckTouches(Touch touch)

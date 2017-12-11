@@ -1,7 +1,7 @@
 ﻿using JMiles42.AdvancedVariables;
 using JMiles42.AdvancedVariables.Base;
 
-[AdvancedFolderName("The Stocker Lists", 8)]
-public class LootChestList : AdvancedListVariable<ScorableObject>
+[AdvFolderName("The Stocker Lists", 8)]
+public class LootChestList : AdvListVariable<ScorableObject>
 {
 }
