@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Facebook.Unity;
 using JMiles42.Extensions;
 using JMiles42.Systems.Screenshot;
 using UnityEngine;
+
+#if FB
+using Facebook.Unity;
+#endif
 
 public class FBStuff: MonoBehaviour
 {
