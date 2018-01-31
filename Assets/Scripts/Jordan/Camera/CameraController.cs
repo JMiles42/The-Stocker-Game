@@ -37,8 +37,6 @@ public class CameraController: JMilesBehavior, IEventListening
 	[SerializeField]
 	private Transform zoomMax;
 
-	public MapReferance MapReferance;
-	public GridBlockListVariable GridBlockReferance;
 	public MapReferance MapReference;
 	public GridBlockListVariable GridBlockReference;
 
@@ -65,7 +63,7 @@ public class CameraController: JMilesBehavior, IEventListening
 		GameplayInputManager.Instance.OnScreenEndMove += OnScreenEndMove;
 		GameplayInputManager.Instance.OnScreenZoom += OnScreenZoom;
 		//MapReference.OnMapUpdate += CalculateLimits;
-		GridBlockReferance.OnMapFinishSpawning += CalculateLimits;
+		GridBlockReference.OnMapFinishSpawning += CalculateLimits;
 	}
 
 	public void OnDisable()
@@ -104,8 +102,8 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public void CalculateLimits()
 	{
-		var f = GridBlockReferance.Value.First();
-		var l = GridBlockReferance.Value.Last();
+		var f = GridBlockReference.Value.First();
+		var l = GridBlockReference.Value.Last();
 
 		minPos = f.Position;
 		maxPos = l.Position;
