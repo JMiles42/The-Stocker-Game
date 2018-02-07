@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4811419952356158}
   - component: {fileID: 114738201732924836}
+  - component: {fileID: 114655118847385270}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -51,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594257719946398}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 1.0020001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4811419952356158}
@@ -80,6 +81,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -95,6 +97,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -110,6 +113,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594257719946398}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114655118847385270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850725638233386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e4341bc7e8fe0047843b8721f729d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ref: {fileID: 114288006440103932, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  RemoveOnDisable: 1
+  _referenceField: {fileID: 114738201732924836}
 --- !u!114 &114738201732924836
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,13 +138,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bcd6563b697a644ba87cf3c64fcd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  grid: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
   GridPosition:
-    x: 0
-    y: 0
+    Position:
+      x: 0
+      y: 0
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  moveSpeed:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114295608877739418, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+  distanceToNode:
+    UseConstant: 1
+    ConstantValue: 0.2
+    Variable: {fileID: 0}
   TargetPosition:
-    x: 0
-    y: 0
-  path: []
-  map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
-  grid: {fileID: 11400000, guid: b51e8a7f1e7035a4da30c7df60272397, type: 2}
-  moveSpeed: 1
+    Position:
+      x: 0
+      y: 0
+  CanMove:
+    UseConstant: 0
+    ConstantValue: 1
+    Variable: {fileID: 114818768726435666, guid: e41900d54225523488ea2bd8c3b9f762,
+      type: 2}

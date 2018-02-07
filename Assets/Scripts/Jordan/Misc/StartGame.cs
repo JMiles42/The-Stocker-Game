@@ -1,5 +1,5 @@
 ﻿
-using JMiles42.Components;
+using JMiles42;
 
 public class StartGame: JMilesBehavior
 {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FBInputManageas: MonoBehaviour
 {
+#if FB
 	[SerializeField]
 	private FBStuff _fbStuff;
 
@@ -25,4 +26,5 @@ public class FBInputManageas: MonoBehaviour
 			FBStuff.ScreenShoot();
 		}
 	}
+#endif
 }

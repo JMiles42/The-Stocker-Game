@@ -51,4 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29458f33a24a42446beb8f0a2660ea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectToSpawn: {fileID: 0}
+  Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  ObjectToSpawn: {fileID: 1526659883149372, guid: 0ec40af08c8384440a2070141098e191,
+    type: 2}
+  Player: {fileID: 114288006440103932, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  MovePlayerToClickPosAndPlace:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}

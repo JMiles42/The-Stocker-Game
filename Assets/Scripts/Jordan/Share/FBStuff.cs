@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using Facebook.Unity;
-using JMiles42.Extensions;
-using JMiles42.Systems.Screenshot;
 using UnityEngine;
+
+#if FB
+using Facebook.Unity;
+#endif
 
 public class FBStuff: MonoBehaviour
 {
+#if FB
 	public string auth;
 
 	// Use this for initialization
@@ -64,4 +66,5 @@ public class FBStuff: MonoBehaviour
 					  $"{Result.AccessToken.Permissions}" +
 					  $"{Result.AccessToken.UserId}");
 	}
+#endif
 }

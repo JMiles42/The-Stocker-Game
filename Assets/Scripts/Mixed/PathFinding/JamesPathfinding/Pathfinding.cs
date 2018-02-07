@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using JMiles42;
+using JMiles42.Grid;
+using JMiles42.Types;
 
 public static class Pathfinding
 {
@@ -14,21 +15,25 @@ public static class Pathfinding
 	{
 		var path = FindPath(StartPos, TargetPos, map);
 
-		PathRequestManager.FinshedProcessingPath(path.Path, path.IsPathSuccess);
+		PathRequestManager.FinishedProcessingPath(path.Path, path.IsPathSuccess);
 	}
 
 	public class PathFindingResult
 	{
-		public Vector2I[] Path;
+		public TilePath Path;
 		public bool IsPathSuccess;
 	}
 
 	public static PathFindingResult FindPath(Vector2I StartPosition, Vector2I TargetPosition, Map map)
 	{
-		var dictionary = new Dictionary<Vector2I, Vector2IHeapable>(map.Length);
-		foreach(var tile in map.Tiles)
+		var dictionary = new Dictionary<Vector2I, Vector2IHeapable>(map.TotalCount);
+		for(var x = 0; x < map.Width; x++)
 		{
-			dictionary.Add(tile.Position, tile.Position);
+			for(var y = 0; y < map.Height; y++)
+			{
+				var vec2 = new Vector2I(x, y);
+				dictionary.Add(vec2, vec2);
+			}
 		}
 
 		bool IsPathSuccess = false;
@@ -43,7 +48,7 @@ public static class Pathfinding
 		var StartNode = dictionary[StartPosition];
 		var TargetNode = dictionary[TargetPosition];
 
-		Heap<Vector2IHeapable> OpenSet = new Heap<Vector2IHeapable>(map.Length);
+		Heap<Vector2IHeapable> OpenSet = new Heap<Vector2IHeapable>(map.TotalCount);
 		HashSet<Vector2IHeapable> ClosedSet = new HashSet<Vector2IHeapable>();
 
 		if(StartNode.IsWalkable && TargetNode.IsWalkable)
@@ -86,14 +91,13 @@ public static class Pathfinding
 				}
 			}
 		}
-		var Waypoints = new Vector2I[0];
-
+		IEnumerable<GridPosition> waypoints = new GridPosition[0];
 		if(IsPathSuccess)
 		{
-			Waypoints = RetracePath(StartNode, TargetNode).Select(a => a.Position).ToArray();
+			waypoints = RetracePath(StartNode, TargetNode).Select(a => (GridPosition)a.Position);
 		}
 
-		return new PathFindingResult {Path = Waypoints, IsPathSuccess = IsPathSuccess};
+		return new PathFindingResult {Path = new TilePath(waypoints), IsPathSuccess = IsPathSuccess};
 	}
 
 	public static List<Vector2IHeapable> GetNeighbors(
@@ -143,8 +147,6 @@ public static class Pathfinding
 			Path.Add(CurrentNode);
 			CurrentNode = CurrentNode.NodeParent;
 		}
-		//Vector2IHeapable[] Waypoints;
-		//Waypoints = Path.ToArray();
 
 		Vector2IHeapable[] Waypoints = SimplifyPath(Path);
 		Array.Reverse(Waypoints);

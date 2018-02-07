@@ -1,4 +1,4 @@
-﻿using JMiles42.ScriptableObjects;
+﻿using JMiles42;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Placeable Item", menuName = "SO/Placeable Item", order = 0)]

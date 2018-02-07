@@ -1,68 +1,142 @@
-﻿using JMiles42.Components;
-using JMiles42.Extensions;
+﻿using JMiles42.AdvVar;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManager
+namespace JMiles42.Systems.MenuManaging
 {
-	public abstract class Menu<T>: Menu where T: Menu<T>
-	{
-		protected static Menu<T> instance;
+    public abstract class Menu<T>: Menu
+        where T: Menu<T>
+    {
+        protected static Menu<T> instance;
 
-		public static Menu<T> Instance
-		{
-			get
-			{
-				if (!instance.IsNull())
-					return instance;
-				instance = (T) FindObjectOfType(typeof (T));
-				//if (!instance)
-				//	Debug.LogError(typeof (T) + " is needed in the scene."); //Print error
-				return instance;
-			}
-			private set { instance = value; }
-		}
+        protected static T instanceType;
 
-		protected virtual void Awake() { instance = this; }
+        public static bool instanceNull => instance == null;
 
-		protected virtual void OnDestroy() { Instance = null; }
+        public static Menu<T> Instance
+        {
+            get
+            {
+                if(instance)
+                    return instance;
+                instance = (T)FindObjectOfType(typeof(T));
+                if(!instance)
+                    Debug.LogWarning(typeof(T) + " is needed in the scene."); //Print error
+                return instance;
+            }
+        }
 
-		protected static void Open()
-		{
-			if (Instance == null)
-				MenuManager.Instance.CreateInstance<T>();
+        public static bool InstanceNull => Instance == null;
 
-			MenuManager.Instance.OpenMenu(Instance);
-		}
+        public static bool instanceTypeNull => instanceType == null;
 
-		public virtual void OnEnable() { Open(); }
+        public static T InstanceType
+        {
+            get
+            {
+                if(instanceType)
+                    return instanceType;
+                instanceType = (T)FindObjectOfType(typeof(T));
+                if(!instanceType)
+                    Debug.LogWarning(typeof(T) + " is needed in the scene."); //Print error
+                return instanceType;
+            }
+        }
 
-		public virtual void OnDisable() {}
+        public static bool InstanceTypeNull => InstanceType == null;
 
-		protected static void Close()
-		{
-			if (Instance == null)
-			{
-				Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof (T));
-				return;
-			}
+        protected virtual void Awake()
+        {
+            instance = this;
+        }
 
-			MenuManager.Instance.CloseMenu(Instance);
-		}
+        protected virtual void OnDestroy()
+        {
+            instance = null;
+        }
 
-		public override void OnBackPressed() { Close(); }
-	}
+        public static void Open()
+        {
+            if(Instance == null)
+                MenuManager.Instance.CreateInstance<T>();
 
-	public abstract class Menu: JMilesBehavior
-	{
-		[Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public bool DestroyWhenClosed = false;
+            MenuManager.Instance.OpenMenu(Instance);
+        }
 
-		[Tooltip("Disable menus that are under this one in the stack")] public bool DisableMenusUnderneath = true;
+        public override void OpenByRef()
+        {
+            Open();
+        }
 
-		public abstract void OnBackPressed();
+        public virtual void OnEnable()
+        {
+            Open();
+        }
 
-		public static void MenuManagerGoBack() { MenuManager.OnBackPressed(); }
-		public void GoBack() { MenuManager.OnBackPressed(); }
+        public virtual void OnDisable()
+        { }
 
-		public static bool HasInstance{ get; protected set; }
-	}
+        protected static void Close()
+        {
+            if(Instance == null)
+            {
+                Debug.LogErrorFormat("Trying to close menu {0} but Instance is null", typeof(T));
+                return;
+            }
+
+            MenuManager.Instance.CloseMenu(Instance);
+        }
+
+        public override void OnBackPressed()
+        {
+            Close();
+        }
+
+        public static void DestroyInstance()
+        {
+            if(Instance)
+            {
+                Instance.OnBeforeDestroy();
+                Destroy(Instance.gameObject);
+            }
+            else if(InstanceType)
+            {
+                InstanceType.OnBeforeDestroy();
+                Destroy(InstanceType);
+            }
+        }
+
+        public virtual void OnBeforeDestroy()
+        { }
+
+        public override void Destroy()
+        {
+            DestroyInstance();
+        }
+    }
+
+    public abstract class Menu: JMilesBehavior
+    {
+        [Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public BoolReference DestroyWhenClosed = false;
+
+        [Tooltip("Disable menus that are under this one in the stack")] public BoolReference DisableMenusUnderneath = true;
+
+        public static bool HasInstance { get; protected set; }
+
+        public abstract void OnBackPressed();
+
+        public static void MenuManagerGoBack()
+        {
+            MenuManager.OnBackPressed();
+        }
+
+        public void GoBack()
+        {
+            MenuManager.OnBackPressed();
+        }
+
+
+
+        public abstract void OpenByRef();
+        public abstract void Destroy();
+    }
 }

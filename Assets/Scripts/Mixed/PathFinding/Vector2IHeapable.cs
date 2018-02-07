@@ -1,17 +1,16 @@
-﻿using JMiles42;
+﻿using JMiles42.Grid;
+using JMiles42.Types;
 
 public class Vector2IHeapable: IHeapItems<Vector2IHeapable>
 {
-	public bool IsWalkable;
-	public Vector2I Position;
-
 	public int Gcost;
 	public int Hcost;
+	public bool IsWalkable;
 
-	public int Fcost
-	{
-		get { return Gcost + Hcost; }
-	}
+	public Vector2IHeapable NodeParent;
+	public Vector2I Position;
+
+	public int Fcost => Gcost + Hcost;
 
 	public int GridX
 	{
@@ -23,27 +22,6 @@ public class Vector2IHeapable: IHeapItems<Vector2IHeapable>
 	{
 		get { return Position.y; }
 		set { Position.y = value; }
-	}
-
-	public Vector2IHeapable NodeParent;
-	private int heapIndex;
-
-	public int HeapIndex
-	{
-		get { return heapIndex; }
-
-		set { heapIndex = value; }
-	}
-
-	public int CompareTo(Vector2IHeapable NodeToCompare)
-	{
-		int compare = Fcost.CompareTo(NodeToCompare.Fcost);
-		if(compare == 0)
-		{
-			compare = Hcost.CompareTo(NodeToCompare.Hcost);
-		}
-
-		return -compare;
 	}
 
 	public Vector2IHeapable(bool _iswalkable, Vector2I pos)
@@ -62,13 +40,23 @@ public class Vector2IHeapable: IHeapItems<Vector2IHeapable>
 	public Vector2IHeapable()
 	{ }
 
-	public static implicit operator Vector2IHeapable(Vector2I input)
-	{
-		return new Vector2IHeapable {Position = input};
-	}
+	public static implicit operator Vector2IHeapable(Vector2I input) => new Vector2IHeapable
+																		{
+																			Position = input
+																		};
 
-	public static implicit operator Vector2I(Vector2IHeapable input)
+	public static implicit operator Vector2I(Vector2IHeapable input) => new Vector2I(input.Position);
+
+	public static implicit operator GridPosition(Vector2IHeapable input) => new GridPosition(input.Position);
+
+	public int HeapIndex { get; set; }
+
+	public int CompareTo(Vector2IHeapable NodeToCompare)
 	{
-		return new Vector2I(input.Position);
+		var compare = Fcost.CompareTo(NodeToCompare.Fcost);
+		if(compare == 0)
+			compare = Hcost.CompareTo(NodeToCompare.Hcost);
+
+		return -compare;
 	}
 }

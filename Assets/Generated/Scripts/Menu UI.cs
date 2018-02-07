@@ -1,10 +1,14 @@
-namespace JMiles42.Systems.MenuManager
+namespace JMiles42.Systems.MenuManaging
 {
 	[System.Serializable]
 	public partial class MenuManager
 	{
 		public ExitGameMenu ExitGameMenu;
+		public GameTypeMenu GameTypeMenu;
 		public InventoryMenu InventoryMenu;
+		public LoadingMenu LoadingMenu;
+		public MainMenu MainMenu;
+		public OptionsMenu OptionsMenu;
 		public PlayGameMenu PlayGameMenu;
 		public ShopMenu ShopMenu;
 		public SpawnMenu SpawnMenu;
@@ -12,7 +16,11 @@ namespace JMiles42.Systems.MenuManager
 	public enum MenuTypes {
 		None,
 		ExitGameMenu,
+		GameTypeMenu,
 		InventoryMenu,
+		LoadingMenu,
+		MainMenu,
+		OptionsMenu,
 		PlayGameMenu,
 		ShopMenu,
 		SpawnMenu,
