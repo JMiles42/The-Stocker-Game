@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JMiles42.Editor;
+﻿using JMiles42.Editor.Windows;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;

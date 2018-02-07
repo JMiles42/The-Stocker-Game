@@ -1,6 +1,6 @@
-﻿using JMiles42.Events.UI;
+﻿using JMiles42.JUI.Button;
 using UnityEngine;
-using JMiles42.Systems.MenuManager;
+using JMiles42.Systems.MenuManaging;
 
 public class ExitGameMenu: SimpleMenu<ExitGameMenu>
 {

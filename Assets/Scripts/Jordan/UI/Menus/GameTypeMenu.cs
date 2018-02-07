@@ -1,8 +1,8 @@
-﻿using System;
-using JMiles42.AdvancedVariables;
-using JMiles42.Events.UI;
-using JMiles42.Systems.MenuManager;
+﻿using JMiles42.AdvVar;
+using JMiles42.JUI.Button;
+using JMiles42.Systems.MenuManaging;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 {
@@ -21,9 +21,9 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 		PlayGameBTN.onMouseClick += OnPlayGameBTN;
 		PlaySeededGameBTN.onMouseClick += OnPlaySeededGameBTN;
 		SeedUsed.Value = false;
-		SeedInputField.text = Seed.Value = "";
+		SeedInputField.text = Seed.Value;
 		SeedInputField.onValueChanged.AddListener(OnValueChanged);
-		PlaySeededGameBTN.Button.interactable = false;
+		OnValueChanged(SeedInputField.text);
 	}
 
 	private void OnValueChanged(string text)
@@ -33,7 +33,7 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 
 	private void OnPlayGameBTN()
 	{
-		Seed.Value = JMiles42.Maths.RandomStrings.GetRandomString(8);
+		Seed.Value = JMiles42.Maths.Random.RandomStrings.GetRandomString(8);
 		SeedUsed.Value = false;
 		PlayGame();
 	}
@@ -48,7 +48,13 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 	private static void PlayGame()
 	{
 		Close();
-		PlayGameMenu.Show();
+		LoadNextScene();
+		//PlayGameMenu.Show();
+	}
+
+	private static void LoadNextScene()
+	{
+		SceneManager.LoadScene(1, LoadSceneMode.Single);
 	}
 
 	public override void OnDisable()

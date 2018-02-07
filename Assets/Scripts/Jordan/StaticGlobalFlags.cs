@@ -1,4 +1,4 @@
-﻿using JMiles42.Events;
+﻿using JMiles42.EventVariable;
 
 public static class StaticGlobalFlags
 {

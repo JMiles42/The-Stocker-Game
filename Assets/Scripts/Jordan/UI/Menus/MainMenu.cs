@@ -1,5 +1,5 @@
-﻿using JMiles42.Events.UI;
-using JMiles42.Systems.MenuManager;
+﻿using JMiles42.JUI.Button;
+using JMiles42.Systems.MenuManaging;
 
 public class MainMenu: SimpleMenu<MainMenu>
 {

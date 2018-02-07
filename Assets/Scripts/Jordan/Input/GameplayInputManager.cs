@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JMiles42.AdvVar.InputSystem;
 using JMiles42.Attributes;
-using JMiles42.Extensions;
+using JMiles42.CSharpExtensions;
 using JMiles42.Generics;
-using JMiles42.Systems.InputManager;
-using JMiles42.UnityInterfaces;
+using JMiles42.Interfaces;
+using JMiles42.UnityScriptsExtensions;
 using UnityEngine;
 
 public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
 {
-	[SerializeField] InputAxis PrimaryClick = "MouseL";
-	[SerializeField] InputAxis MiddleClick = "MouseM";
-	[SerializeField] InputAxis SecondaryClick = "MouseR";
-	[SerializeField] InputAxis ScrollWheel = "MouseScroll";
+	public AdvInputAxisVariable PrimaryClick;
+	public AdvInputAxisVariable MiddleClick;
+	public AdvInputAxisVariable SecondaryClick;
+	public AdvInputAxisVariable ScrollWheel;
 
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
 	public List<int> TouchIndexesToRemove = new List<int>(0);
@@ -24,43 +25,35 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	public Vector2 MousePosition;
 
-	public event Action<Vector2> OnPrimaryClick = (a) =>
+	public static event Action<Vector2> OnPrimaryClick = (a) =>
 												  {
 													  //Debug.Log("Primary" + a);
 												  };
 
-	public event Action<Vector2> OnSecondaryClick = (a) =>
+	public static event Action<Vector2> OnSecondaryClick = (a) =>
 													{
 														//Debug.Log("Secondary" + a);
 													};
 
-	public event Action<Vector2> OnScreenStartMove = a =>
+	public static event Action<Vector2> OnScreenStartMove = a =>
 													 {
 														 //Debug.Log("Screen Moved" + a);
 													 };
 
-	public event Action<Vector2> OnScreenMoved = a =>
+	public static event Action<Vector2> OnScreenMoved = a =>
 												 {
 													 //Debug.Log("Screen Moved" + a);
 												 };
 
-	public event Action<Vector2> OnScreenEndMove = a =>
+	public static event Action<Vector2> OnScreenEndMove = a =>
 												   {
 													   //Debug.Log("Screen Moved" + a);
 												   };
 
-	public event Action<float> OnScreenZoom = a =>
+	public static event Action<float> OnScreenZoom = a =>
 											  {
 												  //Debug.Log("Screen Moved" + a);
 											  };
-
-	/// <summary>
-	/// Bool is true if it was a left click, false for right click
-	/// </summary>
-	public event Action<GridBlock, bool> OnBlockPressed = (a, b) =>
-														  {
-															  //Debug.Log("Screen Moved" + a);
-														  };
 
 	public void OnEnable()
 	{
@@ -82,10 +75,10 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public void Update()
 	{
 		MousePosition = Input.mousePosition;
-		PrimaryClick.DoUpdateAndInput();
-		MiddleClick.DoUpdateAndInput();
-		SecondaryClick.DoUpdateAndInput();
-		ScrollWheel.DoUpdateAndInput(0f);
+		PrimaryClick.UpdateDataAndCallEvents();
+		MiddleClick.UpdateDataAndCallEvents();
+		SecondaryClick.UpdateDataAndCallEvents();
+		ScrollWheel.UpdateDataAndCallEvents(0f);
 
 		if ((touchCount = Input.touchCount) == 0)
 		{
@@ -114,9 +107,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		TouchIndexesToRemove.Clear();
 	}
 
-	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition.GetVector2()); }
+	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition.ToVector2()); }
 
-	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition.GetVector2()); }
+	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition.ToVector2()); }
 
 	private Vector2 MouseStartPos;
 
@@ -140,8 +133,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	private void OnKeyMiddle(float amount) { OnScreenMoved.Trigger(MouseDelta); }
 
 	private void DoTouchPanCamera(SavedTouchData touch) {}
-
-	public void GridBlockPressed(GridBlock block, bool leftClick) { OnBlockPressed.Trigger(block, leftClick); }
 
 	public void OnDisable()
 	{

@@ -1,4 +1,4 @@
-namespace JMiles42.Systems.MenuManager
+namespace JMiles42.Systems.MenuManaging
 {
 	[System.Serializable]
 	public partial class MenuManager

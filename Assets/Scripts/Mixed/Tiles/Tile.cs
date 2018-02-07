@@ -1,4 +1,4 @@
-﻿using JMiles42;
+﻿using JMiles42.Types;
 
 [System.Serializable]
 public class Tile

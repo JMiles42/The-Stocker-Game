@@ -1,119 +1,100 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using JMiles42.CSharpExtensions;
 using JMiles42.Editor;
-using JMiles42.Extensions;
+using JMiles42.Editor.Tools;
+using JMiles42.Editor.Windows;
+using JMiles42.Systems.MenuManaging;
 using UnityEditor;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManager.Editor
-{
-	public class MenuNameWindow: Window<MenuNameWindow>
-	{
-		private const string WindowTitle = "Menu UI";
+public class MenuNameWindow: Window<MenuNameWindow> {
+	private const string WindowTitle = "Menu UI";
 
-		protected static string DataFilePath { get; } = FileStrings.ASSETS_GENERATED_SCRIPTS + "/" + WindowTitle + FileStrings.SCRIPTS_FILE_EXTENSION;
+	protected static string TagFilePath { get; } = FileStrings.ASSETS_GENERATED_SCRIPTS + "/" + WindowTitle + FileStrings.SCRIPTS_FILE_EXTENSION;
 
-		[MenuItem("JMiles42/" + WindowTitle)]
-		static void Init()
-		{
-			GetWindow();
+	[MenuItem("JMiles42/" + WindowTitle)]
+	static void Init() {
+		GetWindow();
 
-			if(File.Exists(DataFilePath))
-				NamesList = new List<string>(File.ReadAllLines(DataFilePath));
-			else
-			{
-				NamesList = new List<string>();
+		if (File.Exists(TagFilePath))
+			NamesList = new List<string>(File.ReadAllLines(TagFilePath));
+		else {
+			NamesList = new List<string>();
+		}
+
+		window.titleContent = new GUIContent(WindowTitle);
+		GetTypeList();
+	}
+
+	protected static List<string> NamesList { get; set; }
+
+	protected override void DrawGUI() {
+		if (NamesList.IsNullOrEmpty())
+			NamesList = GetTypeList();
+		using (new GUILayout.VerticalScope(GUI.skin.box))
+			DrawList();
+		using (new GUILayout.VerticalScope(GUI.skin.box))
+			DrawButtons();
+	}
+
+	private static void DrawButtons() {
+		using (new GUILayout.HorizontalScope()) {
+			if (JMilesGUILayoutEvents.Button("Generate Class")) {
+				GenerateClassFile();
 			}
-
-			window.titleContent = new GUIContent(WindowTitle);
-		}
-
-		protected static List<string> NamesList { get; set; }
-
-		protected override void DrawGUI()
-		{
-			if(NamesList.IsNullOrEmpty())
-				NamesList = GetMenuTypesNamesList();
-			using(new GUILayout.VerticalScope(GUI.skin.box))
-				DrawList();
-			using(new GUILayout.VerticalScope(GUI.skin.box))
-				DrawButtons();
-		}
-
-		private static void DrawButtons()
-		{
-			using(new GUILayout.HorizontalScope())
-			{
-				if(JMilesGUILayoutEvents.Button("Generate Class"))
-				{
-					GenerateClassFile();
-				}
-				if(JMilesGUILayoutEvents.Button("Search For New Menus"))
-				{
-					NamesList = GetMenuTypesNamesList();
-				}
+			if (JMilesGUILayoutEvents.Button("Search For New Menus")) {
+				NamesList = GetTypeList();
 			}
 		}
+	}
 
-		public static List<Type> GetMenuTypesList()
-		{
-			var list = new List<Type>();
-			foreach(var assembly in AppDomain.CurrentDomain.GetAssemblies())
-			{
-				list.AddRange(assembly.GetTypes().
-									   Where(t => t.BaseType != null && t.BaseType.IsGenericType && (t.BaseType.GetGenericTypeDefinition() == typeof(SimpleMenu<>))));
-			}
+	public static List<string> GetTypeList() {
+		var list = new List<string>(
+								    typeof (JMiles42.Systems.MenuManaging.Menu).Assembly.GetTypes().
+														  Where(t => t.BaseType != null &&
+														  !t.IsGenericType &&
+														  t.IsSubclassOf(typeof(JMiles42.Systems.MenuManaging.Menu))
+														  //(t.BaseType.GetGenericTypeDefinition() == typeof (SimpleMenu<>))
+														  ).Select(s => s.ToString()));
+		return list;
+	}
 
-			return list;
+	protected void DrawList() {
+		foreach (var nam in NamesList) {
+			using (new GUILayout.VerticalScope(GUI.skin.box))
+				GUILayout.Label(nam);
 		}
+	}
 
-		public static List<string> GetMenuTypesNamesList()
-		{
-			return GetMenuTypesList().Select(a => a.Name).ToList();
-		}
+	public static void GenerateClassFile() { GenerateClassFile(NamesList); }
 
-		protected void DrawList()
-		{
-			foreach(var nam in NamesList)
-			{
-				using(new GUILayout.VerticalScope(GUI.skin.box))
-					GUILayout.Label(nam);
-			}
-		}
+	public static void GenerateClassFile(IEnumerable<string> strs) {
+		var list = ConvertNamesListToCode(strs);
+		ScriptGenerators.WriteFile(TagFilePath, list);
+		AssetDatabase.Refresh();
+	}
 
-		public static void GenerateClassFile()
-		{
-			GenerateClassFile(NamesList);
-		}
-
-		public static void GenerateClassFile(IEnumerable<string> strs)
-		{
-			var list = ConvertNamesListToCode(strs);
-			ScriptGenerators.WriteFile(DataFilePath, list);
-			AssetDatabase.Refresh();
-		}
-
-		private static string ConvertNamesListToCode(IEnumerable<string> strs)
-		{
-			var sb = new StringBuilder(@"namespace JMiles42.Systems.MenuManager
+	private static string ConvertNamesListToCode(IEnumerable<string> strs) {
+		var sb = new StringBuilder(
+								   @"namespace JMiles42.Systems.MenuManaging
 {
 	[System.Serializable]
 	public partial class MenuManager
 	{
 ");
 
-			foreach(var name in strs)
-				sb.AppendFormat("\t\tpublic {0} {0};\n", name);
-			sb.AppendLine();
-			var l = strs.ToList();
-			l.Insert(0, "None");
-			sb.Append(ScriptGenerators.CreateEnumString("MenuTypes", l));
-			sb.Append(@"	}
+		foreach (var name in strs)
+			sb.AppendFormat("\t\tpublic {0} {0};\n", name);
+		sb.AppendLine();
+		var l = strs.ToList();
+		l.Insert(0, "None");
+		sb.Append(ScriptGenerators.CreateEnumString("MenuTypes", l));
+		sb.Append(
+				  @"	}
 }");
-			return sb.ToString();
-		}
+		return sb.ToString();
 	}
 }

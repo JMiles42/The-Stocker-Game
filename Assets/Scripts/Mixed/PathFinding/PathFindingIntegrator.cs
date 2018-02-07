@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using JMiles42;
+using JMiles42.Types;
 
 public static class PathFindingIntegrator
 {

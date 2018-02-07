@@ -1,13 +1,18 @@
-﻿namespace JMiles42.Systems.MenuManager
+﻿namespace JMiles42.Systems.MenuManaging
 {
 	/// <summary>
-	/// A base menu class that implements parameterless Show and Hide methods
+	///     A base menu class that implements parameterless Show and Hide methods
 	/// </summary>
 	public abstract class SimpleMenu<T>: Menu<T> where T: SimpleMenu<T>
 	{
-		public static void Show() { Open(); }
+		public static void Show()
+		{
+			Open();
+		}
 
-
-		public static void Hide() { Close(); }
+		public static void Hide()
+		{
+			Close();
+		}
 	}
 }

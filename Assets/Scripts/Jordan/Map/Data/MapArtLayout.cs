@@ -1,6 +1,6 @@
 ﻿using System;
-using JMiles42.Extensions;
-using JMiles42.ScriptableObjects;
+using JMiles42;
+using JMiles42.CSharpExtensions;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Map Layout", menuName = "SO/Map/Map Layout", order = 0)]

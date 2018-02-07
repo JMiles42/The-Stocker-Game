@@ -904,19 +904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074c8648c6d63aa48851134186f82387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  DisableMenusUnderneath:
-    UseConstent: 0
-    ConstantValue: 0
-    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
-      type: 2}
-  StayActiveUnderneath:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
+  DestroyWhenClosed: 128
+  DisableMenusUnderneath: 128
   PlayGameBTN: {fileID: 114859172074325062}
   OptionsGameBTN: {fileID: 114582220355112832}
   ExitGameBTN: {fileID: 114481543479981216}

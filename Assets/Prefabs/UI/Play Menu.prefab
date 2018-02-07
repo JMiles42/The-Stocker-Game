@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 223511837891412016}
   - component: {fileID: 114152981869210068}
   - component: {fileID: 114056584277413624}
+  - component: {fileID: 114626509742631786}
   - component: {fileID: 114101018796563730}
   m_Layer: 0
   m_Name: Play Menu
@@ -155,19 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47596044836082b4d9bd5e36933d1c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  DisableMenusUnderneath:
-    UseConstent: 0
-    ConstantValue: 0
-    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
-      type: 2}
-  StayActiveUnderneath:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
+  DestroyWhenClosed: 0
+  DisableMenusUnderneath: 1
   ShopButton: {fileID: 114949785380567676}
 --- !u!114 &114152981869210068
 MonoBehaviour:
@@ -253,6 +243,19 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114626509742631786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891874035481416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f552f9a33b6611e418dc14bb5677adcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Reference: {fileID: 114818768726435666, guid: e41900d54225523488ea2bd8c3b9f762,
+    type: 2}
 --- !u!114 &114705616820875362
 MonoBehaviour:
   m_ObjectHideFlags: 1

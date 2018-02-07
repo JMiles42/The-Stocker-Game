@@ -1,5 +1,5 @@
-﻿using JMiles42.Components;
-using JMiles42.Extensions;
+﻿using JMiles42;
+using JMiles42.UnityScriptsExtensions;
 using UnityEngine;
 
 public class ObjectShopDisplaySpawner: JMiles2DBehavior {

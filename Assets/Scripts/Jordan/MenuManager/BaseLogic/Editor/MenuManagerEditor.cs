@@ -2,29 +2,27 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManager.Editor
+namespace JMiles42.Systems.MenuManaging
 {
 	[CustomEditor(typeof(MenuManager))]
-	public class MenuManagerEditor: CustomEditorBase
+	public class MenuManagerEditor: JMilesEditorBase
 	{
-		private bool foldoutA = false;
+		private bool foldoutA;
 		private bool foldoutB = true;
 
 		public override void DrawGUI()
 		{
-			if(PrefabUtility.GetPrefabType(((MenuManager)target)) != PrefabType.Prefab)
+			using(new GUILayout.VerticalScope(GUI.skin.box))
 			{
-				using(new GUILayout.VerticalScope(GUI.skin.box))
+				foldoutB = EditorGUILayout.Foldout(foldoutB, "Show Stack");
+				if(foldoutB)
 				{
-					foldoutB = EditorGUILayout.Foldout(foldoutB, "Show Stack");
-					if(foldoutB)
+					if(((MenuManager)target).menuStack.Count > 0)
 					{
-						if(((MenuManager)target).menuStack.Count > 0)
+						foreach(var a in ((MenuManager)target).menuStack)
 						{
-							foreach(var a in ((MenuManager)target).menuStack)
-							{
+							using(new EditorGUI.DisabledGroupScope(!a.gameObject.activeInHierarchy))
 								EditorGUILayout.LabelField(a.name);
-							}
 						}
 					}
 				}
@@ -34,16 +32,12 @@ namespace JMiles42.Systems.MenuManager.Editor
 				foldoutA = EditorGUILayout.Foldout(foldoutA, "Show Menu Names");
 				if(foldoutA)
 				{
-					foreach(var nam in MenuNameWindow.GetMenuTypesNamesList())
-					{
-						using(new GUILayout.VerticalScope(GUI.skin.box))
-							GUILayout.Label(nam);
-					}
+					foreach(var nam in MenuNameWindow.GetTypeList())
+						EditorGUILayout.LabelField(nam);
 				}
 				if(JMilesGUILayoutEvents.Button("Create Data Script"))
-					MenuNameWindow.GenerateClassFile(MenuNameWindow.GetMenuTypesNamesList());
+					MenuNameWindow.GenerateClassFile(MenuNameWindow.GetTypeList());
 			}
-			Repaint();
 		}
 	}
 }

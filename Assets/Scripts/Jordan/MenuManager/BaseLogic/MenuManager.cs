@@ -3,116 +3,155 @@ using System.Reflection;
 using JMiles42.Generics;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManager
+namespace JMiles42.Systems.MenuManaging
 {
-	public partial class MenuManager: Singleton<MenuManager>
-	{
-		public Stack<Menu> menuStack = new Stack<Menu>();
+    public partial class MenuManager: Singleton<MenuManager>
+    {
+        public Stack<Menu> menuStack = new Stack<Menu>();
 
-		public void CreateInstance<T>() where T: Menu
-		{
-			var prefab = GetPrefab<T>();
+        public static Menu TopMenu
+        {
+            get
+            {
+                if(Instance.menuStack.Count == 0)
+                    return null;
 
-			Instantiate(prefab, transform);
-		}
+                return Instance.menuStack.Peek();
+            }
+        }
 
-		public void OpenMenu(Menu menuInstance)
-		{
-			// De-activate top menu
-			if (menuStack.Count > 0)
-			{
-				if (menuInstance.DisableMenusUnderneath)
-				{
-					foreach (var menu in menuStack)
-					{
-						if ((menu != menuInstance) && !menu.StayActiveUnderneath)
-							menu.gameObject.SetActive(false);
+        private void Awake()
+        {
+            DontDestroyOnLoad(this);
+            var others = FindObjectsOfType<MenuManager>();
+            foreach(var other in others)
+            {
+                if(other != Instance)
+                    Destroy(other.gameObject);
+            }
+        }
 
-						if (menu.DisableMenusUnderneath)
-							break;
-					}
-				}
+        private void Reset()
+        {
+            FindAndFillPrefabs();
+        }
 
-				var topCanvas = menuInstance.GetComponent<Canvas>();
-				var previousCanvas = menuStack.Peek().GetComponent<Canvas>();
-				topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
-			}
-			menuInstance.gameObject.SetActive(true);
+        private void FindAndFillPrefabs()
+        {
+            var fields = GetFields();
+            foreach(var field in fields)
+            {
+                if(!field.FieldType.IsGenericType)
+                {
+                    var objs = Resources.FindObjectsOfTypeAll(field.FieldType);
+                    if(objs.Length > 0)
+                        field.SetValue(this, objs[0]);
+                }
+            }
+        }
 
-			if (menuStack.Count == 0 || menuStack.Peek() != menuInstance)
-				menuStack.Push(menuInstance);
-		}
+        private FieldInfo[] GetFields() => GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
-		private T GetPrefab<T>() where T: Menu
-		{
-			// Get prefab dynamically, based on public fields set from Unity
-			// You can use private fields with SerializeField attribute too
-			var fields = this.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-			foreach (var field in fields)
-			{
-				var prefab = field.GetValue(this) as T;
-				if (prefab != null)
-				{
-					return prefab;
-				}
-			}
+        public void CreateInstance<T>()
+            where T: Menu
+        {
+            var prefab = GetPrefab<T>();
 
-			throw new MissingReferenceException("Prefab not found for type " + typeof (T));
-		}
+            Instantiate(prefab, transform);
+        }
 
-		public void CloseMenu(Menu menu)
-		{
-			if (menuStack.Count == 0)
-			{
-				Debug.LogErrorFormat(menu, "{0} cannot be closed because menu stack is empty", menu.GetType());
-				return;
-			}
+        public void OpenMenu(Menu menuInstance)
+        {
+            // De-activate top menu
+            if(menuStack.Count > 0)
+            {
+                if(menuInstance.DisableMenusUnderneath)
+                {
+                    foreach(var menu in menuStack)
+                    {
+                        if(menu != menuInstance)
+                            menu.gameObject.SetActive(false);
 
-			if (menuStack.Peek() != menu)
-			{
-				Debug.LogErrorFormat(menu, "{0} cannot be closed because it is not on top of stack", menu.GetType());
-				return;
-			}
+                        if(menu.DisableMenusUnderneath)
+                            break;
+                    }
+                }
 
-			CloseTopMenu();
-		}
+                var topCanvas = menuInstance.GetComponent<Canvas>();
+                var previousCanvas = menuStack.Peek().GetComponent<Canvas>();
+                topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
+            }
+            menuInstance.gameObject.SetActive(true);
 
-		public void CloseTopMenu()
-		{
-			var menuInstance = menuStack.Pop();
+            if((menuStack.Count == 0) || (menuStack.Peek() != menuInstance))
+                menuStack.Push(menuInstance);
+        }
 
-			if (menuInstance.DestroyWhenClosed)
-				Destroy(menuInstance.gameObject);
-			else
-				menuInstance.gameObject.SetActive(false);
+        private T GetPrefab<T>()
+            where T: Menu
+        {
+            // Get prefab dynamically, based on public fields set from Unity
+            // You can use private fields with SerializeField attribute too
+            var fields = GetFields();
+            foreach(var field in fields)
+            {
+                var prefab = field.GetValue(this) as T;
+                if(prefab != null)
+                    return prefab;
+            }
 
-			// Re-activate top menu
-			// If a re-activated menu is an overlay we need to activate the menu under it
-			foreach (var menu in menuStack)
-			{
-				if (menu != menuInstance)
-					menu.gameObject.SetActive(true);
+            throw new MissingReferenceException("Prefab not found for type " + typeof(T));
+        }
 
-				//if (menu.DisableMenusUnderneath)
-				//	break;
-			}
-		}
+        public void CloseMenu(Menu menu)
+        {
+            if(menuStack.Count == 0)
+            {
+                Debug.LogErrorFormat(menu, "{0} cannot be closed because menu stack is empty", menu.GetType());
+                return;
+            }
 
-		private void Update()
-		{
-			// On Android the back button is sent as Esc
-			if (Input.GetKeyDown(KeyCode.Escape))
-			{
-				OnBackPressed();
-			}
-		}
+            if(menuStack.Peek() != menu)
+            {
+                Debug.LogErrorFormat(menu, "{0} cannot be closed because it is not on top of stack", menu.GetType());
+                return;
+            }
 
-		public static void OnBackPressed()
-		{
-			if (Instance.menuStack.Count > 0)
-			{
-				Instance.menuStack.Peek().OnBackPressed();
-			}
-		}
-	}
+            CloseTopMenu();
+        }
+
+        public void CloseTopMenu()
+        {
+            var menuInstance = menuStack.Pop();
+
+            if(menuInstance.DestroyWhenClosed)
+                Destroy(menuInstance.gameObject);
+            else
+                menuInstance.gameObject.SetActive(false);
+
+            // Re-activate top menu
+            // If a re-activated menu is an overlay we need to activate the menu under it
+            foreach(var menu in menuStack)
+            {
+                if(menu != menuInstance)
+                    menu.gameObject.SetActive(true);
+
+                if(menu.DisableMenusUnderneath)
+                    break;
+            }
+        }
+
+        private void Update()
+        {
+            // On Android the back button is sent as Esc
+            if(Input.GetKeyDown(KeyCode.Escape))
+                OnBackPressed();
+        }
+
+        public static void OnBackPressed()
+        {
+            if(Instance.menuStack.Count > 0)
+                Instance.menuStack.Peek().OnBackPressed();
+        }
+    }
 }

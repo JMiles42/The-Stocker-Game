@@ -1,4 +1,4 @@
-﻿using JMiles42.AdvancedVariables;
+﻿using JMiles42.AdvVar;
 using JMiles42.Generics;
 
 public class ScoreCalculator: Singleton<ScoreCalculator>

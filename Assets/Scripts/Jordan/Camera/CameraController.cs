@@ -1,16 +1,17 @@
 ﻿using System.Linq;
+using JMiles42;
 using JMiles42.Attributes;
-using JMiles42.Components;
-using JMiles42.Extensions;
-using JMiles42.UnityInterfaces;
+using JMiles42.CSharpExtensions;
+using JMiles42.Curves.Components;
+using JMiles42.Interfaces;
+using JMiles42.UnityScriptsExtensions;
 using UnityEngine;
 
 public class CameraController: JMilesBehavior, IEventListening
 {
 	public float Speed = 5;
 
-	[SerializeField]
-	private Camera _camera;
+	[SerializeField] private Camera _camera;
 
 	public Camera Camera
 	{
@@ -20,65 +21,65 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public Transform CameraHolder;
 
-	[SerializeField]
-	[DisableEditing]
-	private Vector3 startPos = Vector3.zero;
+	[SerializeField] [DisableEditing] private Vector3 startPos = Vector3.zero;
 
 	public float zoomRate = 1;
 
-	[SerializeField]
-	private float zoomLevel = 0.5f;
+	[SerializeField] private float zoomLevel = 0.5f;
 
 	public float zoomMovement = 0.1f;
 
-	[SerializeField]
-	private Transform zoomMin;
+	public BezierCurveV3DBehaviour ZoomCurve;
 
-	[SerializeField]
-	private Transform zoomMax;
-
-	public MapReferance MapReference;
+	public MapSO MapReference;
 	public GridBlockListVariable GridBlockReference;
+
+	public Vector3 minPos;
+	public Vector3 maxPos;
 
 	private void Start()
 	{
-		if(Camera.IsNull())
-		{
+		if(Camera == null)
 			Camera = GetComponentInChildren<Camera>();
-		}
-		if(Camera.IsNull())
-		{
+		if(Camera == null)
 			Camera = Camera.main;
-		}
-		if(CameraHolder.IsNull())
-		{
+		if(CameraHolder == null)
 			CameraHolder = Transform;
-		}
+		OnScreenZoom(0f);
 	}
 
 	public void OnEnable()
 	{
-		GameplayInputManager.Instance.OnScreenStartMove += OnScreenStartMove;
-		GameplayInputManager.Instance.OnScreenMoved += OnScreenMoved;
-		GameplayInputManager.Instance.OnScreenEndMove += OnScreenEndMove;
-		GameplayInputManager.Instance.OnScreenZoom += OnScreenZoom;
-		//MapReference.OnMapUpdate += CalculateLimits;
+		GameplayInputManager.OnScreenStartMove += OnScreenStartMove;
+		GameplayInputManager.OnScreenMoved += OnScreenMoved;
+		GameplayInputManager.OnScreenEndMove += OnScreenEndMove;
+		GameplayInputManager.OnScreenZoom += OnScreenZoom;
+		MapReference.OnValueChange += UpdateCameraLimits;
 		GridBlockReference.OnMapFinishSpawning += CalculateLimits;
 	}
 
 	public void OnDisable()
 	{
-		GameplayInputManager.Instance.OnScreenStartMove -= OnScreenStartMove;
-		GameplayInputManager.Instance.OnScreenMoved -= OnScreenMoved;
-		GameplayInputManager.Instance.OnScreenEndMove -= OnScreenEndMove;
-		GameplayInputManager.Instance.OnScreenZoom -= OnScreenZoom;
+		GameplayInputManager.OnScreenStartMove -= OnScreenStartMove;
+		GameplayInputManager.OnScreenMoved -= OnScreenMoved;
+		GameplayInputManager.OnScreenEndMove -= OnScreenEndMove;
+		GameplayInputManager.OnScreenZoom -= OnScreenZoom;
+		MapReference.OnValueChange -= UpdateCameraLimits;
+		GridBlockReference.OnMapFinishSpawning -= CalculateLimits;
 	}
+
+	private void UpdateCameraLimits()
+	{
+		Position = MapReference.Value.SpawnPosition.WorldPosition;
+	}
+
 
 	private void OnScreenZoom(float amount)
 	{
 		zoomLevel = (zoomLevel + (amount * (zoomRate))).Clamp();
 
-		Camera.transform.position = Vector3.Lerp(zoomMin.position, zoomMax.position, zoomLevel);
+		Camera.transform.position = ZoomCurve.Position + ZoomCurve.Lerp(zoomLevel);
+		Camera.transform.LookAt(ZoomCurve.Transform);
 	}
 
 	private void OnScreenStartMove(Vector2 mousePos)
@@ -97,15 +98,16 @@ public class CameraController: JMilesBehavior, IEventListening
 		startPos = Vector3.zero;
 	}
 
-	public Vector3 minPos;
-	public Vector3 maxPos;
-
 	public void CalculateLimits()
 	{
 		var f = GridBlockReference.Value.First();
-		var l = GridBlockReference.Value.Last();
 
 		minPos = f.Position;
-		maxPos = l.Position;
+		maxPos = f.Position;
+		foreach(var gridBlock in GridBlockReference.Value)
+		{
+			minPos = Vector3.Min(minPos,gridBlock.Position);
+			maxPos = Vector3.Max(maxPos,gridBlock.Position);
+		}
 	}
 }

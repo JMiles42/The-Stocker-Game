@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4090627601917082}
-  - component: {fileID: 114171390844283216}
   - component: {fileID: 114098306907205714}
+  - component: {fileID: 114105068956099934}
   m_Layer: 0
   m_Name: Map Creator
   m_TagString: Untagged
@@ -52,10 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295b95e155ffb5844807ca412e025ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Map: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
   GridBlock: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
---- !u!114 &114171390844283216
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+--- !u!114 &114105068956099934
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -63,13 +63,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1927496876835210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10be57897ccc3ff45b56fe4354f67988, type: 3}
+  m_Script: {fileID: 11500000, guid: 66574e87a1ce09746b19c98e7c020642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Seed:
-    UseConstent: 0
-    ConstantValue: 
-    Variable: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-  Generator: {fileID: 11400000, guid: 3833e1a8fbfcb194daa809417fad5c66, type: 2}
-  MapReferance: {fileID: 11400000, guid: b76a7d87a18f09b4aa4aed3c5ebfb036, type: 2}
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  MapSettings: {fileID: 11400000, guid: c8d87a75650d2004ba25b7339021761b, type: 2}

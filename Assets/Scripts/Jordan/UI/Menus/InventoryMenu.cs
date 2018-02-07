@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using JMiles42.Systems.MenuManager;
-using UnityEngine;
+﻿using JMiles42.Systems.MenuManaging;
 
 public class InventoryMenu: SimpleMenu<InventoryMenu>
-{}
+{ }

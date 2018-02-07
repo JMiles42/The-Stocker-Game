@@ -1153,29 +1153,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2168c18d751f2d04fb71a9a0703f2f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  DisableMenusUnderneath:
-    UseConstent: 0
-    ConstantValue: 0
-    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
-      type: 2}
-  StayActiveUnderneath:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
+  DestroyWhenClosed: 240
+  DisableMenusUnderneath: 240
   PlayGameBTN: {fileID: 114537400839683974}
   PlaySeededGameBTN: {fileID: 114343235913954520}
   SeedInputField: {fileID: 114152952569202872}
   Seed:
-    UseConstent: 0
+    UseConstant: 0
     ConstantValue: 
     Variable: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
   SeedUsed:
-    UseConstent: 0
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114174162593782422, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}

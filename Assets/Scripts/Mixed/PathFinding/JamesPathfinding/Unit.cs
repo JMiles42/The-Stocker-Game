@@ -1,24 +1,23 @@
 ﻿using System.Collections;
-using JMiles42;
 using UnityEngine;
 
 public class Unit: MonoBehaviour
 {
 	public Transform Target;
 	public float Speed = 5;
-	private Vector2I[] Path;
+	private TilePath Path;
 	private int TargetIndex;
 
-	public MapReferance map;
+	public MapSO map;
 
 	void Start()
 	{
-		PathRequestManager.RequestPath(transform.position, Target.position, map.BuiltMap, OnPathFound);
+		PathRequestManager.RequestPath(transform.position, Target.position, map.Value, OnPathFound);
 	}
 
 	private Coroutine coroutine;
 
-	public void OnPathFound(Vector2I[] newPath, bool PathSuccessful)
+	public void OnPathFound(TilePath newPath, bool PathSuccessful)
 	{
 		if(PathSuccessful)
 		{
@@ -38,7 +37,7 @@ public class Unit: MonoBehaviour
 			if(transform.position == currentWaypoint)
 			{
 				TargetIndex++;
-				if(TargetIndex >= Path.Length)
+				if(TargetIndex >= Path.Count)
 				{
 					yield break;
 				}
@@ -55,7 +54,7 @@ public class Unit: MonoBehaviour
 	{
 		if(Path != null)
 		{
-			for(int i = TargetIndex; i < Path.Length; i++)
+			for(int i = TargetIndex; i < Path.Count; i++)
 			{
 				Gizmos.color = Color.magenta;
 				Gizmos.DrawCube(Path[i], Vector3.one);

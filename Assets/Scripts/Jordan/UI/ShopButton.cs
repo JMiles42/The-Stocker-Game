@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using JMiles42;
 using JMiles42.Components;
-using JMiles42.Events.UI;
-using JMiles42.UnityInterfaces;
+using JMiles42.JUI.Button;
 using UnityEngine;
 
 public class ShopButton: JMiles2DBehavior {

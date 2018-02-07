@@ -187,16 +187,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
-    UseConstent: 1
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
   DisableMenusUnderneath:
-    UseConstent: 0
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
       type: 2}
   StayActiveUnderneath:
-    UseConstent: 1
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
 --- !u!114 &114766175871601014

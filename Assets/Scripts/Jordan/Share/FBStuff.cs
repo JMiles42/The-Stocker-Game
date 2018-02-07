@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JMiles42.Extensions;
-using JMiles42.Systems.Screenshot;
 using UnityEngine;
 
 #if FB

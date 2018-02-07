@@ -1,4 +1,4 @@
-﻿using JMiles42;
+﻿using JMiles42.Types;
 using UnityEngine;
 
 public class StarNode: IHeapItems<StarNode>

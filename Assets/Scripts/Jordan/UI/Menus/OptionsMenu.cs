@@ -1,4 +1,4 @@
-﻿using JMiles42.Systems.MenuManager;
+﻿using JMiles42.Systems.MenuManaging;
 
 public class OptionsMenu: SimpleMenu<OptionsMenu>
 {

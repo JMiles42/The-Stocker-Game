@@ -76,18 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a1891d8eef7c648a88f233bbc8ee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  DisableMenusUnderneath:
-    UseConstent: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  StayActiveUnderneath:
-    UseConstent: 1
-    ConstantValue: 1
-    Variable: {fileID: 0}
+  DestroyWhenClosed: 0
+  DisableMenusUnderneath: 0
   Spinner: {fileID: 1422204162838522}
   LoadingBar: {fileID: 114358167605250686}
 --- !u!114 &114358167605250686
