@@ -1,25 +1,29 @@
-﻿using System.Collections;
+﻿using System;
 using JMiles42;
-using JMiles42.CSharpExtensions;
-using UnityEngine;
+using JMiles42.AdvVar;
 
 public class MapCreator: JMilesBehavior
 {
 	public MapSO Map;
 	public MapSettingsSO MapSettings;
-
-	private void Start()
+	public BoolReference GameActive;
+	private void OnEnable()
 	{
-		StartCoroutine(GenerateMap());
+		GameActive.OnValueChange += OnValueChange;
 	}
 
-	public IEnumerator GenerateMap()
+	private void OnDisable()
 	{
-		//yield return new WaitForSecondsRealtime(1);
-		//if(Map.Value.IsMapGeneratedFromSettings(MapSettings.Data))
-		yield return null;
-		Map.Value = MapGenerator.Generate(MapSettings.Data);
-		//else
-		//	Map.OnValueChange.Trigger();
+		GameActive.OnValueChange += OnValueChange;
+	}
+
+	private void OnValueChange()
+	{
+		GenerateMap();
+	}
+
+	public void GenerateMap()
+	{
+		Map.GenerateMap(MapSettings.Data);
 	}
 }

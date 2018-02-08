@@ -11,6 +11,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
   m_Name: Input
   m_EditorClassIdentifier: 
+--- !u!114 &114010895325621122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: EditMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: EditMode
+    UnityAxis: EditMode
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
 --- !u!114 &114017938380352358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,6 +49,25 @@ MonoBehaviour:
     KeyPos: 0
     ValueInverted: 0
     OnlyButton: 0
+--- !u!114 &114156953746956618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: CameraMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: CameraMode
+    UnityAxis: CameraMode
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
 --- !u!114 &114189785667156760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,6 +82,37 @@ MonoBehaviour:
   _value:
     Axis: MouseScroll
     UnityAxis: MouseScroll
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114326280897632020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fa8c2328403e94ea54d87c21d5fd0f, type: 3}
+  m_Name: MousePos
+  m_EditorClassIdentifier: 
+  _value: {x: 0, y: 0}
+--- !u!114 &114619496926770128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: PlacementMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: PlacementMode
+    UnityAxis: PlacementMode
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0

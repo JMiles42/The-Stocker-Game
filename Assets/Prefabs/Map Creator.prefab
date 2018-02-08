@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4090627601917082}
-  - component: {fileID: 114098306907205714}
   - component: {fileID: 114105068956099934}
   m_Layer: 0
   m_Name: Map Creator
@@ -41,20 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114098306907205714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1927496876835210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 295b95e155ffb5844807ca412e025ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GridBlock: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34,
-    type: 2}
-  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
 --- !u!114 &114105068956099934
 MonoBehaviour:
   m_ObjectHideFlags: 1

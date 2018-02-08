@@ -76,8 +76,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a1891d8eef7c648a88f233bbc8ee4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyWhenClosed: 0
-  DisableMenusUnderneath: 0
+  DestroyWhenClosed:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  DisableMenusUnderneath:
+    UseConstant: 0
+    ConstantValue: 1
+    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
+      type: 2}
   Spinner: {fileID: 1422204162838522}
   LoadingBar: {fileID: 114358167605250686}
 --- !u!114 &114358167605250686
@@ -146,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateAngle: {x: 0, y: 0, z: 90}
-  transformToMove: {fileID: 224961939109197930}
   transformSpace: 0
+  transformToMove: {fileID: 224961939109197930}
 --- !u!114 &114564319681759882
 MonoBehaviour:
   m_ObjectHideFlags: 1

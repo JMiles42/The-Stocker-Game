@@ -316,6 +316,11 @@ MonoBehaviour:
     type: 2}
   minPos: {x: 0, y: 0, z: 0}
   maxPos: {x: 0, y: 0, z: 0}
+  GameActive:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
 --- !u!114 &114636633913773140
 MonoBehaviour:
   m_ObjectHideFlags: 1

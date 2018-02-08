@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1745612574625050}
+  m_IsPrefabParent: 1
+--- !u!1 &1745612574625050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4138298226287240}
+  - component: {fileID: 114919267607706228}
+  m_Layer: 0
+  m_Name: GameplayInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4138298226287240
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745612574625050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114919267607706228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745612574625050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cac9177afd509a4b8d82ec397f65ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrimaryClick: {fileID: 114017938380352358, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  MiddleClick: {fileID: 114656967208382922, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  SecondaryClick: {fileID: 114884500771322526, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  ScrollWheel: {fileID: 114189785667156760, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  CameraMode: {fileID: 114156953746956618, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  PlacementMode: {fileID: 114619496926770128, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  EditMode: {fileID: 114656967208382922, guid: 158f0da2ea342744aac794bec32589cb, type: 2}
+  TouchList: []
+  TouchIndexesToRemove: 
+  TimeForAlternateTouch: 0.2
+  MovementForCancelTouch: 0.3
+  touchCount: 0
+  MousePosition:
+    UseConstant: 0
+    ConstantValue: {x: 0, y: 0}
+    Variable: {fileID: 114326280897632020, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  InputModeReference:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+  GameActive:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using JMiles42.AdvVar;
 using JMiles42.AdvVar.InputSystem;
 using JMiles42.Attributes;
 using JMiles42.CSharpExtensions;
@@ -15,6 +16,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public AdvInputAxisVariable MiddleClick;
 	public AdvInputAxisVariable SecondaryClick;
 	public AdvInputAxisVariable ScrollWheel;
+	public AdvInputAxisVariable CameraMode;
+	public AdvInputAxisVariable PlacementMode;
+	public AdvInputAxisVariable EditMode;
 
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
 	public List<int> TouchIndexesToRemove = new List<int>(0);
@@ -23,7 +27,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	[DisableEditing] public int touchCount;
 
-	public Vector2 MousePosition;
+	public Vector2Reference MousePosition;
+	public InputModeReference InputModeReference;
+	public BoolReference GameActive;
 
 	public static event Action<Vector2> OnPrimaryClick = (a) =>
 												  {
@@ -51,9 +57,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 												   };
 
 	public static event Action<float> OnScreenZoom = a =>
-											  {
-												  //Debug.Log("Screen Moved" + a);
-											  };
+	{
+		//Debug.Log("Screen Moved" + a);
+	};
 
 	public void OnEnable()
 	{
@@ -68,13 +74,36 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		MiddleClick.OnKey += OnKeyMiddle;
 
 		ScrollWheel.OnKey += OnScroll;
+
+		CameraMode.OnKeyDown += CameraModeSwitch;
+		PlacementMode.OnKeyDown += PlacementModeSwitch;
+		EditMode.OnKeyDown += EditModeSwitch;
+
+	}
+
+	public void OnDisable()
+	{
+		PrimaryClick.OnKeyDown -= OnPrimaryKeyDown;
+		SecondaryClick.OnKeyDown -= OnSecondaryKeyDown;
+		MiddleClick.OnKeyDown -= OnKeyMiddleDown;
+		MiddleClick.OnKeyUp -= OnKeyMiddleUp;
+		MiddleClick.OnKey -= OnKeyMiddle;
+
+		ScrollWheel.OnKey -= OnScroll;
+
+		CameraMode.OnKeyDown -= CameraModeSwitch;
+		PlacementMode.OnKeyDown -= PlacementModeSwitch;
+		EditMode.OnKeyDown -= EditModeSwitch;
 	}
 
 	private void OnScroll(float amount) { OnScreenZoom.Trigger(amount); }
 
 	public void Update()
 	{
-		MousePosition = Input.mousePosition;
+		MousePosition.Value = Input.mousePosition;
+
+		if(!GameActive.Value)
+			return;
 		PrimaryClick.UpdateDataAndCallEvents();
 		MiddleClick.UpdateDataAndCallEvents();
 		SecondaryClick.UpdateDataAndCallEvents();
@@ -107,9 +136,39 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		TouchIndexesToRemove.Clear();
 	}
 
-	private void OnPrimaryKeyDown() { OnPrimaryClick.Trigger(Input.mousePosition.ToVector2()); }
+	private void OnPrimaryKeyDown()
+	{
+		if(!GameActive.Value)
+			return;
+		OnPrimaryClick.Trigger(Input.mousePosition.ToVector2());
+	}
 
-	private void OnSecondaryKeyDown() { OnSecondaryClick.Trigger(Input.mousePosition.ToVector2()); }
+	private void OnSecondaryKeyDown() {
+		if(!GameActive.Value)
+			return;
+		OnSecondaryClick.Trigger(Input.mousePosition.ToVector2()); }
+
+
+	private void EditModeSwitch()
+	{
+		if(!GameActive.Value)
+			return;
+		InputModeReference.Value = InputMode.Edit;
+	}
+
+	private void PlacementModeSwitch()
+	{
+		if(!GameActive.Value)
+			return;
+		InputModeReference.Value = InputMode.Placement;
+	}
+
+	private void CameraModeSwitch()
+	{
+		if(!GameActive.Value)
+			return;
+		InputModeReference.Value = InputMode.Camera;
+	}
 
 	private Vector2 MouseStartPos;
 
@@ -120,30 +179,28 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private void OnKeyMiddleDown()
 	{
+		if(!GameActive.Value)
+			return;
 		MouseStartPos = MousePosition;
-		OnScreenStartMove.Trigger(MousePosition);
+		OnScreenStartMove.Trigger(MousePosition.Value);
 	}
 
 	private void OnKeyMiddleUp()
 	{
+		if(!GameActive.Value)
+			return;
 		MouseStartPos = Vector2.zero;
-		OnScreenEndMove.Trigger(MousePosition);
+		OnScreenEndMove.Trigger(MousePosition.Value);
 	}
 
-	private void OnKeyMiddle(float amount) { OnScreenMoved.Trigger(MouseDelta); }
+	private void OnKeyMiddle(float amount)
+	{
+		if(!GameActive.Value)
+			return;
+		OnScreenMoved.Trigger(MouseDelta);
+	}
 
 	private void DoTouchPanCamera(SavedTouchData touch) {}
-
-	public void OnDisable()
-	{
-		PrimaryClick.OnKeyDown -= OnPrimaryKeyDown;
-		SecondaryClick.OnKeyDown -= OnSecondaryKeyDown;
-		MiddleClick.OnKeyDown -= OnKeyMiddleDown;
-		MiddleClick.OnKeyUp -= OnKeyMiddleUp;
-		MiddleClick.OnKey -= OnKeyMiddle;
-
-		ScrollWheel.OnKey -= OnScroll;
-	}
 
 	private void CheckTouches(Touch touch)
 	{

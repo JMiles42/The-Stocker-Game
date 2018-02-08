@@ -22,7 +22,7 @@ namespace JMiles42.Systems.MenuManaging
 
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(Transform);
             var others = FindObjectsOfType<MenuManager>();
             foreach(var other in others)
             {
@@ -41,12 +41,11 @@ namespace JMiles42.Systems.MenuManaging
             var fields = GetFields();
             foreach(var field in fields)
             {
-                if(!field.FieldType.IsGenericType)
-                {
-                    var objs = Resources.FindObjectsOfTypeAll(field.FieldType);
-                    if(objs.Length > 0)
-                        field.SetValue(this, objs[0]);
-                }
+                if(field.FieldType.IsGenericType)
+                    continue;
+                var objs = Resources.FindObjectsOfTypeAll(field.FieldType);
+                if(objs.Length > 0)
+                    field.SetValue(this, objs[0]);
             }
         }
 
