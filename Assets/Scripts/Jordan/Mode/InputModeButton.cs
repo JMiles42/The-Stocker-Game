@@ -5,29 +5,29 @@ public class InputModeButton: JMilesBehavior
 {
 	public ButtonClickEventBase Button;
 	public InputMode MyMode;
-	public InputModeReference Reference;
+	public InputModeVariable Reference;
 
 	private void OnEnable()
 	{
-		Reference.OnValueChange += ReferenceOnChange;
+		Reference.OnValueChange += CalculateButtonState;
 		Button.onMouseClick += OnMouseClick;
-		ReferenceOnChange();
+		CalculateButtonState();
 	}
 
 	private void OnDisable()
 	{
-		Reference.OnValueChange -= ReferenceOnChange;
+		Reference.OnValueChange -= CalculateButtonState;
 		Button.onMouseClick -= OnMouseClick;
 	}
 
 	private void ReferenceOnChange()
 	{
-		ButtonInteraction();
+		CalculateButtonState();
 	}
 
-	private void ButtonInteraction()
+	private void CalculateButtonState()
 	{
-		Button.Interactable = MyMode != Reference.Value;
+		Button.Interactable = !(MyMode == Reference.Value);
 	}
 
 	private void OnMouseClick()

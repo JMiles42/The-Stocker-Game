@@ -122,7 +122,7 @@ MonoBehaviour:
     type: 2}
   LoadingMenu: {fileID: 114037835918947154, guid: c7bddb5bf72e35f409de1f8cff5656f7,
     type: 2}
-  MainMenu: {fileID: 114810764866829108, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
+  MainMenu: {fileID: 114893038986120068, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
   OptionsMenu: {fileID: 0}
   PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
     type: 2}

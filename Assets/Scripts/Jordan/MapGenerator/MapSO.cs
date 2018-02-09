@@ -7,7 +7,7 @@ public class MapSO: AdvVariable<Map>
 {
 	public void GenerateMap(MapSettings settings)
 	{
-		//_value = MapGenerator.Generate(settings);
-		//OnValueChange.Trigger();
+		_value = MapGenerator.Generate(settings);
+		OnValueChange.Trigger();
 	}
 }

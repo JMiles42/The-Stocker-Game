@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 114765900905137330}
   - component: {fileID: 114286248356339794}
   m_Layer: 0
-  m_Name: TestMode_btn
+  m_Name: EditMode_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 222664924773295764}
   - component: {fileID: 114705616820875362}
   m_Layer: 0
-  m_Name: TestMode_text
+  m_Name: EditMode_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,11 +578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114774360474117028}
   MyMode: 0
-  Reference:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  Reference: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
 --- !u!114 &114247987125674842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,7 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -697,11 +694,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114949785380567676}
   MyMode: 2
-  Reference:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  Reference: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
 --- !u!114 &114287634617945072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -714,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -796,7 +790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -964,11 +958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114202487235343534}
   MyMode: 1
-  Reference:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  Reference: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
 --- !u!114 &114425372621979470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1416,7 +1407,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Test Mode
+  m_text: Edit Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}

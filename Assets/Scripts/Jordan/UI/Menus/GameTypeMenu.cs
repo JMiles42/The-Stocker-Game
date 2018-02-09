@@ -3,6 +3,7 @@ using JMiles42.Components;
 using JMiles42.JUI.Button;
 using JMiles42.Systems.MenuManaging;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 {
@@ -37,7 +38,13 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 		Seed.Value = JMiles42.Maths.Random.RandomStrings.GetRandomString(8);
 		SeedUsed.Value = false;
 		GameActive.Value = true;
-		PlayGameMenu.Open();
+		PlayGame();
+	}
+
+	private static void PlayGame()
+	{
+		Close();
+		SceneSafely.LoadSceneAsync(1, LoadSceneMode.Single);
 	}
 
 	public void OnPlaySeededGameBTN()
@@ -45,12 +52,12 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 		Seed.Value = SeedInputField.text;
 		SeedUsed.Value = true;
 		GameActive.Value = true;
-		PlayGameMenu.Open();
+		PlayGame();
 	}
 
 	public override void OnDisable()
 	{
-		//base.OnDisable();
+		base.OnDisable();
 		PlayGameBTN.onMouseClick -= OnPlayGameBTN;
 		PlaySeededGameBTN.onMouseClick -= OnPlaySeededGameBTN;
 		SeedInputField.onValueChanged.RemoveListener(OnValueChanged);

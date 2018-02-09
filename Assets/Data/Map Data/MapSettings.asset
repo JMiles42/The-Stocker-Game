@@ -13,10 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Seed:
-      UseConstant: 0
-      ConstantValue: 6hkb7ay7
-      Variable: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-        type: 2}
+      UseConstant: 1
+      ConstantValue: xv9s7nie
+      Variable: {fileID: 0}
     corridorLength:
       Min: 6
       Max: 10

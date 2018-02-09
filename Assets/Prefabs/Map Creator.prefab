@@ -53,3 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   MapSettings: {fileID: 11400000, guid: c8d87a75650d2004ba25b7339021761b, type: 2}
+  GameActive:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}

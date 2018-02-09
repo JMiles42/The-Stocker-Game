@@ -53,10 +53,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  ObjectToSpawn: {fileID: 1526659883149372, guid: 0ec40af08c8384440a2070141098e191,
-    type: 2}
+  ObjectToSpawn: {fileID: 0}
   Player: {fileID: 114288006440103932, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   MovePlayerToClickPosAndPlace:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
+  RemovePlacingOnPlace:
     UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}

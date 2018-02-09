@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 223356799692287124}
   - component: {fileID: 114337568817681298}
   - component: {fileID: 114677483384278784}
-  - component: {fileID: 114810764866829108}
+  - component: {fileID: 114893038986120068}
+  - component: {fileID: 114108681898633118}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -319,6 +320,24 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114108681898633118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462225884566720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5506a73acd4a041bfdc7acd62c2a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CallMode: 2
+  ChildTransform: {fileID: 224233790388240608}
+  ParentTransform: {fileID: 0}
+  DestroyComponentAfterCall:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
 --- !u!114 &114337568817681298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -937,34 +956,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114810764866829108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1462225884566720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074c8648c6d63aa48851134186f82387, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DestroyWhenClosed:
-    UseConstant: 1
-    ConstantValue: 0
-    Variable: {fileID: 0}
-  DisableMenusUnderneath:
-    UseConstant: 0
-    ConstantValue: 1
-    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
-      type: 2}
-  PlayGameBTN: {fileID: 114859172074325062}
-  OptionsGameBTN: {fileID: 114582220355112832}
-  ExitGameBTN: {fileID: 114481543479981216}
-  GameActive:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
 --- !u!114 &114837763047956252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1069,6 +1060,34 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114893038986120068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462225884566720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074c8648c6d63aa48851134186f82387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyWhenClosed:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  DisableMenusUnderneath:
+    UseConstant: 0
+    ConstantValue: 1
+    Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
+      type: 2}
+  PlayGameBTN: {fileID: 114859172074325062}
+  OptionsGameBTN: {fileID: 114582220355112832}
+  ExitGameBTN: {fileID: 114481543479981216}
+  GameActive:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
 --- !u!222 &222014848958545968
 CanvasRenderer:
   m_ObjectHideFlags: 1

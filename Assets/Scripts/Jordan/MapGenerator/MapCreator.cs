@@ -1,20 +1,13 @@
-﻿using System;
-using JMiles42;
-using JMiles42.AdvVar;
+﻿using JMiles42;
 
 public class MapCreator: JMilesBehavior
 {
 	public MapSO Map;
 	public MapSettingsSO MapSettings;
-	public BoolReference GameActive;
-	private void OnEnable()
-	{
-		GameActive.OnValueChange += OnValueChange;
-	}
 
-	private void OnDisable()
+	private void Start()
 	{
-		GameActive.OnValueChange += OnValueChange;
+		GenerateMap();
 	}
 
 	private void OnValueChange()

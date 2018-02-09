@@ -8,7 +8,7 @@ namespace JMiles42.Systems.MenuManaging
 	public class MenuManagerEditor: JMilesEditorBase
 	{
 		private bool foldoutA;
-		private bool foldoutB = true;
+		//private bool foldoutB = true;
 
 		public override void DrawGUI()
 		{

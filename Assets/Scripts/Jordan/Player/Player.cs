@@ -23,8 +23,6 @@ public class Player: Singleton<Player>
 	private Coroutine movingCoroutine;
 	public GridPosition TargetPosition = GridPosition.Zero;
 
-	public BoolReference CanMove = true;
-
 	public void OnEnable()
 	{
 		GameplayInputManager.OnPrimaryClick += OnPrimaryClick;
@@ -52,25 +50,17 @@ public class Player: Singleton<Player>
 
 	private void OnPrimaryClick(Vector2 mousePos)
 	{
-		if(!CanMove.Value)
-			return;
-
 		MovePlayerTo(mousePos);
 	}
 
 	#region MovePlayer Methods
 	public void MovePlayer(TilePath path)
 	{
-		if(!CanMove.Value)
-			return;
-
 		OnPathFound(path, false);
 	}
 
 	public void MovePlayerTo(Vector2 mousePos)
 	{
-		if(!CanMove.Value)
-			return;
 		var gp = Camera.Reference.ScreenPointToRay(mousePos).GetGridPosition();
 		foreach(var gridBlock in grid.Value)
 		{
@@ -84,8 +74,6 @@ public class Player: Singleton<Player>
 
 	public void MovePlayerTo(GridPosition gridPosition)
 	{
-		if(!CanMove.Value)
-			return;
 		foreach(var gridBlock in grid.Value)
 		{
 			if(gridBlock.GridPosition != gridPosition)
@@ -98,8 +86,6 @@ public class Player: Singleton<Player>
 
 	public void MovePlayerTo(GridBlock gridBlock)
 	{
-		if(!CanMove.Value)
-			return;
 		MovePlayer(gridBlock);
 	}
 

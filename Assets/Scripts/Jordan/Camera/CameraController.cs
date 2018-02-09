@@ -37,7 +37,6 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	public Vector3 minPos;
 	public Vector3 maxPos;
-	public BoolReference GameActive;
 
 	public void OnEnable()
 	{
@@ -67,7 +66,7 @@ public class CameraController: JMilesBehavior, IEventListening
 			Camera = Camera.main;
 		if(CameraHolder == null)
 			CameraHolder = Transform;
-		OnScreenZoom(0f);
+		OnScreenZoom(0.4f);
 	}
 
 	private void UpdateCameraLimits()
@@ -78,8 +77,6 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	private void OnScreenZoom(float amount)
 	{
-		if(!GameActive.Value)
-			return;
 		zoomLevel = (zoomLevel + (amount * (zoomRate))).Clamp();
 
 		Camera.transform.position = ZoomCurve.Position + ZoomCurve.Lerp(zoomLevel);
@@ -93,9 +90,6 @@ public class CameraController: JMilesBehavior, IEventListening
 
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
-		if(!GameActive.Value)
-			return;
-
 		var pos = startPos + (Camera.transform.TransformDirection(mouseDelta).FromX_Y2Z() * Speed).SetY(0);
 		CameraHolder.transform.position = new Vector3(pos.x.Clamp(minPos.x, maxPos.x), pos.y, pos.z.Clamp(minPos.z, maxPos.z));
 	}
