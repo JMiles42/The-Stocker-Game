@@ -1,38 +1,34 @@
 ﻿using ForestOfChaosLib;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.FoCsUI.Button;
 
 public class InputModeButton: FoCsBehavior
 {
 	public ButtonClickEventBase Button;
-	public InputMode MyMode;
-	public InputModeReference Reference;
+	public BoolReference MyEnabledState;
+	public string MyText;
 
 	private void OnEnable()
 	{
-		Reference.OnValueChange += CalculateButtonState;
+		MyEnabledState.OnValueChange += CalculateButtonState;
 		Button.onMouseClick += OnMouseClick;
 		CalculateButtonState();
 	}
 
 	private void OnDisable()
 	{
-		Reference.OnValueChange -= CalculateButtonState;
+		MyEnabledState.OnValueChange -= CalculateButtonState;
 		Button.onMouseClick -= OnMouseClick;
-	}
-
-	private void ReferenceOnChange()
-	{
-		CalculateButtonState();
 	}
 
 	private void CalculateButtonState()
 	{
-		Button.Interactable = !(MyMode == Reference.Value);
+		Button.ButtonText = $"{MyText} {(MyEnabledState.Value? "Enabled" : "Disabled")}";
 	}
 
 	private void OnMouseClick()
 	{
-		Reference.Value = MyMode;
+		MyEnabledState.Value = MyEnabledState.Value;
 	}
 
 	private void Reset()

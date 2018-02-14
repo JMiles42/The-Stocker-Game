@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 20699820686423496}
   - component: {fileID: 124471756398523684}
   - component: {fileID: 81991757475394098}
-  - component: {fileID: 114798734805986320}
   - component: {fileID: 114427268303233108}
   m_Layer: 0
   m_Name: Main Camera
@@ -312,15 +311,10 @@ MonoBehaviour:
   zoomMovement: 60
   ZoomCurve: {fileID: 114220447071346710}
   MapReference: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  GridBlockReference: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34,
+  GridBlockReference: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   minPos: {x: 0, y: 0, z: 0}
   maxPos: {x: 0, y: 0, z: 0}
-  GameActive:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
 --- !u!114 &114636633913773140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,18 +353,6 @@ MonoBehaviour:
   rotateAngle: {x: 0, y: 0, z: 56}
   transformSpace: 0
   transformToMove: {fileID: 4475810583986874}
---- !u!114 &114798734805986320
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171569275915168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac5d167b87b07a41ba38bd2c734982b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tags: 00000000
 --- !u!124 &124471756398523684
 Behaviour:
   m_ObjectHideFlags: 1

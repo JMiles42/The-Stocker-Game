@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295b95e155ffb5844807ca412e025ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridBlock: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34,
+  GridBlock: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}

@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
-  grid: {fileID: 114510088247080976, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
+  grid: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
   GridPosition:
     Position:
       x: 0
@@ -158,8 +158,3 @@ MonoBehaviour:
     Position:
       x: 0
       y: 0
-  CanMove:
-    UseConstant: 0
-    ConstantValue: 1
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}

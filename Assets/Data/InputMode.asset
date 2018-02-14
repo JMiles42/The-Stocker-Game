@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
-  m_Name: Lists
+  m_Name: InputMode
   m_EditorClassIdentifier: 
---- !u!114 &114332151768442048
+--- !u!114 &114089058755908912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -19,11 +19,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5405d31dfe2a6946a2ee61e229b794d, type: 3}
-  m_Name: LootChestList
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: EditingEnabled
   m_EditorClassIdentifier: 
-  _value: []
---- !u!114 &114510088247080976
+  _value: 0
+--- !u!114 &114541297706447944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -31,11 +31,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6e520727ce24b4fbb8b5d6e397acae, type: 3}
-  m_Name: GridBlocksList
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: PlacementEnabled
   m_EditorClassIdentifier: 
-  _value: []
---- !u!114 &114793204861550020
+  _value: 0
+--- !u!114 &114609350410511588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 370254d741d12064bad2b8d00193213f, type: 3}
-  m_Name: ScorableObjectList
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: CameraEnabled
   m_EditorClassIdentifier: 
-  _value: []
+  _value: 0

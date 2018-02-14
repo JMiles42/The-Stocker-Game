@@ -27,9 +27,13 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	[DisableEditing] public int touchCount;
 
-	public Vector2Reference MousePosition;
-	public InputModeReference InputModeReference;
+	public Vector2Variable MousePosition;
 	public BoolReference GameActive;
+
+	public BoolReference CameraEnabled;
+	public BoolReference PlacementEnabled;
+	public BoolReference EditingEnabled;
+
 
 	public static event Action<Vector2> OnPrimaryClick = (a) =>
 												  {
@@ -153,21 +157,21 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	{
 		if(!GameActive.Value)
 			return;
-		InputModeReference.Value = InputMode.Edit;
+		EditingEnabled.Value = !EditingEnabled.Value;
 	}
 
 	private void PlacementModeSwitch()
 	{
 		if(!GameActive.Value)
 			return;
-		InputModeReference.Value = InputMode.Placement;
+		PlacementEnabled.Value = !PlacementEnabled.Value;
 	}
 
 	private void CameraModeSwitch()
 	{
 		if(!GameActive.Value)
 			return;
-		InputModeReference.Value = InputMode.Camera;
+		CameraEnabled.Value = !CameraEnabled.Value;
 	}
 
 	private Vector2 MouseStartPos;

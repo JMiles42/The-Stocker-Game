@@ -1,6 +1,6 @@
 ﻿using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.RuntimeRef;
 
-[AdvFolderName("Runtime Ref")]
+[AdvFolderName("Stocker")]
 public class PlayerRef: RunTimeRef<Player>
 { }

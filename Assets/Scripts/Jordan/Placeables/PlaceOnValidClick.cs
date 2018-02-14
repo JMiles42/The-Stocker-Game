@@ -9,11 +9,12 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 {
 	public CameraRTRef Camera;
 	public MapSO Map;
-	private Map MapVal => Map.Value;
-	public GameObject ObjectToSpawn;
-	public PlayerRef Player;
+	public Vector2Reference MousePosition;
 	public BoolVariable MovePlayerToClickPosAndPlace;
+	public IPlacer Placer;
+	public PlayerRef Player;
 	public BoolVariable RemovePlacingOnPlace = true;
+	private Map MapVal => Map.Value;
 
 	public void OnEnable()
 	{
@@ -25,24 +26,29 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 		GameplayInputManager.OnPrimaryClick -= OnPrimaryClick;
 	}
 
+	private void Update()
+	{
+		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
+		var gp = wp.GetGridPosition();
+		Placer.UpdatePosition(gp, wp);
+	}
+
 	private void OnPrimaryClick(Vector2 mousePos)
 	{
-		if(ObjectToSpawn == null)
+		if(Placer == null)
 			return;
-		var gp = Camera.Reference.ScreenPointToRay(mousePos).GetPosOnY().GetGridPosition();
+		var wp = Camera.Reference.ScreenPointToRay(mousePos).GetPosOnY();
+		var gp = wp.GetGridPosition();
 		if(!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(gp))
 		{
 			if(MovePlayerToClickPosAndPlace.Value)
-			{
 				MovePlayerToClickPos(gp);
-			}
 		}
 
-		var go = Instantiate(ObjectToSpawn);
+		Placer.ApplyPlacement(gp, wp);
 
-		go.transform.position = gp.WorldPosition;
 		if(RemovePlacingOnPlace.Value)
-			ObjectToSpawn = null;
+			Placer = null;
 	}
 
 	private void MovePlayerToClickPos(GridPosition clickPosition)
@@ -52,7 +58,25 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 
 	private void MovePlayerToCallback(TilePath path, bool pathNull)
 	{
-		path.RemoveAt(path.Count-1);
+		path.RemoveAt(path.Count - 1);
 		Player.Reference.MovePlayer(path);
+	}
+
+	public static void StartPlacing(IPlacer obj)
+	{
+		Instance.Placer?.CancelPlacement();
+
+		Instance.Placer = obj;
+
+		var wp = Instance.Camera.Reference.ScreenPointToRay(Instance.MousePosition.Value).GetPosOnY();
+		var gp = wp.GetGridPosition();
+
+		Instance.Placer.StartPlacing(gp, wp);
+	}
+
+	public static void StopPlacing(IPlacer obj)
+	{
+		Instance.Placer?.CancelPlacement();
+		Instance.Placer = null;
 	}
 }

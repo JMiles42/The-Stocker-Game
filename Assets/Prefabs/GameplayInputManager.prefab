@@ -74,13 +74,11 @@ MonoBehaviour:
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 114326280897632020, guid: 158f0da2ea342744aac794bec32589cb,
       type: 2}
-  InputModeReference:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114083559076978988, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-  GameActive:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  CameraEnabled: {fileID: 114609350410511588, guid: f7684c54865eb53488318be23c4f286d,
+    type: 2}
+  PlacementEnabled: {fileID: 114541297706447944, guid: f7684c54865eb53488318be23c4f286d,
+    type: 2}
+  EditingEnabled: {fileID: 114089058755908912, guid: f7684c54865eb53488318be23c4f286d,
+    type: 2}
