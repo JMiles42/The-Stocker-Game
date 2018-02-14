@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using JMiles42.Grid;
+using ForestOfChaosLib.Grid;
 
 [Serializable]
 public class TilePath: List<GridPosition>

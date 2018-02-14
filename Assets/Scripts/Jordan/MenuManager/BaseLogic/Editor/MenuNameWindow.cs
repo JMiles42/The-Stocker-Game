@@ -2,11 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using JMiles42.CSharpExtensions;
-using JMiles42.Editor;
-using JMiles42.Editor.Tools;
-using JMiles42.Editor.Windows;
-using JMiles42.Systems.MenuManaging;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Editor;
+using ForestOfChaosLib.Editor.ImGUI;
+using ForestOfChaosLib.Editor.Tools;
+using ForestOfChaosLib.Editor.Utilities;
+using ForestOfChaosLib.Editor.Windows;
 using UnityEditor;
 using UnityEngine;
 
@@ -41,11 +42,11 @@ public class MenuNameWindow: Window<MenuNameWindow> {
 	}
 
 	private static void DrawButtons() {
-		using (new GUILayout.HorizontalScope()) {
-			if (JMilesGUILayoutEvents.Button("Generate Class")) {
+		using (EditorDisposables.HorizontalScope()) {
+			if (FoCsGUILayout.Button("Generate Class")) {
 				GenerateClassFile();
 			}
-			if (JMilesGUILayoutEvents.Button("Search For New Menus")) {
+			if (FoCsGUILayout.Button("Search For New Menus")) {
 				NamesList = GetTypeList();
 			}
 		}
@@ -53,10 +54,10 @@ public class MenuNameWindow: Window<MenuNameWindow> {
 
 	public static List<string> GetTypeList() {
 		var list = new List<string>(
-								    typeof (JMiles42.Systems.MenuManaging.Menu).Assembly.GetTypes().
+								    typeof (ForestOfChaosLib.MenuManaging.Menu).Assembly.GetTypes().
 														  Where(t => t.BaseType != null &&
 														  !t.IsGenericType &&
-														  t.IsSubclassOf(typeof(JMiles42.Systems.MenuManaging.Menu))
+														  t.IsSubclassOf(typeof(ForestOfChaosLib.MenuManaging.Menu))
 														  //(t.BaseType.GetGenericTypeDefinition() == typeof (SimpleMenu<>))
 														  ).Select(s => s.ToString()));
 		return list;

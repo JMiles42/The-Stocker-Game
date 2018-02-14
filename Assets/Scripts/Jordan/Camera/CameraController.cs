@@ -1,14 +1,13 @@
 ﻿using System.Linq;
-using JMiles42;
-using JMiles42.AdvVar;
-using JMiles42.Attributes;
-using JMiles42.CSharpExtensions;
-using JMiles42.Curves.Components;
-using JMiles42.Interfaces;
-using JMiles42.UnityScriptsExtensions;
+using ForestOfChaosLib;
+using ForestOfChaosLib.Attributes;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Curves.Components;
+using ForestOfChaosLib.Interfaces;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
-public class CameraController: JMilesBehavior, IEventListening
+public class CameraController: FoCsBehavior, IEventListening
 {
 	public float Speed = 5;
 
@@ -33,7 +32,7 @@ public class CameraController: JMilesBehavior, IEventListening
 	public BezierCurveV3DBehaviour ZoomCurve;
 
 	public MapSO MapReference;
-	public GridBlockListVariable GridBlockReference;
+	public GridBlockListReference GridBlockReference;
 
 	public Vector3 minPos;
 	public Vector3 maxPos;

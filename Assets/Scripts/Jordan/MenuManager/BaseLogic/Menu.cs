@@ -1,7 +1,7 @@
-﻿using JMiles42.AdvVar;
+﻿using ForestOfChaosLib.AdvVar;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManaging
+namespace ForestOfChaosLib.MenuManaging
 {
     public abstract class Menu<T>: Menu
         where T: Menu<T>
@@ -114,11 +114,11 @@ namespace JMiles42.Systems.MenuManaging
         }
     }
 
-    public abstract class Menu: JMilesBehavior
+    public abstract class Menu: FoCsBehavior
     {
-        [Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public BoolReference DestroyWhenClosed = false;
+        [Tooltip("Destroy the Game Object when menu is closed (reduces memory usage)")] public BoolVariable DestroyWhenClosed = false;
 
-        [Tooltip("Disable menus that are under this one in the stack")] public BoolReference DisableMenusUnderneath = true;
+        [Tooltip("Disable menus that are under this one in the stack")] public BoolVariable DisableMenusUnderneath = true;
 
         public static bool HasInstance { get; protected set; }
 

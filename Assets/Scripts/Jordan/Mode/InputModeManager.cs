@@ -1,6 +1,6 @@
-﻿using JMiles42;
+﻿using ForestOfChaosLib;
 
-public class InputModeManager: JMilesBehavior
+public class InputModeManager: FoCsBehavior
 {
 	public InputModeReference ActiveMode;
 }

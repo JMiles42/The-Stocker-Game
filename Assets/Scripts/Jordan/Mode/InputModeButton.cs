@@ -1,11 +1,11 @@
-﻿using JMiles42;
-using JMiles42.JUI.Button;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.FoCsUI.Button;
 
-public class InputModeButton: JMilesBehavior
+public class InputModeButton: FoCsBehavior
 {
 	public ButtonClickEventBase Button;
 	public InputMode MyMode;
-	public InputModeVariable Reference;
+	public InputModeReference Reference;
 
 	private void OnEnable()
 	{

@@ -1,8 +1,8 @@
-﻿using JMiles42;
-using JMiles42.Grid;
-using JMiles42.Types;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
-public class GridBlock: JMilesBehavior
+public class GridBlock: FoCsBehavior
 {
     public GridPosition _gridPosition = Vector2I.Zero;
 

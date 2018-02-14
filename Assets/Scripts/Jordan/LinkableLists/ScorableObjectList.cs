@@ -1,7 +1,7 @@
-﻿using JMiles42.AdvVar;
-using JMiles42.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.Base;
 
-[AdvFolderName("Stocker", 8)]
-public class ScorableObjectList : AdvListVariable<ScorableObject>
+[AdvFolderName("Stocker")]
+public class ScorableObjectList : AdvListReference<ScorableObject>
 {
 }

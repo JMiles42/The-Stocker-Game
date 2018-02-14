@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using JMiles42.Grid;
-using JMiles42.Types;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
 public static class Pathfinding
 {

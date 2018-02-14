@@ -1,12 +1,12 @@
 ﻿using System;
-using JMiles42.AdvVar;
-using JMiles42.AdvVar.Base;
+using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.Base;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Grid List Variable", menuName = "ADV Variables/Custom/Grid List", order = 2)]
 [Serializable]
-[AdvFolderName("Stocker", 15)]
-public class GridBlockListVariable: AdvListVariable<GridBlock>
+[AdvFolderName("Stocker")]
+public class GridBlockListReference: AdvListReference<GridBlock>
 {
 	public Action OnMapFinishSpawning;
 }

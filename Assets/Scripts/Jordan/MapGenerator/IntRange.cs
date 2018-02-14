@@ -1,5 +1,5 @@
 ﻿using System;
-using JMiles42.Attributes;
+using ForestOfChaosLib.Attributes;
 
 // Serializable so it will show up in the inspector.
 [Serializable]

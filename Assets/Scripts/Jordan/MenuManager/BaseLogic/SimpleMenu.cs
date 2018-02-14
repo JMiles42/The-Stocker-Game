@@ -1,4 +1,4 @@
-﻿namespace JMiles42.Systems.MenuManaging
+﻿namespace ForestOfChaosLib.MenuManaging
 {
 	/// <summary>
 	///     A base menu class that implements parameterless Show and Hide methods

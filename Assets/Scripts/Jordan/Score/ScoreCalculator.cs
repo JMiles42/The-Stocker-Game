@@ -1,5 +1,5 @@
-﻿using JMiles42.AdvVar;
-using JMiles42.Generics;
+﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.Generics;
 
 public class ScoreCalculator: Singleton<ScoreCalculator>
 {

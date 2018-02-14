@@ -1,4 +1,4 @@
-﻿using JMiles42.Systems.MenuManaging;
+﻿using ForestOfChaosLib.MenuManaging;
 
 public class InventoryMenu: SimpleMenu<InventoryMenu>
 { }

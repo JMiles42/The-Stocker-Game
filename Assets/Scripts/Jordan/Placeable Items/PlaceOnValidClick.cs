@@ -1,8 +1,8 @@
-﻿using JMiles42.AdvVar;
-using JMiles42.AdvVar.RuntimeRef;
-using JMiles42.Generics;
-using JMiles42.Grid;
-using JMiles42.Utilities;
+﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.RuntimeRef;
+using ForestOfChaosLib.Generics;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Utilities;
 using UnityEngine;
 
 public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
@@ -12,8 +12,8 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private Map MapVal => Map.Value;
 	public GameObject ObjectToSpawn;
 	public PlayerRef Player;
-	public BoolReference MovePlayerToClickPosAndPlace;
-	public BoolReference RemovePlacingOnPlace = true;
+	public BoolVariable MovePlayerToClickPosAndPlace;
+	public BoolVariable RemovePlacingOnPlace = true;
 
 	public void OnEnable()
 	{

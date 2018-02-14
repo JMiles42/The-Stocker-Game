@@ -1,10 +1,10 @@
-﻿using JMiles42.Components;
-using JMiles42.UnityScriptsExtensions;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
 namespace JMiles42.UI
 {
-	public class SpawnUiItem: JMiles2DBehavior
+	public class SpawnUiItem: FoCs2DBehavior
 	{
 		public GameObject Prefab;
 		public int Amount = 1;

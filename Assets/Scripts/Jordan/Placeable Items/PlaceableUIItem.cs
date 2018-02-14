@@ -1,10 +1,9 @@
-﻿using System;
-using JMiles42;
-using JMiles42.CSharpExtensions;
-using JMiles42.JUI.Button;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.FoCsUI.Button;
 using UnityEngine;
 
-public class PlaceableUIItem: JMiles2DBehavior {
+public class PlaceableUIItem: FoCs2DBehavior {
 	[SerializeField] private ButtonClickEventBase _button;
 	public ButtonClickEventBase Button {
 		get { return _button ?? (_button = GetComponent<ButtonClickEventBase>()); }

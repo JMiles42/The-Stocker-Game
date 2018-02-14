@@ -1,4 +1,4 @@
-﻿using JMiles42.Systems.MenuManaging;
+﻿using ForestOfChaosLib.MenuManaging;
 using UnityEngine;
 using UnityEngine.UI;
 

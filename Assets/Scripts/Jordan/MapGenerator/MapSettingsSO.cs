@@ -1,4 +1,4 @@
-﻿using JMiles42.ScriptableObjects.Generic;
+﻿using ForestOfChaosLib.ScriptableObjects.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "MapGen/Map Settings")]

@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections;
-using JMiles42.AdvVar;
-using JMiles42.AdvVar.RuntimeRef;
-using JMiles42.CSharpExtensions;
-using JMiles42.Generics;
-using JMiles42.Grid;
-using JMiles42.Types;
-using JMiles42.UnityScriptsExtensions;
+using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.RuntimeRef;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Generics;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
 public class Player: Singleton<Player>
 {
 	public CameraRTRef Camera;
-	public GridBlockListVariable grid;
+	public GridBlockListReference grid;
 	public GridPosition GridPosition = GridPosition.Zero;
 
 	public MapSO Map;
-	public FloatReference moveSpeed;
-	public FloatReference distanceToNode = 0.2f;
+	public FloatVariable moveSpeed;
+	public FloatVariable distanceToNode = 0.2f;
 
 
 	private Coroutine movingCoroutine;

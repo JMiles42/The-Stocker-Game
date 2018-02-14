@@ -1,10 +1,11 @@
-﻿using JMiles42.UnityScriptsExtensions;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.UnityScriptsExtensions;
 
 using UnityEngine;
 
 namespace JMiles42.UI
 {
-	public class NamedUiSpawner: JMiles2DBehavior
+	public class NamedUiSpawner: FoCs2DBehavior
 	{
 		public GameObject Prefab;
 		public string[] Names;

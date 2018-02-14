@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using JMiles42.Attributes;
-using JMiles42.CSharpExtensions;
-using JMiles42.Grid;
-using JMiles42.Types;
+using ForestOfChaosLib.Attributes;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
 [Serializable]
 public class Map

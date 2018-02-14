@@ -1,4 +1,5 @@
-﻿using JMiles42.Editor.Windows;
+﻿using ForestOfChaosLib.Editor.Utilities;
+using ForestOfChaosLib.Editor.Windows;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,9 +17,9 @@ public class SceneWindow: Window<SceneWindow>
 
 	protected override void DrawGUI()
 	{
-		using(new GUILayout.VerticalScope(GUI.skin.box))
+		using(EditorDisposables.VerticalScope(GUI.skin.box))
 			DrawLoadedScenes();
-		using(new GUILayout.VerticalScope(GUI.skin.box))
+		using(EditorDisposables.VerticalScope(GUI.skin.box))
 			DrawBuildScenes();
 	}
 
@@ -51,25 +52,25 @@ public class SceneWindow: Window<SceneWindow>
 
 	private void DrawScene(Scene scene)
 	{
-		using(new GUILayout.VerticalScope(GUI.skin.box))
+		using(EditorDisposables.VerticalScope(GUI.skin.box))
 		{
-			using(new GUILayout.HorizontalScope())
+			using(EditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Path:");
 				EditorGUILayout.LabelField(scene.path);
 			}
-			using(new GUILayout.HorizontalScope())
+			using(EditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Name:");
 				EditorGUILayout.LabelField(scene.name);
 			}
 
-			using(new GUILayout.HorizontalScope())
+			using(EditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Build Index");
 				EditorGUILayout.LabelField(scene.buildIndex.ToString());
 			}
-			using(new GUILayout.HorizontalScope())
+			using(EditorDisposables.HorizontalScope())
 
 			{
 				EditorGUILayout.LabelField("Root Count");

@@ -1,9 +1,9 @@
-﻿using JMiles42.AdvVar.Base;
-using JMiles42.CSharpExtensions;
+﻿using ForestOfChaosLib.AdvVar.Base;
+using ForestOfChaosLib.CSharpExtensions;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "MapGen/Map")]
-public class MapSO: AdvVariable<Map>
+public class MapSO: AdvReference<Map>
 {
 	public void GenerateMap(MapSettings settings)
 	{

@@ -1,5 +1,5 @@
-﻿using JMiles42.Grid;
-using JMiles42.Types;
+﻿using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
 public class Vector2IHeapable: IHeapItems<Vector2IHeapable>
 {

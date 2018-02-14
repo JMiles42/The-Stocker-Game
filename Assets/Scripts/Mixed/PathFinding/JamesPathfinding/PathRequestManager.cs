@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using JMiles42.CSharpExtensions;
-using JMiles42.Grid;
-using JMiles42.Types;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
 public static class PathRequestManager
 {

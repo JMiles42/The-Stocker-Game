@@ -1,7 +1,6 @@
-﻿using JMiles42;
-using JMiles42.Components;
+﻿using ForestOfChaosLib;
 
-public abstract class Placeable: JMilesBehavior {
+public abstract class Placeable: FoCsBehavior {
 	public virtual float GetMultiplyer() { return 0f; }
 
 	public abstract int GetScore();

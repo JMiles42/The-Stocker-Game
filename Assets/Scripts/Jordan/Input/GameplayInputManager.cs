@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JMiles42.AdvVar;
-using JMiles42.AdvVar.InputSystem;
-using JMiles42.Attributes;
-using JMiles42.CSharpExtensions;
-using JMiles42.Generics;
-using JMiles42.Interfaces;
-using JMiles42.UnityScriptsExtensions;
+using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.InputSystem;
+using ForestOfChaosLib.Attributes;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Generics;
+using ForestOfChaosLib.Interfaces;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
 public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
 {
-	public AdvInputAxisVariable PrimaryClick;
-	public AdvInputAxisVariable MiddleClick;
-	public AdvInputAxisVariable SecondaryClick;
-	public AdvInputAxisVariable ScrollWheel;
-	public AdvInputAxisVariable CameraMode;
-	public AdvInputAxisVariable PlacementMode;
-	public AdvInputAxisVariable EditMode;
+	public AdvInputAxisReference PrimaryClick;
+	public AdvInputAxisReference MiddleClick;
+	public AdvInputAxisReference SecondaryClick;
+	public AdvInputAxisReference ScrollWheel;
+	public AdvInputAxisReference CameraMode;
+	public AdvInputAxisReference PlacementMode;
+	public AdvInputAxisReference EditMode;
 
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
 	public List<int> TouchIndexesToRemove = new List<int>(0);
@@ -174,14 +174,14 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private Vector2 MouseDelta
 	{
-		get { return MousePosition - MouseStartPos; }
+		get { return MousePosition.Value - MouseStartPos; }
 	}
 
 	private void OnKeyMiddleDown()
 	{
 		if(!GameActive.Value)
 			return;
-		MouseStartPos = MousePosition;
+		MouseStartPos = MousePosition.Value;
 		OnScreenStartMove.Trigger(MousePosition.Value);
 	}
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using JMiles42.Generics;
+using ForestOfChaosLib.Generics;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManaging
+namespace ForestOfChaosLib.MenuManaging
 {
     public partial class MenuManager: Singleton<MenuManager>
     {

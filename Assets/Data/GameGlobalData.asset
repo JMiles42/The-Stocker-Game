@@ -11,18 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
   m_Name: GameGlobalData
   m_EditorClassIdentifier: 
---- !u!114 &114083559076978988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cdac562c14d20e4ca599c5e919639e1, type: 3}
-  m_Name: ActiveInputMode
-  m_EditorClassIdentifier: Assembly-CSharp::InputModeVariable
-  _value: 2
 --- !u!114 &114093651824931502
 MonoBehaviour:
   m_ObjectHideFlags: 0

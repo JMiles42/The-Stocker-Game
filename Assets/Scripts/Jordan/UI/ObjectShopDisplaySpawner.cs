@@ -1,8 +1,7 @@
-﻿using JMiles42;
-using JMiles42.UnityScriptsExtensions;
-using UnityEngine;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.UnityScriptsExtensions;
 
-public class ObjectShopDisplaySpawner: JMiles2DBehavior {
+public class ObjectShopDisplaySpawner: FoCs2DBehavior {
 	public PlaceableUIItem Prefab;
 	public PlaceableItemList Items;
 

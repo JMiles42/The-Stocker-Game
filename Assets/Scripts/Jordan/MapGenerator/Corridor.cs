@@ -1,5 +1,5 @@
 ﻿using System;
-using JMiles42.Utilities.Enums;
+using ForestOfChaosLib.Utilities.Enums;
 
 [Serializable]
 public class Corridor

@@ -1,5 +1,5 @@
-﻿using JMiles42.Editor;
-using JMiles42.Editor.PropertyDrawers;
+﻿using ForestOfChaosLib.Editor;
+using ForestOfChaosLib.Editor.PropertyDrawers;
 using UnityEditor;
 using UnityEngine;
 

@@ -1,7 +1,7 @@
-﻿using JMiles42.AdvVar;
-using JMiles42.Components;
-using JMiles42.JUI.Button;
-using JMiles42.Systems.MenuManaging;
+﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.FoCsUI.Button;
+using ForestOfChaosLib.MenuManaging;
+using ForestOfChaosLib.Maths.Random;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -35,7 +35,7 @@ public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 
 	public void OnPlayGameBTN()
 	{
-		Seed.Value = JMiles42.Maths.Random.RandomStrings.GetRandomString(8);
+		Seed.Value = RandomStrings.GetRandomString(8);
 		SeedUsed.Value = false;
 		GameActive.Value = true;
 		PlayGame();

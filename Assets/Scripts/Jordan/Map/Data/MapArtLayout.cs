@@ -1,10 +1,9 @@
-﻿using System;
-using JMiles42;
-using JMiles42.CSharpExtensions;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.CSharpExtensions;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Map Layout", menuName = "SO/Map/Map Layout", order = 0)]
-public class MapArtLayout: JMilesScriptableObject
+public class MapArtLayout: FoCsScriptableObject
 {
 	[SerializeField] private GameObject[] solidTiles;
 

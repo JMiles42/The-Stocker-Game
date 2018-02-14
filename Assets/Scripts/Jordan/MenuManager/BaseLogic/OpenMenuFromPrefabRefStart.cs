@@ -1,6 +1,6 @@
-﻿namespace JMiles42.Systems.MenuManaging
+﻿namespace ForestOfChaosLib.MenuManaging
 {
-	public class OpenMenuFromPrefabRefStart: JMilesBehavior
+	public class OpenMenuFromPrefabRefStart: FoCsBehavior
 	{
 		public enum Mode
 		{

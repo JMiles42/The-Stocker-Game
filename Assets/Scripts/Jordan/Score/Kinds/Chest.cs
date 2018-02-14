@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using JMiles42.Systems.Item;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Chest: ScorableObject
 {
-	public List<Item> Items;
-
 	[SerializeField]
 	private float _scoreMultiplier;
 

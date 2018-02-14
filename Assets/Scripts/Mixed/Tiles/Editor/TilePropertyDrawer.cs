@@ -1,5 +1,5 @@
-﻿using JMiles42.Editor;
-using JMiles42.Editor.Utilities;
+﻿using ForestOfChaosLib.Editor.ImGUI;
+using ForestOfChaosLib.Editor.Utilities;
 using UnityEngine;
 using UnityEditor;
 
@@ -25,13 +25,13 @@ public class TilePropertyDrawer: PropertyDrawer
 				break;
 		}
 
-		using (new EditorColorChanger(col))
+		using (EditorDisposables.ColorChanger(col))
 		{
 			if (MapEditing)
 				EditorGUI.LabelField(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
 			else
 			{
-				var @event = JMilesGUIEvents.Button(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
+				var @event = FoCsGUI.Button(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);
 				if (@event.AsButtonLeftClick)
 				{
 					tileType.enumValueIndex = (tileType.enumValueIndex + 1) % tileType.enumDisplayNames.Length;

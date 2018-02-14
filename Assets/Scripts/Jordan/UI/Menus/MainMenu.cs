@@ -1,6 +1,6 @@
-﻿using JMiles42.AdvVar;
-using JMiles42.JUI.Button;
-using JMiles42.Systems.MenuManaging;
+﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.FoCsUI.Button;
+using ForestOfChaosLib.MenuManaging;
 
 public class MainMenu: SimpleMenu<MainMenu>
 {

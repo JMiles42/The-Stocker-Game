@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using JMiles42;
-using JMiles42.Components;
-using JMiles42.JUI.Button;
-using UnityEngine;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.FoCsUI.Button;
 
-public class ShopButton: JMiles2DBehavior {
+public class ShopButton: FoCs2DBehavior {
 	private ButtonClickEventBase _buttonClickEventBase;
 	public ButtonClickEventBase ButtonClickEventBase {
 		get { return _buttonClickEventBase ?? (_buttonClickEventBase = GetComponent<ButtonClickEventBase>()); }

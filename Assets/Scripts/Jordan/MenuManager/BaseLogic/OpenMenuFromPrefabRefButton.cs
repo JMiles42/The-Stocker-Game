@@ -1,8 +1,8 @@
-﻿using JMiles42.JUI.Button;
+﻿using ForestOfChaosLib.FoCsUI.Button;
 
-namespace JMiles42.Systems.MenuManaging
+namespace ForestOfChaosLib.MenuManaging
 {
-	public class OpenMenuFromPrefabRefButton: JMilesBehavior
+	public class OpenMenuFromPrefabRefButton: FoCsBehavior
 	{
 		public ButtonClickEventBase Button;
 		public Menu MenuToOpen;

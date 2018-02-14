@@ -1,4 +1,4 @@
-﻿using JMiles42.Types;
+﻿using ForestOfChaosLib.Types;
 
 [System.Serializable]
 public class Tile

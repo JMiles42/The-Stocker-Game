@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using JMiles42.Types;
+using ForestOfChaosLib.Types;
 
 public static class PathFindingIntegrator
 {

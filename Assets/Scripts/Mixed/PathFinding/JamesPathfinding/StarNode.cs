@@ -1,4 +1,4 @@
-﻿using JMiles42.Types;
+﻿using ForestOfChaosLib.Types;
 using UnityEngine;
 
 public class StarNode: IHeapItems<StarNode>

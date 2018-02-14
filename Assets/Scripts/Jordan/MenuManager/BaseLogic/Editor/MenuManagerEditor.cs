@@ -1,11 +1,13 @@
-﻿using JMiles42.Editor;
+﻿using ForestOfChaosLib.Editor;
+using ForestOfChaosLib.Editor.ImGUI;
+using ForestOfChaosLib.Editor.Utilities;
 using UnityEditor;
 using UnityEngine;
 
-namespace JMiles42.Systems.MenuManaging
+namespace ForestOfChaosLib.MenuManaging
 {
 	[CustomEditor(typeof(MenuManager))]
-	public class MenuManagerEditor: JMilesEditorBase
+	public class MenuManagerEditor: FoCsEditor
 	{
 		private bool foldoutA;
 		//private bool foldoutB = true;
@@ -28,7 +30,7 @@ namespace JMiles42.Systems.MenuManaging
 			//		}
 			//	}
 			//}
-			using(new GUILayout.VerticalScope(GUI.skin.box))
+			using(EditorDisposables.VerticalScope(GUI.skin.box))
 			{
 				foldoutA = EditorGUILayout.Foldout(foldoutA, "Show Menu Names");
 				if(foldoutA)
@@ -36,7 +38,7 @@ namespace JMiles42.Systems.MenuManaging
 					foreach(var nam in MenuNameWindow.GetTypeList())
 						EditorGUILayout.LabelField(nam);
 				}
-				if(JMilesGUILayoutEvents.Button("Create Data Script"))
+				if(FoCsGUILayout.Button("Create Data Script"))
 					MenuNameWindow.GenerateClassFile(MenuNameWindow.GetTypeList());
 			}
 		}

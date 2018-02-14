@@ -1,6 +1,6 @@
-﻿using JMiles42;
+﻿using ForestOfChaosLib;
 
-public class MapCreator: JMilesBehavior
+public class MapCreator: FoCsBehavior
 {
 	public MapSO Map;
 	public MapSettingsSO MapSettings;

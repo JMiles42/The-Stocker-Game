@@ -1,7 +1,6 @@
-﻿
-using JMiles42;
+﻿using ForestOfChaosLib;
 
-public class StartGame: JMilesBehavior
+public class StartGame: FoCsBehavior
 {
 	void Start()
 	{

@@ -1,23 +1,24 @@
-﻿using JMiles42.Editor;
-using JMiles42.Editor.Utilities;
-using JMiles42.Maths.Random;
+﻿using ForestOfChaosLib.Editor;
+using ForestOfChaosLib.Editor.ImGUI;
+using ForestOfChaosLib.Editor.Utilities;
+using ForestOfChaosLib.Maths.Random;
 using UnityEditor;
 
 [CustomEditor(typeof(MapCreator))]
-public class MapCreatorEditor: JMilesEditorBase<MapCreator>
+public class MapCreatorEditor: FoCsEditor<MapCreator>
 {
 	public override void DrawGUI()
 	{
-		if(JMilesGUILayoutEvents.Button("Randomize Seed + Generate"))
+		if(FoCsGUILayout.Button("Randomize Seed + Generate"))
 		{
 			RandomizeSeed();
 			GenerateMap();
 		}
 		using(EditorDisposables.HorizontalScope())
 		{
-			if(JMilesGUILayoutEvents.Button("Randomize Seed"))
+			if(FoCsGUILayout.Button("Randomize Seed"))
 				RandomizeSeed();
-			if(JMilesGUILayoutEvents.Button("Generate Map"))
+			if(FoCsGUILayout.Button("Generate Map"))
 				GenerateMap();
 		}
 	}

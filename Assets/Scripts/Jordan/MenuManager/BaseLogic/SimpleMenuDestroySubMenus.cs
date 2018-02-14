@@ -1,4 +1,4 @@
-﻿namespace JMiles42.Systems.MenuManaging
+﻿namespace ForestOfChaosLib.MenuManaging
 {
     public abstract class SimpleMenuDestroySubMenus<T>: SimpleMenu<T>
         where T: SimpleMenuDestroySubMenus<T>

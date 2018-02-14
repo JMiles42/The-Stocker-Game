@@ -1,5 +1,5 @@
-﻿using JMiles42.Grid;
-using JMiles42.Utilities.Enums;
+﻿using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Utilities.Enums;
 using UnityEngine;
 using Random = System.Random;
 

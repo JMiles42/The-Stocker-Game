@@ -1,20 +1,20 @@
 ﻿using System;
-using JMiles42.AdvVar;
-using JMiles42.AdvVar.Base;
+using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.AdvVar.Base;
 using UnityEngine;
 
 [Serializable]
-[AdvFolderName("Stocker", 0)]
+[AdvFolderName("Stocker")]
 [CreateAssetMenu]
-public class InputModeVariable: AdvVariable<InputMode>
+public class InputModeReference: AdvReference<InputMode>
 { }
 
 [Serializable]
-public class InputModeReference: AdvReference<InputMode, InputModeVariable>
+public class InputModeVariable: AdvVariable<InputMode, InputModeReference>
 {
-	public static implicit operator InputModeReference(InputMode input)
+	public static implicit operator InputModeVariable(InputMode input)
 	{
-		var fR = new InputModeReference
+		var fR = new InputModeVariable
 				 {
 					 UseConstant = true
 				 };

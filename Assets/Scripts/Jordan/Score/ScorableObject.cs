@@ -1,7 +1,6 @@
-﻿using JMiles42;
-using JMiles42.Components;
+﻿using ForestOfChaosLib;
 
-public abstract class ScorableObject: JMilesBehavior
+public abstract class ScorableObject: FoCsBehavior
 {
 	public ScorableObjectList ScorableObjectList;
 

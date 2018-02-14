@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JMiles42;
-using JMiles42.CSharpExtensions;
-using JMiles42.Types;
-using JMiles42.UnityScriptsExtensions;
+using ForestOfChaosLib;
+using ForestOfChaosLib.CSharpExtensions;
+using ForestOfChaosLib.Types;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
-public class MapGameObjectGenerator: JMilesBehavior
+public class MapGameObjectGenerator: FoCsBehavior
 {
-	public GridBlockListVariable GridBlock;
+	public GridBlockListReference GridBlock;
 	public MapSO Map;
 
 	public void OnEnable()

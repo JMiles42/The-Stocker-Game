@@ -1,4 +1,4 @@
-namespace JMiles42.Systems.MenuManaging
+namespace ForestOfChaosLib.MenuManaging
 {
 	[System.Serializable]
 	public partial class MenuManager

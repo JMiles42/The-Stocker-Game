@@ -1,6 +1,6 @@
-﻿using JMiles42.JUI.Button;
+﻿using ForestOfChaosLib.FoCsUI.Button;
 using UnityEngine;
-using JMiles42.Systems.MenuManaging;
+using ForestOfChaosLib.MenuManaging;
 
 public class ExitGameMenu: SimpleMenu<ExitGameMenu>
 {
