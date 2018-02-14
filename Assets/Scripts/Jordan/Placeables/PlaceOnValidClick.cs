@@ -1,5 +1,8 @@
-﻿using ForestOfChaosLib.AdvVar;
+﻿using System;
+using System.Linq;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.RuntimeRef;
+using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Generics;
 using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Utilities;
@@ -15,56 +18,79 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	public PlayerRef Player;
 	public BoolVariable RemovePlacingOnPlace = true;
 	private Map MapVal => Map.Value;
+	public BoolVariable CurrentlyPlacing;
 
 	public void OnEnable()
 	{
-		GameplayInputManager.OnPrimaryClick += OnPrimaryClick;
+		GameplayInputManager.OnGridBlockClick += OnPrimaryClick;
 	}
 
 	public void OnDisable()
 	{
-		GameplayInputManager.OnPrimaryClick -= OnPrimaryClick;
+		GameplayInputManager.OnGridBlockClick -= OnPrimaryClick;
 	}
 
 	private void Update()
 	{
+		if(Placer == null)
+			return;
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
 		Placer.UpdatePosition(gp, wp);
 	}
 
-	private void OnPrimaryClick(Vector2 mousePos)
+	private void OnPrimaryClick(GridBlock block)
 	{
-		if(Placer == null)
+		if (Placer == null)
 			return;
-		var wp = Camera.Reference.ScreenPointToRay(mousePos).GetPosOnY();
-		var gp = wp.GetGridPosition();
-		if(!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(gp))
-		{
-			if(MovePlayerToClickPosAndPlace.Value)
-				MovePlayerToClickPos(gp);
-		}
 
-		Placer.ApplyPlacement(gp, wp);
+		if (!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(block.Position))
+		{
+			if(!MovePlayerToClickPosAndPlace.Value)
+				return;
+			MovePlayerToClickPos(block);
+			tempBlock = block;
+		}
+		else
+			PlaceWorldObject(block);
+	}
+
+	private GridBlock tempBlock;
+	private void PlaceWorldObject(GridBlock block)
+	{
+		Instance.CurrentlyPlacing.Value = false;
+		Placer.ApplyPlacement(block.Position, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
+		Placer.OnApplyPlacement.Trigger();
+		Callback.Trigger(true);
 
 		if(RemovePlacingOnPlace.Value)
 			Placer = null;
 	}
 
-	private void MovePlayerToClickPos(GridPosition clickPosition)
+	private void MovePlayerToClickPos(GridBlock block)
 	{
-		Player.Reference.GetPlayerPath(clickPosition, MovePlayerToCallback);
+		Player.Reference.GetPlayerPath(block, MovePlayerToCallback);
 	}
 
 	private void MovePlayerToCallback(TilePath path, bool pathNull)
 	{
-		path.RemoveAt(path.Count - 1);
-		Player.Reference.MovePlayer(path);
+		path.Remove(path.Last());
+
+		Player.Reference.MovePlayer(path, PlayerFinishMovingCallback);
 	}
 
-	public static void StartPlacing(IPlacer obj)
+	private void PlayerFinishMovingCallback()
 	{
+		PlaceWorldObject(tempBlock);
+		tempBlock = null;
+	}
+
+	private static Action<bool> Callback;
+	public static void StartPlacing(IPlacer obj, Action<bool> cancelCallback = null)
+	{
+		Instance.CurrentlyPlacing.Value = true;
 		Instance.Placer?.CancelPlacement();
+		Callback = cancelCallback;
 
 		Instance.Placer = obj;
 
@@ -76,6 +102,8 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 
 	public static void StopPlacing(IPlacer obj)
 	{
+		Instance.CurrentlyPlacing.Value = false;
+		Callback.Trigger(false);
 		Instance.Placer?.CancelPlacement();
 		Instance.Placer = null;
 	}

@@ -64,6 +64,9 @@ MonoBehaviour:
   PlacementMode: {fileID: 114619496926770128, guid: 158f0da2ea342744aac794bec32589cb,
     type: 2}
   EditMode: {fileID: 114656967208382922, guid: 158f0da2ea342744aac794bec32589cb, type: 2}
+  GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   TouchList: []
   TouchIndexesToRemove: 
   TimeForAlternateTouch: 0.2

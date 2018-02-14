@@ -7,4 +7,11 @@ public class WorldObject: FoCsBehavior
 	public GridBlock MyGridBlock;
 	public GridPosition MyPosition;
 
+	public void SetupObject(GridBlock gb)
+	{
+		gb.WorldObject = this;
+		MyGridBlock = gb;
+		MyPosition = gb.GridPosition;
+		Position = gb.GridPosition.WorldPosition;
+	}
 }

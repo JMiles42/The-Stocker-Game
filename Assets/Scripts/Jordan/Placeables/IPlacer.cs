@@ -1,4 +1,5 @@
-﻿using ForestOfChaosLib.Grid;
+﻿using System;
+using ForestOfChaosLib.Grid;
 using UnityEngine;
 
 public interface IPlacer
@@ -7,4 +8,6 @@ public interface IPlacer
 	void UpdatePosition(GridPosition pos, Vector3 worldPos);
 	void CancelPlacement();
 	void ApplyPlacement(GridPosition pos, Vector3 worldPos);
+
+	Action OnApplyPlacement { get; set; }
 }

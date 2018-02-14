@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.InputSystem;
+using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Attributes;
 using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Generics;
+using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Interfaces;
 using ForestOfChaosLib.UnityScriptsExtensions;
+using ForestOfChaosLib.Utilities;
 using UnityEngine;
 
 public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
@@ -19,6 +22,8 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public AdvInputAxisReference CameraMode;
 	public AdvInputAxisReference PlacementMode;
 	public AdvInputAxisReference EditMode;
+	public GridBlockListReference GridBlocks;
+	public CameraRTRef Camera;
 
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
 	public List<int> TouchIndexesToRemove = new List<int>(0);
@@ -36,6 +41,10 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 
 	public static event Action<Vector2> OnPrimaryClick = (a) =>
+												  {
+													  //Debug.Log("Primary" + a);
+												  };
+	public static event Action<GridBlock> OnGridBlockClick = (a) =>
 												  {
 													  //Debug.Log("Primary" + a);
 												  };
@@ -144,7 +153,17 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	{
 		if(!GameActive.Value)
 			return;
+		CheckIfGridBlockHit();
 		OnPrimaryClick.Trigger(Input.mousePosition.ToVector2());
+	}
+
+	private void CheckIfGridBlockHit()
+	{
+		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
+		var gp = wp.GetGridPosition();
+		var block = GridBlocks.GetBlock(gp);
+		if(block != null)
+			OnGridBlockClick.Trigger(block);
 	}
 
 	private void OnSecondaryKeyDown() {

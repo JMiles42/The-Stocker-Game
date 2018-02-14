@@ -18,6 +18,7 @@ public class Player: Singleton<Player>
 	public MapSO Map;
 	public FloatVariable moveSpeed;
 	public FloatVariable distanceToNode = 0.2f;
+	public BoolVariable PlacingObject;
 
 
 	private Coroutine movingCoroutine;
@@ -25,13 +26,13 @@ public class Player: Singleton<Player>
 
 	public void OnEnable()
 	{
-		GameplayInputManager.OnPrimaryClick += OnPrimaryClick;
+		GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
 		Map.OnValueChange += SetPlayerToPos;
 	}
 
 	public void OnDisable()
 	{
-		GameplayInputManager.OnPrimaryClick -= OnPrimaryClick;
+		GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
 		Map.OnValueChange -= SetPlayerToPos;
 	}
 
@@ -48,18 +49,20 @@ public class Player: Singleton<Player>
 		Position = GridPosition = Map.Value.SpawnPosition;
 	}
 
-	private void OnPrimaryClick(Vector2 mousePos)
+	private void OnGridBlockClick(GridBlock block)
 	{
-		MovePlayerTo(mousePos);
+		if(!PlacingObject.Value)
+			MovePlayerTo(block);
 	}
 
 	#region MovePlayer Methods
-	public void MovePlayer(TilePath path)
+	public void MovePlayer(TilePath path, Action callback = null)
 	{
 		OnPathFound(path, false);
+		MovePlayerCallback = callback;
 	}
 
-	public void MovePlayerTo(Vector2 mousePos)
+	public void MovePlayerTo(Vector2 mousePos, Action Callback = null)
 	{
 		var gp = Camera.Reference.ScreenPointToRay(mousePos).GetGridPosition();
 		foreach(var gridBlock in grid.Value)
@@ -67,31 +70,32 @@ public class Player: Singleton<Player>
 			if(gridBlock.GridPosition != gp)
 				continue;
 
-			MovePlayer(gridBlock);
+			MovePlayer(gridBlock, Callback);
 			return;
 		}
 	}
 
-	public void MovePlayerTo(GridPosition gridPosition)
+	public void MovePlayerTo(GridPosition gridPosition, Action Callback = null)
 	{
 		foreach(var gridBlock in grid.Value)
 		{
 			if(gridBlock.GridPosition != gridPosition)
 				continue;
 
-			MovePlayer(gridBlock);
+			MovePlayer(gridBlock, Callback);
 			return;
 		}
 	}
 
-	public void MovePlayerTo(GridBlock gridBlock)
+	public void MovePlayerTo(GridBlock gridBlock, Action Callback = null)
 	{
-		MovePlayer(gridBlock);
+		MovePlayer(gridBlock, Callback);
 	}
 
-
-	private void MovePlayer(GridBlock block)
+	private Action MovePlayerCallback;
+	private void MovePlayer(GridBlock block, Action Callback = null)
 	{
+		MovePlayerCallback = Callback;
 		TargetPosition = block.GridPosition;
 		PathRequestManager.RequestPath(GridPosition, TargetPosition, Map.Value, OnPathFound);
 	}
@@ -174,6 +178,7 @@ public class Player: Singleton<Player>
 				yield return null;
 			}
 		}
+		MovePlayerCallback.Trigger();
 		movingCoroutine = null;
 	}
 

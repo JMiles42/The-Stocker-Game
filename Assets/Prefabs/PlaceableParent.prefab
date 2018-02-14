@@ -9,52 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1534224158506788}
+  m_RootGameObject: {fileID: 1739869488073702}
   m_IsPrefabParent: 1
---- !u!1 &1534224158506788
+--- !u!1 &1739869488073702
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4935376853067142}
-  - component: {fileID: 114010787794673794}
+  - component: {fileID: 4390638176448808}
+  - component: {fileID: 114882612340951978}
   m_Layer: 0
-  m_Name: ScoreCalculator
+  m_Name: PlaceableParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4935376853067142
+--- !u!4 &4390638176448808
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534224158506788}
+  m_GameObject: {fileID: 1739869488073702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.625, y: -2.8242188, z: 10.144531}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114010787794673794
+--- !u!114 &114882612340951978
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534224158506788}
+  m_GameObject: {fileID: 1739869488073702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a519cf50d011c44b395c97d45719ae, type: 3}
+  m_Script: {fileID: 11500000, guid: cf6db428ac3016b49aaf57eb61ae3a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScorableObjectList: {fileID: 114793204861550020, guid: aba02abe5c05c4145a2d8abd168afb34,
-    type: 2}
-  Score:
-    UseConstent: 0
-    ConstantValue: 0
-    Variable: {fileID: 114236361811082100, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  Ref: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  RemoveOnDisable: 0

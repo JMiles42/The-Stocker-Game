@@ -11,3 +11,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
   m_Name: Placeables
   m_EditorClassIdentifier: 
+--- !u!114 &114227515742374574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: ChestPlacer
+  m_EditorClassIdentifier: 
+  Name:
+    UseConstant: 1
+    ConstantValue: Chest
+    Variable: {fileID: 0}
+  Description:
+    UseConstant: 1
+    ConstantValue: It holds stuff
+    Variable: {fileID: 0}
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114941231801105060, guid: 0ec40af08c8384440a2070141098e191, type: 2}
+--- !u!114 &114533593362658678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b783bd9869a94341b0b750521c9a4c9, type: 3}
+  m_Name: ExitPlacer
+  m_EditorClassIdentifier: 
+  Name:
+    UseConstant: 1
+    ConstantValue: Exit Door
+    Variable: {fileID: 0}
+  Description:
+    UseConstant: 1
+    ConstantValue: This is the Exit to the dungeon, their can be only one!
+    Variable: {fileID: 0}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114195496729803020, guid: 4dd3534f71cc79d429a9042b5d1d578d, type: 2}
+  Reference: {fileID: 114321197824003404, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}

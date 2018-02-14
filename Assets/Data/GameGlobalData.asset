@@ -93,6 +93,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 483172f722a1e554cbad4c9a9a2851e1, type: 3}
   m_Name: MainCamera
   m_EditorClassIdentifier: 
+--- !u!114 &114321197824003404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbbfdda3a0385045b08618553d0376c, type: 3}
+  m_Name: ExitRef
+  m_EditorClassIdentifier: 
 --- !u!114 &114382031641612998
 MonoBehaviour:
   m_ObjectHideFlags: 0
