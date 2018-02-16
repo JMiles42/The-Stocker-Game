@@ -4,10 +4,9 @@ using UnityEngine;
 
 public interface IPlacer
 {
-	void StartPlacing(GridPosition pos, Vector3 worldPos);
-	void UpdatePosition(GridPosition pos, Vector3 worldPos);
-	void CancelPlacement();
-	void ApplyPlacement(GridPosition pos, Vector3 worldPos);
-
 	Action OnApplyPlacement { get; set; }
+	void StartPlacing(Player player, GridPosition pos, Vector3 worldPos);
+	void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos);
+	void CancelPlacement();
+	void ApplyPlacement(Player player, GridPosition pos, Vector3 worldPos);
 }

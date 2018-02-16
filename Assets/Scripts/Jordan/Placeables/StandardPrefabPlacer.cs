@@ -11,7 +11,7 @@ public class StandardPrefabPlacer: Placer
 	public WorldObject Prefab;
 	private WorldObject spawnedObject;
 
-	public override void StartPlacing(GridPosition pos, Vector3 worldPos)
+	public override void StartPlacing(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		if(spawnedObject == null)
 			spawnedObject = Instantiate(Prefab, worldPos, Quaternion.identity);
@@ -19,11 +19,16 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject.transform.position = worldPos;
 	}
 
-	public override void UpdatePosition(GridPosition pos, Vector3 worldPos)
+	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		if(spawnedObject == null)
 			return;
-		spawnedObject.transform.position = worldPos;
+
+
+
+
+		var dir = (player.Position - worldPos).normalized;
+		spawnedObject.transform.position = player.Position - dir;
 	}
 
 	public override void CancelPlacement()
@@ -31,7 +36,7 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject?.gameObject.SetActive(false);
 	}
 
-	public override void ApplyPlacement(GridPosition pos, Vector3 worldPos)
+	public override void ApplyPlacement(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		spawnedObject.transform.position = pos.WorldPosition;
 		spawnedObject.SetupObject(GridBlockList.GetBlock(pos));

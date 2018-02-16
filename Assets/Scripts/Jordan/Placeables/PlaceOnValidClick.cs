@@ -36,7 +36,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 			return;
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
-		Placer.UpdatePosition(gp, wp);
+		Placer.UpdatePosition(Player.Reference, gp, wp);
 	}
 
 	private void OnPrimaryClick(GridBlock block)
@@ -59,7 +59,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private void PlaceWorldObject(GridBlock block)
 	{
 		Instance.CurrentlyPlacing.Value = false;
-		Placer.ApplyPlacement(block.Position, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
+		Placer.ApplyPlacement(Player.Reference, block.Position, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
 		Placer.OnApplyPlacement.Trigger();
 		Callback.Trigger(true);
 
@@ -97,7 +97,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 		var wp = Instance.Camera.Reference.ScreenPointToRay(Instance.MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
 
-		Instance.Placer.StartPlacing(gp, wp);
+		Instance.Placer.StartPlacing(Instance.Player.Reference, gp, wp);
 	}
 
 	public static void StopPlacing(IPlacer obj)

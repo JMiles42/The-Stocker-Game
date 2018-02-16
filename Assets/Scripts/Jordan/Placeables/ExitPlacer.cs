@@ -12,7 +12,7 @@ public class ExitPlacer: Placer
 	private ExitWorldObject spawnedObject;
 	public ExitRef Reference;
 
-	public override void StartPlacing(GridPosition pos, Vector3 worldPos)
+	public override void StartPlacing(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		if(Reference.Reference != null)
 			return;
@@ -23,7 +23,7 @@ public class ExitPlacer: Placer
 		spawnedObject.transform.position = worldPos;
 	}
 
-	public override void UpdatePosition(GridPosition pos, Vector3 worldPos)
+	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		if(spawnedObject == null)
 			return;
@@ -35,7 +35,7 @@ public class ExitPlacer: Placer
 		spawnedObject?.gameObject.SetActive(false);
 	}
 
-	public override void ApplyPlacement(GridPosition pos, Vector3 worldPos)
+	public override void ApplyPlacement(Player player, GridPosition pos, Vector3 worldPos)
 	{
 		spawnedObject.transform.position = pos.WorldPosition;
 		Reference.Reference = spawnedObject;
