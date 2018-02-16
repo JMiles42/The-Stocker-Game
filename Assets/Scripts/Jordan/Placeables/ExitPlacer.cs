@@ -1,5 +1,4 @@
-﻿using ForestOfChaosLib;
-using ForestOfChaosLib.AdvVar;
+﻿using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
@@ -23,7 +22,7 @@ public class ExitPlacer: Placer
 		spawnedObject.transform.position = worldPos;
 	}
 
-	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos)
+	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos, bool IsWalkingToPlace)
 	{
 		if(spawnedObject == null)
 			return;

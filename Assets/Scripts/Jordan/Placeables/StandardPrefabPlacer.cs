@@ -10,6 +10,7 @@ public class StandardPrefabPlacer: Placer
 	public TransformRTRef PlaceableParent;
 	public WorldObject Prefab;
 	private WorldObject spawnedObject;
+	private Vector3 OldDirection = Vector3.zero;
 
 	public override void StartPlacing(Player player, GridPosition pos, Vector3 worldPos)
 	{
@@ -19,16 +20,14 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject.transform.position = worldPos;
 	}
 
-	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos)
+	public override void UpdatePosition(Player player, GridPosition pos, Vector3 worldPos, bool IsWalkingToPlace)
 	{
 		if(spawnedObject == null)
 			return;
 
-
-
-
-		var dir = (player.Position - worldPos).normalized;
-		spawnedObject.transform.position = player.Position - dir;
+		if(!IsWalkingToPlace)
+			OldDirection = (player.Position - worldPos).normalized;
+		spawnedObject.transform.position = player.Position - OldDirection;
 	}
 
 	public override void CancelPlacement()

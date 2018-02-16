@@ -22,6 +22,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
   m_Name: EditingEnabled
   m_EditorClassIdentifier: 
+  _value: 1
+--- !u!114 &114439438192719344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: WalkingEnabled
+  m_EditorClassIdentifier: 
   _value: 0
 --- !u!114 &114541297706447944
 MonoBehaviour:

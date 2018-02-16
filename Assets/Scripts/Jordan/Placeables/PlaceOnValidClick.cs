@@ -6,7 +6,6 @@ using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Generics;
 using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Utilities;
-using UnityEngine;
 
 public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 {
@@ -19,6 +18,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	public BoolVariable RemovePlacingOnPlace = true;
 	private Map MapVal => Map.Value;
 	public BoolVariable CurrentlyPlacing;
+	public BoolVariable CurrentlyWalkingToPlace = false;
 
 	public void OnEnable()
 	{
@@ -36,7 +36,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 			return;
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
-		Placer.UpdatePosition(Player.Reference, gp, wp);
+		Placer.UpdatePosition(Player.Reference, gp, wp, CurrentlyWalkingToPlace.Value);
 	}
 
 	private void OnPrimaryClick(GridBlock block)
@@ -76,11 +76,13 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	{
 		path.Remove(path.Last());
 
+		CurrentlyWalkingToPlace.Value = true;
 		Player.Reference.MovePlayer(path, PlayerFinishMovingCallback);
 	}
 
 	private void PlayerFinishMovingCallback()
 	{
+		CurrentlyWalkingToPlace.Value = false;
 		PlaceWorldObject(tempBlock);
 		tempBlock = null;
 	}
