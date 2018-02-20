@@ -138,7 +138,7 @@ public class Player: Singleton<Player>
 
 	private void OnPathFound(TilePath path, bool pathNull)
 	{
-		if(movingCoroutine.IsNotNull())
+		if(movingCoroutine != null)
 			StopCoroutine(movingCoroutine);
 		movingCoroutine = StartCoroutine(MoveToPoint(path));
 	}
@@ -148,7 +148,7 @@ public class Player: Singleton<Player>
 		//var path = await Task.Run(() => PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition, null));
 		var path = PathFindingIntegrator.GetPath(GridPosition, gridBlock.GridPosition, null);
 
-		if(movingCoroutine.IsNotNull())
+		if(movingCoroutine != null)
 			StopCoroutine(movingCoroutine);
 		movingCoroutine = StartCoroutine(MoveToPoint(path));
 	}
@@ -184,7 +184,7 @@ public class Player: Singleton<Player>
 
 	public void SetPosInGrid(Vector2I newPos)
 	{
-		if(movingCoroutine.IsNotNull())
+		if(movingCoroutine != null)
 			StopCoroutine(movingCoroutine);
 		GridPosition = newPos;
 		Position = newPos.GetWorldPos().SetY(Position);

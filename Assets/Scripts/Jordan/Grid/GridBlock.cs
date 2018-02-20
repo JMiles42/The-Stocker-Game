@@ -17,4 +17,9 @@ public class GridBlock: FoCsBehavior
 	}
 
 	public bool HasWorldObject => WorldObject != null;
+
+	public void SetupObject(WorldObject wo)
+	{
+		WorldObject.SetupObject(this);
+	}
 }

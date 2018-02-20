@@ -1,11 +1,16 @@
 fileFormatVersion: 2
 guid: f6072f68272549940a1d50c958c8e419
-timeCreated: 1518601565
+timeCreated: 1519101261
 licenseType: Pro
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+      type: 2}
+  - PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+  - Prefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

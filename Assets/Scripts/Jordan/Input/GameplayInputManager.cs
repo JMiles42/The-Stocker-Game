@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿//#define CalculateTouch
+
+using System;
 using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.InputSystem;
 using ForestOfChaosLib.AdvVar.RuntimeRef;
-using ForestOfChaosLib.Attributes;
 using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Generics;
 using ForestOfChaosLib.Grid;
@@ -12,6 +11,13 @@ using ForestOfChaosLib.Interfaces;
 using ForestOfChaosLib.UnityScriptsExtensions;
 using ForestOfChaosLib.Utilities;
 using UnityEngine;
+
+#if CalculateTouch
+using System.Collections.Generic;
+using System.Linq;
+using ForestOfChaosLib.Attributes;
+#endif
+
 
 public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListening, IUpdate
 {
@@ -25,19 +31,19 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public GridBlockListReference GridBlocks;
 	public CameraRTRef Camera;
 
+	public Vector2Variable MousePosition;
+
+	public BoolReference GameActive;
+	public BoolReference CameraEnabled;
+	public BoolReference EditingEnabled;
+#if CalculateTouch
+	[Header("Touch")]
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
 	public List<int> TouchIndexesToRemove = new List<int>(0);
 	public float TimeForAlternateTouch = 0.2f;
 	public float MovementForCancelTouch = 0.1f;
-
 	[DisableEditing] public int touchCount;
-
-	public Vector2Variable MousePosition;
-	public BoolReference GameActive;
-
-	public BoolReference CameraEnabled;
-	public BoolReference PlacementEnabled;
-	public BoolReference EditingEnabled;
+#endif
 
 
 	public static event Action<Vector2> OnPrimaryClick = (a) =>
@@ -76,9 +82,11 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	public void OnEnable()
 	{
+#if CalculateTouch
 		Input.simulateMouseWithTouches = false;
 		Input.backButtonLeavesApp = false;
 		MovementForCancelTouch = Screen.dpi * MovementForCancelTouch;
+#endif
 
 		PrimaryClick.OnKeyDown += OnPrimaryKeyDown;
 		SecondaryClick.OnKeyDown += OnSecondaryKeyDown;
@@ -89,7 +97,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		ScrollWheel.OnKey += OnScroll;
 
 		CameraMode.OnKeyDown += CameraModeSwitch;
-		PlacementMode.OnKeyDown += PlacementModeSwitch;
 		EditMode.OnKeyDown += EditModeSwitch;
 
 	}
@@ -105,7 +112,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		ScrollWheel.OnKey -= OnScroll;
 
 		CameraMode.OnKeyDown -= CameraModeSwitch;
-		PlacementMode.OnKeyDown -= PlacementModeSwitch;
 		EditMode.OnKeyDown -= EditModeSwitch;
 	}
 
@@ -121,33 +127,11 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		MiddleClick.UpdateDataAndCallEvents();
 		SecondaryClick.UpdateDataAndCallEvents();
 		ScrollWheel.UpdateDataAndCallEvents(0f);
-
-		if ((touchCount = Input.touchCount) == 0)
-		{
-			TouchList.Clear();
-			TouchIndexesToRemove.Clear();
-			return;
-		}
-
-		for (var i = 0; i < Input.touchCount; i++)
-		{
-			var touch = Input.GetTouch(i);
-			CheckTouches(touch);
-		}
-		RemoveTouches();
+#if CalculateTouch
+		TouchUpdateLoop();
+#endif
 	}
 
-	private void RemoveTouches()
-	{
-		var fingerIds = new List<int>(Input.touches.Select(t => t.fingerId));
-		for (int t = Input.touchCount - 1; t >= 0; t--)
-		{
-			if (TouchList.InRange(t))
-				if (!fingerIds.Contains(TouchList[t].FingerID) || TouchIndexesToRemove.Contains(TouchList[t].FingerID))
-					TouchList.RemoveAt(t);
-		}
-		TouchIndexesToRemove.Clear();
-	}
 
 	private void OnPrimaryKeyDown()
 	{
@@ -177,13 +161,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		if(!GameActive.Value)
 			return;
 		EditingEnabled.Value = !EditingEnabled.Value;
-	}
-
-	private void PlacementModeSwitch()
-	{
-		if(!GameActive.Value)
-			return;
-		PlacementEnabled.Value = !PlacementEnabled.Value;
 	}
 
 	private void CameraModeSwitch()
@@ -222,7 +199,35 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 			return;
 		OnScreenMoved.Trigger(MouseDelta);
 	}
+#if CalculateTouch
+	private void TouchUpdateLoop()
+	{
+		if((touchCount = Input.touchCount) == 0)
+		{
+			TouchList.Clear();
+			TouchIndexesToRemove.Clear();
+			return;
+		}
 
+		for(var i = 0; i < Input.touchCount; i++)
+		{
+			var touch = Input.GetTouch(i);
+			CheckTouches(touch);
+		}
+		RemoveTouches();
+	}
+
+	private void RemoveTouches()
+	{
+		var fingerIds = new List<int>(Input.touches.Select(t => t.fingerId));
+		for (int t = Input.touchCount - 1; t >= 0; t--)
+		{
+			if (TouchList.InRange(t))
+				if (!fingerIds.Contains(TouchList[t].FingerID) || TouchIndexesToRemove.Contains(TouchList[t].FingerID))
+					TouchList.RemoveAt(t);
+		}
+		TouchIndexesToRemove.Clear();
+	}
 	private void DoTouchPanCamera(SavedTouchData touch) {}
 
 	private void CheckTouches(Touch touch)
@@ -346,4 +351,5 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	{
 		public Vector2 StartPos;
 	}
+#endif
 }

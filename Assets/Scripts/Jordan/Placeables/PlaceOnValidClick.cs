@@ -44,7 +44,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 		if (Placer == null)
 			return;
 
-		if (!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(block.Position))
+		if(!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(block.Position))
 		{
 			if(!MovePlayerToClickPosAndPlace.Value)
 				return;
@@ -52,14 +52,16 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 			tempBlock = block;
 		}
 		else
+		{
 			PlaceWorldObject(block);
+		}
 	}
 
 	private GridBlock tempBlock;
 	private void PlaceWorldObject(GridBlock block)
 	{
 		Instance.CurrentlyPlacing.Value = false;
-		Placer.ApplyPlacement(Player.Reference, block.Position, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
+		Placer.ApplyPlacement(Player.Reference, block, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
 		Placer.OnApplyPlacement.Trigger();
 		Callback.Trigger(true);
 

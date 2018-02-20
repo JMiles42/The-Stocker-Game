@@ -35,10 +35,12 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject?.gameObject.SetActive(false);
 	}
 
-	public override void ApplyPlacement(Player player, GridPosition pos, Vector3 worldPos)
+	public override void ApplyPlacement(Player player, GridBlock block, Vector3 worldPos)
 	{
-		spawnedObject.transform.position = pos.WorldPosition;
-		spawnedObject.SetupObject(GridBlockList.GetBlock(pos));
+		spawnedObject.transform.position = block.GridPosition.WorldPosition;
+		spawnedObject.SetupObject(block);
+
+		spawnedObject.transform.SetParent(PlaceableParent.Reference);
 
 		spawnedObject = null;
 	}

@@ -1,10 +1,8 @@
 ﻿using ForestOfChaosLib.AdvVar;
-using ForestOfChaosLib.FoCsUI.Button;
 using ForestOfChaosLib.MenuManaging;
 
 public class PlayGameMenu: SimpleMenu<PlayGameMenu>
 {
-	public ButtonClickEventBase ShopButton;
 	public BoolReference GameActive;
 
 	public override void OnEnable()

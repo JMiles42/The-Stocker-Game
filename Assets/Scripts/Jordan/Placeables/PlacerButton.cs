@@ -6,7 +6,6 @@ public class PlacerButton: FoCsBehavior
 {
 	public ButtonClickEventBase Button;
 	public Placer Placer;
-
 	[DisableEditing] public bool Placing;
 
 	private void OnEnable()
