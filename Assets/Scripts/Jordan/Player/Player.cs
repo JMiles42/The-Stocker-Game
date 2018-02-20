@@ -26,13 +26,13 @@ public class Player: Singleton<Player>
 
 	public void OnEnable()
 	{
-		GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
+		//GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
 		Map.OnValueChange += SetPlayerToPos;
 	}
 
 	public void OnDisable()
 	{
-		GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
+		//GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
 		Map.OnValueChange -= SetPlayerToPos;
 	}
 
@@ -49,7 +49,7 @@ public class Player: Singleton<Player>
 		Position = GridPosition = Map.Value.SpawnPosition;
 	}
 
-	private void OnGridBlockClick(GridBlock block)
+	public void OnGridBlockClick(GridBlock block)
 	{
 		if(!PlacingObject.Value)
 			MovePlayerTo(block);

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4138298226287240}
   - component: {fileID: 114919267607706228}
+  - component: {fileID: 114795843410350310}
   m_Layer: 0
   m_Name: GameplayInputManager
   m_TagString: Untagged
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114795843410350310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745612574625050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0a0efed6a747f47a7c60d1c94aae14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Placer: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!114 &114919267607706228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,21 +81,14 @@ MonoBehaviour:
   GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
-  TouchList: []
-  TouchIndexesToRemove: 
-  TimeForAlternateTouch: 0.2
-  MovementForCancelTouch: 0.3
-  touchCount: 0
   MousePosition:
-    UseConstant: 0
     ConstantValue: {x: 0, y: 0}
     Variable: {fileID: 114326280897632020, guid: 158f0da2ea342744aac794bec32589cb,
       type: 2}
+    UseConstant: 0
   GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   CameraEnabled: {fileID: 114609350410511588, guid: f7684c54865eb53488318be23c4f286d,
-    type: 2}
-  PlacementEnabled: {fileID: 114541297706447944, guid: f7684c54865eb53488318be23c4f286d,
     type: 2}
   EditingEnabled: {fileID: 114089058755908912, guid: f7684c54865eb53488318be23c4f286d,
     type: 2}
