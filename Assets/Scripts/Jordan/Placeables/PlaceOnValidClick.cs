@@ -20,15 +20,15 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	public BoolVariable CurrentlyPlacing;
 	public BoolVariable CurrentlyWalkingToPlace = false;
 
-	public void OnEnable()
-	{
-		GameplayInputManager.OnGridBlockClick += OnPrimaryClick;
-	}
-
-	public void OnDisable()
-	{
-		GameplayInputManager.OnGridBlockClick -= OnPrimaryClick;
-	}
+	//public void OnEnable()
+	//{
+	//	GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
+	//}
+	//
+	//public void OnDisable()
+	//{
+	//	GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
+	//}
 
 	private void Update()
 	{
@@ -39,7 +39,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 		Placer.UpdatePosition(Player.Reference, gp, wp, CurrentlyWalkingToPlace.Value);
 	}
 
-	private void OnPrimaryClick(GridBlock block)
+	public void OnGridBlockClick(GridBlock block)
 	{
 		if (Placer == null)
 			return;
@@ -52,9 +52,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 			tempBlock = block;
 		}
 		else
-		{
 			PlaceWorldObject(block);
-		}
 	}
 
 	private GridBlock tempBlock;
@@ -76,7 +74,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 
 	private void MovePlayerToCallback(TilePath path, bool pathNull)
 	{
-		path.Remove(path.Last());
+		path.RemoveAt(path.Count - 1);
 
 		CurrentlyWalkingToPlace.Value = true;
 		Player.Reference.MovePlayer(path, PlayerFinishMovingCallback);
@@ -92,8 +90,9 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private static Action<bool> Callback;
 	public static void StartPlacing(IPlacer obj, Action<bool> cancelCallback = null)
 	{
-		Instance.CurrentlyPlacing.Value = true;
 		Instance.Placer?.CancelPlacement();
+
+		Instance.CurrentlyPlacing.Value = true;
 		Callback = cancelCallback;
 
 		Instance.Placer = obj;
