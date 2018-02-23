@@ -335,9 +335,9 @@ MonoBehaviour:
   ChildTransform: {fileID: 224233790388240608}
   ParentTransform: {fileID: 0}
   DestroyComponentAfterCall:
-    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
+    UseConstant: 1
 --- !u!114 &114337568817681298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,22 +1072,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
-    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+    UseConstant: 1
   DisableMenusUnderneath:
-    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
       type: 2}
+    UseConstant: 0
   PlayGameBTN: {fileID: 114859172074325062}
   OptionsGameBTN: {fileID: 114582220355112832}
   ExitGameBTN: {fileID: 114481543479981216}
-  GameActive:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
 --- !u!222 &222014848958545968
 CanvasRenderer:
   m_ObjectHideFlags: 1

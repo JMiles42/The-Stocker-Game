@@ -1171,32 +1171,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
-    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
+    UseConstant: 1
   DisableMenusUnderneath:
-    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
       type: 2}
+    UseConstant: 0
   PlayGameBTN: {fileID: 114537400839683974}
   PlaySeededGameBTN: {fileID: 114343235913954520}
   SeedInputField: {fileID: 114152952569202872}
-  Seed:
-    UseConstant: 0
-    ConstantValue: 
-    Variable: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-  SeedUsed:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114174162593782422, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-  GameActive:
-    UseConstant: 0
-    ConstantValue: 0
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
+  Seed: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  SeedUsed: {fileID: 114174162593782422, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
 --- !u!114 &114801283812949310
 MonoBehaviour:
   m_ObjectHideFlags: 1
