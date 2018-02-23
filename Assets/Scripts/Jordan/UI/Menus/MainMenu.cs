@@ -1,6 +1,7 @@
 ﻿using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.FoCsUI.Button;
 using ForestOfChaosLib.MenuManaging;
+using UnityEngine.SceneManagement;
 
 public class MainMenu: SimpleMenu<MainMenu>
 {
@@ -20,7 +21,9 @@ public class MainMenu: SimpleMenu<MainMenu>
 
 	private void OnPlayGameClick()
 	{
-		GameTypeMenu.Show();
+		//GameTypeMenu.Show();
+		Close();
+		SceneSafely.LoadSceneAsync(1, LoadSceneMode.Single);
 	}
 
 	private void OnExitGameClick()
