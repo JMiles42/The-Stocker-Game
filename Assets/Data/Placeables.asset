@@ -54,6 +54,7 @@ MonoBehaviour:
     ConstantValue: It holds stuff
     Variable: {fileID: 0}
     UseConstant: 1
+  ID: 1
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
@@ -78,6 +79,7 @@ MonoBehaviour:
     ConstantValue: It holds stuff
     Variable: {fileID: 0}
     UseConstant: 1
+  ID: 2
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
@@ -102,6 +104,7 @@ MonoBehaviour:
     ConstantValue: This is the Exit to the dungeon, their can be only one!
     Variable: {fileID: 0}
     UseConstant: 1
+  ID: 0
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   Prefab: {fileID: 114195496729803020, guid: 4dd3534f71cc79d429a9042b5d1d578d, type: 2}
@@ -127,6 +130,7 @@ MonoBehaviour:
     ConstantValue: It holds stuff
     Variable: {fileID: 0}
     UseConstant: 1
+  ID: 3
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,

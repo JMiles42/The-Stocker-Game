@@ -1,8 +1,7 @@
 ﻿using System;
-using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.Base;
 
 [Serializable]
-[AdvFolderName("Stocker")]
+[StockerFolder]
 public class WorldObjectList: AdvListReference<WorldObject>
 { }

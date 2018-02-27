@@ -1,7 +1,5 @@
-﻿using ForestOfChaosLib.AdvVar;
-using ForestOfChaosLib.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar.Base;
 
-[AdvFolderName("Stocker")]
-public class ScorableObjectList : AdvListReference<ScorableObject>
-{
-}
+[StockerFolder]
+public class ScorableObjectList: AdvListReference<ScorableObject>
+{ }

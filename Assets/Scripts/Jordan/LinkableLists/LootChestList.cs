@@ -1,7 +1,6 @@
-﻿using ForestOfChaosLib.AdvVar;
-using ForestOfChaosLib.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar.Base;
 
-[AdvFolderName("Stocker")]
+[StockerFolder]
 public class LootChestList : AdvListReference<ScorableObject>
 {
 }

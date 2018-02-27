@@ -1,9 +1,8 @@
-﻿using ForestOfChaosLib.AdvVar;
-using ForestOfChaosLib.AdvVar.RuntimeRef;
+﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
 
-[AdvFolderName("Stocker")]
+[StockerFolder]
 public class StandardPrefabPlacer: Placer
 {
 	public GridBlockListReference GridBlockList;
@@ -43,5 +42,11 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject.transform.SetParent(PlaceableParent.Reference);
 
 		spawnedObject = null;
+	}
+
+	public override void ForcePlaceAt(GridBlock pos)
+	{
+		var obj = Instantiate(Prefab, pos.GridPosition.WorldPosition, Quaternion.identity);
+		obj.gameObject.SetActive(true);
 	}
 }

@@ -3,7 +3,7 @@ using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
 
-[AdvFolderName("Stocker")]
+[StockerFolder]
 public class ExitPlacer: Placer
 {
 	public TransformRTRef PlaceableParent;
@@ -56,5 +56,11 @@ public class ExitPlacer: Placer
 
 		HasReference.Value = false;
 		spawnedObject = null;
+	}
+
+	public override void ForcePlaceAt(GridBlock pos)
+	{
+		var obj = Instantiate(Prefab, pos.GridPosition.WorldPosition, Quaternion.identity);
+		obj.gameObject.SetActive(true);
 	}
 }
