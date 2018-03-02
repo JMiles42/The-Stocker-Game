@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class Drone_Agent: Agent
 {
-	public const int CAN_T_MOVE_MAX = 10;
-	public const int TOTAL_RETRACK_LIMIT = CAN_T_MOVE_MAX;
-
 	public ExitRef Exit;
 
 	public GridPosition GPosition;
@@ -26,7 +23,6 @@ public class Drone_Agent: Agent
 	[DisableEditing] public bool Right;
 	[DisableEditing] public bool Up;
 	[DisableEditing] public bool Down;
-	[DisableEditing] public float cantMoveCount;
 	[DisableEditing] public float UnWalkedTiles;
 	[DisableEditing] public float Distance;
 	[DisableEditing] public float UnfoundLocations;
@@ -78,7 +74,6 @@ public class Drone_Agent: Agent
 
 		if(canMove && !done)
 		{
-			cantMoveCount = 0;
 			SetWorldPosition(moveToPosition);
 			switch(GetTileTileKind(moveToPosition))
 			{
@@ -138,7 +133,7 @@ public class Drone_Agent: Agent
 		return TileKind.UnWalked;
 	}
 
-	private float GetNegativeReward() => -0.1f * (cantMoveCount + 0.1f);
+	private float GetNegativeReward() => -0.1f;
 
 	//11 states
 	public override List<float> CollectState()
@@ -217,7 +212,6 @@ public class Drone_Agent: Agent
 
 	public override void AgentReset()
 	{
-		cantMoveCount = 0;
 		walkedOnTiles.Clear();
 		if(Spawn.Reference)
 			Init();

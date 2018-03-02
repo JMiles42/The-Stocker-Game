@@ -299,7 +299,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -640,13 +640,13 @@ MonoBehaviour:
     - Right
     actionSpaceType: 0
     stateSpaceType: 1
-  brainType: 3
+  brainType: 2
   CoreBrains:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  instanceID: 17368
+  instanceID: 19724
 --- !u!124 &124109281317030892
 Behaviour:
   m_ObjectHideFlags: 1
