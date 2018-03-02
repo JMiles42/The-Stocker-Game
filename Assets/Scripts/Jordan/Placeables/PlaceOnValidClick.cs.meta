@@ -1,10 +1,16 @@
 fileFormatVersion: 2
 guid: 29458f33a24a42446beb8f0a2660ea09
-timeCreated: 1509327748
+timeCreated: 1519827408
 licenseType: Pro
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  - Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  - MousePosition: {fileID: 114326280897632020, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - Player: {fileID: 114288006440103932, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

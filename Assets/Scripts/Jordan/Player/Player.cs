@@ -65,7 +65,7 @@ public class Player: Singleton<Player>
 	public void MovePlayerTo(Vector2 mousePos, Action Callback = null)
 	{
 		var gp = Camera.Reference.ScreenPointToRay(mousePos).GetGridPosition();
-		foreach(var gridBlock in grid.Value)
+		foreach(var gridBlock in grid.Items)
 		{
 			if(gridBlock.GridPosition != gp)
 				continue;
@@ -77,7 +77,7 @@ public class Player: Singleton<Player>
 
 	public void MovePlayerTo(GridPosition gridPosition, Action Callback = null)
 	{
-		foreach(var gridBlock in grid.Value)
+		foreach(var gridBlock in grid.Items)
 		{
 			if(gridBlock.GridPosition != gridPosition)
 				continue;
@@ -105,7 +105,7 @@ public class Player: Singleton<Player>
 	public void GetPlayerPath(Vector2 mousePos, Action<TilePath, bool> Callback)
 	{
 		var gp = Camera.Reference.ScreenPointToRay(mousePos).GetGridPosition();
-		foreach(var gridBlock in grid.Value)
+		foreach(var gridBlock in grid.Items)
 		{
 			if(gridBlock.GridPosition != gp)
 				continue;
@@ -116,7 +116,7 @@ public class Player: Singleton<Player>
 
 	public void GetPlayerPath(GridPosition gp, Action<TilePath, bool> Callback)
 	{
-		foreach(var gridBlock in grid.Value)
+		foreach(var gridBlock in grid.Items)
 		{
 			if(gridBlock.GridPosition != gp)
 				continue;

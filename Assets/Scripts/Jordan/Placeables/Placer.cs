@@ -6,6 +6,7 @@ using UnityEngine;
 
 public abstract class Placer: FoCsScriptableObject, IPlacer
 {
+	public WorldObjectList WorldObjectList;
 	public StringVariable Name = "WorldObject";
 	public StringVariable Description = "This is a thing you can place in the world";
 	public int ID;

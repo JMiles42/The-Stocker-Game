@@ -26,7 +26,7 @@ public static class MapGizmos
 				var neighbour = map.Neighbours(x, y, true);
 				if((map.SpawnPosition.X == x) && (map.SpawnPosition.Y == y))
 				{
-					DrawTile(new Vector2I(x, y), Color.red);
+					DrawTile(new Vector2I(x, y), new Color(1f, 0f, 0f, 0.6f));
 				}
 				else
 				{
@@ -35,7 +35,7 @@ public static class MapGizmos
 						if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
 						{
 							//DrawTile(map[x, y], new Vector2I(x, y), ALPHA_LOW);
-							DrawTile(new Vector2I(x, y), new Color(1f, 0.6f, 0f, 0.67f));
+							DrawTile(new Vector2I(x, y), new Color(1f, 0.6f, 0f, 0.3f));
 						}
 						else
 							DrawTile(map[x, y], new Vector2I(x, y));
@@ -74,7 +74,7 @@ public static class MapGizmos
 		//	Gizmos.DrawCube(new GridPosition(creator.Map.Value.SpawnPosition.X, creator.Map.Value.SpawnPosition.Y), Vector3.one);
 	}
 
-	private static void DrawTile(TileType type, Vector2I pos, float alpha = 1f)
+	private static void DrawTile(TileType type, Vector2I pos, float alpha = 0.5f)
 	{
 		switch(type)
 		{

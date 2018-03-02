@@ -1,5 +1,5 @@
-﻿using ForestOfChaosLib.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 
 [StockerFolder]
-public class ScorableObjectList: AdvListReference<ScorableObject>
+public class ScorableObjectList: RunTimeList<ScorableObject>
 { }

@@ -100,11 +100,11 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	public void CalculateLimits()
 	{
-		var f = GridBlockReference.Value.First();
+		var f = GridBlockReference.Items.First();
 
 		minPos = f.Position;
 		maxPos = f.Position;
-		foreach(var gridBlock in GridBlockReference.Value)
+		foreach(var gridBlock in GridBlockReference.Items)
 		{
 			minPos = Vector3.Min(minPos,gridBlock.Position);
 			maxPos = Vector3.Max(maxPos,gridBlock.Position);

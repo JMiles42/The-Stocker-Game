@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
   m_Name: CommonChestPlacer
   m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   Name:
     ConstantValue: Common Chest
     Variable: {fileID: 0}
@@ -60,6 +62,44 @@ MonoBehaviour:
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   Prefab: {fileID: 114941231801105060, guid: 0ec40af08c8384440a2070141098e191, type: 2}
+--- !u!114 &114232379200255850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93eb510fc25389640800ba959a773e64, type: 3}
+  m_Name: SpawnPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: WorldObject
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: This is a thing you can place in the world
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: -1
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114395477673934274, guid: 9b34b0e2088bd664688b28be60bec3e5, type: 2}
+  Reference: {fileID: 114479155511754746}
+  HasReference: {fileID: 114003042097358576}
+--- !u!114 &114479155511754746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a231829356e76b84b87e2aa0dbab182f, type: 3}
+  m_Name: SpawnRef
+  m_EditorClassIdentifier: 
 --- !u!114 &114496897618177104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
   m_Name: UncommonChestPlacer
   m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   Name:
     ConstantValue: Uncommon Chest
     Variable: {fileID: 0}
@@ -96,6 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b783bd9869a94341b0b750521c9a4c9, type: 3}
   m_Name: ExitPlacer
   m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   Name:
     ConstantValue: Exit Door
     Variable: {fileID: 0}
@@ -122,6 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
   m_Name: RareChestPlacer
   m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   Name:
     ConstantValue: Rare Chest
     Variable: {fileID: 0}

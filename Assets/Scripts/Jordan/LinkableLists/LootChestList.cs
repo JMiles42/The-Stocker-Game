@@ -1,6 +1,5 @@
-﻿using ForestOfChaosLib.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 
 [StockerFolder]
-public class LootChestList : AdvListReference<ScorableObject>
-{
-}
+public class LootChestList: RunTimeList<ScorableObject>
+{ }

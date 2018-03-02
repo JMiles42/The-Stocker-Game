@@ -1,7 +1,5 @@
-﻿using System;
-using ForestOfChaosLib.AdvVar.Base;
+﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 
-[Serializable]
 [StockerFolder]
-public class WorldObjectList: AdvListReference<WorldObject>
+public class WorldObjectList: RunTimeList<WorldObject>
 { }

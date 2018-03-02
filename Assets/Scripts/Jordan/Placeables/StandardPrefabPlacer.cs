@@ -1,5 +1,6 @@
 ﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
 [StockerFolder]
@@ -40,13 +41,15 @@ public class StandardPrefabPlacer: Placer
 		spawnedObject.SetupObject(block);
 
 		spawnedObject.transform.SetParent(PlaceableParent.Reference);
+		WorldObjectList.Add(spawnedObject);
 
 		spawnedObject = null;
 	}
 
 	public override void ForcePlaceAt(GridBlock pos)
 	{
-		var obj = Instantiate(Prefab, pos.GridPosition.WorldPosition, Quaternion.identity);
-		obj.gameObject.SetActive(true);
+		if(spawnedObject == null)
+			spawnedObject = Instantiate(Prefab, pos.Position, Quaternion.identity);
+		ApplyPlacement(null, pos, pos.Position);
 	}
 }
