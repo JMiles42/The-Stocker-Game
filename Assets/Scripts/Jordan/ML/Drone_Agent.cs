@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Drone_Agent: Agent
 {
-	public const int CAN_T_MOVE_MAX = 100;
+	public const int CAN_T_MOVE_MAX = 10;
 	public const int TOTAL_RETRACK_LIMIT = CAN_T_MOVE_MAX;
 
 	public ExitRef Exit;
@@ -71,15 +71,17 @@ public class Drone_Agent: Agent
 				canMove = neighbours.Neighbours[moveToPosition = GPosition.Right] == TileType.Floor;
 				break;
 		}
-		if(done)
-		{
-			reward = -1;
-			return;
-		}
+
 		if(cantMoveCount > CAN_T_MOVE_MAX)
 		{
 			done = true;
 			reward = -1000;
+			return;
+		}
+
+		if(done)
+		{
+			reward = -1;
 			return;
 		}
 		if(canMove)
