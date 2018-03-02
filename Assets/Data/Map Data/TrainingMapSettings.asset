@@ -17,10 +17,10 @@ MonoBehaviour:
       Variable: {fileID: 0}
       UseConstant: 1
     corridorLength:
-      Min: 6
-      Max: 10
+      Min: 2
+      Max: 4
     numRooms:
-      Min: 15
+      Min: 4
       Max: 20
     roomHeight:
       Min: 3
@@ -28,5 +28,5 @@ MonoBehaviour:
     roomWidth:
       Min: 3
       Max: 10
-    columns: 100
-    rows: 100
+    columns: 20
+    rows: 20

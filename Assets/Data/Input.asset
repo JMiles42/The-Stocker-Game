@@ -24,7 +24,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: EditMode
-    UnityAxis: EditMode
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0
@@ -43,7 +42,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: MouseL
-    UnityAxis: MouseL
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0
@@ -62,7 +60,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: CameraMode
-    UnityAxis: CameraMode
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0
@@ -81,7 +78,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: MouseScroll
-    UnityAxis: MouseScroll
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 3
@@ -112,7 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: PlacementMode
-    UnityAxis: PlacementMode
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0
@@ -131,7 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: MouseM
-    UnityAxis: MouseM
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0
@@ -150,7 +144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
     Axis: MouseR
-    UnityAxis: MouseR
     m_Value: 0
     m_DeadZone: 0
     KeyPos: 0

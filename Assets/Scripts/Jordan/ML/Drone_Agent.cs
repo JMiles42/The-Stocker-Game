@@ -19,16 +19,22 @@ public class Drone_Agent: Agent
 	private Map MapVal => Map.Value;
 	public Map.Neighbour GetNeighbours() => MapVal.Neighbours(GPosition, false);
 	private readonly Dictionary<GridPosition, int> walkedOnTiles = new Dictionary<GridPosition, int>();
+	private float TotalUnfoundRewardLocations;
 
 	[Header("State Values")]
 	[DisableEditing] public bool Left;
 	[DisableEditing] public bool Right;
 	[DisableEditing] public bool Up;
 	[DisableEditing] public bool Down;
-	[DisableEditing] public int cantMoveCount;
-	[DisableEditing] public int UnWalkedTiles;
-	[DisableEditing] public int Distance;
-	[DisableEditing] public float TotalUnfoundRewardLocations;
+	[DisableEditing] public float cantMoveCount;
+	[DisableEditing] public float UnWalkedTiles;
+	[DisableEditing] public float Distance;
+	[DisableEditing] public float UnfoundLocations;
+	[DisableEditing] public float ActorX;
+	[DisableEditing] public float ActorY;
+	[DisableEditing] public float ExitX;
+	[DisableEditing] public float ExitY;
+
 
 	private void Start()
 	{
@@ -132,7 +138,7 @@ public class Drone_Agent: Agent
 		return TileKind.UnWalked;
 	}
 
-	private float GetNegativeReward() => -0.1f * (cantMoveCount + 1);
+	private float GetNegativeReward() => -0.1f * (cantMoveCount + 0.1f);
 
 	//11 states
 	public override List<float> CollectState()
@@ -155,33 +161,34 @@ public class Drone_Agent: Agent
 		state.Add(val);
 
 		//UnWalked Tiles
-		UnWalkedTiles = GridBlockListReference.FloorCount - walkedOnTiles.Count;
-		state.Add((float)UnWalkedTiles / GridBlockListReference.FloorCount);
+		UnWalkedTiles = ((float)GridBlockListReference.FloorCount - walkedOnTiles.Count) / GridBlockListReference.FloorCount;
+		state.Add(UnWalkedTiles);
 
 		//Total places left to go
-		state.Add(TotalUnfoundRewardLocations / WorldObjectList.Count);
+		state.Add(UnfoundLocations = TotalUnfoundRewardLocations / (WorldObjectList.Count - 2));
 
 		//Actor Position
-		state.Add((float)GPosition.X / MapVal.Width);
-		state.Add((float)GPosition.Y / MapVal.Height);
+		state.Add(ActorX=((float)GPosition.X / MapVal.Width));
+		state.Add(ActorY=((float)GPosition.Y / MapVal.Height));
 
 		//Closest Rare Tile
 
 		//Exit Position
 		if(Exit.HasReference)
 		{
-			state.Add((float)Exit.Reference.GPosition.X / MapVal.Width);
-			state.Add((float)Exit.Reference.GPosition.Y / MapVal.Height);
+			state.Add(ExitX=((float)Exit.Reference.GPosition.X / MapVal.Width));
+			state.Add(ExitY=((float)Exit.Reference.GPosition.Y / MapVal.Height));
 		}
 		else
 		{
-			state.Add((float)Exit.Reference.GPosition.X / MapVal.Width);
-			state.Add((float)Exit.Reference.GPosition.Y / MapVal.Height);
+			state.Add(ExitX=((float)Exit.Reference.GPosition.X / MapVal.Width));
+			state.Add(ExitY=((float)Exit.Reference.GPosition.Y / MapVal.Height));
 		}
 
 		//Distance to the end tile
 		Distance = GetDistanceToEnd();
-		state.Add((float)Distance / MapVal.Width);
+		Distance /= MapVal.Width;
+		state.Add(Distance);
 
 		return state;
 	}

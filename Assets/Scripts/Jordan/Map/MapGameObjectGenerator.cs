@@ -73,12 +73,12 @@ public class MapGameObjectGenerator: FoCsBehavior
 		switch(tile)
 		{
 			case TileType.Floor:
-				gO.GetComponent<Renderer>().material.color = Color.green;
+				gO.GetComponent<Renderer>().material.color = new Color(0.77f, 0.77f, 0.77f);
 				++GridBlock.FloorCount;
 				break;
 			case TileType.Wall:
 				++GridBlock.WallCount;
-				gO.GetComponent<Renderer>().material.color = Color.blue;
+				gO.GetComponent<Renderer>().material.color = new Color(0.47f, 0.47f, 0.47f);
 				gO.transform.localScale = Vector3.one.SetY(2f);
 				break;
 			default:
