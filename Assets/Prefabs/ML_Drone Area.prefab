@@ -416,7 +416,7 @@ MonoBehaviour:
   cantMoveCount: 0
   UnWalkedTiles: 0
   Distance: 0
-  TotalRewardLocations: 0
+  TotalUnfoundRewardLocations: 0
 --- !u!114 &114236389317194740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    stateSize: 7
+    stateSize: 11
     actionSize: 4
     memorySize: 0
     cameraResolutions:
@@ -488,13 +488,13 @@ MonoBehaviour:
     - Right
     actionSpaceType: 0
     stateSpaceType: 1
-  brainType: 3
+  brainType: 2
   CoreBrains:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  instanceID: 16254
+  instanceID: -15262
 --- !u!124 &124899746826527332
 Behaviour:
   m_ObjectHideFlags: 1

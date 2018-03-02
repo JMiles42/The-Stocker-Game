@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ForestOfChaosLib.Attributes;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
@@ -27,12 +28,7 @@ public class Drone_Agent: Agent
 	[DisableEditing] public int cantMoveCount;
 	[DisableEditing] public int UnWalkedTiles;
 	[DisableEditing] public int Distance;
-	[DisableEditing] public float TotalRewardLocations;
-
-
-	//public int tilesLeft = 0;
-
-
+	[DisableEditing] public float TotalUnfoundRewardLocations;
 
 	private void Start()
 	{
@@ -45,88 +41,100 @@ public class Drone_Agent: Agent
 		transform.position = GPosition.WorldPosition;
 	}
 
-	public override void AgentStep(float[] action)
+	public override void AgentStep(float[] act)
 	{
 		reward = -0.01f;
 		if(brain.brainParameters.actionSpaceType != StateType.discrete)
 			return;
 
+		int action = Mathf.FloorToInt(act[0]);
+
 		var neighbours = GetNeighbours();
 		var canMove = false;
 		var moveToPosition = GridPosition.Zero;
-		switch(Mathf.FloorToInt(action[0]))
+		switch(Mathf.FloorToInt(action))
 		{
 			case -1:
 				return;
-			case 0: //Up/North
+			case 0: //Up|North
 				canMove = neighbours.Neighbours[moveToPosition = GPosition.Up] == TileType.Floor;
 				break;
-			case 1: //Down/South
+			case 1: //Down|South
 				canMove = neighbours.Neighbours[moveToPosition = GPosition.Down] == TileType.Floor;
 				break;
-			case 2: //Left/West
+			case 2: //Left|West
 				canMove = neighbours.Neighbours[moveToPosition = GPosition.Left] == TileType.Floor;
 				break;
-			case 3: //Right/East
+			case 3: //Right|East
 				canMove = neighbours.Neighbours[moveToPosition = GPosition.Right] == TileType.Floor;
 				break;
 		}
 
-		if(cantMoveCount > CAN_T_MOVE_MAX)
-		{
-			done = true;
-			reward = -1000;
-			return;
-		}
-
-		if(done)
-		{
-			reward = -1;
-			return;
-		}
-		if(canMove)
+		if(canMove && !done)
 		{
 			cantMoveCount = 0;
 			SetWorldPosition(moveToPosition);
-			reward = GetPositiveReward(moveToPosition);
+			switch(GetTileTileKind(moveToPosition))
+			{
+				case TileKind.UnWalked:
+					reward = 0.1f;
+					break;
+				case TileKind.Walked:
+					break;
+				case TileKind.Rare:
+					reward = 0.4f;
+					break;
+				case TileKind.RareWalked:
+					break;
+				case TileKind.Exit:
+					reward = 1;
+					done = true;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 		else
 		{
-			reward = -1;
-			cantMoveCount++;
-		}
-
-		if(Exit.Reference)
-		{
-			if(Exit.Reference.GPosition == GPosition)
-			{
-				done = true;
-				reward = 1f;
-			}
+			reward = -0.1f;
 		}
 	}
 
-	private float GetPositiveReward(GridPosition moveToPosition)
+	enum TileKind
 	{
+		UnWalked,
+		Walked,
+		Rare,
+		RareWalked,
+		Exit
+	}
+
+	private TileKind GetTileTileKind(GridPosition moveToPosition)
+	{
+		if(Exit.HasReference)
+			if(moveToPosition == Exit.Reference.GPosition)
+				return TileKind.Exit;
 		if(walkedOnTiles.ContainsKey(moveToPosition))
 		{
 			walkedOnTiles[moveToPosition] += 1;
-			if(walkedOnTiles[moveToPosition] > TOTAL_RETRACK_LIMIT)
-			{
-				done = true;
-				return -1;
-			}
-			return 0.2f / walkedOnTiles[moveToPosition];
+			if(GridBlockListReference.GetBlock(moveToPosition)?.HasWorldObject == true)
+				return TileKind.RareWalked;
+
+			return TileKind.Walked;
 		}
 		walkedOnTiles.Add(moveToPosition, 0);
 
 		if(GridBlockListReference.GetBlock(moveToPosition)?.HasWorldObject == true)
-			return 0.6f;
-		return 0.3f;
+		{
+			TotalUnfoundRewardLocations -= 1;
+			return TileKind.Rare;
+		}
+		return TileKind.UnWalked;
 	}
 
 	private float GetNegativeReward() => -0.1f * (cantMoveCount + 1);
 
+	//11 states
 	public override List<float> CollectState()
 	{
 		var neighbours = GetNeighbours();
@@ -135,27 +143,46 @@ public class Drone_Agent: Agent
 		//Directions
 		var val = GetStateDataForDirections(neighbours, GPosition.Up);
 		Up = val == 0;
-		state.Add(val); //Checked
+		state.Add(val);
 		val = GetStateDataForDirections(neighbours, GPosition.Down);
 		Down = val == 0;
-		state.Add(val); //Checked
+		state.Add(val);
 		val = GetStateDataForDirections(neighbours, GPosition.Left);
 		Left = val == 0;
-		state.Add(val); //Checked
+		state.Add(val);
 		val = GetStateDataForDirections(neighbours, GPosition.Right);
 		Right = val == 0;
-		state.Add(val); //Checked
+		state.Add(val);
 
 		//UnWalked Tiles
 		UnWalkedTiles = GridBlockListReference.FloorCount - walkedOnTiles.Count;
-		state.Add(UnWalkedTiles); //Checked
-
-		////Distance to the end tile
-		Distance = GetDistanceToEnd();
-		state.Add(Distance);
+		state.Add((float)UnWalkedTiles / GridBlockListReference.FloorCount);
 
 		//Total places left to go
-		state.Add(TotalRewardLocations);
+		state.Add(TotalUnfoundRewardLocations / WorldObjectList.Count);
+
+		//Actor Position
+		state.Add((float)GPosition.X / MapVal.Width);
+		state.Add((float)GPosition.Y / MapVal.Height);
+
+		//Closest Rare Tile
+
+		//Exit Position
+		if(Exit.HasReference)
+		{
+			state.Add((float)Exit.Reference.GPosition.X / MapVal.Width);
+			state.Add((float)Exit.Reference.GPosition.Y / MapVal.Height);
+		}
+		else
+		{
+			state.Add((float)Exit.Reference.GPosition.X / MapVal.Width);
+			state.Add((float)Exit.Reference.GPosition.Y / MapVal.Height);
+		}
+
+		//Distance to the end tile
+		Distance = GetDistanceToEnd();
+		state.Add((float)Distance / MapVal.Width);
+
 		return state;
 	}
 
@@ -216,7 +243,7 @@ public class Drone_Agent: Agent
 
 	private void Init()
 	{
-		TotalRewardLocations = WorldObjectList.Count;
+		TotalUnfoundRewardLocations = WorldObjectList.Count;
 		SetWorldPosition(Spawn.Reference.GPosition);
 	}
 }
