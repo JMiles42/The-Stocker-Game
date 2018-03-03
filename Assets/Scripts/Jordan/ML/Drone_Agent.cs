@@ -19,10 +19,10 @@ public class Drone_Agent: Agent
 	private float TotalUnfoundRewardLocations;
 
 	[Header("State Values")]
-	[DisableEditing] public bool Left;
-	[DisableEditing] public bool Right;
-	[DisableEditing] public bool Up;
-	[DisableEditing] public bool Down;
+	[DisableEditing] public float Left;
+	[DisableEditing] public float Right;
+	[DisableEditing] public float Up;
+	[DisableEditing] public float Down;
 	[DisableEditing] public float UnWalkedTiles;
 	[DisableEditing] public float Distance;
 	[DisableEditing] public float UnfoundLocations;
@@ -30,12 +30,6 @@ public class Drone_Agent: Agent
 	[DisableEditing] public float ActorY;
 	[DisableEditing] public float ExitX;
 	[DisableEditing] public float ExitY;
-
-
-	private void Start()
-	{
-		SetWorldPosition(MapVal.SpawnPosition);
-	}
 
 	private void SetWorldPosition(GridPosition pos)
 	{
@@ -139,56 +133,54 @@ public class Drone_Agent: Agent
 	public override List<float> CollectState()
 	{
 		var neighbours = GetNeighbours();
-		var state = new List<float>(6);
+		var state = new List<float>(11);
 
 		//Directions
-		var val = GetStateDataForDirections(neighbours, GPosition.Up);
-		Up = val == 0;
-		state.Add(val);
-		val = GetStateDataForDirections(neighbours, GPosition.Down);
-		Down = val == 0;
-		state.Add(val);
-		val = GetStateDataForDirections(neighbours, GPosition.Left);
-		Left = val == 0;
-		state.Add(val);
-		val = GetStateDataForDirections(neighbours, GPosition.Right);
-		Right = val == 0;
-		state.Add(val);
+		state.Add(Up = GetStateDataForDirections(neighbours, GPosition.Up));
+		state.Add(Down = GetStateDataForDirections(neighbours, GPosition.Down));
+		state.Add(Left = GetStateDataForDirections(neighbours, GPosition.Left));
+		state.Add(Right = GetStateDataForDirections(neighbours, GPosition.Right));
 
 		//UnWalked Tiles
 		UnWalkedTiles = ((float)GridBlockListReference.FloorCount - walkedOnTiles.Count) / GridBlockListReference.FloorCount;
 		state.Add(UnWalkedTiles);
 
 		//Total places left to go
-		state.Add(UnfoundLocations = TotalUnfoundRewardLocations / (WorldObjectList.Count - 2));
+		UnfoundLocations = TotalUnfoundRewardLocations / (WorldObjectList.Count - 2);
+		state.Add(UnfoundLocations);
 
 		//Actor Position
-		state.Add(ActorX=((float)GPosition.X / MapVal.Width));
-		state.Add(ActorY=((float)GPosition.Y / MapVal.Height));
+		ActorX = ((float)GPosition.X / MapVal.Width);
+		state.Add(ActorX);
+		ActorY = ((float)GPosition.Y / MapVal.Height);
+		state.Add(ActorY);
 
 		//Closest Rare Tile
 
 		//Exit Position
 		if(Exit.HasReference)
 		{
-			state.Add(ExitX=((float)Exit.Reference.GPosition.X / MapVal.Width));
-			state.Add(ExitY=((float)Exit.Reference.GPosition.Y / MapVal.Height));
+			ExitX = ((float)Exit.Reference.GPosition.X / MapVal.Width);
+			state.Add(ExitX);
+			ExitY = ((float)Exit.Reference.GPosition.Y / MapVal.Height);
+			state.Add(ExitY);
 		}
 		else
 		{
-			state.Add(ExitX=((float)Exit.Reference.GPosition.X / MapVal.Width));
-			state.Add(ExitY=((float)Exit.Reference.GPosition.Y / MapVal.Height));
+			ExitX = 1;
+			state.Add(ExitX);
+			ExitY = 1;
+			state.Add(ExitY);
 		}
 
 		//Distance to the end tile
-		Distance = GetDistanceToEnd();
-		Distance /= MapVal.Width;
+		Distance = GetDistanceToEnd()/ MapVal.Width;
 		state.Add(Distance);
 
 		return state;
 	}
 
-	private int GetDistanceToEnd()
+	private float GetDistanceToEnd()
 	{
 		if(!Exit.Reference)
 			return 100;
@@ -198,28 +190,25 @@ public class Drone_Agent: Agent
 		return Pathfinding.FindPath(GPosition, Exit.Reference.GPosition, Map.Value).Path.Count;
 	}
 
-	private static int GetStateDataForDirections(Map.Neighbour neighbours, GridPosition pos)
+	private float GetStateDataForDirections(Map.Neighbour neighbours, GridPosition pos)
 	{
-		const int A = 1;
-		const int B = 0;
+		const float WALL = 1;
+		const float NORMAL = 0;
+		const float SPECIAL_TILE = 0.5f;
 
 		if(!neighbours.ContainsPos(pos))
-			return A;
+			return WALL;
 		if(neighbours.Neighbours[pos] == TileType.Wall)
-			return A;
-		return B;
+			return WALL;
+		if(GridBlockListReference.GetBlock(pos)?.HasWorldObject == true)
+			return SPECIAL_TILE;
+		return NORMAL;
 	}
 
 	public override void AgentReset()
 	{
 		walkedOnTiles.Clear();
-		if(Spawn.Reference)
-			Init();
-		else
-		{
-			Spawn.OnValueChange -= OnValueChange;
-			Spawn.OnValueChange += OnValueChange;
-		}
+		Init();
 	}
 
 	public override void AgentOnDone()
@@ -227,13 +216,9 @@ public class Drone_Agent: Agent
 
 	public override void InitializeAgent()
 	{
-		if(Spawn.Reference)
-			Init();
-		else
-		{
-			Spawn.OnValueChange -= OnValueChange;
-			Spawn.OnValueChange += OnValueChange;
-		}
+		//Init();
+		Spawn.OnValueChange -= OnValueChange;
+		Spawn.OnValueChange += OnValueChange;
 	}
 
 	private void OnValueChange()
