@@ -557,17 +557,21 @@ MonoBehaviour:
   Spawn: {fileID: 114479155511754746, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
+  WorldObjectPath: {fileID: 114473269852577748, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
   Left: 0
   Right: 0
   Up: 0
   Down: 0
   UnWalkedTiles: 0
-  Distance: 0
   UnfoundLocations: 0
   ActorX: 0
   ActorY: 0
   ExitX: 0
   ExitY: 0
+  ExitDistance: 0
+  ClosestWODistance: 0
+  MyReward: 0
 --- !u!114 &114236389317194740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -626,7 +630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brainParameters:
-    stateSize: 11
+    stateSize: 12
     actionSize: 4
     memorySize: 0
     cameraResolutions:
@@ -640,13 +644,13 @@ MonoBehaviour:
     - Right
     actionSpaceType: 0
     stateSpaceType: 1
-  brainType: 3
+  brainType: 0
   CoreBrains:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  instanceID: 17714
+  instanceID: -1172
 --- !u!124 &124109281317030892
 Behaviour:
   m_ObjectHideFlags: 1

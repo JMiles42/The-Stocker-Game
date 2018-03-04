@@ -44,8 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6e520727ce24b4fbb8b5d6e397acae, type: 3}
   m_Name: GridBlockList
   m_EditorClassIdentifier: Assembly-CSharp::GridBlockListReference
-  WallCount: 317
-  FloorCount: 557
+  WallCount: 70
+  FloorCount: 158
+--- !u!114 &114473269852577748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eae866b831fde94099e558e6e450537, type: 3}
+  m_Name: WorldObjectPathManager
+  m_EditorClassIdentifier: 
+  GridBlockList: {fileID: 114375524077888378}
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  WorldObjectList: {fileID: 114235532778253446}
 --- !u!114 &114793204861550020
 MonoBehaviour:
   m_ObjectHideFlags: 0
