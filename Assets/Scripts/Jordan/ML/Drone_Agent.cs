@@ -85,7 +85,7 @@ public class Drone_Agent: Agent
 			switch(GetTileTileKind(moveToPosition))
 			{
 				case TileKind.UnWalked:
-					reward = 0.02f;
+					//reward = 0.02f;
 					break;
 				case TileKind.Walked:
 					break;

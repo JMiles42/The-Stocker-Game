@@ -644,7 +644,7 @@ MonoBehaviour:
     - Right
     actionSpaceType: 0
     stateSpaceType: 1
-  brainType: 0
+  brainType: 3
   CoreBrains:
   - {fileID: 0}
   - {fileID: 0}
