@@ -177,15 +177,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
         type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
+        type: 2}
       propertyPath: MapSettings
       value: 
       objectReference: {fileID: 11400000, guid: 3edf0415e35b9d34ea5eeef7119faa39,
         type: 2}
-    - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c289d29bb71197144a3ab13dd6eb721a, type: 2}
   m_IsPrefabParent: 0
@@ -337,6 +337,19 @@ Prefab:
       propertyPath: CoreBrains.Array.data[3]
       value: 
       objectReference: {fileID: 791461510}
+    - target: {fileID: 4003466550571004, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003466550571004, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 20050645165834168, guid: 3ab44d35128d14d4a98df8c3c8c9dfde,
+        type: 2}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}
   m_IsPrefabParent: 0
@@ -557,7 +570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GPosition:
     Position:
-      x: 18
+      x: 19
       y: 1
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
