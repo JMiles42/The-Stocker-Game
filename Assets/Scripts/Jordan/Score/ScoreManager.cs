@@ -51,9 +51,9 @@ public class ScoreManager: FoCsScriptableObject
 
 		for (var i = 0; i < Map.Value.rooms.Length; i++)
 		{
-			var roomData = GetRoomData(i, Map.Value.rooms[i], prog);
+			var roomData = GetRoomData(i, Map.Value.rooms[i], ref prog);
 
-			if (roomData.died)
+			if (roomData.died && alive)
 			{
 				alive = false;
 				DeadScore.Value = score;
@@ -82,7 +82,7 @@ public class ScoreManager: FoCsScriptableObject
 			UsedWorldObjects.Clear();
 	}
 
-	private RoomData GetRoomData(int index, Room valueRoom, ProgressStats prog)
+	private RoomData GetRoomData(int index, Room valueRoom, ref ProgressStats prog)
 	{
 		float percentThrough = (index + 1f) / Map.Value.rooms.Length;
 
@@ -194,19 +194,34 @@ public class ScoreManager: FoCsScriptableObject
 		foreach(var chestWo in chests)
 		{
 			var size = chestWo.GetSize();
-			rewd += size;
+			if(hasExit)
+				rewd += size + size;
+			else
+				rewd += size;
 			//score += size;
 		}
 
-		foreach(var healingWo in healings)
+		if(!prog.Died)
 		{
-			health += healingWo.GetHealingAmount();
+			foreach(var healingWo in healings)
+			{
+				health += healingWo.GetHealingAmount();
+			}
+
+			Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
 		}
 
-		Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
 		score = score + (int)(prog.Diff * rewd);
 		score = score * 100;
-		score = (int)(score * wantedDiff);
+		score = (int)(score * (wantedDiff + 1));
+		if(prog.Died)
+		{
+			return new RoomData
+				   {
+						   died = true,
+						   score = score
+				   };
+		}
 		return new RoomData{died = (health == 0), score = score };
 	}
 	private struct RoomData
@@ -214,10 +229,11 @@ public class ScoreManager: FoCsScriptableObject
 		public int score;
 		public bool died;
 	}
-	private class ProgressStats
-	{
-		public float diff;
 
+	internal class ProgressStats
+	{
+		internal float diff = 0;
+		public bool Died = false;
 		public float Diff
 		{
 			get
