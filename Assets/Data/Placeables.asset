@@ -37,11 +37,12 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Boss Spawner
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Spawns a boss for the Adventurer to fight. (Deals a large amount
+      of damage)
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 6
@@ -80,7 +81,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: It holds stuff
+    ConstantValue: Gives Small Reward.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 1
@@ -103,11 +104,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Spawn
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Where the player spawns
     Variable: {fileID: 0}
     UseConstant: 1
   ID: -1
@@ -168,11 +169,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Legendary Chest
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Gives Largest Reward.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 3
@@ -195,11 +196,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Healing Fountain
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Gives a small amount of health back to the Adventurer.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 4
@@ -222,11 +223,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Rare Chest
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Gives Medium Reward.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 2
@@ -249,11 +250,12 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: WorldObject
+    ConstantValue: Minion Spawner
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is a thing you can place in the world
+    ConstantValue: Spawns minions for the Adventurer to fight. (Deals a Medium amount
+      of damage)
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 5

@@ -243,47 +243,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broadcast: 1
   brain: {fileID: 781918120}
---- !u!1 &731811318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 731811319}
-  - component: {fileID: 731811320}
-  m_Layer: 0
-  m_Name: ScoreManger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &731811319
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 731811318}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 20, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &731811320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 731811318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81109cdcfaf557245a6748446ba326af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manger: {fileID: 114238608920317208, guid: e6d03d8faf0c35b4087e0f439f0d94aa, type: 2}
 --- !u!114 &781918120 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114725809442781762, guid: 3ab44d35128d14d4a98df8c3c8c9dfde,
@@ -581,6 +540,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1754739127
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929905183613866, guid: 953dfbb92f721114db964d548715240e, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 953dfbb92f721114db964d548715240e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1836268820
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114999737924450390, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +674,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114227515742374574, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,7 +693,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114227515742374574, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,7 +712,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114999737924450390, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,7 +731,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114570338343020342, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +750,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114074729671970788, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &1836268829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +769,7 @@ MonoBehaviour:
   GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
-  Placer: {fileID: 114910265334160704, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Placer: {fileID: 114570338343020342, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &2040315332 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,

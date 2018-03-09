@@ -33,30 +33,26 @@ public class ScoreManager: FoCsScriptableObject
 	public IntVariable DeadScore;
 	public BoolVariable PlayerDied;
 
+	private void OnEnable()
+	{
+		ResetGameplayStats();
+	}
 
 	private List<WorldObject> UsedWorldObjects = new List<WorldObject>();
 
 	public void CalculateScore()
 	{
+		ResetGameplayStats();
+
 		CheckUsedWorldObjectsList();
 		var score = 0;
 		var alive = true;
 
-		var roomData = GetRoomData(0, Map.Value.rooms[0]);
-
-		if(roomData.died)
+		for (var i = 0; i < Map.Value.rooms.Length; i++)
 		{
-			alive = false;
-			DeadScore.Value = score;
-		}
+			var roomData = GetRoomData(i, Map.Value.rooms[i]);
 
-		score += roomData.score;
-
-		for(var i = 1; i < Map.Value.rooms.Length; i++)
-		{
-			roomData = GetRoomData(i, Map.Value.rooms[i]);
-
-			if(roomData.died)
+			if (roomData.died)
 			{
 				alive = false;
 				DeadScore.Value = score;
@@ -67,6 +63,14 @@ public class ScoreManager: FoCsScriptableObject
 
 		FinalScore.Value = score;
 		PlayerDied.Value = !alive;
+	}
+
+	private void ResetGameplayStats()
+	{
+		Health.Value = MaxHealth.Value;
+		FinalScore.Value = 0;
+		DeadScore.Value = 0;
+		PlayerDied.Value = false;
 	}
 
 	private void CheckUsedWorldObjectsList()
@@ -84,12 +88,13 @@ public class ScoreManager: FoCsScriptableObject
 		var wantedDiff = LevelProgressionCurve.Evaluate(percentThrough);
 		var diff = 0;
 		var rewd = 0;
-
+		var hasExit = false;
 		var chests = new List<ChestWO>();
 		var spawners = new List<SpawnerWO>();
 		var healings = new List<HealingWO>();
 		var tiles = 0;
 
+		#region GetBlocks
 		for(var x = valueRoom.Position.X; x < valueRoom.Position.X + valueRoom.roomWidth; x++)
 		{
 			for(var y = valueRoom.Position.Y; y < valueRoom.Position.Y + valueRoom.roomHeight; y++)
@@ -125,10 +130,57 @@ public class ScoreManager: FoCsScriptableObject
 				var eWo = block.WorldObject as ExitWorldObject;
 				if(eWo != null)
 				{
+					hasExit = true;
 					UsedWorldObjects.Add(eWo);
 				}
 			}
 		}
+
+		if(index != 0)
+		{
+			var corridor = Map.Value.corridors[index - 1];
+			for(var x = corridor.startXPos; x < corridor.startXPos + corridor.EndPositionX; x++)
+			{
+				for(var y = corridor.startYPos; y < corridor.startYPos + corridor.EndPositionY; y++)
+				{
+					++tiles;
+					var block = GridBlocks.GetBlock(new GridPosition(x, y));
+					if((block == null) || !block.HasWorldObject)
+						continue;
+					if(UsedWorldObjects.Contains(block.WorldObject))
+						continue;
+
+					var cWo = block.WorldObject as ChestWO;
+					if(cWo != null)
+					{
+						chests.Add(cWo);
+						UsedWorldObjects.Add(cWo);
+					}
+
+					var sWo = block.WorldObject as SpawnerWO;
+					if(sWo != null)
+					{
+						spawners.Add(sWo);
+						UsedWorldObjects.Add(sWo);
+					}
+
+					var hWo = block.WorldObject as HealingWO;
+					if(hWo != null)
+					{
+						healings.Add(hWo);
+						UsedWorldObjects.Add(hWo);
+					}
+
+					var eWo = block.WorldObject as ExitWorldObject;
+					if(eWo != null)
+					{
+						hasExit = true;
+						UsedWorldObjects.Add(eWo);
+					}
+				}
+			}
+		}
+		#endregion
 
 		var score = 0;
 		var health = Health.Value;
@@ -153,7 +205,8 @@ public class ScoreManager: FoCsScriptableObject
 
 		Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
 		score = score + (diff * rewd);
-
+		score = score * 1000;
+		score = (int)(score * wantedDiff);
 		return new RoomData{died = (health == 0), score = score };
 	}
 	private struct RoomData

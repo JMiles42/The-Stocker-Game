@@ -146,19 +146,19 @@ MonoBehaviour:
       y: 0
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   moveSpeed:
-    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114295608877739418, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
+    UseConstant: 0
   distanceToNode:
-    UseConstant: 1
     ConstantValue: 0.2
     Variable: {fileID: 0}
+    UseConstant: 1
   PlacingObject:
-    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114093651824931502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
+    UseConstant: 0
   TargetPosition:
     Position:
       x: 0
