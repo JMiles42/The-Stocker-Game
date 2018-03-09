@@ -55,6 +55,8 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	{
 		if(block == null || canceled)
 			return;
+		if(block.HasWorldObject)
+			return;
 		Instance.CurrentlyPlacing.Value = false;
 		Placer.ApplyPlacement(Player.Reference, block, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
 		Placer.OnApplyPlacement.Trigger();
@@ -66,6 +68,10 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 
 	private void MovePlayerToClickPos(GridBlock block)
 	{
+		if(block == null || canceled)
+			return;
+		if(block.HasWorldObject)
+			return;
 		Player.Reference.GetPlayerPath(block, MovePlayerToCallback);
 	}
 

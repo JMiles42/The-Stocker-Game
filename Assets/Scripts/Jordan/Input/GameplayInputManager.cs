@@ -36,6 +36,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public BoolReference GameActive;
 	public BoolReference CameraEnabled;
 	public BoolReference EditingEnabled;
+
+	public Rect ScreenInputPosition = Rect.MinMaxRect(0,0,1,1);
+
 #if CalculateTouch
 	[Header("Touch")]
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
@@ -143,6 +146,8 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private void CheckIfGridBlockHit()
 	{
+		if(!ScreenInputPosition.Contains(Camera.Reference.ScreenToViewportPoint(MousePosition.Value)))
+			return;
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
 		var block = GridBlocks.GetBlock(gp);

@@ -47,10 +47,11 @@ public class ScoreManager: FoCsScriptableObject
 		CheckUsedWorldObjectsList();
 		var score = 0;
 		var alive = true;
+		var prog = new ProgressStats();
 
 		for (var i = 0; i < Map.Value.rooms.Length; i++)
 		{
-			var roomData = GetRoomData(i, Map.Value.rooms[i]);
+			var roomData = GetRoomData(i, Map.Value.rooms[i], prog);
 
 			if (roomData.died)
 			{
@@ -81,12 +82,11 @@ public class ScoreManager: FoCsScriptableObject
 			UsedWorldObjects.Clear();
 	}
 
-	private RoomData GetRoomData(int index, Room valueRoom)
+	private RoomData GetRoomData(int index, Room valueRoom, ProgressStats prog)
 	{
 		float percentThrough = (index + 1f) / Map.Value.rooms.Length;
 
 		var wantedDiff = LevelProgressionCurve.Evaluate(percentThrough);
-		var diff = 0;
 		var rewd = 0;
 		var hasExit = false;
 		var chests = new List<ChestWO>();
@@ -187,7 +187,7 @@ public class ScoreManager: FoCsScriptableObject
 
 		foreach(var spawnerWo in spawners)
 		{
-			diff += spawnerWo.GetSize();
+			prog.Diff = prog.Diff + spawnerWo.GetSize();
 			health -= spawnerWo.GetDamageDealt();
 		}
 
@@ -195,7 +195,7 @@ public class ScoreManager: FoCsScriptableObject
 		{
 			var size = chestWo.GetSize();
 			rewd += size;
-			score += size;
+			//score += size;
 		}
 
 		foreach(var healingWo in healings)
@@ -204,8 +204,8 @@ public class ScoreManager: FoCsScriptableObject
 		}
 
 		Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
-		score = score + (diff * rewd);
-		score = score * 1000;
+		score = score + (int)(prog.Diff * rewd);
+		score = score * 100;
 		score = (int)(score * wantedDiff);
 		return new RoomData{died = (health == 0), score = score };
 	}
@@ -213,5 +213,20 @@ public class ScoreManager: FoCsScriptableObject
 	{
 		public int score;
 		public bool died;
+	}
+	private class ProgressStats
+	{
+		public float diff;
+
+		public float Diff
+		{
+			get
+			{
+				var tmp = diff;
+				diff = 0;
+				return tmp;
+			}
+			set { diff = value; }
+		}
 	}
 }

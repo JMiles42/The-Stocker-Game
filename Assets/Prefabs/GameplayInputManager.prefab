@@ -92,3 +92,9 @@ MonoBehaviour:
     type: 2}
   EditingEnabled: {fileID: 114089058755908912, guid: f7684c54865eb53488318be23c4f286d,
     type: 2}
+  ScreenInputPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0.15
+    width: 1
+    height: 0.8
