@@ -57,6 +57,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eae866b831fde94099e558e6e450537, type: 3}
   m_Name: WorldObjectPathManager
   m_EditorClassIdentifier: 
+  _state:
+    Position:
+      Position:
+        x: -2147483648
+        y: -2147483648
   GridBlockList: {fileID: 114375524077888378}
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   WorldObjectList: {fileID: 114235532778253446}

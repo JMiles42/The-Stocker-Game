@@ -337,18 +337,10 @@ Prefab:
       propertyPath: CoreBrains.Array.data[3]
       value: 
       objectReference: {fileID: 791461510}
-    - target: {fileID: 4003466550571004, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4003466550571004, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 20050645165834168, guid: 3ab44d35128d14d4a98df8c3c8c9dfde,
+    - target: {fileID: 114236389317194740, guid: 3ab44d35128d14d4a98df8c3c8c9dfde,
         type: 2}
-      propertyPath: orthographic size
-      value: 10
+      propertyPath: waitTime
+      value: 0.06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3ab44d35128d14d4a98df8c3c8c9dfde, type: 2}

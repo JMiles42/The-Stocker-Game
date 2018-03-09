@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using ForestOfChaosLib;
 using ForestOfChaosLib.Grid;
+using UnityEngine;
 
 [StockerFolder]
 public class WorldObjectPathManager: FoCsScriptableObject
 {
+	[SerializeField]
 	private StateClass _state;
 	public GridBlockListReference GridBlockList;
 	public MapSO Map;
@@ -93,6 +95,7 @@ public class WorldObjectPathManager: FoCsScriptableObject
 		public WorldObject WorldObject;
 	}
 
+	[Serializable]
 	public class StateClass
 	{
 		public enum StateResult
