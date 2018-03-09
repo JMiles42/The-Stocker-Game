@@ -23,6 +23,33 @@ MonoBehaviour:
   m_Name: ExitPlacable
   m_EditorClassIdentifier: 
   _value: 0
+--- !u!114 &114074729671970788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: SpawnerBossPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: WorldObject
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: This is a thing you can place in the world
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 6
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114853269293917650, guid: d07a3bd6f2ffa2b41ba80f4ccfdd494e, type: 2}
 --- !u!114 &114169705802348764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,7 +71,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
-  m_Name: CommonChestPlacer
+  m_Name: ChestCommonPlacer
   m_EditorClassIdentifier: 
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
@@ -61,7 +88,7 @@ MonoBehaviour:
     type: 2}
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
-  Prefab: {fileID: 114941231801105060, guid: 0ec40af08c8384440a2070141098e191, type: 2}
+  Prefab: {fileID: 114811079838423538, guid: 65ea8881777ebad40a135fbc39f72b72, type: 2}
 --- !u!114 &114232379200255850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +115,6 @@ MonoBehaviour:
     type: 2}
   Prefab: {fileID: 114395477673934274, guid: 9b34b0e2088bd664688b28be60bec3e5, type: 2}
   Reference: {fileID: 114479155511754746}
-  HasReference: {fileID: 114003042097358576}
 --- !u!114 &114479155511754746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,33 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a231829356e76b84b87e2aa0dbab182f, type: 3}
   m_Name: SpawnRef
   m_EditorClassIdentifier: 
---- !u!114 &114496897618177104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
-  m_Name: UncommonChestPlacer
-  m_EditorClassIdentifier: 
-  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
-    type: 2}
-  Name:
-    ConstantValue: Uncommon Chest
-    Variable: {fileID: 0}
-    UseConstant: 1
-  Description:
-    ConstantValue: It holds stuff
-    Variable: {fileID: 0}
-    UseConstant: 1
-  ID: 2
-  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
-    type: 2}
-  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-    type: 2}
-  Prefab: {fileID: 114941231801105060, guid: 0ec40af08c8384440a2070141098e191, type: 2}
 --- !u!114 &114533593362658678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +154,7 @@ MonoBehaviour:
   Reference: {fileID: 114321197824003404, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   HasReference: {fileID: 114003042097358576}
---- !u!114 &114910265334160704
+--- !u!114 &114570338343020342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -164,16 +163,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
-  m_Name: RareChestPlacer
+  m_Name: ChestLegendaryPlacer
   m_EditorClassIdentifier: 
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: Rare Chest
+    ConstantValue: WorldObject
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: It holds stuff
+    ConstantValue: This is a thing you can place in the world
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 3
@@ -181,4 +180,85 @@ MonoBehaviour:
     type: 2}
   PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
-  Prefab: {fileID: 114941231801105060, guid: 0ec40af08c8384440a2070141098e191, type: 2}
+  Prefab: {fileID: 114721760530545834, guid: 125c226dc177f9b45980dcfe954f84a1, type: 2}
+--- !u!114 &114863323965813470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: HealingPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: WorldObject
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: This is a thing you can place in the world
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 4
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114689126733370970, guid: 9e8a9244102bc27479430337d1d615f3, type: 2}
+--- !u!114 &114881420099615618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: ChestRarePlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: WorldObject
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: This is a thing you can place in the world
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 2
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114893744919083274, guid: d50c59c6aced2c249882116b143e2103, type: 2}
+--- !u!114 &114999737924450390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: SpawnerSmallPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: WorldObject
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: This is a thing you can place in the world
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 5
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114419488152488570, guid: 95ca8d2b77e761544b81e23ee1847282, type: 2}
