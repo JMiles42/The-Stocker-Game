@@ -4,7 +4,7 @@ namespace ForestOfChaosLib.MenuManaging
 {
 	public class OpenMenuFromPrefabRefButton: FoCsBehavior
 	{
-		public ButtonClickEventBase Button;
+		public ButtonComponentBase Button;
 		public Menu MenuToOpen;
 
 		public void Open()
@@ -26,7 +26,7 @@ namespace ForestOfChaosLib.MenuManaging
 
 		private void Reset()
 		{
-			Button = GetComponentInChildren<ButtonClickEventBase>();
+			Button = GetComponentInChildren<ButtonComponentBase>();
 		}
 	}
 }

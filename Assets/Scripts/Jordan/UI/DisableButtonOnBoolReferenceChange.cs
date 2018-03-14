@@ -4,7 +4,7 @@ using ForestOfChaosLib.FoCsUI.Button;
 
 public class DisableButtonOnBoolReferenceChange: FoCsBehavior
 {
-	public ButtonClickEventBase Button;
+	public ButtonComponentBase Button;
 	public BoolVariable InvertReference = false;
 	public BoolReference Reference;
 
@@ -29,6 +29,6 @@ public class DisableButtonOnBoolReferenceChange: FoCsBehavior
 	private void Reset()
 	{
 		InvertReference = false;
-		Button = GetComponentInChildrenAdvanced<ButtonClickEventBase>();
+		Button = GetComponentInChildrenAdvanced<ButtonComponentBase>();
 	}
 }

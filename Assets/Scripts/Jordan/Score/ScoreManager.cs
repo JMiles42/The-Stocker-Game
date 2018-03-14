@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ForestOfChaosLib;
 using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class ScoreManager: FoCsScriptableObject
 	public SpawnerWOList Spawners;
 	public WorldObjectList WorldObjects;
 	public GridBlockListReference GridBlocks;
+
+	public static Action<ScoreData> OnScoreCalculated;
 
 
 
@@ -49,11 +52,11 @@ public class ScoreManager: FoCsScriptableObject
 		var alive = true;
 		var prog = new ProgressStats();
 
-		for (var i = 0; i < Map.Value.rooms.Length; i++)
+		for(var i = 0; i < Map.Value.rooms.Length; i++)
 		{
 			var roomData = GetRoomData(i, Map.Value.rooms[i], ref prog);
 
-			if (roomData.died && alive)
+			if(roomData.died && alive)
 			{
 				alive = false;
 				DeadScore.Value = score;
@@ -64,6 +67,12 @@ public class ScoreManager: FoCsScriptableObject
 
 		FinalScore.Value = score;
 		PlayerDied.Value = !alive;
+		OnScoreCalculated.Trigger(new ScoreData
+								  {
+									  DeadScore = DeadScore,
+									  died = PlayerDied,
+									  FinalScore = FinalScore
+								  });
 	}
 
 	private void ResetGameplayStats()
@@ -243,6 +252,25 @@ public class ScoreManager: FoCsScriptableObject
 				return tmp;
 			}
 			set { diff = value; }
+		}
+	}
+
+	public class ScoreData
+	{
+		public int FinalScore;
+		public int DeadScore;
+		public bool died;
+
+		public override string ToString()
+		{
+			string str;
+
+			if(died)
+				str = $"Final Score: {FinalScore}\nPlayer Died: Yes\nScore on Death: {DeadScore}";
+			else
+				str = $"Final Score: {FinalScore}\nPlayer Died: No";
+
+			return str;
 		}
 	}
 }

@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu: SimpleMenu<MainMenu>
 {
-	public ButtonClickEventBase PlayGameBTN;
-	public ButtonClickEventBase OptionsGameBTN;
-	public ButtonClickEventBase ExitGameBTN;
+	public ButtonComponentBase PlayGameBTN;
+	public ButtonComponentBase OptionsGameBTN;
+	public ButtonComponentBase ExitGameBTN;
 	public BoolReference GameActive;
 
 	public override void OnEnable()

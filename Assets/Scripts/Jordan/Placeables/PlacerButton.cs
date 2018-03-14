@@ -4,7 +4,7 @@ using ForestOfChaosLib.FoCsUI.Button;
 
 public class PlacerButton: FoCsBehavior
 {
-	public ButtonClickEventBase Button;
+	public ButtonComponentBase Button;
 	public Placer Placer;
 	[DisableEditing] public bool Placing;
 
