@@ -403,16 +403,6 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224038554136057248, guid: 6c86bab5c0193174ba2278d1233d5220,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 250.00003
-      objectReference: {fileID: 0}
-    - target: {fileID: 224038554136057248, guid: 6c86bab5c0193174ba2278d1233d5220,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 80
-      objectReference: {fileID: 0}
     - target: {fileID: 114847099140706244, guid: 6c86bab5c0193174ba2278d1233d5220,
         type: 2}
       propertyPath: m_havePropertiesChanged
