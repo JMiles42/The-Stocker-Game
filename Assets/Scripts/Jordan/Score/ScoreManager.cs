@@ -24,8 +24,6 @@ public class ScoreManager: FoCsScriptableObject
 
 	public static Action<ScoreData> OnScoreCalculated;
 
-
-
 	[Header("\"Gameplay stats\"")] [SerializeField]
 	private IntVariable Health = 100;
 	[SerializeField] private IntVariable HealingPerRoom = 7;
@@ -93,9 +91,10 @@ public class ScoreManager: FoCsScriptableObject
 
 	private RoomData GetRoomData(int index, Room valueRoom, ref ProgressStats prog)
 	{
-		float percentThrough = (index + 1f) / Map.Value.rooms.Length;
+		//float percentThrough = (index + 1f) / Map.Value.rooms.Length;
+		//float percentThrough = GetDistance();
 
-		var wantedDiff = LevelProgressionCurve.Evaluate(percentThrough);
+		//var wantedDiff = LevelProgressionCurve.Evaluate(percentThrough);
 		var rewd = 0;
 		var hasExit = false;
 		var chests = new List<ChestWO>();
@@ -196,33 +195,36 @@ public class ScoreManager: FoCsScriptableObject
 
 		foreach(var spawnerWo in spawners)
 		{
-			prog.Diff = prog.Diff + spawnerWo.GetSize();
+			var localDiff = LevelProgressionCurve.Evaluate(GetDistance(spawnerWo));
+			prog.Diff = (prog.Diff + spawnerWo.GetSize()) * localDiff;
 			health -= spawnerWo.GetDamageDealt();
 		}
 
 		foreach(var chestWo in chests)
 		{
 			var size = chestWo.GetSize();
+			score += size;
 			if(hasExit)
 				rewd += size + size;
 			else
-				rewd += size;
-			//score += size;
+				rewd += (size);
 		}
 
 		if(!prog.Died)
 		{
 			foreach(var healingWo in healings)
 			{
+				var localDiff = LevelProgressionCurve.Evaluate(GetDistance(healingWo));
+				prog.Diff = prog.Diff + localDiff;
 				health += healingWo.GetHealingAmount();
 			}
 
+			health += HealingPerRoom.Value;
 			Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
 		}
 
 		score = score + (int)(prog.Diff * rewd);
 		score = score * 100;
-		score = (int)(score * (wantedDiff + 1));
 		if(prog.Died)
 		{
 			return new RoomData
@@ -233,6 +235,22 @@ public class ScoreManager: FoCsScriptableObject
 		}
 		return new RoomData{died = (health == 0), score = score };
 	}
+
+	private float GetDistance(WorldObject wO, bool invert = false)
+	{
+		var pathToStart = Pathfinding.FindPath(Spawn.Reference.GPosition, wO.GPosition, Map.Value).Path;
+		var pathToEnd = Pathfinding.FindPath(Exit.Reference.GPosition, wO.GPosition, Map.Value).Path;
+
+		var total = pathToEnd.Count + pathToStart.Count;
+		if(invert)
+		{
+			return (float)pathToStart.Count / total;
+		}
+
+		return (float)pathToEnd.Count / total;
+	}
+
+
 	private struct RoomData
 	{
 		public int score;

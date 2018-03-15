@@ -52,3 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manger: {fileID: 114238608920317208, guid: e6d03d8faf0c35b4087e0f439f0d94aa, type: 2}
+  AllowKeyPress:
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Button: {fileID: 0}

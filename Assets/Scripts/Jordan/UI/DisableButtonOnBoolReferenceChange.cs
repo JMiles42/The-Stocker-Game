@@ -11,6 +11,7 @@ public class DisableButtonOnBoolReferenceChange: FoCsBehavior
 	private void OnEnable()
 	{
 		Reference.OnValueChange += OnValueChange;
+		OnValueChange();
 	}
 
 	private void OnDisable()

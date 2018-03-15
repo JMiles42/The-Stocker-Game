@@ -51,7 +51,7 @@ MonoBehaviour:
   GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Health:
-    ConstantValue: 72
+    ConstantValue: 90
     Variable: {fileID: 0}
     UseConstant: 1
   HealingPerRoom:
@@ -63,7 +63,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   FinalScore:
-    ConstantValue: 990
+    ConstantValue: 1000
     Variable: {fileID: 114979734256554416}
     UseConstant: 1
   DeadScore:

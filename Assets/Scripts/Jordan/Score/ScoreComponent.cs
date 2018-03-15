@@ -1,5 +1,4 @@
-﻿using System;
-using ForestOfChaosLib;
+﻿using ForestOfChaosLib;
 using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.FoCsUI.Button;
 using UnityEngine;

@@ -1,7 +1,6 @@
 ﻿using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.AdvVar.RuntimeRef;
 using ForestOfChaosLib.Grid;
-using ForestOfChaosLib.UnityScriptsExtensions;
 using UnityEngine;
 
 [StockerFolder]
@@ -56,7 +55,7 @@ public class ExitPlacer: Placer
 		spawnedObject.transform.SetParent(PlaceableParent.Reference);
 		WorldObjectList.Add(spawnedObject);
 
-		HasReference.Value = false;
+		HasReference.Value = true;
 		spawnedObject = null;
 	}
 
