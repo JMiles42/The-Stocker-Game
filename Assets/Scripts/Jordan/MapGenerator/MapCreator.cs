@@ -10,11 +10,6 @@ public class MapCreator: FoCsBehavior
 		GenerateMap();
 	}
 
-	private void OnValueChange()
-	{
-		GenerateMap();
-	}
-
 	public void GenerateMap()
 	{
 		Map.GenerateMap(MapSettings.Data);

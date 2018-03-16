@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4003466550571004}
   - component: {fileID: 20050645165834168}
   - component: {fileID: 124126938371493328}
-  - component: {fileID: 81320950446120080}
   m_Layer: 0
   m_Name: Agent Cam
   m_TagString: MainCamera
@@ -157,7 +156,6 @@ GameObject:
   - component: {fileID: 4596184271061310}
   - component: {fileID: 20179076239064444}
   - component: {fileID: 124899746826527332}
-  - component: {fileID: 81954578470107594}
   m_Layer: 0
   m_Name: Agent Cam (1)
   m_TagString: MainCamera
@@ -501,26 +499,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!81 &81320950446120080
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1016148124200586}
-  m_Enabled: 1
 --- !u!81 &81433128848822842
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578113766779354}
-  m_Enabled: 1
---- !u!81 &81954578470107594
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956874093128638}
   m_Enabled: 1
 --- !u!114 &114024264332744646
 MonoBehaviour:
@@ -578,7 +562,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1283363179237334}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d964b3bdf7a21a646b8c41ed18edf8c3, type: 3}
   m_Name: 

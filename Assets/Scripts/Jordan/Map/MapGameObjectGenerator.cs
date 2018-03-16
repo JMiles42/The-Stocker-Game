@@ -12,6 +12,10 @@ public class MapGameObjectGenerator: FoCsBehavior
 	public GridBlockListReference GridBlock;
 	public MapSO Map;
 	public SpawnPlacer SpawnPlacer;
+
+	public GridBlock WallPrefab;
+	public GridBlock FloorPrefab;
+
 	//public Dictionary<GridPosition, GridBlock> BlockDictionary = new Dictionary<GridPosition, GridBlock>();
 
 	public void OnEnable()
@@ -59,32 +63,26 @@ public class MapGameObjectGenerator: FoCsBehavior
 
 	private void CreateGO(TileType tile, Vector2I pos)
 	{
-		//if(BlockDictionary.ContainsKey(new GridPosition(pos)))
-		//	return;
-		var gO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		const float num = 0.5f;
-		gO.transform.position = new Vector3(pos.x, 0 - num, pos.y);
-		gO.transform.localScale = Vector3.one * 0.9f;
-		gO.transform.parent = transform;
-		Destroy(gO.GetComponent<Collider>());
-		var com = gO.AddComponent<GridBlock>();
-		com.TileType = tile;
-		com.GridPosition = pos;
+		GridBlock com;
 		switch(tile)
 		{
 			case TileType.Floor:
-				gO.GetComponent<Renderer>().material.color = new Color(0.77f, 0.77f, 0.77f);
+				com = Instantiate(FloorPrefab);
 				++GridBlock.FloorCount;
 				break;
 			case TileType.Wall:
+				com = Instantiate(WallPrefab);
 				++GridBlock.WallCount;
-				gO.GetComponent<Renderer>().material.color = new Color(0.47f, 0.47f, 0.47f);
-				gO.transform.localScale = Vector3.one.SetY(2f);
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-		//BlockDictionary.Add(com.GridPosition, com);
+
+		com.TileType = tile;
+		com.GridPosition = pos;
+
+		com.transform.parent = transform;
+		com.Position = com.GridPosition.WorldPosition;
 		GridBlock.Add(com);
 	}
 }

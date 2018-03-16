@@ -56,3 +56,7 @@ MonoBehaviour:
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   SpawnPlacer: {fileID: 114232379200255850, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
+  WallPrefab: {fileID: 114652446957663414, guid: b411d0c208939a14fa162e761c20f201,
+    type: 2}
+  FloorPrefab: {fileID: 114153041074254270, guid: 748ff958ccb8d2c47af5ba87637b73b2,
+    type: 2}

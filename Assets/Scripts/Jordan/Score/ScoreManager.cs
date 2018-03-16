@@ -91,10 +91,6 @@ public class ScoreManager: FoCsScriptableObject
 
 	private RoomData GetRoomData(int index, Room valueRoom, ref ProgressStats prog)
 	{
-		//float percentThrough = (index + 1f) / Map.Value.rooms.Length;
-		//float percentThrough = GetDistance();
-
-		//var wantedDiff = LevelProgressionCurve.Evaluate(percentThrough);
 		var rewd = 0;
 		var hasExit = false;
 		var chests = new List<ChestWO>();
@@ -191,15 +187,22 @@ public class ScoreManager: FoCsScriptableObject
 		#endregion
 
 		var score = 0;
-		var health = Health.Value;
 
 		foreach(var spawnerWo in spawners)
 		{
 			var localDiff = LevelProgressionCurve.Evaluate(GetDistance(spawnerWo));
 			prog.Diff = (prog.Diff + spawnerWo.GetSize()) * localDiff;
-			health -= spawnerWo.GetDamageDealt();
+			Health.Value -= spawnerWo.GetDamageDealt();
+			if(Health.Value <= 0)
+			{
+				prog.Died = false;
+			}
 		}
 
+		if(Health.Value <= 0)
+		{
+			prog.Died = false;
+		}
 		foreach(var chestWo in chests)
 		{
 			var size = chestWo.GetSize();
@@ -216,11 +219,15 @@ public class ScoreManager: FoCsScriptableObject
 			{
 				var localDiff = LevelProgressionCurve.Evaluate(GetDistance(healingWo));
 				prog.Diff = prog.Diff + localDiff;
-				health += healingWo.GetHealingAmount();
+				Health.Value += healingWo.GetHealingAmount();
 			}
 
-			health += HealingPerRoom.Value;
-			Health.Value = Mathf.Min(Mathf.Max(health, 0), MaxHealth);
+			Health.Value += HealingPerRoom.Value;
+			Health.Value = Mathf.Min(Mathf.Max(Health.Value, 0), MaxHealth);
+			if(Health.Value <= 0)
+			{
+				prog.Died = false;
+			}
 		}
 
 		score = score + (int)(prog.Diff * rewd);
@@ -233,7 +240,7 @@ public class ScoreManager: FoCsScriptableObject
 						   score = score
 				   };
 		}
-		return new RoomData{died = (health == 0), score = score };
+		return new RoomData{died = (Health.Value == 0), score = score };
 	}
 
 	private float GetDistance(WorldObject wO, bool invert = false)

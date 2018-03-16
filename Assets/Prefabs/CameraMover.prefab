@@ -175,7 +175,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.22352941, g: 0.29411766, b: 0.2784314, a: 0}
+  m_BackGroundColor: {r: 0.16480733, g: 0, b: 0.19117647, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -190,7 +190,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
   CameraHolder: {fileID: 4296622423121730}
   startPos: {x: 0, y: 0, z: 0}
   zoomRate: 1
-  zoomLevel: 0.5
+  zoomLevel: 0
   zoomMovement: 60
   ZoomCurve: {fileID: 114220447071346710}
   MapReference: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
