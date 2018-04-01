@@ -78,6 +78,10 @@ MonoBehaviour:
   PlacementMode: {fileID: 114619496926770128, guid: 158f0da2ea342744aac794bec32589cb,
     type: 2}
   EditMode: {fileID: 114010895325621122, guid: 158f0da2ea342744aac794bec32589cb, type: 2}
+  ArrowsHorizontal: {fileID: 114596209090883808, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
+  ArrowsVertical: {fileID: 114104429949901392, guid: 158f0da2ea342744aac794bec32589cb,
+    type: 2}
   GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
@@ -97,4 +101,4 @@ MonoBehaviour:
     x: 0
     y: 0.15
     width: 1
-    height: 0.8
+    height: 0.85

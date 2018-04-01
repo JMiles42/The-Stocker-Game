@@ -300,12 +300,12 @@ Prefab:
     - target: {fileID: 224675034598673958, guid: 6c86bab5c0193174ba2278d1233d5220,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 611.5
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 224675034598673958, guid: 6c86bab5c0193174ba2278d1233d5220,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 344
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 224675034598673958, guid: 6c86bab5c0193174ba2278d1233d5220,
         type: 2}

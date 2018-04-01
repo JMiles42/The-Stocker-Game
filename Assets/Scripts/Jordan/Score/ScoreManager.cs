@@ -232,6 +232,10 @@ public class ScoreManager: FoCsScriptableObject
 
 		score = score + (int)(prog.Diff * rewd);
 		score = score * 100;
+		if(rewd != 0)
+		{
+			prog.Diff = 0;
+		}
 		if(prog.Died)
 		{
 			return new RoomData
@@ -268,14 +272,10 @@ public class ScoreManager: FoCsScriptableObject
 	{
 		internal float diff = 0;
 		public bool Died = false;
+
 		public float Diff
 		{
-			get
-			{
-				var tmp = diff;
-				diff = 0;
-				return tmp;
-			}
+			get { return diff; }
 			set { diff = value; }
 		}
 	}
