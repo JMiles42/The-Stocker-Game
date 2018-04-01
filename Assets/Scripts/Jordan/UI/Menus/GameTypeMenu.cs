@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameTypeMenu: SimpleMenu<GameTypeMenu>
 {
-	public ButtonClickEventBase PlayGameBTN;
-	public ButtonClickEventBase PlaySeededGameBTN;
+	public ButtonComponentBase PlayGameBTN;
+	public ButtonComponentBase PlaySeededGameBTN;
 
 	public TMP_InputField SeedInputField;
 

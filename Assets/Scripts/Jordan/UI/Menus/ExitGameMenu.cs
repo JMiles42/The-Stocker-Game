@@ -4,8 +4,8 @@ using ForestOfChaosLib.MenuManaging;
 
 public class ExitGameMenu: SimpleMenu<ExitGameMenu>
 {
-	public ButtonClickEventBase GoBackBTN;
-	public ButtonClickEventBase ExitGameBTN;
+	public ButtonComponentBase GoBackBTN;
+	public ButtonComponentBase ExitGameBTN;
 
 	public override void OnEnable()
 	{

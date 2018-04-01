@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 617bb53ca9f43944eb8252c54fe2d624
+timeCreated: 1520555272
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Chests: {fileID: 114806373142620676, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
+  - Spawners: {fileID: 114327990401475002, guid: aba02abe5c05c4145a2d8abd168afb34,
+      type: 2}
+  - Spawn: {fileID: 114479155511754746, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  - Exit: {fileID: 114321197824003404, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  - Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  - WorldObjects: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

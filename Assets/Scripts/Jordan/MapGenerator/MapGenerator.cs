@@ -24,7 +24,7 @@ public static class MapGenerator
 		FinalizeMapData(map, settings);
 	}
 
-	private static Random SetUpRandom(MapSettings settings) => new Random(settings.Seed.GetHashCode());
+	private static Random SetUpRandom(MapSettings settings) => new Random(settings.Seed.Value.GetHashCode());
 
 	private static void GenerateTilesArray(Map map, MapSettings settings)
 	{

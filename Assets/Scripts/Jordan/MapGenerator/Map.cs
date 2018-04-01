@@ -68,8 +68,9 @@ public class Map
 	public bool CoordinatesInMap(GridPosition pos) => CoordinatesInMap(pos.X, pos.Y);
 	public bool CoordinatesInMap(Vector2I pos) => CoordinatesInMap(pos.x, pos.y);
 	public bool CoordinatesInMap(int x, int y) => (x >= 0) && (x < Width) && (y >= 0) && (y < Height);
+	public Neighbour Neighbours(int xPos, int yPos, bool getCorners = true) => Neighbours(new GridPosition(xPos, yPos), getCorners);
 
-	public Neighbour Neighbours(int xPos, int yPos, bool getCorners = true)
+	public Neighbour Neighbours(GridPosition pos, bool getCorners = true)
 	{
 		var neighbors = new Neighbour
 						{
@@ -77,21 +78,44 @@ public class Map
 																					8 :
 																					4)
 						};
-		for(var x = -1; x <= 1; x++)
-		{
-			for(var y = -1; y <= 1; y++)
-			{
-				if((x == 0) && (y == 0))
-					continue;
-				if(!getCorners)
-				{
-					if(((y == 1) && (x == 1)) || ((y == -1) && (x == 1)) || ((y == 1) && (x == -1)) || ((y == -1) && (x == -1)))
-						continue;
-				}
-				var coord = new Vector2I(xPos + x, yPos + y);
 
-				if(CoordinatesInMap(coord))
-					neighbors.Neighbours.Add(coord, this[coord]);
+
+		if(getCorners)
+		{
+			for(var x = -1; x <= 1; x++)
+			{
+				for(var y = -1; y <= 1; y++)
+				{
+					if((x == 0) && (y == 0))
+						continue;
+					var coord = new GridPosition(pos.X + x, pos.Y + y);
+
+					if(CoordinatesInMap(coord))
+						neighbors.Neighbours.Add(coord, this[coord]);
+				}
+			}
+		}
+		else
+		{
+			var tmp = pos.Left;
+			if(CoordinatesInMap(tmp))
+			{
+				neighbors.Neighbours.Add(tmp, this[tmp]);
+			}
+			tmp = pos.Right;
+			if(CoordinatesInMap(tmp))
+			{
+				neighbors.Neighbours.Add(tmp, this[tmp]);
+			}
+			tmp = pos.Up;
+			if(CoordinatesInMap(tmp))
+			{
+				neighbors.Neighbours.Add(tmp, this[tmp]);
+			}
+			tmp = pos.Down;
+			if(CoordinatesInMap(tmp))
+			{
+				neighbors.Neighbours.Add(tmp, this[tmp]);
 			}
 		}
 		return neighbors;
@@ -105,6 +129,9 @@ public class Map
 		{
 			return Neighbours?.ContainsKey(pos) == true;
 		}
+
+		internal Neighbour()
+		{ }
 	}
 
 	public bool IsMapGeneratedFromSettings(MapSettings settings)

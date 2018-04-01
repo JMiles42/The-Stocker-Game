@@ -11,6 +11,12 @@ public class MapGameObjectGenerator: FoCsBehavior
 {
 	public GridBlockListReference GridBlock;
 	public MapSO Map;
+	public SpawnPlacer SpawnPlacer;
+
+	public GridBlock WallPrefab;
+	public GridBlock FloorPrefab;
+
+	//public Dictionary<GridPosition, GridBlock> BlockDictionary = new Dictionary<GridPosition, GridBlock>();
 
 	public void OnEnable()
 	{
@@ -25,7 +31,9 @@ public class MapGameObjectGenerator: FoCsBehavior
 	private void BuildMapArt()
 	{
 		var map = Map.Value;
-		GridBlock.Value = new List<GridBlock>(map.TotalCount);
+		GridBlock.Items = new List<GridBlock>(map.TotalCount);
+		GridBlock.FloorCount = 0;
+		GridBlock.WallCount = 0;
 
 		Transform.DestroyChildren();
 
@@ -49,33 +57,32 @@ public class MapGameObjectGenerator: FoCsBehavior
 				}
 			}
 		}
+		SpawnPlacer.ForcePlaceAt(GridBlock.GetBlock(map.SpawnPosition));
 		GridBlock.OnMapFinishSpawning.Trigger();
 	}
 
-	private GameObject CreateGO(TileType tile, Vector2I pos)
+	private void CreateGO(TileType tile, Vector2I pos)
 	{
-		var gO = GameObject.CreatePrimitive(PrimitiveType.Cube);
-		const float num = 0.5f;
-		gO.transform.position = new Vector3(pos.x, 0 - num, pos.y);
-		gO.transform.localScale = Vector3.one * 0.9f;
-		gO.transform.parent = transform;
-		Destroy(gO.GetComponent<Collider>());
-		var com = gO.AddComponent<GridBlock>();
-		com.TileType = tile;
-		com.GridPosition = pos;
+		GridBlock com;
 		switch(tile)
 		{
 			case TileType.Floor:
-				gO.GetComponent<Renderer>().material.color = Color.green;
+				com = Instantiate(FloorPrefab);
+				++GridBlock.FloorCount;
 				break;
 			case TileType.Wall:
-				gO.GetComponent<Renderer>().material.color = Color.blue;
-				gO.transform.localScale = Vector3.one.SetY(2f);
+				com = Instantiate(WallPrefab);
+				++GridBlock.WallCount;
 				break;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
-		GridBlock.Add(gO.GetComponent<GridBlock>());
-		return gO;
+
+		com.TileType = tile;
+		com.GridPosition = pos;
+
+		com.transform.parent = transform;
+		com.Position = com.GridPosition.WorldPosition;
+		GridBlock.Add(com);
 	}
 }

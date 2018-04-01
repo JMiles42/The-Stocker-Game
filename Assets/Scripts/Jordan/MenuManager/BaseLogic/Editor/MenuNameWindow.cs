@@ -16,7 +16,7 @@ public class MenuNameWindow: Window<MenuNameWindow> {
 
 	protected static string TagFilePath { get; } = FileStrings.ASSETS_GENERATED_SCRIPTS + "/" + WindowTitle + FileStrings.SCRIPTS_FILE_EXTENSION;
 
-	[MenuItem("JMiles42/" + WindowTitle)]
+	[MenuItem(FileStrings.FORESTOFCHAOS_ + WindowTitle)]
 	static void Init() {
 		GetWindow();
 

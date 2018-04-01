@@ -25,9 +25,10 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public AdvInputAxisReference MiddleClick;
 	public AdvInputAxisReference SecondaryClick;
 	public AdvInputAxisReference ScrollWheel;
-	public AdvInputAxisReference CameraMode;
-	public AdvInputAxisReference PlacementMode;
-	public AdvInputAxisReference EditMode;
+
+	public AdvInputAxisReference ArrowsHorizontal;
+	public AdvInputAxisReference ArrowsVertical;
+
 	public GridBlockListReference GridBlocks;
 	public CameraRTRef Camera;
 
@@ -36,6 +37,11 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public BoolReference GameActive;
 	public BoolReference CameraEnabled;
 	public BoolReference EditingEnabled;
+
+	private bool UpdatedArrowsThisFrame = false;
+
+	public Rect ScreenInputPosition = Rect.MinMaxRect(0, 0, 1, 1);
+
 #if CalculateTouch
 	[Header("Touch")]
 	public List<SavedTouchData> TouchList = new List<SavedTouchData>(2);
@@ -47,33 +53,34 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 
 	public static event Action<Vector2> OnPrimaryClick = (a) =>
-												  {
-													  //Debug.Log("Primary" + a);
-												  };
+	{
+		//Debug.Log("Primary" + a);
+	};
+
 	public static event Action<GridBlock> OnGridBlockClick = (a) =>
-												  {
-													  //Debug.Log("Primary" + a);
-												  };
+	{
+		//Debug.Log("Primary" + a);
+	};
 
 	public static event Action<Vector2> OnSecondaryClick = (a) =>
-													{
-														//Debug.Log("Secondary" + a);
-													};
-
-	public static event Action<Vector2> OnScreenStartMove = a =>
-													 {
-														 //Debug.Log("Screen Moved" + a);
-													 };
+	{
+		//Debug.Log("Secondary" + a);
+	};
 
 	public static event Action<Vector2> OnScreenMoved = a =>
-												 {
-													 //Debug.Log("Screen Moved" + a);
-												 };
+	{
+		//Debug.Log("Screen Moved" + a);
+	};
 
-	public static event Action<Vector2> OnScreenEndMove = a =>
-												   {
-													   //Debug.Log("Screen Moved" + a);
-												   };
+	public static event Action OnScreenStartMove = () =>
+	{
+		//Debug.Log("Screen Moved" + a);
+	};
+
+	public static event Action OnScreenEndMove = () =>
+	{
+		//Debug.Log("Screen Moved" + a);
+	};
 
 	public static event Action<float> OnScreenZoom = a =>
 	{
@@ -96,9 +103,13 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 		ScrollWheel.OnKey += OnScroll;
 
-		CameraMode.OnKeyDown += CameraModeSwitch;
-		EditMode.OnKeyDown += EditModeSwitch;
+		ArrowsVertical.OnKeyDown += OnArrowDown;
+		ArrowsVertical.OnKeyUp += OnArrowUp;
+		//ArrowsVertical.OnKey += OnArrow;
 
+		ArrowsHorizontal.OnKeyDown += OnArrowDown;
+		ArrowsHorizontal.OnKeyUp += OnArrowUp;
+		//ArrowsHorizontal.OnKey += OnArrow;
 	}
 
 	public void OnDisable()
@@ -111,14 +122,18 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 		ScrollWheel.OnKey -= OnScroll;
 
-		CameraMode.OnKeyDown -= CameraModeSwitch;
-		EditMode.OnKeyDown -= EditModeSwitch;
-	}
+		ArrowsVertical.OnKeyDown += OnArrowDown;
+		ArrowsVertical.OnKeyUp += OnArrowUp;
+		//ArrowsVertical.OnKey += OnArrow;
 
-	private void OnScroll(float amount) { OnScreenZoom.Trigger(amount); }
+		ArrowsHorizontal.OnKeyDown += OnArrowDown;
+		ArrowsHorizontal.OnKeyUp += OnArrowUp;
+		//ArrowsHorizontal.OnKey += OnArrow;
+	}
 
 	public void Update()
 	{
+		UpdatedArrowsThisFrame = false;
 		MousePosition.Value = Input.mousePosition;
 
 		if(!GameActive.Value)
@@ -127,11 +142,15 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		MiddleClick.UpdateDataAndCallEvents();
 		SecondaryClick.UpdateDataAndCallEvents();
 		ScrollWheel.UpdateDataAndCallEvents(0f);
+
+		ArrowsHorizontal.UpdateData();
+		ArrowsVertical.UpdateData();
+		OnArrow();
+
 #if CalculateTouch
 		TouchUpdateLoop();
 #endif
 	}
-
 
 	private void OnPrimaryKeyDown()
 	{
@@ -143,6 +162,8 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 
 	private void CheckIfGridBlockHit()
 	{
+		if(!ScreenInputPosition.Contains(Camera.Reference.ScreenToViewportPoint(MousePosition.Value)))
+			return;
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
 		var block = GridBlocks.GetBlock(gp);
@@ -150,39 +171,27 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 			OnGridBlockClick.Trigger(block);
 	}
 
-	private void OnSecondaryKeyDown() {
-		if(!GameActive.Value)
-			return;
-		OnSecondaryClick.Trigger(Input.mousePosition.ToVector2()); }
-
-
-	private void EditModeSwitch()
+	private void OnSecondaryKeyDown()
 	{
 		if(!GameActive.Value)
 			return;
-		EditingEnabled.Value = !EditingEnabled.Value;
+		OnSecondaryClick.Trigger(Input.mousePosition.ToVector2());
 	}
 
-	private void CameraModeSwitch()
+	private static void OnScroll(float amount)
 	{
-		if(!GameActive.Value)
-			return;
-		CameraEnabled.Value = !CameraEnabled.Value;
+		OnScreenZoom.Trigger(amount);
 	}
-
 	private Vector2 MouseStartPos;
 
-	private Vector2 MouseDelta
-	{
-		get { return MousePosition.Value - MouseStartPos; }
-	}
+	private Vector2 MouseDelta => MousePosition.Value - MouseStartPos;
 
 	private void OnKeyMiddleDown()
 	{
 		if(!GameActive.Value)
 			return;
 		MouseStartPos = MousePosition.Value;
-		OnScreenStartMove.Trigger(MousePosition.Value);
+		OnScreenStartMove.Trigger();
 	}
 
 	private void OnKeyMiddleUp()
@@ -190,15 +199,50 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		if(!GameActive.Value)
 			return;
 		MouseStartPos = Vector2.zero;
-		OnScreenEndMove.Trigger(MousePosition.Value);
+		OnScreenEndMove.Trigger();
 	}
 
 	private void OnKeyMiddle(float amount)
 	{
 		if(!GameActive.Value)
 			return;
-		OnScreenMoved.Trigger(MouseDelta);
+		OnScreenMoved.Trigger(MouseDelta * 0.5f);
+		MouseStartPos = MousePosition.Value;
 	}
+
+	private void OnArrowDown()
+	{
+		if(!GameActive.Value)
+			return;
+		if(UpdatedArrowsThisFrame)
+			return;
+		OnScreenStartMove.Trigger();
+	}
+
+	private void OnArrowUp()
+	{
+		if(!GameActive.Value)
+			return;
+		if(UpdatedArrowsThisFrame)
+			return;
+		OnScreenEndMove.Trigger();
+	}
+
+	private Vector2 GetArrowVectors
+	{
+		get { return new Vector2(ArrowsHorizontal.Value, ArrowsVertical.Value) * 5; }
+	}
+
+	private void OnArrow()
+	{
+		if(!GameActive.Value)
+			return;
+		if(UpdatedArrowsThisFrame)
+			return;
+		OnScreenMoved.Trigger(GetArrowVectors);
+		UpdatedArrowsThisFrame = true;
+	}
+
 #if CalculateTouch
 	private void TouchUpdateLoop()
 	{

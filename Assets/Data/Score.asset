@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
+  m_Name: Score
+  m_EditorClassIdentifier: 
+--- !u!114 &114238608920317208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617bb53ca9f43944eb8252c54fe2d624, type: 3}
+  m_Name: ScoreManager
+  m_EditorClassIdentifier: 
+  LevelProgressionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0.5
+      inSlope: 1.3050632
+      outSlope: 1.3050632
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  Spawn: {fileID: 114479155511754746, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
+  Exit: {fileID: 114321197824003404, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  Healing: {fileID: 114023763889999000, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
+  Chests: {fileID: 114806373142620676, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
+  Spawners: {fileID: 114327990401475002, guid: aba02abe5c05c4145a2d8abd168afb34, type: 2}
+  WorldObjects: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Health:
+    ConstantValue: 90
+    Variable: {fileID: 0}
+    UseConstant: 1
+  HealingPerRoom:
+    ConstantValue: 7
+    Variable: {fileID: 0}
+    UseConstant: 1
+  MaxHealth:
+    ConstantValue: 100
+    Variable: {fileID: 0}
+    UseConstant: 1
+  FinalScore:
+    ConstantValue: 1000
+    Variable: {fileID: 114979734256554416}
+    UseConstant: 1
+  DeadScore:
+    ConstantValue: 0
+    Variable: {fileID: 114840928793066404}
+    UseConstant: 1
+  PlayerDied:
+    ConstantValue: 0
+    Variable: {fileID: 114721701815017490}
+    UseConstant: 1
+--- !u!114 &114721701815017490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: DidScoreAgentDie
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114840928793066404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71c01b1d1593fa4097d57bd8caed10d, type: 3}
+  m_Name: ScoreAtDeath
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114979734256554416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71c01b1d1593fa4097d57bd8caed10d, type: 3}
+  m_Name: FinalScore
+  m_EditorClassIdentifier: 
+  _value: 50

@@ -4,7 +4,7 @@ using ForestOfChaosLib.FoCsUI.Button;
 
 public class InputModeButton: FoCsBehavior
 {
-	public ButtonClickEventBase Button;
+	public ButtonComponentBase Button;
 	public BoolReference MyEnabledState;
 	public string MyText;
 
@@ -33,6 +33,6 @@ public class InputModeButton: FoCsBehavior
 
 	private void Reset()
 	{
-		Button = GetComponent<ButtonClickEventBase>();
+		Button = GetComponent<ButtonComponentBase>();
 	}
 }

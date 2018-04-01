@@ -13,20 +13,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Seed:
-      UseConstant: 1
-      ConstantValue: xv9s7nie
+      ConstantValue: ^_2(k3+;
       Variable: {fileID: 0}
+      UseConstant: 1
     corridorLength:
-      Min: 6
-      Max: 10
+      Min: 2
+      Max: 9
     numRooms:
-      Min: 15
-      Max: 20
+      Min: 8
+      Max: 15
     roomHeight:
       Min: 3
-      Max: 10
+      Max: 8
     roomWidth:
       Min: 3
-      Max: 10
-    columns: 100
-    rows: 100
+      Max: 8
+    columns: 40
+    rows: 40

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
   m_Name: Lists
   m_EditorClassIdentifier: 
---- !u!114 &114332151768442048
+--- !u!114 &114023763889999000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -19,10 +19,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5405d31dfe2a6946a2ee61e229b794d, type: 3}
-  m_Name: LootChestList
+  m_Script: {fileID: 11500000, guid: 40f37be35c15d2846be7d316379c75bc, type: 3}
+  m_Name: HealingWOList
   m_EditorClassIdentifier: 
-  _value: []
+--- !u!114 &114235532778253446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0998d23b23e3c45b8aa1f4616a2a5f, type: 3}
+  m_Name: WorldObjectList
+  m_EditorClassIdentifier: 
+--- !u!114 &114327990401475002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd6d0ca5692a9434e8b3d72aee386e04, type: 3}
+  m_Name: SpawnerWOList
+  m_EditorClassIdentifier: 
 --- !u!114 &114375524077888378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34,8 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6e520727ce24b4fbb8b5d6e397acae, type: 3}
   m_Name: GridBlockList
   m_EditorClassIdentifier: Assembly-CSharp::GridBlockListReference
-  _value: []
---- !u!114 &114793204861550020
+  WallCount: 70
+  FloorCount: 158
+--- !u!114 &114473269852577748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -43,7 +65,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 370254d741d12064bad2b8d00193213f, type: 3}
-  m_Name: ScorableObjectList
+  m_Script: {fileID: 11500000, guid: 2eae866b831fde94099e558e6e450537, type: 3}
+  m_Name: WorldObjectPathManager
   m_EditorClassIdentifier: 
-  _value: []
+  _state:
+    Position:
+      Position:
+        x: 8
+        y: 8
+  GridBlockList: {fileID: 114375524077888378}
+  Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
+  WorldObjectList: {fileID: 114235532778253446}
+--- !u!114 &114806373142620676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728cc241a95a8a54b9f0d75c77fee669, type: 3}
+  m_Name: ChestWOList
+  m_EditorClassIdentifier: 
