@@ -206,7 +206,7 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	{
 		if(!GameActive.Value)
 			return;
-		OnScreenMoved.Trigger(MouseDelta);
+		OnScreenMoved.Trigger(MouseDelta * 0.5f);
 		MouseStartPos = MousePosition.Value;
 	}
 
