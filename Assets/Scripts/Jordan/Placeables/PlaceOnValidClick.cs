@@ -36,7 +36,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 
 	public void OnGridBlockClick(GridBlock block)
 	{
-		if (Placer == null)
+		if (Placer == null || block.TileType == TileType.Wall)
 			return;
 
 		if(!MapVal.Neighbours(Player.Reference.GridPosition.X, Player.Reference.GridPosition.Y).ContainsPos(block.Position))
@@ -55,7 +55,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	{
 		if(block == null || canceled)
 			return;
-		if(block.HasWorldObject)
+		if(block.HasWorldObject || block.TileType == TileType.Wall)
 			return;
 		Instance.CurrentlyPlacing.Value = false;
 		Placer.ApplyPlacement(Player.Reference, block, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
