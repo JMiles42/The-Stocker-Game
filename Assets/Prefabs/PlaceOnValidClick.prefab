@@ -56,16 +56,24 @@ MonoBehaviour:
   MousePosition: {fileID: 114326280897632020, guid: 158f0da2ea342744aac794bec32589cb,
     type: 2}
   MovePlayerToClickPosAndPlace:
-    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
+    UseConstant: 1
   Player: {fileID: 114288006440103932, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   RemovePlacingOnPlace:
-    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
+    UseConstant: 1
   CurrentlyPlacing:
-    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114093651824931502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
+    UseConstant: 0
+  CurrentlyWalkingToPlace:
+    ConstantValue: 0
+    Variable: {fileID: 0}
+    UseConstant: 1
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  GridHighlighterPrefab: {fileID: 1906558333652678, guid: 6c56318e8c4977741867a8a5b8583e81,
+    type: 2}

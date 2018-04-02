@@ -5,6 +5,7 @@ using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Generics;
 using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Utilities;
+using UnityEngine;
 
 public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 {
@@ -18,9 +19,17 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private Map MapVal => Map.Value;
 	public BoolVariable CurrentlyPlacing;
 	public BoolVariable CurrentlyWalkingToPlace = false;
+	public GridBlockListReference GridBlockList;
+	public GameObject GridHighlighterPrefab;
+	private GameObject GridHighlighter;
+	private Renderer GridHighlighterRenderer;
 
 	private void OnEnable()
 	{
+		GridHighlighter = Instantiate(GridHighlighterPrefab);
+		GridHighlighter.transform.localScale = new Vector3(1, 1, 0.6f);
+		GridHighlighterRenderer = GridHighlighter.GetComponent<Renderer>();
+		GridHighlighter.SetActive(false);
 		CurrentlyPlacing.Value = false;
 		CurrentlyWalkingToPlace.Value = false;
 	}
@@ -32,6 +41,14 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 		var wp = Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY();
 		var gp = wp.GetGridPosition();
 		Placer.UpdatePosition(Player.Reference, gp, wp, CurrentlyWalkingToPlace.Value);
+		GridHighlighter.transform.position = gp;
+		var block = GridBlockList.GetBlock(gp);
+		if(block)
+		{
+			GridHighlighterRenderer.material.color = (block.HasWorldObject || block.TileType == TileType.Wall)?
+				Color.red :
+				Color.green;
+		}
 	}
 
 	public void OnGridBlockClick(GridBlock block)
@@ -53,6 +70,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private GridBlock tempBlock;
 	private void PlaceWorldObject(GridBlock block)
 	{
+		Instance.GridHighlighter.SetActive(false);
 		if(block == null || canceled)
 			return;
 		if(block.HasWorldObject || block.TileType == TileType.Wall)
@@ -98,6 +116,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	{
 		canceled = false;
 		Instance.Placer?.CancelPlacement();
+		Instance.GridHighlighter.SetActive(true);
 
 		Instance.CurrentlyPlacing.Value = true;
 		Callback = cancelCallback;
@@ -113,6 +132,7 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	public static void StopPlacing(IPlacer obj)
 	{
 		canceled = true;
+		Instance.GridHighlighter.SetActive(false);
 		Instance.CurrentlyPlacing.Value = false;
 		Callback.Trigger(false);
 		Instance.Placer?.CancelPlacement();
