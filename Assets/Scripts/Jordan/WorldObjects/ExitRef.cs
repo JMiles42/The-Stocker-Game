@@ -1,5 +1,5 @@
 ﻿using ForestOfChaosLib.AdvVar.RuntimeRef;
 
 [StockerFolder]
-public class ExitRef: RunTimeRef<ExitWorldObject>
+public class ExitRef: RunTimeRef<ExitWO>
 { }

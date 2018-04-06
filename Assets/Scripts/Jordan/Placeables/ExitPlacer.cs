@@ -7,8 +7,8 @@ using UnityEngine;
 public class ExitPlacer: Placer
 {
 	public TransformRTRef PlaceableParent;
-	public ExitWorldObject Prefab;
-	private ExitWorldObject spawnedObject;
+	public ExitWO Prefab;
+	private ExitWO spawnedObject;
 	public ExitRef Reference;
 	public BoolReference HasReference;
 	private Vector3 OldDirection = Vector3.zero;

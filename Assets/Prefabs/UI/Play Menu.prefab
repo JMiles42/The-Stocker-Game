@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
-    ConstantValue: 0
+    ConstantValue: 1
     Variable: {fileID: 0}
     UseConstant: 1
   DisableMenusUnderneath:

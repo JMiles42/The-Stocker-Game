@@ -131,7 +131,7 @@ public class ScoreManager: FoCsScriptableObject
 					UsedWorldObjects.Add(hWo);
 				}
 
-				var eWo = block.WorldObject as ExitWorldObject;
+				var eWo = block.WorldObject as ExitWO;
 				if(eWo != null)
 				{
 					hasExit = true;
@@ -175,7 +175,7 @@ public class ScoreManager: FoCsScriptableObject
 						UsedWorldObjects.Add(hWo);
 					}
 
-					var eWo = block.WorldObject as ExitWorldObject;
+					var eWo = block.WorldObject as ExitWO;
 					if(eWo != null)
 					{
 						hasExit = true;
