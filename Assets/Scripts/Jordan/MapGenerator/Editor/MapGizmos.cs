@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using ForestOfChaosLib.Editor.Utilities;
 using ForestOfChaosLib.Editor.Utilities.Disposable;
 using ForestOfChaosLib.Grid;
@@ -23,7 +23,7 @@ public static class MapGizmos
 		{
 			for(var y = -1; y <= map.Height; y++)
 			{
-				var neighbour = map.Neighbours(x, y, true);
+				//var neighbour = map.Neighbours(x, y, true);
 				if((map.SpawnPosition.X == x) && (map.SpawnPosition.Y == y))
 				{
 					DrawTile(new Vector2I(x, y), new Color(1f, 0f, 0f, 0.6f));
@@ -32,19 +32,33 @@ public static class MapGizmos
 				{
 					if(map.CoordinatesInMap(x, y))
 					{
-						if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
+						switch(map[x,y])
 						{
-							//DrawTile(map[x, y], new Vector2I(x, y), ALPHA_LOW);
-							DrawTile(new Vector2I(x, y), new Color(1f, 0.6f, 0f, 0.3f));
+							case TileType.Wall:
+								DrawTile(map[x, y], new Vector2I(x, y));
+								break;
+							case TileType.Floor:
+								DrawTile(map[x, y], new Vector2I(x, y));
+								break;
+							case TileType.OutOfMap:
+								DrawTile(new Vector2I(x, y), new Color(1f, 0.6f, 0f, 0.3f));
+								break;
+							default:
+								throw new ArgumentOutOfRangeException();
 						}
-						else
-							DrawTile(map[x, y], new Vector2I(x, y));
+						//if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
+						//{
+						//	//DrawTile(map[x, y], new Vector2I(x, y), ALPHA_LOW);
+						//	DrawTile(new Vector2I(x, y), new Color(1f, 0.6f, 0f, 0.3f));
+						//}
+						//else
+						//	DrawTile(map[x, y], new Vector2I(x, y));
 					}
 					else
 					{
-						if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
-							continue;
-						DrawTile(TileType.Wall, new Vector2I(x, y));
+						//if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
+						//	continue;
+						//DrawTile(TileType.Wall, new Vector2I(x, y));
 					}
 				}
 			}
@@ -84,6 +98,10 @@ public static class MapGizmos
 				break;
 			case TileType.Floor:
 				using(EditorDisposables.ColorChanger(new Color(0f, 1f, 0f, alpha), EditorColourType.Gizmos))
+					Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
+				break;
+			case TileType.OutOfMap:
+				using(EditorDisposables.ColorChanger(new Color(1f, 0.6f, 0f, alpha), EditorColourType.Gizmos))
 					Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
 				break;
 		}

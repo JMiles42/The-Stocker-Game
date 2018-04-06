@@ -43,6 +43,7 @@ public class CameraController: FoCsBehavior, IEventListening
 		GameplayInputManager.OnScreenZoom += OnScreenZoom;
 		MapReference.OnValueChange += UpdateCameraLimits;
 		GridBlockReference.OnMapFinishSpawning += CalculateLimits;
+		OnScreenZoom(0.4f);
 	}
 
 	public void OnDisable()

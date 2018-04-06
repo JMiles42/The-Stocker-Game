@@ -56,8 +56,8 @@ public class MapGameObjectGenerator: FoCsBehavior
 				var neighbour = map.Neighbours(x, y, true);
 				if(map.CoordinatesInMap(x, y))
 				{
-					if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
-						continue;
+					//if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
+					//	continue;
 
 					CreateGO(map[x, y], new Vector2I(x, y));
 					//CreateGO_Old(map[x, y], new Vector2I(x, y));
@@ -65,7 +65,7 @@ public class MapGameObjectGenerator: FoCsBehavior
 				}
 				else
 				{
-					if(neighbour.Neighbours.All(e => e.Value == TileType.Wall) && (map[x, y] == TileType.Wall))
+					if(neighbour.Neighbours.All(e => e.Value == TileType.Wall || e.Value == TileType.OutOfMap) && (map[x, y] == TileType.Wall || map[x, y] == TileType.OutOfMap))
 						continue;
 					CreateGO(TileType.Wall, new Vector2I(x, y));
 					//CreateGO_Old(TileType.Wall, new Vector2I(x, y));
@@ -95,6 +95,8 @@ public class MapGameObjectGenerator: FoCsBehavior
 				inst = Instantiate(WallPrefab);
 				++GridBlock.WallCount;
 				break;
+			case TileType.OutOfMap:
+				return;
 			default:
 				throw new ArgumentOutOfRangeException();
 		}
@@ -109,6 +111,8 @@ public class MapGameObjectGenerator: FoCsBehavior
 
 	private void CreateGO(TileType tile, Vector2I pos)
 	{
+		if(tile == TileType.OutOfMap)
+			return;
 		GridBlock com;
 		GameObject inst;
 		if(tile == TileType.Floor)
@@ -223,4 +227,14 @@ internal static class TilesStateEtx
 	{
 		return state == TilesState.CheckedFalse || state == TilesState.UnChecked;
 	}
+}
+
+[Flags]
+internal enum TileJoiningDirection
+{
+	None = 0,
+	Up   = 1,
+	Down = 2,
+	Left = 4,
+	Right= 8
 }

@@ -1,4 +1,5 @@
-﻿using ForestOfChaosLib.Grid;
+﻿using System.Linq;
+using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Utilities.Enums;
 using UnityEngine;
 using Random = System.Random;
@@ -20,8 +21,9 @@ public static class MapGenerator
 		GenerateRoomsAndCorridors(map, settings, rng);
 		GenerateSpawnPoint(map, rng);
 
-		SetMapData(map);
 		FinalizeMapData(map, settings);
+		SetMapData(map);
+		//FinalizeMapData(map, settings);
 	}
 
 	private static Random SetUpRandom(MapSettings settings) => new Random(settings.Seed.Value.GetHashCode());
@@ -70,6 +72,36 @@ public static class MapGenerator
 	{
 		SetMapDataFromRooms(map);
 		SetMapDataFromCorridors(map);
+		SetWalls(map);
+	}
+
+	private static void SetWalls(Map map)
+	{
+		for(var x = -1; x <= map.Width; x++)
+		{
+			for(var y = -1; y <= map.Height; y++)
+			{
+				if(!map.CoordinatesInMap(x, y))
+					continue;
+				if(map.tiles[x][y] != TileType.Floor)
+					continue;
+
+				for(var _x = -1; _x <= 1; _x++)
+				{
+					for(var _y = -1; _y <= 1; _y++)
+					{
+						var curX = x + _x;
+						var curY = y + _y;
+						if(!map.CoordinatesInMap(curX, curY))
+							continue;
+						if(map.tiles[curX][curY] == TileType.OutOfMap)
+						{
+							map.tiles[curX][curY] = TileType.Wall;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private static void SetMapDataFromCorridors(Map map)
