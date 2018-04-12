@@ -209,6 +209,7 @@ public class MapGameObjectGenerator: FoCsBehavior
 		{
 			inst = Instantiate(Wall_S_Prefab);
 		}
+		//
 		////Corner
 		else if(!up.IsWall() && down.IsWall() && left.IsWall() && !right.IsWall())
 		{
@@ -249,26 +250,12 @@ public class MapGameObjectGenerator: FoCsBehavior
 			inst = Instantiate(Pillar_E_Prefab);
 			inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 		}
-		//
-		////else if(up.IsWall() && !down.IsWall() && !left.IsWall() && !right.IsWall())
-		////{
-		////	inst = Instantiate(Pillar_E_Prefab);
-		////	inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
-		////}
-		////else if(!up.IsWall() && down.IsWall() && !left.IsWall() && !right.IsWall())
-		////{
-		////	inst = Instantiate(Pillar_E_Prefab);
-		////	inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
-		////}
-		////else if(!up.IsWall() && !down.IsWall() && left.IsWall() && !right.IsWall())
-		////{
-		////	inst = Instantiate(Pillar_E_Prefab);
-		////}
-		////else if(!up.IsWall() && !down.IsWall() && !left.IsWall() && right.IsWall())
-		////{
-		////	inst = Instantiate(Pillar_E_Prefab);
-		////	inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-		////}
+		//0
+		else if(!up.IsWall() && !down.IsWall() && !left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(UnityEngine.Random.Range(0,4) * 90, Vector3.up);
+		}
 		//ELSE
 		else
 			inst = Instantiate(Pillar_X_Prefab);

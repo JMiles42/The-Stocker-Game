@@ -59,7 +59,6 @@ GameObject:
   - component: {fileID: 114337568817681298}
   - component: {fileID: 114677483384278784}
   - component: {fileID: 114893038986120068}
-  - component: {fileID: 114108681898633118}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -123,24 +122,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114108681898633118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1462225884566720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a5506a73acd4a041bfdc7acd62c2a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CallMode: 2
-  ChildTransform: {fileID: 224233790388240608}
-  ParentTransform: {fileID: 0}
-  DestroyComponentAfterCall:
-    ConstantValue: 1
-    Variable: {fileID: 0}
-    UseConstant: 1
 --- !u!114 &114337568817681298
 MonoBehaviour:
   m_ObjectHideFlags: 1
