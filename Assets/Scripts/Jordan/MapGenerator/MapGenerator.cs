@@ -21,13 +21,11 @@ public static class MapGenerator
 		settings.columns -= 2;
 
 		GenerateRoomsAndCorridors(map, settings, rng);
-		GenerateSpawnPoint(map, rng);
 
 		settings.rows += 2;
 		settings.columns += 2;
 		SetupEdge(map);
-
-
+		GenerateSpawnPoint(map, rng);
 
 		FinalizeMapData(map, settings);
 		SetMapData(map);
@@ -88,6 +86,8 @@ public static class MapGenerator
 			room.Position.X += 1;
 			room.Position.Y += 1;
 		}
+		//map.SpawnPosition.X += 1;
+		//map.SpawnPosition.Y += 1;
 	}
 
 	private static void SetMapData(Map map)
