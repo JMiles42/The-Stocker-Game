@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using ForestOfChaosLib;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.Animation;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
@@ -10,6 +10,7 @@ public class PlayerAnimation : FoCsBehavior
 	public AnimatorKey SpeedKey;
 	public AnimatorKey WalkingKey;
 	[SerializeField] private Animator _animator;
+	public FloatVariable RotateSpeed;
 
 	public Animator Animator
 	{
@@ -45,7 +46,9 @@ public class PlayerAnimation : FoCsBehavior
 
 	private void OnMoveToBlock(GridPosition gridPosition)
 	{
-		Animator.gameObject.transform.rotation = Quaternion.LookRotation(gridPosition.WorldPosition - Player.GridPosition.WorldPosition, Vector3.up);
+		Animator.gameObject.transform.DORotate(
+			Quaternion.LookRotation(gridPosition.WorldPosition - Player.GridPosition.WorldPosition, Vector3.up).eulerAngles,
+			Time.deltaTime * RotateSpeed);
 	}
 
 	void OnDisable()

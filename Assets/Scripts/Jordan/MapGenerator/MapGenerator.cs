@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ForestOfChaosLib.Grid;
+﻿using ForestOfChaosLib.Grid;
 using ForestOfChaosLib.Utilities.Enums;
 using UnityEngine;
 using Random = System.Random;
@@ -16,10 +15,19 @@ public static class MapGenerator
 	public static void Generate(Map map, MapSettings settings)
 	{
 		var rng = SetUpRandom(settings);
-
 		GenerateTilesArray(map, settings);
+
+		settings.rows -= 2;
+		settings.columns -= 2;
+
 		GenerateRoomsAndCorridors(map, settings, rng);
 		GenerateSpawnPoint(map, rng);
+
+		settings.rows += 2;
+		settings.columns += 2;
+		SetupEdge(map);
+
+
 
 		FinalizeMapData(map, settings);
 		SetMapData(map);
@@ -65,6 +73,20 @@ public static class MapGenerator
 			map.corridors[i] = new Corridor();
 
 			GenerateCorridor(map.corridors[i], map.rooms[i], settings, false, rng);
+		}
+	}
+
+	private static void SetupEdge(Map map)
+	{
+		foreach(var corridor in map.corridors)
+		{
+			corridor.startXPos += 1;
+			corridor.startYPos += 1;
+		}
+		foreach(var room in map.rooms)
+		{
+			room.Position.X += 1;
+			room.Position.Y += 1;
 		}
 	}
 

@@ -144,56 +144,132 @@ public class MapGameObjectGenerator: FoCsBehavior
 		var checkPos = pos + Vector2I.Up;
 		if(neighbour.ContainsPos(checkPos) && neighbour.Neighbours[checkPos] == TileType.Wall)
 			up = TilesState.CheckedTrue;
-		//else
-		//	up = TilesState.CheckedFalse;
 		checkPos = pos + Vector2I.Down;
 		if(neighbour.ContainsPos(checkPos) && neighbour.Neighbours[checkPos] == TileType.Wall)
 			down = TilesState.CheckedTrue;
-		//else
-		//	down = TilesState.CheckedFalse;
 		checkPos = pos + Vector2I.Left;
 		if(neighbour.ContainsPos(checkPos) && neighbour.Neighbours[checkPos] == TileType.Wall)
 			left = TilesState.CheckedTrue;
-		//else
-		//	left = TilesState.CheckedFalse;
 		checkPos = pos + Vector2I.Right;
 		if(neighbour.ContainsPos(checkPos) && neighbour.Neighbours[checkPos] == TileType.Wall)
 			right = TilesState.CheckedTrue;
-		//else
-		//	right = TilesState.CheckedFalse;
+		//ALL
 		if(neighbour.Neighbours.All(e => e.Value == TileType.Wall))
 		{
-			if(up.IsWall() && down.NotWall() && left.NotWall() && right.NotWall())
+			if(up.IsWall() && !down.IsWall() && !left.IsWall() && !right.IsWall())
 			{
 				inst = Instantiate(Pillar_E_Prefab);
 			}
-			else if(up.NotWall() && down.IsWall() && left.NotWall() && right.NotWall())
+			else if(!up.IsWall() && down.IsWall() && !left.IsWall() && !right.IsWall())
 			{
 				inst = Instantiate(Pillar_E_Prefab);
 				inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
 			}
-			else if(up.NotWall() && down.NotWall() && left.IsWall() && right.NotWall())
+			else if(!up.IsWall() && !down.IsWall() && left.IsWall() && !right.NotWall())
 			{
 				inst = Instantiate(Pillar_E_Prefab);
 				inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 			}
-			else if(up.NotWall() && down.NotWall() && left.NotWall() && right.IsWall())
+			else if(!up.IsWall() && !down.IsWall() && !left.IsWall() && right.IsWall())
 			{
 				inst = Instantiate(Pillar_E_Prefab);
 				inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
 			}
 			else
-				inst = Instantiate(Pillar_X_Prefab);
+				inst = Instantiate(Wall_X_Prefab);
 		}
-		else if(up.IsWall() && down.IsWall())
+		//3
+		else if(!up.IsWall() && down.IsWall() && left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Wall_T_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+		}
+		else if(up.IsWall() && !down.IsWall() && left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Wall_T_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+		}
+		else if(up.IsWall() && down.IsWall() && !left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Wall_T_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+		}
+		else if(up.IsWall() && down.IsWall() && left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Wall_T_Prefab);
+		}
+		//2
+		////Straight
+		else if(up.IsWall() && down.IsWall() && !left.IsWall() && !right.IsWall())
 		{
 			inst = Instantiate(Wall_S_Prefab);
 			inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
 		}
-		else if(left.IsWall() && right.IsWall())
+		else if(!up.IsWall() && !down.IsWall() && left.IsWall() && right.IsWall())
 		{
 			inst = Instantiate(Wall_S_Prefab);
 		}
+		////Corner
+		else if(!up.IsWall() && down.IsWall() && left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_L_Prefab);
+		}
+		else if(!up.IsWall() && down.IsWall() && !left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Pillar_L_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+		}
+		else if(up.IsWall() && !down.IsWall() && left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_L_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+		}
+		else if(up.IsWall() && !down.IsWall() && !left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Pillar_L_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+		}
+		//1
+		else if(up.IsWall() && !down.IsWall() && !left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_E_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+		}
+		else if(!up.IsWall() && down.IsWall() && !left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_E_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+		}
+		else if(!up.IsWall() && !down.IsWall() && left.IsWall() && !right.IsWall())
+		{
+			inst = Instantiate(Pillar_E_Prefab);
+		}
+		else if(!up.IsWall() && !down.IsWall() && !left.IsWall() && right.IsWall())
+		{
+			inst = Instantiate(Pillar_E_Prefab);
+			inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+		}
+		//
+		////else if(up.IsWall() && !down.IsWall() && !left.IsWall() && !right.IsWall())
+		////{
+		////	inst = Instantiate(Pillar_E_Prefab);
+		////	inst.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+		////}
+		////else if(!up.IsWall() && down.IsWall() && !left.IsWall() && !right.IsWall())
+		////{
+		////	inst = Instantiate(Pillar_E_Prefab);
+		////	inst.transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+		////}
+		////else if(!up.IsWall() && !down.IsWall() && left.IsWall() && !right.IsWall())
+		////{
+		////	inst = Instantiate(Pillar_E_Prefab);
+		////}
+		////else if(!up.IsWall() && !down.IsWall() && !left.IsWall() && right.IsWall())
+		////{
+		////	inst = Instantiate(Pillar_E_Prefab);
+		////	inst.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+		////}
+		//ELSE
 		else
 			inst = Instantiate(Pillar_X_Prefab);
 

@@ -162,6 +162,7 @@ public class Player: Singleton<Player>
 		{
 			//var lastDist = Vector3.Distance(Position.SetY(0), node.WorldPosition);
 			float time = 0;
+			OnMoveToBlock.Trigger(node);
 			while(true)
 			{
 				time += Time.deltaTime * moveSpeed;
@@ -171,7 +172,6 @@ public class Player: Singleton<Player>
 
 				if(dist <= distanceToNode.Value)
 				{
-					OnMoveToBlock.Trigger(node);
 					GridPosition = node;
 					Position = node.WorldPosition.SetY(Position);
 					break;
