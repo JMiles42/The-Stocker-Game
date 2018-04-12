@@ -124,7 +124,7 @@ PlayerSettings:
     16:10: 0
     16:9: 1
     Others: 0
-  bundleVersion: 0.0003pa
+  bundleVersion: 0.2B
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -516,10 +516,10 @@ PlayerSettings:
   webGLUseWasm: 1
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    1: ENABLE_TENSORFLOW;AMPLIFY_SHADER_EDITOR;DOTWEEN_TMP
+    1: ENABLE_TENSORFLOW;DOTWEEN_TMP
     4: DOTWEEN_TMP
     7: DOTWEEN_TMP
-    13: DOTWEEN_TMP
+    13: ENABLE_TENSORFLOW;DOTWEEN_TMP
     14: DOTWEEN_TMP
     17: DOTWEEN_TMP
     18: DOTWEEN_TMP
