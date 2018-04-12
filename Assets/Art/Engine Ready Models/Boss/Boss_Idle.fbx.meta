@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 9ae3bb2e255b66b468a2a811e12cce97
-timeCreated: 1522993468
+guid: 0121ef15cb8e7654a9473d03e13461e0
+timeCreated: 1523535230
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -18,7 +18,7 @@ ModelImporter:
     100020: Forearm_L
     100022: Forearm_R
     100024: Hammer
-    100026: Hammer_End
+    100026: Hammer_end
     100028: Hammer_Mesh
     100030: Head
     100032: HeadEnd
@@ -57,7 +57,7 @@ ModelImporter:
     100098: Thumb_L 1
     100100: Thumb_R
     100102: Thumb_R 1
-    100104: transform1
+    100104: transform2
     100106: Waist
     400000: Arm_L
     400002: Arm_R
@@ -72,7 +72,7 @@ ModelImporter:
     400020: Forearm_L
     400022: Forearm_R
     400024: Hammer
-    400026: Hammer_End
+    400026: Hammer_end
     400028: Hammer_Mesh
     400030: Head
     400032: HeadEnd
@@ -111,12 +111,11 @@ ModelImporter:
     400098: Thumb_L 1
     400100: Thumb_R
     400102: Thumb_R 1
-    400104: transform1
+    400104: transform2
     400106: Waist
     4300000: Boss
     4300002: Hammer_Mesh
-    7400000: Boss_Attack
-    7400002: Boss_Idle_2
+    7400000: Boss_Idle
     9500000: //RootNode
     13700000: Boss
     13700002: Hammer_Mesh
@@ -140,7 +139,7 @@ ModelImporter:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
-    optimizeGameObjects: 0
+    optimizeGameObjects: 1
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -158,10 +157,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_Attack
+      name: Boss_Idle
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 38
+      lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -169,35 +168,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Boss_Idle_2
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 3.2000003
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -240,7 +211,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -257,7 +228,8 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9ae3bb2e255b66b468a2a811e12cce97,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

@@ -15,7 +15,7 @@ public class MapGameObjectGenerator: FoCsBehavior
 	public SpawnPlacer SpawnPlacer;
 
 	public GameObject WallPrefab;
-	public GameObjectArrayScriptableObject FloorPrefabs;
+	public GameObjectArray FloorPrefabs;
 
 	public GameObject Wall_E_Prefab;
 	public GameObject Wall_L_Prefab;

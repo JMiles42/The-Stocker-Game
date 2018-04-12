@@ -698,6 +698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4143262614662680}
   - component: {fileID: 95760930396708644}
+  - component: {fileID: 114511472353476838}
   m_Layer: 0
   m_Name: Boss_Attack
   m_TagString: Untagged
@@ -1760,7 +1761,7 @@ Animator:
   m_GameObject: {fileID: 1727129125020990}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9ae3bb2e255b66b468a2a811e12cce97, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 993742ecf51695a4187df0e7ca2570bf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1768,6 +1769,36 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114511472353476838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1727129125020990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56dc2c83e0512044bf221a737c09839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key:
+    Key: TriggerAnim
+    KeyType: 3
+    intData: 0
+    floatData: 0
+    boolData: 0
+    triggerData: 1
+  Animator: {fileID: 95760930396708644}
+  Animating: 1
+  Min:
+    ConstantValue: 1
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Max:
+    ConstantValue: 20
+    Variable: {fileID: 0}
+    UseConstant: 1
+  startTime: 0
+  endTime: 0
 --- !u!114 &114853269293917650
 MonoBehaviour:
   m_ObjectHideFlags: 1

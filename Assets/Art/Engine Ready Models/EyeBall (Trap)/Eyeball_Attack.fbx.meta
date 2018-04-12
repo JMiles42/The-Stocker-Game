@@ -1,136 +1,120 @@
 fileFormatVersion: 2
-guid: 9ae3bb2e255b66b468a2a811e12cce97
-timeCreated: 1522993468
+guid: 6087d52190bf1bf448f236277807dfa4
+timeCreated: 1523534991
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Arm_L
-    100002: Arm_R
-    100004: Body
-    100006: Boss
-    100008: //RootNode
-    100010: Chest
-    100012: Foot_end_L
-    100014: Foot_end_R
-    100016: Foot_L
-    100018: Foot_R
-    100020: Forearm_L
-    100022: Forearm_R
-    100024: Hammer
-    100026: Hammer_End
-    100028: Hammer_Mesh
-    100030: Head
-    100032: HeadEnd
-    100034: Leg_L
-    100036: Leg_R
-    100038: Middle_1_L
-    100040: Middle_1_L 1
-    100042: Middle_1_L 2
-    100044: Middle_1_R
-    100046: Middle_1_R 1
-    100048: Middle_1_R 2
-    100050: Palm
-    100052: Palm 1
-    100054: Pinky_1_L
-    100056: Pinky_1_R
-    100058: Pinky_2_L
-    100060: Pinky_2_R
-    100062: Pinky_end_L
-    100064: Pinky_end_R
-    100066: Pointer_1_L
-    100068: Pointer_1_R
-    100070: Pointer_2_L
-    100072: Pointer_2_R
-    100074: Pointer_end_L
-    100076: Pointer_end_R
-    100078: Ring_1_L
-    100080: Ring_1_R
-    100082: Ring_2_L
-    100084: Ring_2_R
-    100086: Ring_End_L
-    100088: Ring_End_R
-    100090: Root
-    100092: Thigh_L
-    100094: Thigh_R
-    100096: Thumb_L
-    100098: Thumb_L 1
-    100100: Thumb_R
-    100102: Thumb_R 1
-    100104: transform1
-    100106: Waist
-    400000: Arm_L
-    400002: Arm_R
-    400004: Body
-    400006: Boss
-    400008: //RootNode
-    400010: Chest
-    400012: Foot_end_L
-    400014: Foot_end_R
-    400016: Foot_L
-    400018: Foot_R
-    400020: Forearm_L
-    400022: Forearm_R
-    400024: Hammer
-    400026: Hammer_End
-    400028: Hammer_Mesh
-    400030: Head
-    400032: HeadEnd
-    400034: Leg_L
-    400036: Leg_R
-    400038: Middle_1_L
-    400040: Middle_1_L 1
-    400042: Middle_1_L 2
-    400044: Middle_1_R
-    400046: Middle_1_R 1
-    400048: Middle_1_R 2
-    400050: Palm
-    400052: Palm 1
-    400054: Pinky_1_L
-    400056: Pinky_1_R
-    400058: Pinky_2_L
-    400060: Pinky_2_R
-    400062: Pinky_end_L
-    400064: Pinky_end_R
-    400066: Pointer_1_L
-    400068: Pointer_1_R
-    400070: Pointer_2_L
-    400072: Pointer_2_R
-    400074: Pointer_end_L
-    400076: Pointer_end_R
-    400078: Ring_1_L
-    400080: Ring_1_R
-    400082: Ring_2_L
-    400084: Ring_2_R
-    400086: Ring_End_L
-    400088: Ring_End_R
-    400090: Root
-    400092: Thigh_L
-    400094: Thigh_R
-    400096: Thumb_L
-    400098: Thumb_L 1
-    400100: Thumb_R
-    400102: Thumb_R 1
-    400104: transform1
-    400106: Waist
-    4300000: Boss
-    4300002: Hammer_Mesh
-    7400000: Boss_Attack
-    7400002: Boss_Idle_2
+    100000: AntennaL1
+    100002: AntennaL2
+    100004: AntennaL3
+    100006: AntennaL4
+    100008: AntennaL5
+    100010: AntennaR1
+    100012: AntennaR2
+    100014: AntennaR3
+    100016: AntennaR4
+    100018: AntennaR5
+    100020: Body
+    100022: Body 1
+    100024: eye
+    100026: //RootNode
+    100028: joint1
+    100030: Leg1_1
+    100032: Leg1_2
+    100034: Leg1_3
+    100036: Leg1_4
+    100038: Leg1_5
+    100040: Leg1_6
+    100042: Leg1_7
+    100044: Leg1_8
+    100046: Leg1_end
+    100048: Leg2_1
+    100050: Leg2_2
+    100052: Leg2_3
+    100054: Leg2_4
+    100056: Leg2_5
+    100058: Leg2_6
+    100060: Leg2_7
+    100062: Leg2_8
+    100064: Leg2_end
+    100066: Leg3_1
+    100068: Leg3_2
+    100070: Leg3_7
+    100072: Leg3_8
+    100074: Leg3_end
+    100076: Leg_3_3
+    100078: Leg_3_4
+    100080: Leg_3_5
+    100082: Leg_3_6
+    100084: Root
+    100086: transform1
+    100088: transform2
+    100090: transform3
+    400000: AntennaL1
+    400002: AntennaL2
+    400004: AntennaL3
+    400006: AntennaL4
+    400008: AntennaL5
+    400010: AntennaR1
+    400012: AntennaR2
+    400014: AntennaR3
+    400016: AntennaR4
+    400018: AntennaR5
+    400020: Body
+    400022: Body 1
+    400024: eye
+    400026: //RootNode
+    400028: joint1
+    400030: Leg1_1
+    400032: Leg1_2
+    400034: Leg1_3
+    400036: Leg1_4
+    400038: Leg1_5
+    400040: Leg1_6
+    400042: Leg1_7
+    400044: Leg1_8
+    400046: Leg1_end
+    400048: Leg2_1
+    400050: Leg2_2
+    400052: Leg2_3
+    400054: Leg2_4
+    400056: Leg2_5
+    400058: Leg2_6
+    400060: Leg2_7
+    400062: Leg2_8
+    400064: Leg2_end
+    400066: Leg3_1
+    400068: Leg3_2
+    400070: Leg3_7
+    400072: Leg3_8
+    400074: Leg3_end
+    400076: Leg_3_3
+    400078: Leg_3_4
+    400080: Leg_3_5
+    400082: Leg_3_6
+    400084: Root
+    400086: transform1
+    400088: transform2
+    400090: transform3
+    4300000: Body
+    4300002: eye
+    7400000: Eye_Ball-Attack
+    7400002: Eye_Ball-Idle
     9500000: //RootNode
-    13700000: Boss
-    13700002: Hammer_Mesh
+    13700000: Body
+    13700002: eye
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BossHammerTexture
-    second: {fileID: 2100000, guid: a05f395feacd40c4d920001be5a68ed7, type: 2}
+      name: EyeBall_Texture
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 9c2fa50a817fbc74db60c7d203c3f0a5, type: 2}
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -158,18 +142,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Boss_Attack
+      name: Eye_Ball-Attack
       takeName: Take 001
-      firstFrame: 1
-      lastFrame: 38
+      firstFrame: 0
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -186,10 +170,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Boss_Idle_2
+      name: Eye_Ball-Idle
       takeName: Take 001
-      firstFrame: 0
-      lastFrame: 3.2000003
+      firstFrame: 54.5
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -216,7 +200,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.015
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -233,7 +217,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
