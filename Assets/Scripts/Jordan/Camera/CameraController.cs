@@ -39,19 +39,16 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	public void OnEnable()
 	{
-		GameplayInputManager.OnScreenStartMove += OnScreenStartMove;
 		GameplayInputManager.OnScreenMoved += OnScreenMoved;
-		GameplayInputManager.OnScreenEndMove += OnScreenEndMove;
 		GameplayInputManager.OnScreenZoom += OnScreenZoom;
 		MapReference.OnValueChange += UpdateCameraLimits;
 		GridBlockReference.OnMapFinishSpawning += CalculateLimits;
+		OnScreenZoom(0.4f);
 	}
 
 	public void OnDisable()
 	{
-		GameplayInputManager.OnScreenStartMove -= OnScreenStartMove;
 		GameplayInputManager.OnScreenMoved -= OnScreenMoved;
-		GameplayInputManager.OnScreenEndMove -= OnScreenEndMove;
 		GameplayInputManager.OnScreenZoom -= OnScreenZoom;
 		MapReference.OnValueChange -= UpdateCameraLimits;
 		GridBlockReference.OnMapFinishSpawning -= CalculateLimits;
@@ -73,7 +70,6 @@ public class CameraController: FoCsBehavior, IEventListening
 		Position = MapReference.Value.SpawnPosition.WorldPosition;
 	}
 
-
 	private void OnScreenZoom(float amount)
 	{
 		zoomLevel = (zoomLevel + (amount * (zoomRate))).Clamp();
@@ -82,20 +78,10 @@ public class CameraController: FoCsBehavior, IEventListening
 		Camera.transform.LookAt(ZoomCurve.Transform);
 	}
 
-	private void OnScreenStartMove(Vector2 mousePos)
-	{
-		startPos = CameraHolder.position;
-	}
-
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
-		var pos = startPos + (Camera.transform.TransformDirection(mouseDelta).FromX_Y2Z() * Speed).SetY(0);
+		var pos = transform.position + (Camera.transform.TransformDirection(mouseDelta) * Speed).SetY(0);
 		CameraHolder.transform.position = new Vector3(pos.x.Clamp(minPos.x, maxPos.x), pos.y, pos.z.Clamp(minPos.z, maxPos.z));
-	}
-
-	private void OnScreenEndMove(Vector2 mousePos)
-	{
-		startPos = Vector3.zero;
 	}
 
 	public void CalculateLimits()
@@ -109,5 +95,6 @@ public class CameraController: FoCsBehavior, IEventListening
 			minPos = Vector3.Min(minPos,gridBlock.Position);
 			maxPos = Vector3.Max(maxPos,gridBlock.Position);
 		}
+		UpdateCameraLimits();
 	}
 }

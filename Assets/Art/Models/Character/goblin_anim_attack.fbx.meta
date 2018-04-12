@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f0bd7b3da1554ca4ea1e11c27dfec6cd
-timeCreated: 1521159909
+guid: 14ac67240a8f654488830407702ba888
+timeCreated: 1522648216
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -816,7 +816,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: RIG_goblin_goblin_textured_goblinTexture
-    second: {fileID: 2100000, guid: 44709b260a70540418361fc04b929228, type: 2}
+    second: {fileID: 2100000, guid: 58ee2df515cba9d4db2d63c66c900272, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -863,7 +863,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

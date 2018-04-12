@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4258987822408742}
   - component: {fileID: 114226996310627982}
+  - component: {fileID: 114075914192969250}
   m_Layer: 0
   m_Name: PlayMenuOpener
   m_TagString: Untagged
@@ -40,6 +41,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114075914192969250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343399608615740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dce15c45445dccb4489fd78d41e91e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuToClose: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
+    type: 2}
 --- !u!114 &114226996310627982
 MonoBehaviour:
   m_ObjectHideFlags: 1

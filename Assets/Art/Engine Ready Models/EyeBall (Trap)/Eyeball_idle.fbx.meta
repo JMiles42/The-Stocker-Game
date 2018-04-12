@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: 6ae324975273a6c43b80afafb5140f8c
+timeCreated: 1522626017
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: eyeBall_0004:Antenna_L1
+    100002: eyeBall_0004:Antenna_L2
+    100004: eyeBall_0004:Antenna_L3
+    100006: eyeBall_0004:Antenna_L4
+    100008: eyeBall_0004:Antenna_R1
+    100010: eyeBall_0004:Antenna_R2
+    100012: eyeBall_0004:Antenna_R3
+    100014: eyeBall_0004:Antenna_R4
+    100016: eyeBall_0004:AntennaL1
+    100018: eyeBall_0004:AntennaL2
+    100020: eyeBall_0004:AntennaL3
+    100022: eyeBall_0004:AntennaL4
+    100024: eyeBall_0004:AntennaL5
+    100026: eyeBall_0004:AntennaR1
+    100028: eyeBall_0004:AntennaR2
+    100030: eyeBall_0004:AntennaR3
+    100032: eyeBall_0004:AntennaR4
+    100034: eyeBall_0004:AntennaR5
+    100036: eyeBall_0004:Body
+    100038: eyeBall_0004:Body 1
+    100040: eyeBall_0004:Body 2
+    100042: eyeBall_0004:bottomnurbsSquare1
+    100044: eyeBall_0004:eye
+    100046: eyeBall_0004:EyeController
+    100048: eyeBall_0004:EyeLabel
+    100050: eyeBall_0004:joint2
+    100052: eyeBall_0004:leftnurbsSquare1
+    100054: eyeBall_0004:Leg1_1
+    100056: eyeBall_0004:Leg1_1 1
+    100058: eyeBall_0004:Leg1_2
+    100060: eyeBall_0004:Leg1_2 1
+    100062: eyeBall_0004:Leg1_3
+    100064: eyeBall_0004:Leg1_3 1
+    100066: eyeBall_0004:Leg1_4
+    100068: eyeBall_0004:Leg1_4 1
+    100070: eyeBall_0004:Leg1_5
+    100072: eyeBall_0004:Leg1_5 1
+    100074: eyeBall_0004:Leg1_6
+    100076: eyeBall_0004:Leg1_6 1
+    100078: eyeBall_0004:Leg1_7
+    100080: eyeBall_0004:Leg1_7 1
+    100082: eyeBall_0004:Leg1_8
+    100084: eyeBall_0004:Leg1_8 1
+    100086: eyeBall_0004:Leg1_end
+    100088: eyeBall_0004:Leg2_1
+    100090: eyeBall_0004:Leg2_1 1
+    100092: eyeBall_0004:Leg2_2
+    100094: eyeBall_0004:Leg2_3
+    100096: eyeBall_0004:Leg2_4
+    100098: eyeBall_0004:Leg2_5
+    100100: eyeBall_0004:Leg2_6
+    100102: eyeBall_0004:Leg2_7
+    100104: eyeBall_0004:Leg2_8
+    100106: eyeBall_0004:Leg2_end
+    100108: eyeBall_0004:Leg3_1
+    100110: eyeBall_0004:Leg3_1 1
+    100112: eyeBall_0004:Leg3_2
+    100114: eyeBall_0004:Leg3_7
+    100116: eyeBall_0004:Leg3_8
+    100118: eyeBall_0004:Leg3_end
+    100120: eyeBall_0004:Leg_3_3
+    100122: eyeBall_0004:Leg_3_4
+    100124: eyeBall_0004:Leg_3_5
+    100126: eyeBall_0004:Leg_3_6
+    100128: eyeBall_0004:Main
+    100130: eyeBall_0004:nurbsCircle1
+    100132: eyeBall_0004:nurbsCircle2
+    100134: eyeBall_0004:nurbsCircle2 1
+    100136: eyeBall_0004:nurbsCircle3
+    100138: eyeBall_0004:nurbsCircle3 1
+    100140: eyeBall_0004:nurbsCircle4
+    100142: eyeBall_0004:nurbsCircle4 1
+    100144: eyeBall_0004:nurbsCircle5
+    100146: eyeBall_0004:nurbsCircle5 1
+    100148: eyeBall_0004:nurbsCircle6
+    100150: eyeBall_0004:nurbsCircle6 1
+    100152: eyeBall_0004:nurbsCircle7
+    100154: eyeBall_0004:nurbsCircle7 1
+    100156: eyeBall_0004:nurbsCircle8
+    100158: eyeBall_0004:polyToCurve1
+    100160: eyeBall_0004:polyToCurve2
+    100162: eyeBall_0004:polyToCurve3
+    100164: eyeBall_0004:polyToCurve4
+    100166: eyeBall_0004:polyToCurve5
+    100168: eyeBall_0004:rightnurbsSquare1
+    100170: eyeBall_0004:Root
+    100172: eyeBall_0004:Root 1
+    100174: eyeBall_0004:Square
+    100176: eyeBall_0004:topnurbsSquare1
+    100178: eyeBall_0004:transform1
+    100180: eyeBall_0004:transform2
+    100182: eyeBall_0004:transform3
+    100184: //RootNode
+    400000: eyeBall_0004:Antenna_L1
+    400002: eyeBall_0004:Antenna_L2
+    400004: eyeBall_0004:Antenna_L3
+    400006: eyeBall_0004:Antenna_L4
+    400008: eyeBall_0004:Antenna_R1
+    400010: eyeBall_0004:Antenna_R2
+    400012: eyeBall_0004:Antenna_R3
+    400014: eyeBall_0004:Antenna_R4
+    400016: eyeBall_0004:AntennaL1
+    400018: eyeBall_0004:AntennaL2
+    400020: eyeBall_0004:AntennaL3
+    400022: eyeBall_0004:AntennaL4
+    400024: eyeBall_0004:AntennaL5
+    400026: eyeBall_0004:AntennaR1
+    400028: eyeBall_0004:AntennaR2
+    400030: eyeBall_0004:AntennaR3
+    400032: eyeBall_0004:AntennaR4
+    400034: eyeBall_0004:AntennaR5
+    400036: eyeBall_0004:Body
+    400038: eyeBall_0004:Body 1
+    400040: eyeBall_0004:Body 2
+    400042: eyeBall_0004:bottomnurbsSquare1
+    400044: eyeBall_0004:eye
+    400046: eyeBall_0004:EyeController
+    400048: eyeBall_0004:EyeLabel
+    400050: eyeBall_0004:joint2
+    400052: eyeBall_0004:leftnurbsSquare1
+    400054: eyeBall_0004:Leg1_1
+    400056: eyeBall_0004:Leg1_1 1
+    400058: eyeBall_0004:Leg1_2
+    400060: eyeBall_0004:Leg1_2 1
+    400062: eyeBall_0004:Leg1_3
+    400064: eyeBall_0004:Leg1_3 1
+    400066: eyeBall_0004:Leg1_4
+    400068: eyeBall_0004:Leg1_4 1
+    400070: eyeBall_0004:Leg1_5
+    400072: eyeBall_0004:Leg1_5 1
+    400074: eyeBall_0004:Leg1_6
+    400076: eyeBall_0004:Leg1_6 1
+    400078: eyeBall_0004:Leg1_7
+    400080: eyeBall_0004:Leg1_7 1
+    400082: eyeBall_0004:Leg1_8
+    400084: eyeBall_0004:Leg1_8 1
+    400086: eyeBall_0004:Leg1_end
+    400088: eyeBall_0004:Leg2_1
+    400090: eyeBall_0004:Leg2_1 1
+    400092: eyeBall_0004:Leg2_2
+    400094: eyeBall_0004:Leg2_3
+    400096: eyeBall_0004:Leg2_4
+    400098: eyeBall_0004:Leg2_5
+    400100: eyeBall_0004:Leg2_6
+    400102: eyeBall_0004:Leg2_7
+    400104: eyeBall_0004:Leg2_8
+    400106: eyeBall_0004:Leg2_end
+    400108: eyeBall_0004:Leg3_1
+    400110: eyeBall_0004:Leg3_1 1
+    400112: eyeBall_0004:Leg3_2
+    400114: eyeBall_0004:Leg3_7
+    400116: eyeBall_0004:Leg3_8
+    400118: eyeBall_0004:Leg3_end
+    400120: eyeBall_0004:Leg_3_3
+    400122: eyeBall_0004:Leg_3_4
+    400124: eyeBall_0004:Leg_3_5
+    400126: eyeBall_0004:Leg_3_6
+    400128: eyeBall_0004:Main
+    400130: eyeBall_0004:nurbsCircle1
+    400132: eyeBall_0004:nurbsCircle2
+    400134: eyeBall_0004:nurbsCircle2 1
+    400136: eyeBall_0004:nurbsCircle3
+    400138: eyeBall_0004:nurbsCircle3 1
+    400140: eyeBall_0004:nurbsCircle4
+    400142: eyeBall_0004:nurbsCircle4 1
+    400144: eyeBall_0004:nurbsCircle5
+    400146: eyeBall_0004:nurbsCircle5 1
+    400148: eyeBall_0004:nurbsCircle6
+    400150: eyeBall_0004:nurbsCircle6 1
+    400152: eyeBall_0004:nurbsCircle7
+    400154: eyeBall_0004:nurbsCircle7 1
+    400156: eyeBall_0004:nurbsCircle8
+    400158: eyeBall_0004:polyToCurve1
+    400160: eyeBall_0004:polyToCurve2
+    400162: eyeBall_0004:polyToCurve3
+    400164: eyeBall_0004:polyToCurve4
+    400166: eyeBall_0004:polyToCurve5
+    400168: eyeBall_0004:rightnurbsSquare1
+    400170: eyeBall_0004:Root
+    400172: eyeBall_0004:Root 1
+    400174: eyeBall_0004:Square
+    400176: eyeBall_0004:topnurbsSquare1
+    400178: eyeBall_0004:transform1
+    400180: eyeBall_0004:transform2
+    400182: eyeBall_0004:transform3
+    400184: //RootNode
+    4300000: eyeBall_0004:Body
+    4300002: eyeBall_0004:eye
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: eyeBall_0004:Body
+    13700002: eyeBall_0004:eye
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyeBall_0004_EyeBall_Texture
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

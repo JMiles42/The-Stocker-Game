@@ -20,7 +20,6 @@ public class Player: Singleton<Player>
 	public FloatVariable distanceToNode = 0.2f;
 	public BoolVariable PlacingObject;
 
-
 	private Coroutine movingCoroutine;
 	public GridPosition TargetPosition = GridPosition.Zero;
 
@@ -153,17 +152,21 @@ public class Player: Singleton<Player>
 		movingCoroutine = StartCoroutine(MoveToPoint(path));
 	}
 
+	public event Action<GridPosition> OnMoveToBlock;
+	public event Action OnStartMove;
+	public event Action OnStopMove;
 	private IEnumerator MoveToPoint(TilePath tilePath)
 	{
+		OnStartMove.Trigger();
 		foreach(var node in tilePath)
 		{
 			//var lastDist = Vector3.Distance(Position.SetY(0), node.WorldPosition);
 			float time = 0;
+			OnMoveToBlock.Trigger(node);
 			while(true)
 			{
 				time += Time.deltaTime * moveSpeed;
 				Position = Vector3.Lerp(Position, node, time);
-
 
 				var dist = Vector3.Distance(Position.SetY(0), node.WorldPosition);
 
@@ -171,13 +174,13 @@ public class Player: Singleton<Player>
 				{
 					GridPosition = node;
 					Position = node.WorldPosition.SetY(Position);
-
 					break;
 				}
 
 				yield return null;
 			}
 		}
+		OnStopMove.Trigger();
 		MovePlayerCallback.Trigger();
 		movingCoroutine = null;
 	}

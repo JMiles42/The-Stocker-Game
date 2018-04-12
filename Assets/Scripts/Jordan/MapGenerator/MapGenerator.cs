@@ -15,13 +15,21 @@ public static class MapGenerator
 	public static void Generate(Map map, MapSettings settings)
 	{
 		var rng = SetUpRandom(settings);
-
 		GenerateTilesArray(map, settings);
+
+		settings.rows -= 2;
+		settings.columns -= 2;
+
 		GenerateRoomsAndCorridors(map, settings, rng);
+
+		settings.rows += 2;
+		settings.columns += 2;
+		SetupEdge(map);
 		GenerateSpawnPoint(map, rng);
 
-		SetMapData(map);
 		FinalizeMapData(map, settings);
+		SetMapData(map);
+		//FinalizeMapData(map, settings);
 	}
 
 	private static Random SetUpRandom(MapSettings settings) => new Random(settings.Seed.Value.GetHashCode());
@@ -66,10 +74,56 @@ public static class MapGenerator
 		}
 	}
 
+	private static void SetupEdge(Map map)
+	{
+		foreach(var corridor in map.corridors)
+		{
+			corridor.startXPos += 1;
+			corridor.startYPos += 1;
+		}
+		foreach(var room in map.rooms)
+		{
+			room.Position.X += 1;
+			room.Position.Y += 1;
+		}
+		//map.SpawnPosition.X += 1;
+		//map.SpawnPosition.Y += 1;
+	}
+
 	private static void SetMapData(Map map)
 	{
 		SetMapDataFromRooms(map);
 		SetMapDataFromCorridors(map);
+		SetWalls(map);
+	}
+
+	private static void SetWalls(Map map)
+	{
+		for(var x = -1; x <= map.Width; x++)
+		{
+			for(var y = -1; y <= map.Height; y++)
+			{
+				if(!map.CoordinatesInMap(x, y))
+					continue;
+				if(map.tiles[x][y] != TileType.Floor)
+					continue;
+
+				for(var _x = -1; _x <= 1; _x++)
+				{
+					for(var _y = -1; _y <= 1; _y++)
+					{
+						var curX = x + _x;
+						var curY = y + _y;
+						if(!map.CoordinatesInMap(curX, curY))
+							continue;
+						if(map.tiles[curX][curY] == TileType.OutOfMap)
+						{
+							map.tiles[curX][curY] = TileType.Wall;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	private static void SetMapDataFromCorridors(Map map)

@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: 6d0cdf75d924a0b40a4f1781a98aa524
+timeCreated: 1523534992
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Arm_L
+    100002: Arm_L_End
+    100004: Arm_R
+    100006: Arm_R_End
+    100008: Bag
+    100010: Bag 1
+    100012: Bag1
+    100014: Bag2
+    100016: Bag3
+    100018: Body
+    100020: Cloak
+    100022: CloakA
+    100024: CloakAEnd
+    100026: CloakB
+    100028: CloakBEnd
+    100030: CloakC
+    100032: CloakCEnd
+    100034: CloakD
+    100036: CloakDEnd
+    100038: Hat
+    100040: Hat 1
+    100042: HatEnd
+    100044: Head
+    100046: Neck
+    100048: //RootNode
+    100050: Root
+    100052: Spine
+    100054: Torso
+    100056: Wrist_L
+    100058: Wrist_R
+    400000: Arm_L
+    400002: Arm_L_End
+    400004: Arm_R
+    400006: Arm_R_End
+    400008: Bag
+    400010: Bag 1
+    400012: Bag1
+    400014: Bag2
+    400016: Bag3
+    400018: Body
+    400020: Cloak
+    400022: CloakA
+    400024: CloakAEnd
+    400026: CloakB
+    400028: CloakBEnd
+    400030: CloakC
+    400032: CloakCEnd
+    400034: CloakD
+    400036: CloakDEnd
+    400038: Hat
+    400040: Hat 1
+    400042: HatEnd
+    400044: Head
+    400046: Neck
+    400048: //RootNode
+    400050: Root
+    400052: Spine
+    400054: Torso
+    400056: Wrist_L
+    400058: Wrist_R
+    4300000: Body
+    4300002: Hat
+    4300004: Bag
+    7400000: Player-Idle
+    9500000: //RootNode
+    13700000: Bag
+    13700002: Body
+    13700004: Hat
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MCHat_Texture
+    second: {fileID: 2100000, guid: 86bf233752ab1f4478ee17e7bfadb935, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MC_Texture
+    second: {fileID: 2100000, guid: e16e18b362714cb4ebf8f006923ff57c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Player-Idle
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.006
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 2deb79fec3dd3b441ae0003cfa14cfcb,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

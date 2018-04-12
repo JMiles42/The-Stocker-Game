@@ -81,6 +81,7 @@ namespace ForestOfChaosLib.MenuManaging
                 topCanvas.sortingOrder = previousCanvas.sortingOrder + 1;
             }
             menuInstance.gameObject.SetActive(true);
+            menuInstance.transform.SetParent(transform);
 
             if((menuStack.Count == 0) || (menuStack.Peek() != menuInstance))
                 menuStack.Push(menuInstance);

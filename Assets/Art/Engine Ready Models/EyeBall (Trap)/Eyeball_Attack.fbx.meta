@@ -1,0 +1,250 @@
+fileFormatVersion: 2
+guid: 6087d52190bf1bf448f236277807dfa4
+timeCreated: 1523534991
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AntennaL1
+    100002: AntennaL2
+    100004: AntennaL3
+    100006: AntennaL4
+    100008: AntennaL5
+    100010: AntennaR1
+    100012: AntennaR2
+    100014: AntennaR3
+    100016: AntennaR4
+    100018: AntennaR5
+    100020: Body
+    100022: Body 1
+    100024: eye
+    100026: //RootNode
+    100028: joint1
+    100030: Leg1_1
+    100032: Leg1_2
+    100034: Leg1_3
+    100036: Leg1_4
+    100038: Leg1_5
+    100040: Leg1_6
+    100042: Leg1_7
+    100044: Leg1_8
+    100046: Leg1_end
+    100048: Leg2_1
+    100050: Leg2_2
+    100052: Leg2_3
+    100054: Leg2_4
+    100056: Leg2_5
+    100058: Leg2_6
+    100060: Leg2_7
+    100062: Leg2_8
+    100064: Leg2_end
+    100066: Leg3_1
+    100068: Leg3_2
+    100070: Leg3_7
+    100072: Leg3_8
+    100074: Leg3_end
+    100076: Leg_3_3
+    100078: Leg_3_4
+    100080: Leg_3_5
+    100082: Leg_3_6
+    100084: Root
+    100086: transform1
+    100088: transform2
+    100090: transform3
+    400000: AntennaL1
+    400002: AntennaL2
+    400004: AntennaL3
+    400006: AntennaL4
+    400008: AntennaL5
+    400010: AntennaR1
+    400012: AntennaR2
+    400014: AntennaR3
+    400016: AntennaR4
+    400018: AntennaR5
+    400020: Body
+    400022: Body 1
+    400024: eye
+    400026: //RootNode
+    400028: joint1
+    400030: Leg1_1
+    400032: Leg1_2
+    400034: Leg1_3
+    400036: Leg1_4
+    400038: Leg1_5
+    400040: Leg1_6
+    400042: Leg1_7
+    400044: Leg1_8
+    400046: Leg1_end
+    400048: Leg2_1
+    400050: Leg2_2
+    400052: Leg2_3
+    400054: Leg2_4
+    400056: Leg2_5
+    400058: Leg2_6
+    400060: Leg2_7
+    400062: Leg2_8
+    400064: Leg2_end
+    400066: Leg3_1
+    400068: Leg3_2
+    400070: Leg3_7
+    400072: Leg3_8
+    400074: Leg3_end
+    400076: Leg_3_3
+    400078: Leg_3_4
+    400080: Leg_3_5
+    400082: Leg_3_6
+    400084: Root
+    400086: transform1
+    400088: transform2
+    400090: transform3
+    4300000: Body
+    4300002: eye
+    7400000: Eye_Ball-Attack
+    7400002: Eye_Ball-Idle
+    9500000: //RootNode
+    13700000: Body
+    13700002: eye
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EyeBall_Texture
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4b6285473c35a96439f331886da50c3d, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Eye_Ball-Attack
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Eye_Ball-Idle
+      takeName: Take 001
+      firstFrame: 54.5
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.015
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

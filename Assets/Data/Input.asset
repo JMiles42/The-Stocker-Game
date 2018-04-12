@@ -47,6 +47,24 @@ MonoBehaviour:
     KeyPos: 0
     ValueInverted: 0
     OnlyButton: 0
+--- !u!114 &114104429949901392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: ArrowsVertical
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: AVertical
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 1
+    OnlyButton: 0
 --- !u!114 &114156953746956618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa8c2328403e94ea54d87c21d5fd0f, type: 3}
   m_Name: MousePos
   m_EditorClassIdentifier: 
-  _value: {x: 0, y: 0}
+  _value: {x: 544, y: 2541}
+--- !u!114 &114596209090883808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: ArrowsHorizontal
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: AHorizontal
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 1
+    OnlyButton: 0
 --- !u!114 &114619496926770128
 MonoBehaviour:
   m_ObjectHideFlags: 0

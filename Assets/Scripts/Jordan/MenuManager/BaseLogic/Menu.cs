@@ -67,6 +67,11 @@ namespace ForestOfChaosLib.MenuManaging
             Open();
         }
 
+        public override void CloseByRef()
+        {
+            Close();
+        }
+
         public virtual void OnEnable()
         {
             Open();
@@ -137,6 +142,7 @@ namespace ForestOfChaosLib.MenuManaging
 
 
         public abstract void OpenByRef();
+        public abstract void CloseByRef();
         public abstract void Destroy();
     }
 }
