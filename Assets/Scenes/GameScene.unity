@@ -525,11 +525,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114492413254343330, guid: 34611ac4ad5fc8241b81619184e751b0,
-        type: 2}
-      propertyPath: zoomLevel
-      value: 0.49
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34611ac4ad5fc8241b81619184e751b0, type: 2}
   m_IsPrefabParent: 0
