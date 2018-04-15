@@ -13,15 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Seed:
-      UseConstant: 1
-      ConstantValue: ec26yzlp
+      ConstantValue: '@$.r''`z9'
       Variable: {fileID: 0}
+      UseConstant: 1
     corridorLength:
       Min: 6
-      Max: 10
+      Max: 7
     numRooms:
-      Min: 3
-      Max: 5
+      Min: 2
+      Max: 2
     roomHeight:
       Min: 3
       Max: 10
