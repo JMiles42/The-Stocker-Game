@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu: SimpleMenu<MainMenu>
 {
 	public ButtonComponentBase PlayGameBTN;
-	public ButtonComponentBase OptionsGameBTN;
+	public ButtonComponentBase TutorialBTN;
+	public ButtonComponentBase OptionsBTN;
 	public ButtonComponentBase ExitGameBTN;
 	public BoolReference GameActive;
 
@@ -15,15 +16,21 @@ public class MainMenu: SimpleMenu<MainMenu>
 		base.OnEnable();
 		GameActive.Value = false;
 		PlayGameBTN.onMouseClick += OnPlayGameClick;
-		OptionsGameBTN.onMouseClick += OnOptionsGameClick;
+		TutorialBTN.onMouseClick += OnTutorialClick;
+		OptionsBTN.onMouseClick += OnOptionsGameClick;
 		ExitGameBTN.onMouseClick += OnExitGameClick;
 	}
 
 	private void OnPlayGameClick()
 	{
-		//GameTypeMenu.Show();
 		Close();
 		SceneSafely.LoadSceneAsync(1, LoadSceneMode.Single);
+	}
+
+	private void OnTutorialClick()
+	{
+		Close();
+		SceneSafely.LoadSceneAsync(2, LoadSceneMode.Single);
 	}
 
 	private void OnExitGameClick()
@@ -40,7 +47,8 @@ public class MainMenu: SimpleMenu<MainMenu>
 	{
 		base.OnDisable();
 		PlayGameBTN.onMouseClick -= OnPlayGameClick;
-		OptionsGameBTN.onMouseClick -= OnOptionsGameClick;
+		TutorialBTN.onMouseClick += OnTutorialClick;
+		OptionsBTN.onMouseClick -= OnOptionsGameClick;
 		ExitGameBTN.onMouseClick -= OnExitGameClick;
 	}
 }
