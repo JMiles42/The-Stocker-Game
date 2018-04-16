@@ -27,6 +27,7 @@ public class Player: Singleton<Player>
 	{
 		//GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
 		Map.OnValueChange += SetPlayerToPos;
+		PlacingObject.Value = false;
 	}
 
 	public void OnDisable()

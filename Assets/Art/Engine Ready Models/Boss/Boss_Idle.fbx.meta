@@ -59,6 +59,7 @@ ModelImporter:
     100102: Thumb_R 1
     100104: transform2
     100106: Waist
+    100108: Hammer_End
     400000: Arm_L
     400002: Arm_R
     400004: Body
@@ -113,6 +114,7 @@ ModelImporter:
     400102: Thumb_R 1
     400104: transform2
     400106: Waist
+    400108: Hammer_End
     4300000: Boss
     4300002: Hammer_Mesh
     7400000: Boss_Idle
