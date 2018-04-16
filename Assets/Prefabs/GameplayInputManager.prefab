@@ -73,11 +73,6 @@ MonoBehaviour:
     type: 2}
   ScrollWheel: {fileID: 114189785667156760, guid: 158f0da2ea342744aac794bec32589cb,
     type: 2}
-  CameraMode: {fileID: 114156953746956618, guid: 158f0da2ea342744aac794bec32589cb,
-    type: 2}
-  PlacementMode: {fileID: 114619496926770128, guid: 158f0da2ea342744aac794bec32589cb,
-    type: 2}
-  EditMode: {fileID: 114010895325621122, guid: 158f0da2ea342744aac794bec32589cb, type: 2}
   ArrowsHorizontal: {fileID: 114596209090883808, guid: 158f0da2ea342744aac794bec32589cb,
     type: 2}
   ArrowsVertical: {fileID: 114104429949901392, guid: 158f0da2ea342744aac794bec32589cb,
@@ -99,6 +94,6 @@ MonoBehaviour:
   ScreenInputPosition:
     serializedVersion: 2
     x: 0
-    y: 0.15
+    y: 0
     width: 1
-    height: 0.85
+    height: 1

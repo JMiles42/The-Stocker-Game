@@ -21,7 +21,7 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	public Transform CameraHolder;
 
-	[SerializeField] [DisableEditing] private Vector3 startPos = Vector3.zero;
+	//[SerializeField] [DisableEditing] private Vector3 startPos = Vector3.zero;
 
 	public float zoomRate = 1;
 
@@ -43,6 +43,7 @@ public class CameraController: FoCsBehavior, IEventListening
 		GameplayInputManager.OnScreenZoom += OnScreenZoom;
 		MapReference.OnValueChange += UpdateCameraLimits;
 		GridBlockReference.OnMapFinishSpawning += CalculateLimits;
+		OnScreenZoom(0.4f);
 	}
 
 	public void OnDisable()

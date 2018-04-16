@@ -3,8 +3,9 @@
 [Serializable]
 public enum TileType
 {
+	OutOfMap,
 	Wall,
-	Floor
+	Floor,
 }
 
 public static class TileTypeExten
