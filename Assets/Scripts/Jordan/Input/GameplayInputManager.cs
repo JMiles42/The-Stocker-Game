@@ -35,8 +35,8 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 	public Vector2Variable MousePosition;
 
 	public BoolReference GameActive;
-	public BoolReference CameraEnabled;
-	public BoolReference EditingEnabled;
+	//public BoolReference CameraEnabled;
+	//public BoolReference EditingEnabled;
 
 	private bool UpdatedArrowsThisFrame = false;
 
@@ -110,6 +110,9 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		ArrowsHorizontal.OnKeyDown += OnArrowDown;
 		ArrowsHorizontal.OnKeyUp += OnArrowUp;
 		//ArrowsHorizontal.OnKey += OnArrow;
+
+
+		GameActive.Value = true;
 	}
 
 	public void OnDisable()
