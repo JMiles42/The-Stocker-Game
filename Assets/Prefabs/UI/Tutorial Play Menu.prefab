@@ -2173,7 +2173,7 @@ MonoBehaviour:
     UseConstant: 1
   TimerCounting:
     ConstantValue: 1
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    Variable: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
     UseConstant: 0
 --- !u!114 &114185060993133538
