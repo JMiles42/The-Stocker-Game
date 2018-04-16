@@ -4,9 +4,9 @@ using UnityEngine;
 public class TurntableChecker : FoCsBehavior
 {
 	public GameObject Prefab;
-	void Start()
+	public void OnEnable()
 	{
-		if(Turntable.InstanceNull)
+		if(Turntable.instanceNull)
 			Instantiate(Prefab);
 	}
 }

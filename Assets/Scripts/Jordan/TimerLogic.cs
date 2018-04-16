@@ -8,7 +8,7 @@ public class TimerLogic : MonoBehaviour
 
 	public BoolVariable TimerCounting = true;
 
-	void Start()
+	void OnEnable()
 	{
 		Timer.Value = CountdownMax;
 	}

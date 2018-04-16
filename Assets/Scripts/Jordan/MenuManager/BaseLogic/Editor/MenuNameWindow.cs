@@ -80,7 +80,7 @@ public class MenuNameWindow: Window<MenuNameWindow> {
 
 	private static string ConvertNamesListToCode(IEnumerable<string> strs) {
 		var sb = new StringBuilder(
-								   @"namespace JMiles42.Systems.MenuManaging
+								   @"namespace ForestOfChaosLib.MenuManaging
 {
 	[System.Serializable]
 	public partial class MenuManager

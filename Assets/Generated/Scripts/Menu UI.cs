@@ -12,6 +12,7 @@ namespace ForestOfChaosLib.MenuManaging
 		public PlayGameMenu PlayGameMenu;
 		public ShopMenu ShopMenu;
 		public SpawnMenu SpawnMenu;
+		public TutorialPlayGameMenu TutorialPlayGameMenu;
 
 	public enum MenuTypes {
 		None,
@@ -24,6 +25,7 @@ namespace ForestOfChaosLib.MenuManaging
 		PlayGameMenu,
 		ShopMenu,
 		SpawnMenu,
+		TutorialPlayGameMenu,
 
 	}	}
 }

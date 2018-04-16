@@ -203,8 +203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4770858044937520}
   - component: {fileID: 20043234608547924}
-  - component: {fileID: 124988400004764518}
-  - component: {fileID: 81149361595017180}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -283,8 +281,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4299433628037356}
   - component: {fileID: 20608452235784398}
-  - component: {fileID: 124670153221865404}
-  - component: {fileID: 81063428393059970}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1067,8 +1063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4001754696698088}
   - component: {fileID: 20564333451165864}
-  - component: {fileID: 124040858368396434}
-  - component: {fileID: 81747952502767032}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1206,8 +1200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4212968103452710}
   - component: {fileID: 20552653553915774}
-  - component: {fileID: 124992139282752340}
-  - component: {fileID: 81179555989723364}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1239,8 +1231,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4280464289843032}
   - component: {fileID: 20716540472215244}
-  - component: {fileID: 124433793705285704}
-  - component: {fileID: 81719289821269268}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1622,8 +1612,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4453211639213786}
   - component: {fileID: 20161174954569690}
-  - component: {fileID: 124507759038186452}
-  - component: {fileID: 81631355454546006}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1670,6 +1658,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4302803746440402}
+  - component: {fileID: 114398030365999924}
   m_Layer: 0
   m_Name: TurnTables
   m_TagString: Untagged
@@ -1686,8 +1675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4159931854145580}
   - component: {fileID: 20067529330904910}
-  - component: {fileID: 124495110976977640}
-  - component: {fileID: 81932579641776236}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4813,55 +4800,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1371146027830378}
   m_Mesh: {fileID: 4300004, guid: 95cf8f4d0671b4b4dbc982c60f26e99e, type: 3}
---- !u!81 &81063428393059970
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1100616902527082}
-  m_Enabled: 1
---- !u!81 &81149361595017180
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074457714119064}
-  m_Enabled: 1
---- !u!81 &81179555989723364
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1487848980558570}
-  m_Enabled: 1
---- !u!81 &81631355454546006
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745336844700618}
-  m_Enabled: 1
---- !u!81 &81719289821269268
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1503680081383942}
-  m_Enabled: 1
---- !u!81 &81747952502767032
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431626279442242}
-  m_Enabled: 1
---- !u!81 &81932579641776236
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1757395082449556}
-  m_Enabled: 1
 --- !u!95 &95404067292566412
 Animator:
   serializedVersion: 3
@@ -4958,6 +4896,17 @@ MonoBehaviour:
   rotateAngle: {x: 0, y: 20, z: 0}
   transformSpace: 0
   transformToMove: {fileID: 4448281342542468}
+--- !u!114 &114398030365999924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754654756589112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a74c3dfa5fa8024a977b6042121cbae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114495797781429030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5028,55 +4977,6 @@ MonoBehaviour:
   rotateAngle: {x: 0, y: 20, z: 0}
   transformSpace: 0
   transformToMove: {fileID: 4334197250157874}
---- !u!124 &124040858368396434
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1431626279442242}
-  m_Enabled: 1
---- !u!124 &124433793705285704
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1503680081383942}
-  m_Enabled: 1
---- !u!124 &124495110976977640
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1757395082449556}
-  m_Enabled: 1
---- !u!124 &124507759038186452
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745336844700618}
-  m_Enabled: 1
---- !u!124 &124670153221865404
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1100616902527082}
-  m_Enabled: 1
---- !u!124 &124988400004764518
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1074457714119064}
-  m_Enabled: 1
---- !u!124 &124992139282752340
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1487848980558570}
-  m_Enabled: 1
 --- !u!137 &137219314139926660
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
