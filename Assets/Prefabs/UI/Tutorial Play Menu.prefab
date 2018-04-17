@@ -1344,9 +1344,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114497360954675094}
   InvertReference:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
 --- !u!114 &114033251469692786
@@ -1560,11 +1560,6 @@ MonoBehaviour:
   Button: {fileID: 114923648036030328}
   Placer: {fileID: 114533593362658678, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114076368532617992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1590,10 +1585,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextOBJ: {fileID: 114176368018363352}
   Tooltip:
+    UseConstant: 0
     ConstantValue: 
     Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114087537044849438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2135,15 +2130,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manger: {fileID: 114238608920317208, guid: e6d03d8faf0c35b4087e0f439f0d94aa, type: 2}
   AllowKeyPress:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
   Button: {fileID: 114497360954675094}
   EndGame:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114025237102393440, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114164930369680704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2196,14 +2191,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: {fileID: 114369220827240414, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   CountdownMax:
+    UseConstant: 1
     ConstantValue: 300
     Variable: {fileID: 0}
-    UseConstant: 1
   TimerCounting:
+    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114185060993133538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2634,14 +2629,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   DisableMenusUnderneath:
+    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
       type: 2}
-    UseConstant: 0
   GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   Countdown: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
@@ -2661,11 +2656,6 @@ MonoBehaviour:
   Button: {fileID: 114568257815260260}
   Placer: {fileID: 114863323965813470, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114249220205018554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3191,9 +3181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114923648036030328}
   InvertReference:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
 --- !u!114 &114347366631443470
@@ -4207,9 +4197,9 @@ MonoBehaviour:
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
   ValueToSetTo:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
 --- !u!114 &114592135759605348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5568,7 +5558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb788ccdfe7dd148a4205bb6f5df4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonComponentBase: {fileID: 0}
+  _buttonComponentBase: {fileID: 114148383683524936}
 --- !u!114 &114801386599336058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5583,11 +5573,6 @@ MonoBehaviour:
   Button: {fileID: 114192391807755892}
   Placer: {fileID: 114999737924450390, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114806215779209818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5913,11 +5898,6 @@ MonoBehaviour:
   Button: {fileID: 114383485332863056}
   Placer: {fileID: 114881420099615618, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114871196246917052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6071,11 +6051,6 @@ MonoBehaviour:
   Button: {fileID: 114519726225734888}
   Placer: {fileID: 114074729671970788, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114888061088853716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6273,11 +6248,6 @@ MonoBehaviour:
   Button: {fileID: 114271247001697806}
   Placer: {fileID: 114227515742374574, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114923648036030328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6468,11 +6438,6 @@ MonoBehaviour:
   Button: {fileID: 114903615305264178}
   Placer: {fileID: 114570338343020342, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
   Placing: 0
-  Tooltip:
-    ConstantValue: 
-    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
-      type: 2}
-    UseConstant: 0
 --- !u!114 &114963772011960856
 MonoBehaviour:
   m_ObjectHideFlags: 1

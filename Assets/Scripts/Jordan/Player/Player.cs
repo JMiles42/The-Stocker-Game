@@ -25,14 +25,12 @@ public class Player: Singleton<Player>
 
 	public void OnEnable()
 	{
-		//GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
 		Map.OnValueChange += SetPlayerToPos;
 		PlacingObject.Value = false;
 	}
 
 	public void OnDisable()
 	{
-		//GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
 		Map.OnValueChange -= SetPlayerToPos;
 	}
 

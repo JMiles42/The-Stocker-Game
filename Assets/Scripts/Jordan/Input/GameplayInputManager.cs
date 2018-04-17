@@ -111,7 +111,6 @@ public class GameplayInputManager: Singleton<GameplayInputManager>, IEventListen
 		ArrowsHorizontal.OnKeyUp += OnArrowUp;
 		//ArrowsHorizontal.OnKey += OnArrow;
 
-
 		GameActive.Value = true;
 	}
 

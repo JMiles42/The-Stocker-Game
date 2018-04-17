@@ -24,13 +24,13 @@ public class MainMenu: SimpleMenu<MainMenu>
 	private void OnPlayGameClick()
 	{
 		Close();
-		SceneSafely.LoadSceneAsync(1, LoadSceneMode.Single);
+		SceneSafely.LoadSceneAsync(2, LoadSceneMode.Single);
 	}
 
 	private void OnTutorialClick()
 	{
 		Close();
-		SceneSafely.LoadSceneAsync(2, LoadSceneMode.Single);
+		SceneSafely.LoadSceneAsync(3, LoadSceneMode.Single);
 	}
 
 	private void OnExitGameClick()
@@ -47,7 +47,7 @@ public class MainMenu: SimpleMenu<MainMenu>
 	{
 		base.OnDisable();
 		PlayGameBTN.onMouseClick -= OnPlayGameClick;
-		TutorialBTN.onMouseClick += OnTutorialClick;
+		TutorialBTN.onMouseClick -= OnTutorialClick;
 		OptionsBTN.onMouseClick -= OnOptionsGameClick;
 		ExitGameBTN.onMouseClick -= OnExitGameClick;
 	}

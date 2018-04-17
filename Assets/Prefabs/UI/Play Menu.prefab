@@ -1220,14 +1220,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DestroyWhenClosed:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   DisableMenusUnderneath:
+    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114482196712353986, guid: e41900d54225523488ea2bd8c3b9f762,
       type: 2}
-    UseConstant: 0
   GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   Countdown: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
@@ -1351,7 +1351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb788ccdfe7dd148a4205bb6f5df4fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonComponentBase: {fileID: 0}
+  _buttonComponentBase: {fileID: 114732559760593632}
 --- !u!114 &114152981869210068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2023,9 +2023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114772078337130270}
   InvertReference:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
 --- !u!114 &114313346998502914
@@ -2317,15 +2317,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manger: {fileID: 114238608920317208, guid: e6d03d8faf0c35b4087e0f439f0d94aa, type: 2}
   AllowKeyPress:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
   Button: {fileID: 114772078337130270}
   EndGame:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114025237102393440, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114411268118414468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2379,9 +2379,9 @@ MonoBehaviour:
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
   ValueToSetTo:
+    UseConstant: 1
     ConstantValue: 0
     Variable: {fileID: 0}
-    UseConstant: 1
 --- !u!114 &114497740145896426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2700,10 +2700,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextOBJ: {fileID: 114260226852818800}
   Tooltip:
+    UseConstant: 0
     ConstantValue: 
     Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114567781798389934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2952,14 +2952,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Timer: {fileID: 114369220827240414, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   CountdownMax:
+    UseConstant: 1
     ConstantValue: 300
     Variable: {fileID: 0}
-    UseConstant: 1
   TimerCounting:
+    UseConstant: 0
     ConstantValue: 1
     Variable: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
 --- !u!114 &114629439440617936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3289,9 +3289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Button: {fileID: 114472926491505760}
   InvertReference:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   Reference: {fileID: 114003042097358576, guid: 133ad7b267b7a9d4892112c97884b9a1,
     type: 2}
 --- !u!114 &114676018649042898
