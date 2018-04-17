@@ -1,6 +1,9 @@
 ﻿using ForestOfChaosLib;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.Attributes;
 using ForestOfChaosLib.FoCsUI.Button;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlacerButton: FoCsBehavior
 {

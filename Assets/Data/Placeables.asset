@@ -37,12 +37,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: Boss Spawner
+    ConstantValue: Orc Boss Spawner
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Spawns a boss for the Adventurer to fight. (Deals a large amount
-      of damage)
+    ConstantValue: Increases the difficulty by a very large amount.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 6
@@ -81,7 +80,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Gives Small Reward.
+    ConstantValue: Gives a better score in the easiest sections of the dungeon.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 1
@@ -108,7 +107,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Where the player spawns
+    ConstantValue: Allows the Adventurer to enter the dungeon.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: -1
@@ -145,7 +144,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: This is the Exit to the dungeon, their can be only one!
+    ConstantValue: Allows the Adventurer to leave and not become trapped in the dungeon.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 0
@@ -173,7 +172,8 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Gives Largest Reward.
+    ConstantValue: Gives the best score in the most difficult sections of the dungeon,
+      usually after a boss.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 3
@@ -200,7 +200,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Gives a small amount of health back to the Adventurer.
+    ConstantValue: Allows the player to heal, so they can survive more fights.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 4
@@ -227,7 +227,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Gives Medium Reward.
+    ConstantValue: Gives a better score in a medium difficulty level of the dungeon.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 2
@@ -250,12 +250,11 @@ MonoBehaviour:
   WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Name:
-    ConstantValue: Minion Spawner
+    ConstantValue: Eyeball - Minion Spawner
     Variable: {fileID: 0}
     UseConstant: 1
   Description:
-    ConstantValue: Spawns minions for the Adventurer to fight. (Deals a Medium amount
-      of damage)
+    ConstantValue: Slightly increases the difficulty of the dungeon.
     Variable: {fileID: 0}
     UseConstant: 1
   ID: 5

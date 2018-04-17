@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 114613791389014796}
   - component: {fileID: 114062946513484994}
   - component: {fileID: 114006271936286144}
+  - component: {fileID: 114130290820325538}
   m_Layer: 0
   m_Name: Chest_btn (Rare)
   m_TagString: Untagged
@@ -164,6 +165,7 @@ GameObject:
   - component: {fileID: 114330261458886272}
   - component: {fileID: 114129064832495934}
   - component: {fileID: 114296122328576878}
+  - component: {fileID: 114287303760485750}
   m_Layer: 0
   m_Name: Spawner_btn (Boss)
   m_TagString: Untagged
@@ -326,6 +328,7 @@ GameObject:
   - component: {fileID: 114969261044387868}
   - component: {fileID: 114359413116212522}
   - component: {fileID: 114512625271444794}
+  - component: {fileID: 114634061850677220}
   m_Layer: 0
   m_Name: Spawner_btn (Small)
   m_TagString: Untagged
@@ -345,6 +348,7 @@ GameObject:
   - component: {fileID: 114870649937024214}
   - component: {fileID: 114757958643555096}
   - component: {fileID: 114260226852818800}
+  - component: {fileID: 114538052024542738}
   m_Layer: 0
   m_Name: TextMeshPro Text
   m_TagString: Untagged
@@ -692,6 +696,7 @@ GameObject:
   - component: {fileID: 114012320801643704}
   - component: {fileID: 114175086619456508}
   - component: {fileID: 114889431269477200}
+  - component: {fileID: 114247077876389796}
   m_Layer: 0
   m_Name: Chest_btn (Legendary)
   m_TagString: Untagged
@@ -712,6 +717,7 @@ GameObject:
   - component: {fileID: 114198064391145740}
   - component: {fileID: 114071171817840362}
   - component: {fileID: 114043281053890350}
+  - component: {fileID: 114749842348032114}
   m_Layer: 0
   m_Name: Chest_btn (Common)
   m_TagString: Untagged
@@ -751,6 +757,7 @@ GameObject:
   - component: {fileID: 114160852410408424}
   - component: {fileID: 114661869098884700}
   - component: {fileID: 114484779429929048}
+  - component: {fileID: 114906521361027672}
   m_Layer: 0
   m_Name: Exit_btn
   m_TagString: Untagged
@@ -771,6 +778,7 @@ GameObject:
   - component: {fileID: 114192363515483590}
   - component: {fileID: 114519996493566054}
   - component: {fileID: 114676018649042898}
+  - component: {fileID: 114615141863342930}
   m_Layer: 0
   m_Name: Healing_btn (Small)
   m_TagString: Untagged
@@ -1278,6 +1286,19 @@ MonoBehaviour:
   myButton:
     Btn: {fileID: 114330261458886272}
     Text: {fileID: 114657104216455714}
+--- !u!114 &114130290820325538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154925457347776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114881420099615618, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114130711004215906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1674,6 +1695,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &114247077876389796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833718231408910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114570338343020342, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114249195410330300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1908,6 +1942,19 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!114 &114287303760485750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1200050845837160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114074729671970788, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114287634617945072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2274,6 +2321,11 @@ MonoBehaviour:
     Variable: {fileID: 0}
     UseConstant: 1
   Button: {fileID: 114772078337130270}
+  EndGame:
+    ConstantValue: 0
+    Variable: {fileID: 114025237102393440, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+    UseConstant: 0
 --- !u!114 &114411268118414468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2635,6 +2687,23 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114538052024542738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1336743564574374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26353b032429d549b8166c657bdac59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextOBJ: {fileID: 114260226852818800}
+  Tooltip:
+    ConstantValue: 
+    Variable: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+    UseConstant: 0
 --- !u!114 &114567781798389934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2857,6 +2926,19 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114615141863342930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876997984745462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114863323965813470, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114625320930308500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2875,7 +2957,7 @@ MonoBehaviour:
     UseConstant: 1
   TimerCounting:
     ConstantValue: 1
-    Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    Variable: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
     UseConstant: 0
 --- !u!114 &114629439440617936
@@ -2927,6 +3009,19 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114634061850677220
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328092597945018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114999737924450390, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114637013967474278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3548,13 +3643,26 @@ MonoBehaviour:
   myButton:
     Btn: {fileID: 114130711004215906}
     Text: {fileID: 114221181591372208}
+--- !u!114 &114749842348032114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1850284423078330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114227515742374574, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114757958643555096
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1336743564574374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e6e6410a8fb5334b9abc687382dff01, type: 3}
   m_Name: 
@@ -4014,11 +4122,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Final Score: 0000
-
-    Player Died: yes
-
-    Score: 200'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
@@ -4082,16 +4186,16 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 20, y: 20, z: 20, w: 20}
   m_textInfo:
     textComponent: {fileID: 114870649937024214}
-    characterCount: 45
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 7
-    wordCount: 8
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 3
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -4265,6 +4369,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114906521361027672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1870227763852894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de947720c9901fa4b8a70e482b262a4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tooltip: {fileID: 114236441471645580, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Info: {fileID: 114533593362658678, guid: 133ad7b267b7a9d4892112c97884b9a1, type: 2}
 --- !u!114 &114914248159189618
 MonoBehaviour:
   m_ObjectHideFlags: 1

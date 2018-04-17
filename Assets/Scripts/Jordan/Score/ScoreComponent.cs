@@ -8,6 +8,7 @@ public class ScoreComponent: FoCsBehavior
 	public ScoreManager Manger;
 	public BoolVariable AllowKeyPress = false;
 	public ButtonComponentBase Button;
+	public BoolVariable EndGame;
 
 	void Update()
 	{

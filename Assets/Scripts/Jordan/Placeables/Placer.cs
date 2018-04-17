@@ -18,4 +18,6 @@ public abstract class Placer: FoCsScriptableObject, IPlacer
 	public abstract void ForcePlaceAt(GridBlock pos);
 
 	public Action OnApplyPlacement { get; set; }
+
+	public string Info => $"{Name.Value}\n{Description.Value}";
 }
