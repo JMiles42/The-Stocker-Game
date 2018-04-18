@@ -29,6 +29,7 @@ public class ScoreComponent: FoCsBehavior
 	private void OnMouseClick()
 	{
 		Manger.CalculateScore();
+		EndGame.Value = true;
 	}
 
 	private void OnDisable()

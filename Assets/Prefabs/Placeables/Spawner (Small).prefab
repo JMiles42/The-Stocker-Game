@@ -1505,13 +1505,13 @@ MonoBehaviour:
   Animator: {fileID: 95033536078469556}
   Animating: 1
   Min:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   Max:
+    UseConstant: 1
     ConstantValue: 2
     Variable: {fileID: 0}
-    UseConstant: 1
   startTime: 0
   endTime: 0
 --- !u!114 &114373445821514908
@@ -1582,13 +1582,13 @@ MonoBehaviour:
   Animator: {fileID: 95033536078469556}
   Animating: 1
   Min:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   Max:
+    UseConstant: 1
     ConstantValue: 20
     Variable: {fileID: 0}
-    UseConstant: 1
   startTime: 0
   endTime: 0
 --- !u!137 &137517621174960588
