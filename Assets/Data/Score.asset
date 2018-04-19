@@ -51,29 +51,29 @@ MonoBehaviour:
   GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
     type: 2}
   Health:
+    UseConstant: 1
     ConstantValue: 100
     Variable: {fileID: 0}
-    UseConstant: 1
   HealingPerRoom:
+    UseConstant: 1
     ConstantValue: 7
     Variable: {fileID: 0}
-    UseConstant: 1
   MaxHealth:
+    UseConstant: 1
     ConstantValue: 100
     Variable: {fileID: 0}
-    UseConstant: 1
   FinalScore:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114979734256554416}
-    UseConstant: 1
   DeadScore:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114840928793066404}
-    UseConstant: 1
   PlayerDied:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114721701815017490}
-    UseConstant: 1
 --- !u!114 &114721701815017490
 MonoBehaviour:
   m_ObjectHideFlags: 0

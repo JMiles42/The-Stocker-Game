@@ -3390,7 +3390,7 @@ MonoBehaviour:
   Timer: {fileID: 114369220827240414, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   CountdownMax:
     UseConstant: 1
-    ConstantValue: 300
+    ConstantValue: 10
     Variable: {fileID: 0}
   TimerCounting:
     UseConstant: 0
@@ -5840,8 +5840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.204956, y: -197.8}
-  m_SizeDelta: {x: 344.02, y: 41.66}
+  m_AnchoredPosition: {x: 61.69, y: -168.4}
+  m_SizeDelta: {x: 268.8, y: 41.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224112978048611436
 RectTransform:
@@ -6392,8 +6392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 82.105, y: -231.6}
-  m_SizeDelta: {x: 336.22, y: 41.66}
+  m_AnchoredPosition: {x: 64.65996, y: -196.6}
+  m_SizeDelta: {x: 262.86, y: 41.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224765494451272098
 RectTransform:
@@ -6446,8 +6446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100.05, y: -266.1}
-  m_SizeDelta: {x: 300.33, y: 41.66}
+  m_AnchoredPosition: {x: 78.28505, y: -225.6}
+  m_SizeDelta: {x: 235.61, y: 41.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224824271953882750
 RectTransform:

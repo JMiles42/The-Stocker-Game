@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea825b41d4107b42a79681dbc543add, type: 3}
   m_Name: Timer
   m_EditorClassIdentifier: 
-  _value: 300
+  _value: -3.7790442
 --- !u!114 &114382031641612998
 MonoBehaviour:
   m_ObjectHideFlags: 0

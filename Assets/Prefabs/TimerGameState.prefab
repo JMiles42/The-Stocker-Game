@@ -52,18 +52,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameActive:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
   Timer: {fileID: 114369220827240414, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  ScoreM: {fileID: 114238608920317208, guid: e6d03d8faf0c35b4087e0f439f0d94aa, type: 2}
   TimerCounting:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114787520908897704, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
   GameEnd:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114025237102393440, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
