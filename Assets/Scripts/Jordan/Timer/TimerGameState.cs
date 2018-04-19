@@ -6,6 +6,7 @@ public class TimerGameState: FoCsBehavior
 {
 	public BoolVariable GameActive;
 	public FloatReference Timer;
+	public ScoreManager ScoreM;
 	public BoolVariable TimerCounting;
 	public BoolVariable GameEnd;
 
@@ -23,6 +24,7 @@ public class TimerGameState: FoCsBehavior
 	private void GameOver()
 	{
 		Debug.Log("Game over man, Game over");
+		ScoreM.CalculateScore();
 		TimerCounting.Value = false;
 		GameEnd.Value = true;
 	}

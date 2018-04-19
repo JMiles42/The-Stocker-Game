@@ -43,34 +43,62 @@ public class ScoreManager: FoCsScriptableObject
 
 	public void CalculateScore()
 	{
-		ResetGameplayStats();
-
-		CheckUsedWorldObjectsList();
-		var score = 0;
-		var alive = true;
-		var prog = new ProgressStats();
-
-		for(var i = 0; i < Map.Value.rooms.Length; i++)
+		try
 		{
-			var roomData = GetRoomData(i, Map.Value.rooms[i], ref prog);
-
-			if(roomData.died && alive)
+			if(Exit.Reference == null)
 			{
-				alive = false;
-				DeadScore.Value = score;
+				DefaultDeath();
+				return;
+			}
+			ResetGameplayStats();
+
+			CheckUsedWorldObjectsList();
+
+
+			var score = 0;
+			var alive = true;
+			var prog = new ProgressStats();
+
+			for(var i = 0; i < Map.Value.rooms.Length; i++)
+			{
+				var roomData = GetRoomData(i, Map.Value.rooms[i], ref prog);
+
+				if(roomData.died && alive)
+				{
+					alive = false;
+					DeadScore.Value = score;
+				}
+
+				score += roomData.score;
 			}
 
-			score += roomData.score;
+			FinalScore.Value = score;
+			PlayerDied.Value = !alive;
+			OnScoreCalculated.Trigger(new ScoreData
+									  {
+										  DeadScore = DeadScore,
+										  died = PlayerDied,
+										  FinalScore = FinalScore
+									  });
 		}
+		catch
+		{
+			DefaultDeath();
+			return;
+		}
+	}
 
-		FinalScore.Value = score;
-		PlayerDied.Value = !alive;
+	private void DefaultDeath()
+	{
+		PlayerDied.Value = true;
+		FinalScore.Value = 0;
+		DeadScore.Value = 0;
 		OnScoreCalculated.Trigger(new ScoreData
-								  {
-									  DeadScore = DeadScore,
-									  died = PlayerDied,
-									  FinalScore = FinalScore
-								  });
+		{
+			DeadScore = 0,
+			died = true,
+			FinalScore = 0
+		});
 	}
 
 	private void ResetGameplayStats()
