@@ -1,11 +1,13 @@
-﻿using ForestOfChaosLib;
-using ForestOfChaosLib.FoCsUI.Button;
+﻿using ForestOfChaosLib.FoCsUI.Button;
+using ForestOfChaosLib.FoCsUI.Image;
+using ForestOfChaosLib.Generics;
 
-public class SlideManager: FoCsBehavior
+public class SlideManager: Singleton<SlideManager>
 {
 	public ButtonComponentBase Button;
 	public int Index;
 	public Slide[] Slides;
+	public TextComponentBase Display;
 
 	private void OnEnable()
 	{
@@ -18,6 +20,11 @@ public class SlideManager: FoCsBehavior
 
 		Slides[Index].gameObject.SetActive(true);
 		Slides[Index].OnActionCompleted -= OnActionCompleted;
+	}
+
+	public void UpdateDisplay(string displayString)
+	{
+		Display.TextData = displayString;
 	}
 
 	private void OnMouseClick()
