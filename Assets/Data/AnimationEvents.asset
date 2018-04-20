@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
+  m_Name: AnimationEvents
+  m_EditorClassIdentifier: 
+--- !u!114 &114148888115529650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Button_Click_Down
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114247192837457610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Button_Click
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114274971029325110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Player_Walk
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114304873784938854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Button_Click_Up
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114737419608818156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Eyeball
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114751307458852586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Player_Idle
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114925276033259124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: Anim_Boss (Orc)
+  m_EditorClassIdentifier: 
+  _value: 0
