@@ -280,7 +280,7 @@ MonoBehaviour:
   zoomMovement: 60
   ZoomSettings: {fileID: 114040801247377508, guid: 6641b1bb69de9da49bcf9879cdfd4f40,
     type: 2}
-  MoveSettings: {fileID: 114295608877739418, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+  MoveSettings: {fileID: 114211737018699186, guid: 6641b1bb69de9da49bcf9879cdfd4f40,
     type: 2}
   ZoomCurve: {fileID: 114220447071346710}
   MapReference: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}

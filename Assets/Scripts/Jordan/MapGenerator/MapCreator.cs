@@ -1,11 +1,12 @@
 ﻿using ForestOfChaosLib;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.Maths.Random;
 
 public class MapCreator: FoCsBehavior
 {
 	public MapSO Map;
 	public MapSettingsSO MapSettings;
-	public bool RandomSeed = true;
+	public BoolVariable RandomSeed = true;
 
 	private void Start()
 	{

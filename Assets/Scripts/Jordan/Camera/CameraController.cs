@@ -75,7 +75,7 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	private void OnScreenZoom(float amount)
 	{
-		zoomLevel = ((zoomLevel + (amount * (zoomRate))) * ZoomSettings.Value).Clamp();
+		zoomLevel = ((zoomLevel + (amount * (ZoomSettings.Value)))).Clamp();
 
 		Camera.transform.position = ZoomCurve.Position + ZoomCurve.Lerp(zoomLevel);
 		Camera.transform.LookAt(ZoomCurve.Transform);
@@ -83,7 +83,7 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
-		var pos = ((transform.position + (Camera.transform.TransformDirection(mouseDelta) * Speed)) * MoveSettings.Value).SetY(0);
+		var pos = ((transform.position + (Camera.transform.TransformDirection(mouseDelta * 0.1f) * MoveSettings.Value))).SetY(0);
 		CameraHolder.transform.position = new Vector3(pos.x.Clamp(minPos.x, maxPos.x), pos.y, pos.z.Clamp(minPos.z, maxPos.z));
 	}
 

@@ -6,7 +6,6 @@ namespace ForestOfChaosLib.MenuManaging
 		public CreditsMenu CreditsMenu;
 		public ExitGameMenu ExitGameMenu;
 		public GameTypeMenu GameTypeMenu;
-		public InventoryMenu InventoryMenu;
 		public LoadingMenu LoadingMenu;
 		public MainMenu MainMenu;
 		public OptionsMenu OptionsMenu;
@@ -20,7 +19,6 @@ namespace ForestOfChaosLib.MenuManaging
 		CreditsMenu,
 		ExitGameMenu,
 		GameTypeMenu,
-		InventoryMenu,
 		LoadingMenu,
 		MainMenu,
 		OptionsMenu,

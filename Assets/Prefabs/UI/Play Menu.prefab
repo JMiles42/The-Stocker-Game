@@ -3390,7 +3390,7 @@ MonoBehaviour:
   Timer: {fileID: 114369220827240414, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
   CountdownMax:
     UseConstant: 1
-    ConstantValue: 300
+    ConstantValue: 100
     Variable: {fileID: 0}
   TimerCounting:
     UseConstant: 0

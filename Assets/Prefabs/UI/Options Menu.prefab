@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 222424234076240844}
   - component: {fileID: 114381484152462494}
   m_Layer: 0
-  m_Name: Volume (2)
+  m_Name: CamSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 222469868228834430}
   - component: {fileID: 114250314465287424}
   m_Layer: 0
-  m_Name: Volume (3)
+  m_Name: ZoomSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1022,8 +1022,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 224773510008382940}
   m_HandleRect: {fileID: 224802456911734790}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.2
+  m_MaxValue: 2
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
@@ -1938,6 +1938,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b34488c1004b140a585f8417ee13dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestroyWhenClosed:
+    UseConstant: 1
+    ConstantValue: 0
+    Variable: {fileID: 0}
+  DisableMenusUnderneath:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
 --- !u!114 &114808551579585004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2229,10 +2237,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 224054580838945154}
   m_HandleRect: {fileID: 224811972408196176}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.05
+  m_MaxValue: 0.2
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.05
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
