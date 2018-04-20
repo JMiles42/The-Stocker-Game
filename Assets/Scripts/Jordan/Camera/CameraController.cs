@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using ForestOfChaosLib;
-using ForestOfChaosLib.Attributes;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.Curves.Components;
 using ForestOfChaosLib.Interfaces;
@@ -28,6 +28,9 @@ public class CameraController: FoCsBehavior, IEventListening
 	[SerializeField] private float zoomLevel = 0.5f;
 
 	public float zoomMovement = 0.1f;
+
+	public FloatReference ZoomSettings;
+	public FloatReference MoveSettings;
 
 	public BezierCurveV3DBehaviour ZoomCurve;
 
@@ -72,7 +75,7 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	private void OnScreenZoom(float amount)
 	{
-		zoomLevel = (zoomLevel + (amount * (zoomRate))).Clamp();
+		zoomLevel = ((zoomLevel + (amount * (zoomRate))) * ZoomSettings.Value).Clamp();
 
 		Camera.transform.position = ZoomCurve.Position + ZoomCurve.Lerp(zoomLevel);
 		Camera.transform.LookAt(ZoomCurve.Transform);
@@ -80,7 +83,7 @@ public class CameraController: FoCsBehavior, IEventListening
 
 	private void OnScreenMoved(Vector2 mouseDelta)
 	{
-		var pos = transform.position + (Camera.transform.TransformDirection(mouseDelta) * Speed).SetY(0);
+		var pos = ((transform.position + (Camera.transform.TransformDirection(mouseDelta) * Speed)) * MoveSettings.Value).SetY(0);
 		CameraHolder.transform.position = new Vector3(pos.x.Clamp(minPos.x, maxPos.x), pos.y, pos.z.Clamp(minPos.z, maxPos.z));
 	}
 

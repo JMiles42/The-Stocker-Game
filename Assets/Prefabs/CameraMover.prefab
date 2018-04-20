@@ -275,10 +275,13 @@ MonoBehaviour:
   Speed: 0.05
   _camera: {fileID: 20699820686423496}
   CameraHolder: {fileID: 4296622423121730}
-  startPos: {x: 0, y: 0, z: 0}
   zoomRate: 1
   zoomLevel: 0.49
   zoomMovement: 60
+  ZoomSettings: {fileID: 114040801247377508, guid: 6641b1bb69de9da49bcf9879cdfd4f40,
+    type: 2}
+  MoveSettings: {fileID: 114295608877739418, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
   ZoomCurve: {fileID: 114220447071346710}
   MapReference: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   GridBlockReference: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,

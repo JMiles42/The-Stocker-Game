@@ -3,6 +3,7 @@ namespace ForestOfChaosLib.MenuManaging
 	[System.Serializable]
 	public partial class MenuManager
 	{
+		public CreditsMenu CreditsMenu;
 		public ExitGameMenu ExitGameMenu;
 		public GameTypeMenu GameTypeMenu;
 		public InventoryMenu InventoryMenu;
@@ -16,6 +17,7 @@ namespace ForestOfChaosLib.MenuManaging
 
 	public enum MenuTypes {
 		None,
+		CreditsMenu,
 		ExitGameMenu,
 		GameTypeMenu,
 		InventoryMenu,

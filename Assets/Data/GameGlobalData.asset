@@ -71,18 +71,6 @@ MonoBehaviour:
   m_Name: SeedUsed
   m_EditorClassIdentifier: 
   _value: 0
---- !u!114 &114229495871723948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea825b41d4107b42a79681dbc543add, type: 3}
-  m_Name: Volume
-  m_EditorClassIdentifier: 
-  _value: 0.054584544
 --- !u!114 &114236441471645580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea825b41d4107b42a79681dbc543add, type: 3}
   m_Name: Timer
   m_EditorClassIdentifier: 
-  _value: -3.7790442
+  _value: 268.43994
 --- !u!114 &114382031641612998
 MonoBehaviour:
   m_ObjectHideFlags: 0
