@@ -70,11 +70,11 @@ public class PlaceOnValidClick: Singleton<PlaceOnValidClick>
 	private GridBlock tempBlock;
 	private void PlaceWorldObject(GridBlock block)
 	{
-		Instance.GridHighlighter.SetActive(false);
 		if(block == null || canceled)
 			return;
 		if(block.HasWorldObject || block.TileType == TileType.Wall)
 			return;
+		Instance.GridHighlighter.SetActive(false);
 		Instance.CurrentlyPlacing.Value = false;
 		Placer.ApplyPlacement(Player.Reference, block, Camera.Reference.ScreenPointToRay(MousePosition.Value).GetPosOnY());
 		Placer.OnApplyPlacement.Trigger();
