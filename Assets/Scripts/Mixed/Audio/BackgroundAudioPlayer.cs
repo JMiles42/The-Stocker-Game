@@ -18,6 +18,16 @@ public class BackgroundAudioPlayer : MonoBehaviour
 	public int WaitTime;
 	public int MaxWaitTime;
 
+	public enum AudioUseageType
+	{
+		//Is going to be played in Update
+		Background,
+		//is going to be played when called
+		Agent,
+	}
+
+	public AudioUseageType MyAudioUseageType;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -29,7 +39,7 @@ public class BackgroundAudioPlayer : MonoBehaviour
 	{
 		if (EnableAudio)
 		{
-			if (IsClipReady)
+			if (IsClipReady && MyAudioUseageType == AudioUseageType.Background)
 			{
 				PlayAudio();
 				IsClipReady = false;
