@@ -11,6 +11,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
   m_Name: GameGlobalData
   m_EditorClassIdentifier: 
+--- !u!114 &114025237102393440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: GameEnd
+  m_EditorClassIdentifier: 
+  _value: 1
+--- !u!114 &114060054942896360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ed7618ee09a424cb4d8bf974e8dac9, type: 3}
+  m_Name: AnimationPosition
+  m_EditorClassIdentifier: 
+  _value: {x: 0, y: 0, z: 0}
 --- !u!114 &114093651824931502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,6 +71,18 @@ MonoBehaviour:
   m_Name: SeedUsed
   m_EditorClassIdentifier: 
   _value: 0
+--- !u!114 &114236441471645580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eb917fa5d92b84686af11f42c5eaad, type: 3}
+  m_Name: Tooltip
+  m_EditorClassIdentifier: 
+  _value: 
 --- !u!114 &114288006440103932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea825b41d4107b42a79681dbc543add, type: 3}
   m_Name: Timer
   m_EditorClassIdentifier: 
-  _value: 291.86636
+  _value: 270.34134
 --- !u!114 &114382031641612998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +151,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa19eb1802fc06242baaefa632f8163b, type: 3}
   m_Name: WorldSpaceCanvas
   m_EditorClassIdentifier: 
+--- !u!114 &114485174948744660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: GenerateSeed
+  m_EditorClassIdentifier: 
+  _value: 1
 --- !u!114 &114606272686386660
 MonoBehaviour:
   m_ObjectHideFlags: 0

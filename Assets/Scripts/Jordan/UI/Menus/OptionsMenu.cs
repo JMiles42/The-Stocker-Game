@@ -1,6 +1,5 @@
 ﻿using ForestOfChaosLib.MenuManaging;
 
-public class OptionsMenu: SimpleMenu<OptionsMenu>
+public class OptionsMenu : SimpleMenu<OptionsMenu>
 {
-	
 }

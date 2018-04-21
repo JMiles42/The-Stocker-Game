@@ -10,9 +10,14 @@ public class GridBlockClickedManager: FoCsBehavior
 		GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
 	}
 
+	private void Start()
+	{
+		Player = FindObjectOfType<Player>();
+	}
+
 	private void OnDisable()
 	{
-		GameplayInputManager.OnGridBlockClick += OnGridBlockClick;
+		GameplayInputManager.OnGridBlockClick -= OnGridBlockClick;
 	}
 
 	private void OnGridBlockClick(GridBlock gridBlock)

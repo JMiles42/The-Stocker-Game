@@ -207,6 +207,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1426156425510410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4162304676380470}
+  - component: {fileID: 82617387184979396}
+  - component: {fileID: 114562078657417632}
+  - component: {fileID: 114870738182467822}
+  m_Layer: 0
+  m_Name: AudioManagerObjectAgent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1432075696158208
 GameObject:
   m_ObjectHideFlags: 1
@@ -585,6 +603,19 @@ Transform:
   m_Father: {fileID: 4143841729568752}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4162304676380470
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426156425510410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4811419952356158}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4205967103029514
 Transform:
   m_ObjectHideFlags: 1
@@ -616,7 +647,7 @@ Transform:
   - {fileID: 4616241047472148}
   - {fileID: 4143841729568752}
   m_Father: {fileID: 4811419952356158}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4279064839443504
 Transform:
@@ -869,9 +900,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1850725638233386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4162304676380470}
   - {fileID: 4219904117537914}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -917,6 +949,86 @@ Transform:
   m_Father: {fileID: 4205967103029514}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &82617387184979396
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426156425510410}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95975292908831948
 Animator:
   serializedVersion: 3
@@ -934,6 +1046,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114562078657417632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426156425510410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d33d781fb8d38f4ca79cb4f660ae038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableAudio: 1
+  AudioSource: {fileID: 82617387184979396}
+  ListOfAudioClips:
+  - {fileID: 8300000, guid: 94ef33e469125414e9deac5daa341cb8, type: 3}
+  - {fileID: 8300000, guid: fb36db28c1bddf143993ffe297bc7544, type: 3}
+  - {fileID: 8300000, guid: 4a95fe1fa87f3514ab2d9189aa7fc256, type: 3}
+  WaitTime: 0
+  MaxWaitTime: 120
+  Event: {fileID: 114751307458852586, guid: db9a1c593039752419f75ae76df23cce, type: 2}
+  MyAudioUseageType: 0
 --- !u!114 &114655118847385270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -967,23 +1100,40 @@ MonoBehaviour:
       y: 0
   Map: {fileID: 11400000, guid: 94a95290aa517e8459ba31dd25a52a60, type: 2}
   moveSpeed:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114295608877739418, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
   distanceToNode:
+    UseConstant: 1
     ConstantValue: 0.08
     Variable: {fileID: 0}
-    UseConstant: 1
   PlacingObject:
+    UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 114093651824931502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
       type: 2}
-    UseConstant: 0
   TargetPosition:
     Position:
       x: 0
       y: 0
+--- !u!114 &114870738182467822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1426156425510410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd183f737b167f43b45702cfbbc4852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Source: {fileID: 82617387184979396}
+  Volume: {fileID: 114618908339454652, guid: 6641b1bb69de9da49bcf9879cdfd4f40, type: 2}
+  DontDestroy:
+    UseConstant: 1
+    ConstantValue: 1
+    Variable: {fileID: 0}
 --- !u!114 &114894374051784116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1011,9 +1161,9 @@ MonoBehaviour:
     triggerData: 0
   _animator: {fileID: 95975292908831948}
   RotateSpeed:
+    UseConstant: 1
     ConstantValue: 5
     Variable: {fileID: 0}
-    UseConstant: 1
   _player: {fileID: 114738201732924836}
 --- !u!137 &137255123798330382
 SkinnedMeshRenderer:

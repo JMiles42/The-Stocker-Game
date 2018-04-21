@@ -25,6 +25,6 @@ public class MainMenuButton: FoCsBehavior
 
 	private static void OnMouseClick()
 	{
-		SimpleSceneLoader.LoadScene(0);
+		SimpleSceneLoader.LoadScene(1);
 	}
 }

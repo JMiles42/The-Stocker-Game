@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ForestOfChaosLib.AdvVar;
 using ForestOfChaosLib.Attributes;
 using ForestOfChaosLib.Grid;
 using UnityEngine;
@@ -34,6 +35,7 @@ public class Drone_Agent: Agent
 	[DisableEditing] public float ExitY;
 	[DisableEditing] public float ExitDistance;
 	[DisableEditing] public float ClosestWODistance;
+	public Vector3Reference Position;
 
 	[Header("Reward")]
 	[DisableEditing] public float MyReward;
@@ -44,6 +46,7 @@ public class Drone_Agent: Agent
 	{
 		GPosition = pos;
 		transform.position = GPosition.WorldPosition;
+		Position.Value = transform.position;
 	}
 
 	public override void AgentStep(float[] act)
@@ -105,6 +108,11 @@ public class Drone_Agent: Agent
 		else if(!canMove)
 		{
 			reward = -0.1f;
+		}
+		if(MyReward <= -1f)
+		{
+			reward = -1f;
+			done = true;
 		}
 
 		MyReward += reward;

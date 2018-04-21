@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Seed:
-      ConstantValue: :+5m!5(n
-      Variable: {fileID: 0}
       UseConstant: 1
+      ConstantValue: xyo8:'.t
+      Variable: {fileID: 0}
     corridorLength:
       Min: 2
       Max: 4

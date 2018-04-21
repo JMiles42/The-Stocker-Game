@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d46eb592c4435245b1d56b8f87ee581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CreditsMenu: {fileID: 114236184475087318, guid: 3029074d3c4078b4da5cfe183e635bc6,
+    type: 2}
   ExitGameMenu: {fileID: 114759705695293932, guid: cab8724f87cf5ab4a9d294d7d3b4bc49,
     type: 2}
   GameTypeMenu: {fileID: 114770274547518538, guid: 7a319fb8a5851db42986acde76ab8674,
@@ -123,7 +125,8 @@ MonoBehaviour:
   LoadingMenu: {fileID: 114037835918947154, guid: c7bddb5bf72e35f409de1f8cff5656f7,
     type: 2}
   MainMenu: {fileID: 114893038986120068, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
-  OptionsMenu: {fileID: 0}
+  OptionsMenu: {fileID: 114784274383205678, guid: d5def28e7a97eb74d9db0b0caacf96ba,
+    type: 2}
   PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
     type: 2}
   ShopMenu: {fileID: 114931524131379626, guid: ca8d1ec2f155b6249a259277ee46b938, type: 2}

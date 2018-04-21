@@ -6,7 +6,7 @@ public class TurntableChecker : FoCsBehavior
 	public GameObject Prefab;
 	public void OnEnable()
 	{
-		if(Turntable.instanceNull)
+		if(Turntable.InstanceNull)
 			Instantiate(Prefab);
 	}
 }

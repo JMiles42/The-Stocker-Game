@@ -203,6 +203,16 @@ Prefab:
     - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
         type: 2}
       propertyPath: RandomSeed
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
+        type: 2}
+      propertyPath: RandomSeed.UseConstant
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114105068956099934, guid: c289d29bb71197144a3ab13dd6eb721a,
+        type: 2}
+      propertyPath: RandomSeed.ConstantValue
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
