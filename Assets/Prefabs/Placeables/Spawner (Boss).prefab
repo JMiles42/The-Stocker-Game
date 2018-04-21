@@ -1791,15 +1791,16 @@ MonoBehaviour:
   Animator: {fileID: 95760930396708644}
   Animating: 1
   Min:
+    UseConstant: 1
     ConstantValue: 1
     Variable: {fileID: 0}
-    UseConstant: 1
   Max:
+    UseConstant: 1
     ConstantValue: 20
     Variable: {fileID: 0}
-    UseConstant: 1
   startTime: 0
   endTime: 0
+  Event: {fileID: 114925276033259124, guid: db9a1c593039752419f75ae76df23cce, type: 2}
 --- !u!114 &114593630308758460
 MonoBehaviour:
   m_ObjectHideFlags: 1

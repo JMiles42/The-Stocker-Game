@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Source: {fileID: 82488244567148620}
-  Volume: {fileID: 114229495871723948, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  Volume: {fileID: 114229495871723948, guid: 6641b1bb69de9da49bcf9879cdfd4f40, type: 2}
 --- !u!114 &114908699316243114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,3 +155,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 638b9cd128495c940b0a142e3fcf388b, type: 3}
   WaitTime: 0
   MaxWaitTime: 25
+  MyAudioUseageType: 0

@@ -53,8 +53,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnableAudio: 0
   AudioSource: {fileID: 0}
-  ListOfAudioClips: []
+  ListOfAudioClips:
+  - {fileID: 8300000, guid: 65522ba40ea277e43be54b17ce2b0463, type: 3}
+  - {fileID: 8300000, guid: 0e17d61a0d378d24984606928cb859ef, type: 3}
+  - {fileID: 8300000, guid: cc8ce538902ecd54e893b79015dd7ce9, type: 3}
   WaitTime: 0
   MaxWaitTime: 30
-  Event: {fileID: 0}
+  Event: {fileID: 114737419608818156, guid: db9a1c593039752419f75ae76df23cce, type: 2}
   MyAudioUseageType: 1

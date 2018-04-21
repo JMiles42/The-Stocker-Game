@@ -68,7 +68,6 @@ GameObject:
   - component: {fileID: 4310923620650878}
   - component: {fileID: 114419488152488570}
   - component: {fileID: 114563994665211246}
-  - component: {fileID: 114366101607886438}
   m_Layer: 0
   m_Name: Spawner (Small)
   m_TagString: Untagged
@@ -1484,36 +1483,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114366101607886438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1073238631917296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d56dc2c83e0512044bf221a737c09839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Key:
-    Key: TriggerAnim
-    KeyType: 3
-    intData: 0
-    floatData: 0
-    boolData: 0
-    triggerData: 1
-  Animator: {fileID: 95033536078469556}
-  Animating: 1
-  Min:
-    UseConstant: 1
-    ConstantValue: 1
-    Variable: {fileID: 0}
-  Max:
-    UseConstant: 1
-    ConstantValue: 2
-    Variable: {fileID: 0}
-  startTime: 0
-  endTime: 0
 --- !u!114 &114373445821514908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1591,6 +1560,7 @@ MonoBehaviour:
     Variable: {fileID: 0}
   startTime: 0
   endTime: 0
+  Event: {fileID: 114737419608818156, guid: db9a1c593039752419f75ae76df23cce, type: 2}
 --- !u!137 &137517621174960588
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -7,28 +7,29 @@ public class VolumeManager : Singleton<VolumeManager>
 {
 	public AudioSource Source;
 	public FloatReference Volume;
+	public BoolVariable DontDestroy = true;
 
 	private void OnEnable()
 	{
 		Volume.OnValueChange += OnValueChange;
-		SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
-		SceneManager.sceneUnloaded += SceneManagerOnSceneUnloaded;
-
+		//SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
+		//SceneManager.sceneUnloaded += SceneManagerOnSceneUnloaded;
 	}
 
-	private void SceneManagerOnSceneUnloaded(Scene arg0)
-	{
-		DestroyOtherInstances();
-	}
-
-	private void SceneManagerOnSceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
-	{
-		DestroyOtherInstances();
-	}
+	//private void SceneManagerOnSceneUnloaded(Scene arg0)
+	//{
+	//	DestroyOtherInstances();
+	//}
+	//
+	//private void SceneManagerOnSceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
+	//{
+	//	DestroyOtherInstances();
+	//}
 
 	public void Start()
 	{
-		DontDestroyOnLoad(gameObject);
+		if(DontDestroy.Value)
+			DontDestroyOnLoad(gameObject);
 		OnValueChange();
 	}
 
@@ -40,8 +41,7 @@ public class VolumeManager : Singleton<VolumeManager>
 	private void OnDisable()
 	{
 		Volume.OnValueChange -= OnValueChange;
-		SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
-		SceneManager.sceneUnloaded -= SceneManagerOnSceneUnloaded;
-
+		//SceneManager.sceneLoaded -= SceneManagerOnSceneLoaded;
+		//SceneManager.sceneUnloaded -= SceneManagerOnSceneUnloaded;
 	}
 }

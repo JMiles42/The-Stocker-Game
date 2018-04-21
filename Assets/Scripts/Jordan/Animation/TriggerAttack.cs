@@ -14,6 +14,7 @@ public class TriggerAttack : FoCsBehavior
 
 	public float startTime;
 	public float endTime;
+	public BoolReference Event;
 
 	void Start()
 	{
@@ -30,6 +31,8 @@ public class TriggerAttack : FoCsBehavior
 			endTime = time + Random.Range(Min, Max);
 			Key.triggerData = true;
 			Key.CalculateAnimator(Animator);
+			Event.Value = true;
+			Event.Value = false;
 		}
 	}
 
