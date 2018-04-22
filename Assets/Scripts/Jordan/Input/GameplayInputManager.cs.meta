@@ -1,10 +1,34 @@
 fileFormatVersion: 2
 guid: 6cac9177afd509a4b8d82ec397f65ade
-timeCreated: 1506852340
+timeCreated: 1519116452
 licenseType: Pro
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PrimaryClick: {fileID: 114017938380352358, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - MiddleClick: {fileID: 114656967208382922, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - SecondaryClick: {fileID: 114884500771322526, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - ScrollWheel: {fileID: 114189785667156760, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - CameraMode: {fileID: 114156953746956618, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - PlacementMode: {fileID: 114619496926770128, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - EditMode: {fileID: 114010895325621122, guid: 158f0da2ea342744aac794bec32589cb,
+      type: 2}
+  - GridBlocks: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+      type: 2}
+  - Camera: {fileID: 114318176763911866, guid: 9150fe79db2ef4a42a79dfeaa31d8058, type: 2}
+  - GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+  - CameraEnabled: {fileID: 114609350410511588, guid: f7684c54865eb53488318be23c4f286d,
+      type: 2}
+  - EditingEnabled: {fileID: 114089058755908912, guid: f7684c54865eb53488318be23c4f286d,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

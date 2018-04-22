@@ -1,41 +1,21 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using JMiles42;
-using JMiles42.Extensions;
+using ForestOfChaosLib.Grid;
 
 [Serializable]
-public class TilePath: IEnumerable<Vector2I>
+public class TilePath: List<GridPosition>
 {
-    public List<Vector2I> Path = new List<Vector2I>(0);
+	public TilePath(int size = 0)
+		: base(size)
+	{ }
 
-    public int Length
-    {
-        get { return Path.Count; }
-    }
+	public TilePath(List<GridPosition> _path)
+		: base(_path)
+	{ }
 
-    public TilePath(int size = 0) { Path = new List<Vector2I>(size); }
-    public TilePath(List<Vector2I> _path) { Path = _path; }
-    public TilePath(IEnumerable<Vector2I> _path) { Path = new List<Vector2I>(_path); }
+	public TilePath(IEnumerable<GridPosition> _path)
+		: base(_path)
+	{ }
 
-    public Vector2I this[int index]
-    {
-        get
-        {
-            if (Path.InRange(index))
-                return Path[index];
-            return Vector2I.MaxInt;
-        }
-        set
-        {
-            if (Path.InRange(index))
-                Path[index] = value;
-        }
-    }
-
-    public static implicit operator List<Vector2I>(TilePath tP) { return tP.Path; }
-    public static implicit operator TilePath(List<Vector2I> list) { return new TilePath(list); }
-
-    public IEnumerator<Vector2I> GetEnumerator() { return Path.GetEnumerator(); }
-    IEnumerator IEnumerable.GetEnumerator() { return GetEnumerator(); }
+	public static implicit operator TilePath(GridPosition[] list) => new TilePath(list);
 }

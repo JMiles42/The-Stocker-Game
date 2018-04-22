@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 93eb510fc25389640800ba959a773e64
+timeCreated: 1519827487
+licenseType: Pro
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+      type: 2}
+  - PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+      type: 2}
+  - Prefab: {fileID: 114395477673934274, guid: 9b34b0e2088bd664688b28be60bec3e5, type: 2}
+  - Reference: {fileID: 114479155511754746, guid: 133ad7b267b7a9d4892112c97884b9a1,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

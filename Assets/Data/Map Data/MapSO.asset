@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d5ca02cc340104ebf0817948bfa8cb, type: 3}
+  m_Name: MapSO
+  m_EditorClassIdentifier: 
+  _value:
+    Width: 20
+    Height: 20
+    Seed: xyo8:'.t
+    SpawnPosition:
+      Position:
+        x: 7
+        y: 10
+    rooms:
+    - enteringCorridor: 0
+      roomHeight: 8
+      roomWidth: 7
+      Position:
+        Position:
+          x: 7
+          y: 6
+    - enteringCorridor: 0
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 10
+          y: 15
+    - enteringCorridor: 1
+      roomHeight: 7
+      roomWidth: 7
+      Position:
+        Position:
+          x: 5
+          y: 8
+    - enteringCorridor: 0
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 3
+          y: 15
+    - enteringCorridor: 0
+      roomHeight: 4
+      roomWidth: 8
+      Position:
+        Position:
+          x: 1
+          y: 15
+    - enteringCorridor: 3
+      roomHeight: 4
+      roomWidth: 4
+      Position:
+        Position:
+          x: 2
+          y: 14
+    - enteringCorridor: 2
+      roomHeight: 7
+      roomWidth: 8
+      Position:
+        Position:
+          x: 8
+          y: 12
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 6
+          y: 8
+    - enteringCorridor: 2
+      roomHeight: 3
+      roomWidth: 3
+      Position:
+        Position:
+          x: 15
+          y: 9
+    - enteringCorridor: 2
+      roomHeight: 9
+      roomWidth: 4
+      Position:
+        Position:
+          x: 15
+          y: 4
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 10
+          y: 2
+    - enteringCorridor: 2
+      roomHeight: 9
+      roomWidth: 4
+      Position:
+        Position:
+          x: 15
+          y: 1
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 5
+      Position:
+        Position:
+          x: 14
+          y: 2
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 10
+          y: 2
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 8
+      Position:
+        Position:
+          x: 7
+          y: 2
+    - enteringCorridor: 2
+      roomHeight: 5
+      roomWidth: 4
+      Position:
+        Position:
+          x: 15
+          y: 1
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 8
+      Position:
+        Position:
+          x: 11
+          y: 2
+    - enteringCorridor: 1
+      roomHeight: 4
+      roomWidth: 9
+      Position:
+        Position:
+          x: 10
+          y: 2
+    - enteringCorridor: 0
+      roomHeight: 8
+      roomWidth: 6
+      Position:
+        Position:
+          x: 8
+          y: 7
+    corridors:
+    - corridorLength: 2
+      direction: 0
+      startXPos: 12
+      startYPos: 14
+    - corridorLength: 2
+      direction: 1
+      startXPos: 10
+      startYPos: 15
+    - corridorLength: 1
+      direction: 0
+      startXPos: 5
+      startYPos: 15
+    - corridorLength: -3
+      direction: 0
+      startXPos: 6
+      startYPos: 19
+    - corridorLength: -3
+      direction: 3
+      startXPos: 1
+      startYPos: 16
+    - corridorLength: 3
+      direction: 2
+      startXPos: 6
+      startYPos: 16
+    - corridorLength: 2
+      direction: 1
+      startXPos: 10
+      startYPos: 12
+    - corridorLength: 1
+      direction: 2
+      startXPos: 15
+      startYPos: 10
+    - corridorLength: -2
+      direction: 2
+      startXPos: 18
+      startYPos: 10
+    - corridorLength: 0
+      direction: 1
+      startXPos: 17
+      startYPos: 4
+    - corridorLength: -3
+      direction: 2
+      startXPos: 19
+      startYPos: 2
+    - corridorLength: -3
+      direction: 1
+      startXPos: 17
+      startYPos: 1
+    - corridorLength: -2
+      direction: 1
+      startXPos: 15
+      startYPos: 2
+    - corridorLength: -2
+      direction: 1
+      startXPos: 10
+      startYPos: 2
+    - corridorLength: 1
+      direction: 2
+      startXPos: 15
+      startYPos: 4
+    - corridorLength: -3
+      direction: 1
+      startXPos: 18
+      startYPos: 1
+    - corridorLength: -2
+      direction: 1
+      startXPos: 16
+      startYPos: 2
+    - corridorLength: 2
+      direction: 0
+      startXPos: 10
+      startYPos: 6
+    tiles:
+    - tiles: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000100000001000000010000000100000001000000
+    - tiles: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000200000002000000020000000200000001000000
+    - tiles: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000000000000000000000000000000000000000000000000000001000000010000000100000001000000010000000100000001000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000000000000000000000000000000000000000000000000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000010000000100000001000000010000000100000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0000000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0100000001000000020000000200000002000000020000000100000001000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0100000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000
+    - tiles: 0100000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000001000000
+    - tiles: 0100000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000001000000
+    - tiles: 0100000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000001000000010000000200000002000000020000000200000001000000
+    - tiles: 0100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

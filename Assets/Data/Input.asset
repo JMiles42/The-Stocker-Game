@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
+  m_Name: Input
+  m_EditorClassIdentifier: 
+--- !u!114 &114010895325621122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: EditMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: EditMode
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114017938380352358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: PrimaryClick
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: MouseL
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114104429949901392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: ArrowsVertical
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: AVertical
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 1
+    OnlyButton: 0
+--- !u!114 &114156953746956618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: CameraMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: CameraMode
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114189785667156760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: ScrollWheel
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: MouseScroll
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114326280897632020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fa8c2328403e94ea54d87c21d5fd0f, type: 3}
+  m_Name: MousePos
+  m_EditorClassIdentifier: 
+  _value: {x: 544, y: 2541}
+--- !u!114 &114596209090883808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: ArrowsHorizontal
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: AHorizontal
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 3
+    ValueInverted: 1
+    OnlyButton: 0
+--- !u!114 &114619496926770128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: PlacementMode
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: PlacementMode
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114656967208382922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: 'MiddleClick '
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: MouseM
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0
+--- !u!114 &114884500771322526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790ac529818ba42479ec636c20fca80f, type: 3}
+  m_Name: 'SecondaryClick '
+  m_EditorClassIdentifier: 
+  _value:
+    Axis: MouseR
+    m_Value: 0
+    m_DeadZone: 0
+    KeyPos: 0
+    ValueInverted: 0
+    OnlyButton: 0

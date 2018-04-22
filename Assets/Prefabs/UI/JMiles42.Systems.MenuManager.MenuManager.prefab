@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1202003399451390}
+  m_IsPrefabParent: 1
+--- !u!1 &1091453821339788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4365161673749736}
+  - component: {fileID: 114590648625960300}
+  - component: {fileID: 114700815338649758}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1202003399451390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4612349001626270}
+  - component: {fileID: 114960212847354520}
+  m_Layer: 0
+  m_Name: JMiles42.Systems.MenuManager.MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4365161673749736
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091453821339788}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4612349001626270}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4612349001626270
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202003399451390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4365161673749736}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114590648625960300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091453821339788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!114 &114700815338649758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1091453821339788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &114960212847354520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202003399451390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d46eb592c4435245b1d56b8f87ee581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CreditsMenu: {fileID: 114236184475087318, guid: 3029074d3c4078b4da5cfe183e635bc6,
+    type: 2}
+  ExitGameMenu: {fileID: 114759705695293932, guid: cab8724f87cf5ab4a9d294d7d3b4bc49,
+    type: 2}
+  GameTypeMenu: {fileID: 114770274547518538, guid: 7a319fb8a5851db42986acde76ab8674,
+    type: 2}
+  InventoryMenu: {fileID: 114416259146304624, guid: 99ac89fa274668f4080b5c9960cf5bc4,
+    type: 2}
+  LoadingMenu: {fileID: 114037835918947154, guid: c7bddb5bf72e35f409de1f8cff5656f7,
+    type: 2}
+  MainMenu: {fileID: 114893038986120068, guid: 427682dd470b7364bbb5c7bf36fbcfc8, type: 2}
+  OptionsMenu: {fileID: 114784274383205678, guid: d5def28e7a97eb74d9db0b0caacf96ba,
+    type: 2}
+  PlayGameMenu: {fileID: 114101018796563730, guid: 6c86bab5c0193174ba2278d1233d5220,
+    type: 2}
+  ShopMenu: {fileID: 114931524131379626, guid: ca8d1ec2f155b6249a259277ee46b938, type: 2}
+  SpawnMenu: {fileID: 114786718510316184, guid: 7e8e3524af84934449f62a4b0b59d519,
+    type: 2}
+  TutorialPlayGameMenu: {fileID: 114220323578147258, guid: f66e6c05017a2354ca3d5b5d6150b44e,
+    type: 2}

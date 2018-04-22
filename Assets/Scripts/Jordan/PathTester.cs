@@ -1,5 +1,6 @@
-﻿using JMiles42.Components;
+﻿using ForestOfChaosLib;
 
-public class PathTester: JMilesBehavior {
+public class PathTester: FoCsBehavior
+{
 	public TilePath Path;
 }

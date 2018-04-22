@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5753d0a96ebbb6244a8fe2813eeac80d, type: 3}
+  m_Name: Placeables
+  m_EditorClassIdentifier: 
+--- !u!114 &114003042097358576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: ExitPlacable
+  m_EditorClassIdentifier: 
+  _value: 0
+--- !u!114 &114074729671970788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: SpawnerBossPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Orc Boss Spawner
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Increases the difficulty by a very large amount.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 6
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114853269293917650, guid: d07a3bd6f2ffa2b41ba80f4ccfdd494e, type: 2}
+--- !u!114 &114169705802348764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba8dfda7924ed784190a0b9da461db2a, type: 3}
+  m_Name: PrefabPlacerBool
+  m_EditorClassIdentifier: 
+  _value: 1
+--- !u!114 &114227515742374574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: ChestCommonPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Common Chest
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Gives a better score in the easiest sections of the dungeon.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 1
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114811079838423538, guid: 65ea8881777ebad40a135fbc39f72b72, type: 2}
+--- !u!114 &114232379200255850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93eb510fc25389640800ba959a773e64, type: 3}
+  m_Name: SpawnPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Spawn
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Allows the Adventurer to enter the dungeon.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: -1
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114395477673934274, guid: 9b34b0e2088bd664688b28be60bec3e5, type: 2}
+  Reference: {fileID: 114479155511754746}
+--- !u!114 &114479155511754746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a231829356e76b84b87e2aa0dbab182f, type: 3}
+  m_Name: SpawnRef
+  m_EditorClassIdentifier: 
+--- !u!114 &114533593362658678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b783bd9869a94341b0b750521c9a4c9, type: 3}
+  m_Name: ExitPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Exit Door
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Allows the Adventurer to leave and not become trapped in the dungeon.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 0
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114195496729803020, guid: 4dd3534f71cc79d429a9042b5d1d578d, type: 2}
+  Reference: {fileID: 114321197824003404, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  HasReference: {fileID: 114003042097358576}
+--- !u!114 &114570338343020342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: ChestLegendaryPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Legendary Chest
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Gives the best score in the most difficult sections of the dungeon,
+      usually after a boss.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 3
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114721760530545834, guid: 125c226dc177f9b45980dcfe954f84a1, type: 2}
+--- !u!114 &114863323965813470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: HealingPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Healing Fountain
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Allows the player to heal, so they can survive more fights.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 4
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114689126733370970, guid: 9e8a9244102bc27479430337d1d615f3, type: 2}
+--- !u!114 &114881420099615618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: ChestRarePlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Rare Chest
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Gives a better score in a medium difficulty level of the dungeon.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 2
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114893744919083274, guid: d50c59c6aced2c249882116b143e2103, type: 2}
+--- !u!114 &114999737924450390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6072f68272549940a1d50c958c8e419, type: 3}
+  m_Name: SpawnerSmallPlacer
+  m_EditorClassIdentifier: 
+  WorldObjectList: {fileID: 114235532778253446, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  Name:
+    ConstantValue: Eyeball - Minion Spawner
+    Variable: {fileID: 0}
+    UseConstant: 1
+  Description:
+    ConstantValue: Slightly increases the difficulty of the dungeon.
+    Variable: {fileID: 0}
+    UseConstant: 1
+  ID: 5
+  GridBlockList: {fileID: 114375524077888378, guid: aba02abe5c05c4145a2d8abd168afb34,
+    type: 2}
+  PlaceableParent: {fileID: 114606272686386660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+    type: 2}
+  Prefab: {fileID: 114419488152488570, guid: 95ca8d2b77e761544b81e23ee1847282, type: 2}

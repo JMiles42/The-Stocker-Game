@@ -1,16 +1,25 @@
-﻿using System.Collections.Generic;
-using JMiles42;
-using JMiles42.Components;
+﻿using ForestOfChaosLib;
+using ForestOfChaosLib.Grid;
+using ForestOfChaosLib.Types;
 
-public class GridBlock: JMilesBehavior
+public class GridBlock: FoCsBehavior
 {
-    public static Dictionary<Vector2I, GridBlock> Blocks = new Dictionary<Vector2I, GridBlock>();
+	public GridPosition _gridPosition = Vector2I.Zero;
 
-    public Vector2I _gridPosition = Vector2I.Zero;
+	public TileType TileType;
 
-    public Vector2I GridPosition
-    {
-        get { return _gridPosition; }
-        set { _gridPosition = value; }
-    }
+	public WorldObject WorldObject;
+
+	public GridPosition GridPosition
+	{
+		get { return _gridPosition; }
+		set { _gridPosition = value; }
+	}
+
+	public bool HasWorldObject => WorldObject != null;
+
+	public void SetupObject(WorldObject wo)
+	{
+		WorldObject.SetupObject(this);
+	}
 }

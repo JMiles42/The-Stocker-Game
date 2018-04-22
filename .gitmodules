@@ -1,0 +1,3 @@
+[submodule "Forest of Chaos Lib"]
+path = Assets/Plugins/FoCs
+url = https://github.com/JMiles42/FoCs-Lib.git

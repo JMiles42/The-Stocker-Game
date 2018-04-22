@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85284cd59979d5643bd288b1eda93edf, type: 3}
+  m_Name: FoCsEditorData
+  m_EditorClassIdentifier: 
+  UpArrow: {fileID: 2800000, guid: c5bd11145ca70314199f4b0d412791d3, type: 3}
+  Up2Arrow: {fileID: 2800000, guid: 229c8ad124a3e1143a57e71734890188, type: 3}
+  DownArrow: {fileID: 2800000, guid: a6c8efbbdf8a16f45ab32264662e6e23, type: 3}
+  Down2Arrow: {fileID: 2800000, guid: 75fe2b63f4d9e4c469aca646d70bc55d, type: 3}
