@@ -1,5 +1,7 @@
 ﻿using ForestOfChaosLib.AdvVar;
+using ForestOfChaosLib.CSharpExtensions;
 using ForestOfChaosLib.FoCsUI.Button;
+using ForestOfChaosLib.FoCsUI.InputField;
 using ForestOfChaosLib.MenuManaging;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +12,11 @@ public class MainMenu: SimpleMenu<MainMenu>
 	public ButtonComponentBase OptionsBTN;
 	public ButtonComponentBase ExitGameBTN;
 	public ButtonComponentBase CreditsGameBTN;
+	public InputFieldEventBase SeedIF;
 	public BoolReference GameActive;
+
+	public BoolReference GenerateSeed;
+	public StringReference Seed;
 
 	public override void OnEnable()
 	{
@@ -23,9 +29,18 @@ public class MainMenu: SimpleMenu<MainMenu>
 		CreditsGameBTN.onMouseClick += OnCreditsClick;
 	}
 
-	private static void OnPlayGameClick()
+	private void OnPlayGameClick()
 	{
 		Close();
+		if(SeedIF.InputFieldText.IsNullOrEmpty())
+		{
+			GenerateSeed.Value = true;
+		}
+		else
+		{
+			GenerateSeed.Value = false;
+			Seed.Value = SeedIF.InputFieldText;
+		}
 		SceneSafely.LoadSceneAsync(2, LoadSceneMode.Single);
 	}
 
