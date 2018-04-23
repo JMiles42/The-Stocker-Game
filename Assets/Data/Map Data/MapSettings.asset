@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
     Seed:
+      UseConstant: 0
       ConstantValue: _pzfn*&c
-      Variable: {fileID: 0}
-      UseConstant: 1
+      Variable: {fileID: 114785366459580340, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
+        type: 2}
     corridorLength:
       Min: 2
       Max: 9
