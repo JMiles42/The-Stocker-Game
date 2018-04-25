@@ -33,10 +33,11 @@ public class TwitterShare {
 		//	message = $"I just scored a {score}. Feel free to challenge my score!";
 		var messageUrl = TWITTER_URL + "?text=" + WWW.EscapeURL(message) + "&url=" + WWW.EscapeURL(STOCKER_URL);
 
-#if PLATFORM_WEBGL
+//#if PLATFORM_WEBGL
+		//GUIUtility.systemCopyBuffer = messageUrl;
 		Application.ExternalEval($"window.open(\"{messageUrl}\")");
-#else
-		Application.OpenURL(messageUrl);
-#endif
+//#else
+//		Application.OpenURL(messageUrl);
+//#endif
 	}
 }
