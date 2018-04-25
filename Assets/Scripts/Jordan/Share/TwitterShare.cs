@@ -31,7 +31,12 @@ public class TwitterShare {
 		//	message = $"I just scored a {score}, Unfortunately the adventurer died with a score of {diedScore}. Feel free to challenge my score!";
 		//else
 		//	message = $"I just scored a {score}. Feel free to challenge my score!";
+		var messageUrl = TWITTER_URL + "?text=" + WWW.EscapeURL(message) + "&url=" + WWW.EscapeURL(STOCKER_URL);
 
-		Application.OpenURL(TWITTER_URL + "?text=" + WWW.EscapeURL(message) + "&url="+WWW.EscapeURL(STOCKER_URL));
+#if PLATFORM_WEBGL
+		Application.ExternalEval($"window.open(\"{messageUrl}\")");
+#else
+		Application.OpenURL(messageUrl);
+#endif
 	}
 }
