@@ -1541,7 +1541,7 @@ MonoBehaviour:
   OptionsBTN: {fileID: 114735807808571462}
   ExitGameBTN: {fileID: 114481543479981216}
   CreditsGameBTN: {fileID: 114582220355112832}
-  SeedIF: {fileID: 0}
+  SeedIF: {fileID: 114510612480705276}
   GameActive: {fileID: 114094493608244502, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
     type: 2}
   GenerateSeed: {fileID: 114485174948744660, guid: 9150fe79db2ef4a42a79dfeaa31d8058,
