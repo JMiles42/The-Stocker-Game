@@ -22,15 +22,15 @@ public class TwitterShare {
 	{
 		string message;
 
-		//if(died)
-		//	message = $"I just scored a {score} on the seed {seed}, Unfortunately the adventurer died with a score of {diedScore}. Feel free to challenge my score!";
-		//else
-		//	message = $"I just scored a {score} on the seed {seed}. Feel free to challenge my score!";
-
 		if(died)
-			message = $"I just scored a {score}, Unfortunately the adventurer died with a score of {diedScore}. Feel free to challenge my score!";
+			message = $"I just scored a {score} on the seed {seed}, Unfortunately the adventurer died with a score of {diedScore}. Feel free to challenge my score!";
 		else
-			message = $"I just scored a {score}. Feel free to challenge my score!";
+			message = $"I just scored a {score} on the seed {seed}. Feel free to challenge my score!";
+
+		//if(died)
+		//	message = $"I just scored a {score}, Unfortunately the adventurer died with a score of {diedScore}. Feel free to challenge my score!";
+		//else
+		//	message = $"I just scored a {score}. Feel free to challenge my score!";
 
 		Application.OpenURL(TWITTER_URL + "?text=" + WWW.EscapeURL(message) + "&url="+WWW.EscapeURL(STOCKER_URL));
 	}
