@@ -42,7 +42,7 @@ public class MenuNameWindow: Window<MenuNameWindow> {
 	}
 
 	private static void DrawButtons() {
-		using (EditorDisposables.HorizontalScope()) {
+		using (FoCsEditorDisposables.HorizontalScope()) {
 			if (FoCsGUILayout.Button("Generate Class")) {
 				GenerateClassFile();
 			}

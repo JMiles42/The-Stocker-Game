@@ -14,7 +14,7 @@ public class MapCreatorEditor: FoCsEditor<MapCreator>
 			RandomizeSeed();
 			GenerateMap();
 		}
-		using(EditorDisposables.HorizontalScope())
+		using(FoCsEditorDisposables.HorizontalScope())
 		{
 			if(FoCsGUILayout.Button("Randomize Seed"))
 				RandomizeSeed();

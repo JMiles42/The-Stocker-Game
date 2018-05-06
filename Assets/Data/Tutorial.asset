@@ -37,7 +37,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: "The timer in the top right, displays how long you have to finish your dungeon
     before an adventurer arrives.\r\nMake sure you have done all the following steps
-    before it they arrive. For the duration of the guide, it won\u2019t be counting.\r"
+    before it they arrive. For the duration of the guide, it won't be counting."
 --- !u!114 &114221500412609690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,9 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb917fa5d92b84686af11f42c5eaad, type: 3}
   m_Name: Tut6
   m_EditorClassIdentifier: 
-  _value: Now that you have placed an exit, let's make it a challenge. A new icon
-    has appeared, this is a Boss spawner. It is the most difficult enemy an adventure
-    can face. It increases the difficulty making any loot after it to be worth more.
+  _value: 'Now that you have placed an exit, let''s make it a challenge. A new icon
+    has appeared, this is a Boss spawner.
+
+    It is the most difficult enemy an adventure can face. It increases the difficulty
+    making any loot after it to be worth more.'
 --- !u!114 &114458924882523808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,9 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb917fa5d92b84686af11f42c5eaad, type: 3}
   m_Name: Tut3
   m_EditorClassIdentifier: 
-  _value: "In some maps you\u2019ll have to move the camera to see the whole map,
-    Use the Arrow keys or the WASD keys to move the camera around, you can also zoom
-    in & out with the scroll wheel."
+  _value: 'In some maps you''ll have to move the camera to see the whole map.
+
+    Use the Arrow keys or the WASD keys to move the camera around. You can also zoom
+    in & out with the scroll wheel.'
 --- !u!114 &114525965033580694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,9 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb917fa5d92b84686af11f42c5eaad, type: 3}
   m_Name: Tut8
   m_EditorClassIdentifier: 
-  _value: Now that they have a reward, we should make it slightly more fun for them.
-    Let's place a minion spawner, this increases the difficulty slightly, not as much
-    as the boss, but it has a much smaller chance of killing the adventurer.
+  _value: 'Now that they have a reward, we should make it slightly more fun for them.
+
+    Let''s place a minion spawner, this increases the difficulty slightly, not as
+    much as the boss, but it has a much smaller chance of killing the adventurer.'
 --- !u!114 &114682758365252550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +137,7 @@ MonoBehaviour:
   m_Name: Tut1
   m_EditorClassIdentifier: 
   _value: "Welcome to the Dungeon owners virtual guide.\r\n\r\nThis will teach you
-    how to build a dungeon.\r"
+    how to build a dungeon."
 --- !u!114 &114718388070273286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb917fa5d92b84686af11f42c5eaad, type: 3}
   m_Name: Tut12
   m_EditorClassIdentifier: 
-  _value: Well done. You passed the tutorial.
+  _value: 'Well done. You passed the tutorial.
+
+    Return to the main menu.'
 --- !u!114 &114912135982073856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: "The most important thing to place before the timer runs out is the exit
     door.\r\nThis will allow the adventurer a chance to make it out alive. Click the
-    door icon at the bottom. Than place it on a floor tile.\r"
+    door icon at the bottom. Than place it on a floor tile."
 --- !u!114 &114932328429021596
 MonoBehaviour:
   m_ObjectHideFlags: 0
