@@ -25,7 +25,7 @@ public class TilePropertyDrawer: PropertyDrawer
 				break;
 		}
 
-		using (EditorDisposables.ColorChanger(col))
+		using (FoCsEditorDisposables.ColorChanger(col))
 		{
 			if (MapEditing)
 				EditorGUI.LabelField(position, (tileType.enumDisplayNames[tileType.enumValueIndex]).Substring(0, 1), GUI.skin.box);

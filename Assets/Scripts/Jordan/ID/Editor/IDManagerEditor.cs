@@ -15,14 +15,14 @@ public class IDManagerEditor: FoCsEditor<IDManager>
 		var Data = serializedObject.FindProperty("Data");
 		if(reorderableListProperty == null)
 			reorderableListProperty = new ReorderableListProperty(Data, false).SetAddCallBack(AddCallback);
-		using(EditorDisposables.HorizontalScope())
+		using(FoCsEditorDisposables.HorizontalScope())
 		{
-			using(EditorDisposables.VerticalScope(GUILayout.Width(17f)))
+			using(FoCsEditorDisposables.VerticalScope(GUILayout.Width(17f)))
 			{
 				EditorGUILayout.Space();
 			}
 			reorderableListProperty.HandleDrawing();
-			using(EditorDisposables.VerticalScope(GUILayout.Width(1f)))
+			using(FoCsEditorDisposables.VerticalScope(GUILayout.Width(1f)))
 			{
 				EditorGUILayout.Space();
 			}

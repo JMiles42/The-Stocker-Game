@@ -17,9 +17,9 @@ public class SceneWindow: Window<SceneWindow>
 
 	protected override void DrawGUI()
 	{
-		using(EditorDisposables.VerticalScope(GUI.skin.box))
+		using(FoCsEditorDisposables.VerticalScope(GUI.skin.box))
 			DrawLoadedScenes();
-		using(EditorDisposables.VerticalScope(GUI.skin.box))
+		using(FoCsEditorDisposables.VerticalScope(GUI.skin.box))
 			DrawBuildScenes();
 	}
 
@@ -52,25 +52,25 @@ public class SceneWindow: Window<SceneWindow>
 
 	private void DrawScene(Scene scene)
 	{
-		using(EditorDisposables.VerticalScope(GUI.skin.box))
+		using(FoCsEditorDisposables.VerticalScope(GUI.skin.box))
 		{
-			using(EditorDisposables.HorizontalScope())
+			using(FoCsEditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Path:");
 				EditorGUILayout.LabelField(scene.path);
 			}
-			using(EditorDisposables.HorizontalScope())
+			using(FoCsEditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Name:");
 				EditorGUILayout.LabelField(scene.name);
 			}
 
-			using(EditorDisposables.HorizontalScope())
+			using(FoCsEditorDisposables.HorizontalScope())
 			{
 				EditorGUILayout.LabelField("Build Index");
 				EditorGUILayout.LabelField(scene.buildIndex.ToString());
 			}
-			using(EditorDisposables.HorizontalScope())
+			using(FoCsEditorDisposables.HorizontalScope())
 
 			{
 				EditorGUILayout.LabelField("Root Count");

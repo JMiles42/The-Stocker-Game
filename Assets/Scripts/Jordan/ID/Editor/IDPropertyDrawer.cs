@@ -12,12 +12,12 @@ public class IDPropertyDrawer: FoCsPropertyDrawer
 		var id = property.FindPropertyRelative("_ID");
 		var placer = property.FindPropertyRelative("Prefab");
 
-		using(var vert = EditorDisposables.RectVerticalScope(3, position.SetHeight(SingleLine * 3)))
+		using(var vert = FoCsEditorDisposables.RectVerticalScope(3, position.SetHeight(SingleLine * 3)))
 		{
 			EditorGUI.LabelField(vert.GetNext().SetHeight(SingleLine), label);
-			using(EditorDisposables.Indent())
+			using(FoCsEditorDisposables.Indent())
 			{
-				using(var cc = EditorDisposables.ChangeCheck())
+				using(var cc = FoCsEditorDisposables.ChangeCheck())
 				{
 					EditorGUI.PropertyField(vert.GetNext().SetHeight(SingleLine), id);
 

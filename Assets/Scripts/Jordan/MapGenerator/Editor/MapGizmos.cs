@@ -93,15 +93,15 @@ public static class MapGizmos
 		switch(type)
 		{
 			case TileType.Wall:
-				using(EditorDisposables.ColorChanger(new Color(0f, 0f, 1f, alpha), EditorColourType.Gizmos))
+				using(FoCsEditorDisposables.ColorChanger(new Color(0f, 0f, 1f, alpha), EditorColourType.Gizmos))
 					Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
 				break;
 			case TileType.Floor:
-				using(EditorDisposables.ColorChanger(new Color(0f, 1f, 0f, alpha), EditorColourType.Gizmos))
+				using(FoCsEditorDisposables.ColorChanger(new Color(0f, 1f, 0f, alpha), EditorColourType.Gizmos))
 					Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
 				break;
 			case TileType.OutOfMap:
-				using(EditorDisposables.ColorChanger(new Color(1f, 0.6f, 0f, alpha), EditorColourType.Gizmos))
+				using(FoCsEditorDisposables.ColorChanger(new Color(1f, 0.6f, 0f, alpha), EditorColourType.Gizmos))
 					Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
 				break;
 		}
@@ -109,7 +109,7 @@ public static class MapGizmos
 
 	private static void DrawTile(Vector2I pos, Color color)
 	{
-		using(EditorDisposables.ColorChanger(color, EditorColourType.Gizmos))
+		using(FoCsEditorDisposables.ColorChanger(color, EditorColourType.Gizmos))
 			Gizmos.DrawCube(new GridPosition(pos), Vector3.one);
 	}
 }

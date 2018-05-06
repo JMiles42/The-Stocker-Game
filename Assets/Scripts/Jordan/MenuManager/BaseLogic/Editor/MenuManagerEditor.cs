@@ -30,7 +30,7 @@ namespace ForestOfChaosLib.MenuManaging
 					}
 				}
 			}
-			using(EditorDisposables.VerticalScope(GUI.skin.box))
+			using(FoCsEditorDisposables.VerticalScope(GUI.skin.box))
 			{
 				foldoutA = EditorGUILayout.Foldout(foldoutA, "Show Menu Names");
 				if(foldoutA)
